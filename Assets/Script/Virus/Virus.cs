@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Virus : MonoBehaviour {
-
-    // Virus内ステイト
+    // -------------------------------------------------------------------
+    // Virus内用ステイト -------------------------------------------------
     abstract class State
     {
         public Virus virus;
@@ -18,6 +18,8 @@ public class Virus : MonoBehaviour {
         public abstract void Execute();
     }
 
+    // -------------------------------------------------------------------
+    // ステイトデータ設定用 ----------------------------------------------
     [System.Serializable]
     class StateData
     {
@@ -73,6 +75,7 @@ public class Virus : MonoBehaviour {
         nextState = state;
     }
 
+    // -------------------------------------------------------------------
     // 無感染 ------------------------------------------------------------
     class UnVirusState : State
     {
@@ -80,6 +83,7 @@ public class Virus : MonoBehaviour {
         public override void Execute() { }
     }
 
+    // -------------------------------------------------------------------
     // 潜伏状態 ----------------------------------------------------------
     class StayState : State
     {
@@ -104,7 +108,8 @@ public class Virus : MonoBehaviour {
         }
     }
 
-    // 感染可能状態 -------------------------------------------------------
+    // -------------------------------------------------------------------
+    // 感染可能状態 ------------------------------------------------------
     class InfectedState : State
     {
         GameObject infectionArea;
@@ -119,8 +124,13 @@ public class Virus : MonoBehaviour {
         public override void Execute()
         {
             if (canInfected == true) return;
-            Instantiate(infectionArea, virus.gameObject.transform);
+            infectionArea = Instantiate(infectionArea, virus.gameObject.transform);
             canInfected = true;
+        }
+
+        ~InfectedState()
+        {
+            Destroy(infectionArea);
         }
     }
 
