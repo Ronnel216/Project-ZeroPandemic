@@ -14,12 +14,14 @@ public class GameManager : MonoBehaviour {
     void Start () {
         time = 0.0f;
         isStartPandemic = false;
+
+        //StartGame();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        // 感染後の処理 //
+        // 感染開始後の処理 //
         if (isStartPandemic == false) return;      
         time += Time.deltaTime;
         Debug.Log("TimeLimit : " + time.ToString("F") + "s / " + timeLimit.ToString("F") + "s");
