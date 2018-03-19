@@ -14,10 +14,10 @@ using UnityEngine;
 public class Movement : MonoBehaviour {
 
     [SerializeField]
-    private float m_speed = 0.1f;           // 移動速度          
+    private float m_speed = 0.1f;               // 移動速度          
     
     [SerializeField]
-    bool m_lockDirection = false;           // 進行方向を向くか
+    private bool m_lockDirection = false;       // 進行方向を向くか
 
 
 
@@ -56,13 +56,13 @@ public class Movement : MonoBehaviour {
     //!
     //! @return なし
     //----------------------------------------------------------------------
-    public void Move(Vector3 pos)
+    public void Move(Vector3 vec)
     {
-        transform.position += pos * m_speed;
+        transform.Translate(vec * m_speed,Space.World);
 
         // 進行方向を向かせる
         if (m_lockDirection == false)
-            Direction(pos);
+            Direction(vec);
     }
 
 
