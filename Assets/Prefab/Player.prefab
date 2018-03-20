@@ -77,9 +77,10 @@ GameObject:
   - component: {fileID: 114647637054748504}
   - component: {fileID: 114504097713018588}
   - component: {fileID: 114476326250912862}
+  - component: {fileID: 54101446061888038}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,7 +119,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1702397707406824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.87344086, y: 0.36001682, z: -1.63}
+  m_LocalPosition: {x: 0.87344086, y: 1, z: -1.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4878995285735196}
@@ -262,6 +263,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1398837023953632}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54101446061888038
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1702397707406824}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &114120703122933240
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -296,8 +312,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateData:
-    infectionArea: {fileID: 0}
-    virusStayTime: 0
+    infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
+      type: 2}
+    virusStayTime: 2
 --- !u!114 &114647637054748504
 MonoBehaviour:
   m_ObjectHideFlags: 1
