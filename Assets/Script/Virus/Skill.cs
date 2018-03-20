@@ -6,30 +6,27 @@ using UnityEngine;
 // スキル
 public abstract class Skill
 {
-    VirusAbility.BounsStatus bouns;
+    public struct VirusStatus
+    {
+        public VirusAbility.BounsStatus bouns;
+    }
+    
+    public VirusStatus status;
 
-    // スキルの種類の取得
-    public abstract string GetType();
+    public void SetBouns(VirusStatus status)
+    {
+        this.status = status;
+    }
 
     // 更新
-    public abstract void Update();
-
-    public VirusAbility.BounsStatus bounsStatus
-    {
-        get { return bouns; }
-    }
+    public abstract void Update(GameObject obj); 
 }
 
 // ステータス増加のみのスキル
 //memo それ以外のユニークスキルは他のスクリプト 
 public class StatusBaffler : Skill
 {
-    public override string GetType()
-    {
-        return "Bouns";
-    }
-
-    public override void Update()
+    public override void Update(GameObject obj)
     {
         
     }

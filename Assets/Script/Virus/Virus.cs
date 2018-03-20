@@ -54,6 +54,7 @@ public class Virus : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag != infectionTag) return;
+        if (state.GetType() != typeof(UnVirusState)) return;
         Infected();
     }
 
@@ -130,7 +131,8 @@ public class Virus : MonoBehaviour {
 
         ~InfectedState()
         {
-            Destroy(infectionArea);
+            if (infectionArea != null)
+                Destroy(infectionArea);
         }
     }
 

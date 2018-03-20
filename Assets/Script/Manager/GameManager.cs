@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour {
     float time;
     bool isStartPandemic;
 
+    [SerializeField]
+    Virus playervirus; // 仮
+
     // Use this for initialization
     void Start () {
         time = 0.0f;
@@ -20,6 +23,12 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            playervirus.Infected();     // 仮  
+
+        }
 
         // 感染開始後の処理 //
         if (isStartPandemic == false) return;      

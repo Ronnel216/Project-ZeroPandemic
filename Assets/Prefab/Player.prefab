@@ -75,6 +75,8 @@ GameObject:
   - component: {fileID: 4688892587662268}
   - component: {fileID: 114120703122933240}
   - component: {fileID: 114647637054748504}
+  - component: {fileID: 114504097713018588}
+  - component: {fileID: 114476326250912862}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -116,7 +118,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1702397707406824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.87344086, y: 0.36001682, z: -1.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4878995285735196}
@@ -271,6 +273,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08252340eac344f4e85f3e7230e10eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114476326250912862
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1702397707406824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 131b4d898b6735e409b268a10511a457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114504097713018588
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1702397707406824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateData:
+    infectionArea: {fileID: 0}
+    virusStayTime: 0
 --- !u!114 &114647637054748504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -284,7 +311,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_speed: 0.1
   m_lockDirection: 0
-  m_rotSpeed: 0.1
 --- !u!135 &135263648522746752
 SphereCollider:
   m_ObjectHideFlags: 1
