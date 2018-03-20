@@ -6,12 +6,21 @@ using UnityEngine;
 // スキル
 public abstract class Skill
 {
-    public struct VirusStatus
+    public class VirusStatus
     {
         public VirusAbility.BounsStatus bouns;
+        public VirusStatus()
+        {
+            bouns = new VirusAbility.BounsStatus();
+        }
     }
     
     public VirusStatus status;
+
+    public Skill()
+    {
+        status = new VirusStatus();
+    }
 
     public void SetBouns(VirusStatus status)
     {

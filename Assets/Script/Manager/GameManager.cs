@@ -26,8 +26,13 @@ public class GameManager : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            playervirus.Infected();     // 仮  
-
+            playervirus.Infected(null);     // 仮  
+            playervirus.gameObject.GetComponent<VirusAbility>().AddSkill(new CrazySkill());
+            Skill buffer = new StatusBaffler();
+            var bonus = new Skill.VirusStatus();
+            bonus.bouns.moveSpeedRate = 0.5f;
+            buffer.SetBouns(bonus);
+            playervirus.gameObject.GetComponent<VirusAbility>().AddSkill(buffer);
         }
 
         // 感染開始後の処理 //
