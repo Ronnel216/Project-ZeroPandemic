@@ -18,13 +18,15 @@ public class Viewer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (target != null)
-            minLength = (transform.position - target.transform.position).magnitude;
+        if (target == null) return;
+        minLength = (transform.position - target.transform.position).magnitude;
+        if (target.tag != targetTag)
+            target = null;
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag != tag) return;
+        if (other.tag != targetTag) return;
         float length = (transform.position - other.gameObject.transform.position).magnitude;
         if (minLength > length)
         {

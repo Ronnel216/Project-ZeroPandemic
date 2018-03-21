@@ -54,9 +54,15 @@ public class Virus : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag != infectionTag) return;
-        if (state.GetType() != typeof(UnVirusState)) return;
+        if (IsInfected()) return;
         VirusAbility virus = other.gameObject.GetComponentInParent<VirusAbility>(); // 仮
         Infected(virus);
+    }
+
+    public bool IsInfected()
+    {
+        gameObject.tag = "InfectedActor";
+        return state.GetType() != typeof(UnVirusState);
     }
 
     //　感染
@@ -65,6 +71,7 @@ public class Virus : MonoBehaviour {
         VirusAbility selfVirus = GetComponent<VirusAbility>();
         if (virus != null)
             virus.Copy(selfVirus);
+        gameObject.tag = "InfectedActor";
         ChangeState(new StayState(this, stateData));
         Debug.Log(gameObject.name + " : Infected");        
     }

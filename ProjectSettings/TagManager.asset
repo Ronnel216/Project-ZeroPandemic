@@ -5,8 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - InfectionArea
-  - InfecedActor
   - Actor
+  - InfectedActor
   layers:
   - Default
   - TransparentFX
