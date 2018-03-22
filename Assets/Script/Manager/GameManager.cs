@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour {
     Virus playervirus; // 仮
     [SerializeField]
     Text testText;
+    [SerializeField]
+    bool crazy;
+    [SerializeField]
+    bool speedUp;
     public static int infectedNum = 0;
     // Use this for initialization
     void Start () {
@@ -28,12 +32,16 @@ public class GameManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             playervirus.Infected(null);     // 仮  
-            playervirus.gameObject.GetComponent<VirusAbility>().AddSkill(new CrazySkill());
-            //Skill buffer = new StatusBaffler();
-            //var bonus = new Skill.VirusStatus();
-            //bonus.bouns.moveSpeedRate = 0.5f;
-            //buffer.SetBouns(bonus);
-            //playervirus.gameObject.GetComponent<VirusAbility>().AddSkill(buffer);
+            if (crazy)
+                playervirus.gameObject.GetComponent<VirusAbility>().AddSkill(new CrazySkill());
+            if (speedUp)
+            {
+                Skill buffer = new StatusBaffler();
+                var bonus = new Skill.VirusStatus();
+                bonus.bouns.moveSpeedRate = 0.5f;
+                buffer.SetBouns(bonus);
+                playervirus.gameObject.GetComponent<VirusAbility>().AddSkill(buffer);
+            }
             StartGame(); // 仮
         }
 
