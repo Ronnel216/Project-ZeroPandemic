@@ -35,7 +35,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4751469570612808}
   m_Layer: 0
-  m_Name: StageB
+  m_Name: StageTemp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

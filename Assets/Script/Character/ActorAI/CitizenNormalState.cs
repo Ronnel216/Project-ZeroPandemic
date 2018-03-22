@@ -17,9 +17,20 @@ public class CitizenNormalState : CitizenAI.State {
 
     public override void Excute(StateData data)
     {
-        if (data.virus.IsInfected()) data.ai.ChangeState(new CitizenInfectedState());
-
-        data.movement.Move(moveDirection * speed);
+        data.viewer.Target("InfectedActor");
+        if (data.virus.IsInfected())
+        {
+            data.ai.ChangeState(new CitizenInfectedState());
+        }
+        else
+        {
+            GameObject actor = data.viewer.GetClose();
+            if (actor != null)
+            {
+                data.ai.ChangeState(new CitizenEsacapeState());
+            }
+        }
+            data.movement.Move(moveDirection * speed);
         moveTime -= Time.deltaTime;
         if (moveTime < 0.0f) speed = 0.0f;
 

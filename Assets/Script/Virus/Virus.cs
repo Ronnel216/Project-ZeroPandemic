@@ -53,16 +53,18 @@ public class Virus : MonoBehaviour {
     // 感染エリアに侵入した
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != infectionTag) return;
-        if (IsInfected()) return;
-        VirusAbility virus = other.gameObject.GetComponentInParent<VirusAbility>(); // 仮
-        Infected(virus);
+        //if (other.gameObject.tag != infectionTag) return;
+        //if (IsInfected()) return;
+        //VirusAbility virus = other.gameObject.GetComponentInParent<VirusAbility>(); // 仮
+        //Infected(virus);
     }
 
     public bool IsInfected()
     {
-        gameObject.tag = "InfectedActor";
-        return state.GetType() != typeof(UnVirusState);
+        bool isInfected = false;
+        if (nextState != null)
+            isInfected = nextState.GetType() != typeof(UnVirusState);
+        return isInfected || state.GetType() != typeof(UnVirusState);
     }
 
     //　感染
@@ -72,8 +74,10 @@ public class Virus : MonoBehaviour {
         if (virus != null)
             virus.Copy(selfVirus);
         gameObject.tag = "InfectedActor";
-        ChangeState(new StayState(this, stateData));
-        Debug.Log(gameObject.name + " : Infected");        
+        if (virus == null) ChangeState(new InfectedState(this, stateData));
+        else ChangeState(new StayState(this, stateData));
+        Debug.Log(gameObject.name + " : Infected");
+        GameManager.infectedNum += 1;
     }
 
     // ウィルスを感染可能な状態にする

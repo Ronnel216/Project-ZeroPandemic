@@ -28,11 +28,12 @@ public class CitizenAI : MonoBehaviour {
     void Start () {
         nextState = null;
         state = new CitizenNormalState();
-        stateData.ai = this;   
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        stateData.ai = this;
+        stateData.viewer.Target("InfectedActor");
+    }
+
+    // Update is called once per frame
+    void Update () {
         if (nextState != null)
             state = nextState;
         state.Excute(stateData);

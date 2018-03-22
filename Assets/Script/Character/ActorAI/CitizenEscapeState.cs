@@ -8,6 +8,11 @@ public class CitizenEsacapeState : CitizenAI.State
     public override void Excute(StateData data)
     {
         data.viewer.Target("InfectedActor");
+        if (data.virus.IsInfected())
+        {
+            data.ai.ChangeState(new CitizenInfectedState());
+        }
+
         GameObject target = data.viewer.GetClose();
         if (target == null) return;
 

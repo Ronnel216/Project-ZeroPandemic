@@ -5,9 +5,12 @@ using UnityEngine;
 public class Viewer : MonoBehaviour {
 
     [SerializeField]
+    string targetName;
+
+    [SerializeField]
     float range = 1.0f;
 
-    string targetTag;
+    public string targetTag;
     GameObject target;
     float minLength = float.MaxValue;
 
@@ -18,7 +21,12 @@ public class Viewer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (target == null) return;
+        if (target == null) {
+            minLength = float.MaxValue;
+            targetName = "NotFound";
+            return;
+                }
+        targetName = target.name;
         minLength = (transform.position - target.transform.position).magnitude;
         if (target.tag != targetTag)
             target = null;
@@ -32,7 +40,8 @@ public class Viewer : MonoBehaviour {
         {
             target = other.gameObject;
             minLength = length;
-        } 
+        }
+
     }
 
     public void Target(string tag)
