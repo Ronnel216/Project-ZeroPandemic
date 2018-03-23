@@ -19,7 +19,7 @@ public class Movement : MonoBehaviour {
     [SerializeField]
     private bool m_lockDirection = false;       // 進行方向を向くか
 
-
+    private Rigidbody m_rigidBody;              // 物理
 
     //----------------------------------------------------------------------
     //! @brief 初期化処理
@@ -30,7 +30,7 @@ public class Movement : MonoBehaviour {
     //----------------------------------------------------------------------
     void Start ()
     {
-		
+        m_rigidBody = GetComponent<Rigidbody>();
 	}
 
 
@@ -58,7 +58,7 @@ public class Movement : MonoBehaviour {
     //----------------------------------------------------------------------
     public void Move(Vector3 vec)
     {
-        transform.Translate(vec * m_speed,Space.World);
+        m_rigidBody.velocity = vec * m_speed;
 
         // 進行方向を向かせる
         if (m_lockDirection == false)

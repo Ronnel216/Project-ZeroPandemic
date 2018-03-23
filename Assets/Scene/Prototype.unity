@@ -347,7 +347,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!135 &97014624
 SphereCollider:
@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9219cf3d8d87209459af2e407d019d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 0.1
+  m_speed: 5
   m_lockDirection: 0
 --- !u!1 &101403408
 GameObject:
@@ -1156,7 +1156,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!135 &375624011
 SphereCollider:
@@ -1241,7 +1241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9219cf3d8d87209459af2e407d019d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 0.1
+  m_speed: 5
   m_lockDirection: 0
 --- !u!1 &378250856
 GameObject:
@@ -2055,7 +2055,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!135 &700035830
 SphereCollider:
@@ -2140,7 +2140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9219cf3d8d87209459af2e407d019d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 0.1
+  m_speed: 5
   m_lockDirection: 0
 --- !u!1 &705202797
 GameObject:
@@ -3200,7 +3200,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!135 &1031999093
 SphereCollider:
@@ -3285,7 +3285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9219cf3d8d87209459af2e407d019d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 0.1
+  m_speed: 5
   m_lockDirection: 0
 --- !u!1 &1035132875
 GameObject:
@@ -3608,7 +3608,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4688892587662268, guid: 2a045f657570f2f40bca0a9bd591ce2f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4688892587662268, guid: 2a045f657570f2f40bca0a9bd591ce2f, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3638,6 +3638,16 @@ Prefab:
         type: 2}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54101446061888038, guid: 2a045f657570f2f40bca0a9bd591ce2f,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 116
+      objectReference: {fileID: 0}
+    - target: {fileID: 114647637054748504, guid: 2a045f657570f2f40bca0a9bd591ce2f,
+        type: 2}
+      propertyPath: m_speed
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2a045f657570f2f40bca0a9bd591ce2f, type: 2}
@@ -3991,7 +4001,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!135 &1173167550
 SphereCollider:
@@ -4076,7 +4086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9219cf3d8d87209459af2e407d019d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 0.1
+  m_speed: 5
   m_lockDirection: 0
 --- !u!1 &1254682109
 GameObject:
@@ -4424,7 +4434,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!135 &1316305801
 SphereCollider:
@@ -4509,7 +4519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9219cf3d8d87209459af2e407d019d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 0.1
+  m_speed: 5
   m_lockDirection: 0
 --- !u!1 &1323811440
 GameObject:
@@ -4744,7 +4754,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!135 &1349801021
 SphereCollider:
@@ -4829,7 +4839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9219cf3d8d87209459af2e407d019d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 0.1
+  m_speed: 5
   m_lockDirection: 0
 --- !u!1 &1363659495
 GameObject:
@@ -4884,7 +4894,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!135 &1363659498
 SphereCollider:
@@ -4969,7 +4979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9219cf3d8d87209459af2e407d019d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 0.1
+  m_speed: 5
   m_lockDirection: 0
 --- !u!1 &1401388084
 GameObject:
@@ -5024,7 +5034,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!135 &1401388087
 SphereCollider:
@@ -5109,7 +5119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9219cf3d8d87209459af2e407d019d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 0.1
+  m_speed: 5
   m_lockDirection: 0
 --- !u!1 &1449660984
 GameObject:
@@ -5658,7 +5668,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!135 &1556652294
 SphereCollider:
@@ -5743,7 +5753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9219cf3d8d87209459af2e407d019d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 0.1
+  m_speed: 5
   m_lockDirection: 0
 --- !u!1 &1570377171
 GameObject:
@@ -5887,7 +5897,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!135 &1587598523
 SphereCollider:
@@ -5972,7 +5982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9219cf3d8d87209459af2e407d019d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 0.1
+  m_speed: 5
   m_lockDirection: 0
 --- !u!1 &1602559204
 GameObject:
@@ -6610,7 +6620,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!135 &1690928407
 SphereCollider:
@@ -6695,7 +6705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9219cf3d8d87209459af2e407d019d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 0.1
+  m_speed: 5
   m_lockDirection: 0
 --- !u!1 &1695743080
 GameObject:
@@ -7859,7 +7869,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!135 &1981791437
 SphereCollider:
@@ -7944,7 +7954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9219cf3d8d87209459af2e407d019d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 0.1
+  m_speed: 5
   m_lockDirection: 0
 --- !u!1 &2017028355
 GameObject:
@@ -8148,7 +8158,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!135 &2084863489
 SphereCollider:
@@ -8233,7 +8243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9219cf3d8d87209459af2e407d019d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 0.1
+  m_speed: 5
   m_lockDirection: 0
 --- !u!1 &2117950672
 GameObject:
