@@ -35,8 +35,14 @@ public class Virus : MonoBehaviour {
     State state;
     State nextState;
 
+    AudioSource audio;
+
+    [SerializeField]
+    AudioClip infectedSE;
+
     // Use this for initialization
     void Start () {
+        audio = GetComponent<AudioSource>();
         state = new UnVirusState(this);
         nextState = null;
 	}
@@ -78,6 +84,7 @@ public class Virus : MonoBehaviour {
         else ChangeState(new StayState(this, stateData));
         Debug.Log(gameObject.name + " : Infected");
         GameManager.infectedNum += 1;
+        audio.PlayOneShot(infectedSE);
     }
 
     // ウィルスを感染可能な状態にする
