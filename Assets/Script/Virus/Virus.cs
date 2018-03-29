@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Virus : MonoBehaviour {
+public class Virus : MonoBehaviour
+{
     // -------------------------------------------------------------------
     // Virus内用ステイト -------------------------------------------------
     abstract class State
@@ -28,7 +29,7 @@ public class Virus : MonoBehaviour {
     }
 
     static string infectionTag = "InfectionArea";
-    
+
     [SerializeField]
     StateData stateData;
 
@@ -41,20 +42,28 @@ public class Virus : MonoBehaviour {
     AudioClip infectedSE;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         audio = GetComponent<AudioSource>();
         state = new UnVirusState(this);
         nextState = null;
-	}
-	
-	// Update is called once per frame
-	void Update () {        
+
+        // モデルからMeshRendererコンポーネントを探す
+        m_modelMesh = gameObject.GetComponentsInChildren<MeshRenderer>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         // 状態の変更
-        if (nextState != null) state = nextState ;
+        if (nextState != null) state = nextState;
 
         // 状態ごとの処理
         state.Execute();
-	}
+
+        // 見た目への変更
+        UpdateModelCondition();
+    }
 
     // 感染エリアに侵入した
     void OnTriggerEnter(Collider other)
@@ -158,4 +167,35 @@ public class Virus : MonoBehaviour {
         }
     }
 
+
+
+    // ウイルスの感染具合 ==========================================================
+    private Color m_maxInfectionColor = Color.magenta;            // 感染具合最大時のモデル色
+    private int m_infectionCondition = 0;                         // ウイルスの感染具合(0～100%)
+    private MeshRenderer[] m_modelMesh;                           // モデルのMeshRendererコンポーネント
+
+
+
+    //----------------------------------------------------------------------
+    //! @brief 感染具合による見た目の変更
+    //!
+    //! @param[in] なし
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    private void UpdateModelCondition()
+    {
+        float condition = m_infectionCondition / 100.0f;
+
+        // マテリアルの色を変える
+        foreach (var m in m_modelMesh)
+            m.material.color = Color.Lerp(Color.white, m_maxInfectionColor, condition);
+    }
+
+    public int InfectionCondition
+    {
+        get { return m_infectionCondition; }
+        set { m_infectionCondition = value; }
+    }
 }
+        
