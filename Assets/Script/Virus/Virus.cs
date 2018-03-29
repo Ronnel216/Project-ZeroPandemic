@@ -170,6 +170,7 @@ public class Virus : MonoBehaviour
 
 
     // ウイルスの感染具合 ==========================================================
+    [SerializeField]
     private Color m_maxInfectionColor = Color.magenta;            // 感染具合最大時のモデル色
     private int m_infectionCondition = 0;                         // ウイルスの感染具合(0～100%)
     private MeshRenderer[] m_modelMesh;                           // モデルのMeshRendererコンポーネント
