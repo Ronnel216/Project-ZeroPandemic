@@ -13,9 +13,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Movement m_move;            // 移動コンポーネント
+    private Movement m_move;                        // 移動コンポーネント
 
-
+    [SerializeField]
+    private KeyCode m_actionButton = KeyCode.Z;     // アクションボタン設定
 
     //----------------------------------------------------------------------
     //! @brief 初期化処理
@@ -41,7 +42,8 @@ public class PlayerController : MonoBehaviour
     //----------------------------------------------------------------------
     void Update()
     {
-        // キー移動 ========================================================
+        // キー操作 ========================================================
+        // 移動
         float x = Input.GetAxisRaw("Horizontal");
         float z = Input.GetAxisRaw("Vertical");
         Vector3 vec = new Vector3(x, 0, z);
@@ -64,7 +66,21 @@ public class PlayerController : MonoBehaviour
         m_move.SetSpeed(speed);
     }
 
-    // Get ========================================================================
 
+
+    //----------------------------------------------------------------------
+    //! @brief アクションボタンが押されているか
+    //!
+    //! @param[in] なし
+    //!
+    //! @return true:押されている false:押されていない
+    //----------------------------------------------------------------------
+    public bool IsAction()
+    {
+        return Input.GetKey(m_actionButton);
+    }
+
+
+    // Get ========================================================================
     // Set ========================================================================
 };
