@@ -25,10 +25,14 @@ public class Virus : MonoBehaviour
     class StateData
     {
         public GameObject infectionArea;
+        public float invasivenessLimit;
         public float virusStayTime;
     }
 
     static string infectionTag = "InfectionArea";
+
+    // 病原体
+    bool originalVirus;
 
     [SerializeField]
     StateData stateData;
@@ -86,20 +90,32 @@ public class Virus : MonoBehaviour
     public void Infected(VirusAbility virus)
     {
         VirusAbility selfVirus = GetComponent<VirusAbility>();
+        // 病原体の能力をコピーする
         if (virus != null)
             virus.Copy(selfVirus);
+        else
+            originalVirus = true;
+
+        // 感染者であることを示す
         gameObject.tag = "InfectedActor";
         if (virus == null) ChangeState(new InfectedState(this, stateData));
         else ChangeState(new StayState(this, stateData));
-        Debug.Log(gameObject.name + " : Infected");
         GameManager.infectedNum += 1;
         audio.PlayOneShot(infectedSE);
+
+        //Debug.Log(gameObject.name + " : Infected");
+
     }
 
     // ウィルスを感染可能な状態にする
     void ActivateInfection()
     {
         ChangeState(new InfectedState(this, stateData));
+    }
+
+    void Recovery()
+    {
+        ChangeState(new UnVirusState(this));
     }
 
     void ChangeState(State state)
@@ -144,27 +160,58 @@ public class Virus : MonoBehaviour
     // 感染可能状態 ------------------------------------------------------
     class InfectedState : State
     {
+        // 感染範囲
         GameObject infectionArea;
-        bool canInfected;
+        // 感染可能
+        bool cratingInfectedArea;
+        // 感染度 (s)
+        float invasivenessLimit;
+        float invasiveness;
 
         public InfectedState(Virus virus, StateData data) : base(virus)
         {
             infectionArea = data.infectionArea;
-            canInfected = false;
+            cratingInfectedArea = false;
+            invasivenessLimit = data.invasivenessLimit;
+            invasiveness = invasivenessLimit;
+
+            // 感染エリアを構築済み
+            if (cratingInfectedArea == true) return;
+
+            // 感染エリアの生成
+            infectionArea = Instantiate(infectionArea, virus.gameObject.transform);
+            cratingInfectedArea = true;
+
         }
 
         public override void Execute()
         {
-            if (canInfected == true) return;
-            infectionArea = Instantiate(infectionArea, virus.gameObject.transform);
-            canInfected = true;
+            // 感染状態の自然治癒
+            RecoveryVirus();
+
         }
 
-        ~InfectedState()
+        void RecoveryVirus()
         {
-            if (infectionArea != null)
-                Destroy(infectionArea);
+            // 病原体はウィルスは弱まらない
+            if (virus.originalVirus) return;
+
+            // 感染から回復する
+            if (invasiveness <= 0.0f)
+            {
+                virus.Recovery();
+                if (infectionArea != null)
+                    Destroy(infectionArea);
+            }
+
+            // 時間の更新
+            invasiveness = Math.Max(0.0f, invasiveness - Time.deltaTime);            
         }
+
+        //~InfectedState()
+        //{
+
+        //}
     }
 
 

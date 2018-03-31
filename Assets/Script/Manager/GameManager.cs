@@ -63,6 +63,19 @@ public class GameManager : MonoBehaviour {
         isStartPandemic = true;
     }
 
+    // 制限時間の取得
+    public float GetTimeLimit()
+    {
+        return time;
+    }
+
+    // 制限時間の進行度
+    public float GetTimeLimitStep()
+    {
+        return time / GetTimeLimit();
+    }
+
+
     // privateメソッド //
     void FinishGame()
     {
