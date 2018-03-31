@@ -32,7 +32,7 @@ public class Virus : MonoBehaviour
     static string infectionTag = "InfectionArea";
 
     // 病原体
-    bool originalVirus;
+    Virus originalVirus;
 
     [SerializeField]
     StateData stateData;
@@ -51,6 +51,7 @@ public class Virus : MonoBehaviour
         audio = GetComponent<AudioSource>();
         state = new UnVirusState(this);
         nextState = null;
+        originalVirus = null;
 
         // モデルからMeshRendererコンポーネントを探す
         m_modelMesh = gameObject.GetComponentsInChildren<MeshRenderer>();
@@ -78,6 +79,11 @@ public class Virus : MonoBehaviour
         //Infected(virus);
     }
 
+    Virus GetOriginal()
+    {
+        return originalVirus; 
+    }
+
     public bool IsInfected()
     {
         bool isInfected = false;
@@ -87,19 +93,25 @@ public class Virus : MonoBehaviour
     }
 
     //　感染
-    public void Infected(VirusAbility virus)
+    public void Infected(GameObject infectedActor)
     {
-        VirusAbility selfVirus = GetComponent<VirusAbility>();
-        // 病原体の能力をコピーする
-        if (virus != null)
-            virus.Copy(selfVirus);
-        else
-            originalVirus = true;
+        if (infectedActor != null)
+        {
+            // 病原体の能力をコピーする
+            VirusAbility ability = infectedActor.GetComponent<VirusAbility>();
+            VirusAbility selfAbility = GetComponent<VirusAbility>();
+            ability.Copy(selfAbility);
+            Virus original = infectedActor.GetComponent<Virus>();
+            originalVirus = original;
+        }
 
         // 感染者であることを示す
         gameObject.tag = "InfectedActor";
-        if (virus == null) ChangeState(new InfectedState(this, stateData));
+
+        // 感染源なら潜伏時間をスキップする
+        if (infectedActor == null) ChangeState(new InfectedState(this, stateData));
         else ChangeState(new StayState(this, stateData));
+
         GameManager.infectedNum += 1;
         audio.PlayOneShot(infectedSE);
 
@@ -194,7 +206,7 @@ public class Virus : MonoBehaviour
         void RecoveryVirus()
         {
             // 病原体はウィルスは弱まらない
-            if (virus.originalVirus) return;
+            if (virus.originalVirus == null) return;
 
             // 感染から回復する
             if (invasiveness <= 0.0f)

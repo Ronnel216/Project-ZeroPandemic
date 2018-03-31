@@ -24,7 +24,7 @@ public class InfectedArea : MonoBehaviour {
         if (virus == null) return;
         if (virus.IsInfected() == true) return;
         
-        virus.Infected(virusAbility);
+        virus.Infected(other.gameObject);
 
     }
 }
