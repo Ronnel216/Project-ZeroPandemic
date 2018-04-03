@@ -218,6 +218,8 @@ public class Virus : MonoBehaviour
                 invasiveness = invasivenessLimit;
             }
 
+            // 現在の割合を代入
+            virus.InfectionCondition = invasiveness / invasivenessLimit;
             // 感染状態の自然治癒
             RecoveryVirus();
 
@@ -251,7 +253,7 @@ public class Virus : MonoBehaviour
     // ウイルスの感染具合 ==========================================================
     [SerializeField]
     private Color m_maxInfectionColor = Color.magenta;            // 感染具合最大時のモデル色
-    private int m_infectionCondition = 0;                         // ウイルスの感染具合(0～100%)
+    private float m_infectionCondition = 0;                       // ウイルスの感染具合(0.0f～1.0f)
     private MeshRenderer[] m_modelMesh;                           // モデルのMeshRendererコンポーネント
 
 
@@ -265,14 +267,12 @@ public class Virus : MonoBehaviour
     //----------------------------------------------------------------------
     private void UpdateModelCondition()
     {
-        float condition = m_infectionCondition / 100.0f;
-
         // マテリアルの色を変える
         foreach (var m in m_modelMesh)
-            m.material.color = Color.Lerp(Color.white, m_maxInfectionColor, condition);
+            m.material.color = Color.Lerp(Color.white, m_maxInfectionColor, m_infectionCondition);
     }
 
-    public int InfectionCondition
+    public float InfectionCondition
     {
         get { return m_infectionCondition; }
         set { m_infectionCondition = value; }
