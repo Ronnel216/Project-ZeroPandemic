@@ -27,6 +27,7 @@ public class Virus : MonoBehaviour
         public GameObject infectionArea;
         public float invasivenessLimit;
         public float virusStayTime;
+        public float virusDistance;
     }
 
     static string infectionTag = "InfectionArea";
@@ -79,7 +80,7 @@ public class Virus : MonoBehaviour
         //Infected(virus);
     }
 
-    Virus GetOriginal()
+    public Virus GetOriginal()
     {
         return originalVirus; 
     }
@@ -104,6 +105,8 @@ public class Virus : MonoBehaviour
             Virus original = infectedActor.GetComponent<Virus>();
             originalVirus = original;
         }
+        else
+            originalVirus = this;
 
         // 感染者であることを示す
         gameObject.tag = "InfectedActor";
@@ -176,6 +179,8 @@ public class Virus : MonoBehaviour
         GameObject infectionArea;
         // 感染可能
         bool cratingInfectedArea;
+        // 感染が弱まりだす距離
+        float virusDistance;
         // 感染度 (s)
         float invasivenessLimit;
         float invasiveness;
@@ -184,6 +189,7 @@ public class Virus : MonoBehaviour
         {
             infectionArea = data.infectionArea;
             cratingInfectedArea = false;
+            virusDistance = data.virusDistance;
             invasivenessLimit = data.invasivenessLimit;
             invasiveness = invasivenessLimit;
 
@@ -198,6 +204,20 @@ public class Virus : MonoBehaviour
 
         public override void Execute()
         {
+            // これ以降　感染源には必要のない処理
+            if (virus.originalVirus == virus) return;
+
+            // 病原体付近なら感染を強める
+            if (virus.originalVirus == null) Debug.Break();
+
+            var actor = virus.originalVirus.gameObject;
+            float distance = (actor.transform.position - virus.gameObject.transform.position).magnitude;
+
+            if (distance <= virusDistance)
+            {
+                invasiveness = invasivenessLimit;
+            }
+
             // 感染状態の自然治癒
             RecoveryVirus();
 
