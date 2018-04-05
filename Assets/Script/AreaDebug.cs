@@ -41,7 +41,7 @@ public class AreaDebug : MonoBehaviour
                 // 新しい感染者にデバッグ表示
                 GameObject debugObj = Instantiate(m_areaDebugObj);
                 debugObj.transform.parent = obj.transform;
-                debugObj.transform.localPosition = (obj.transform.localRotation) * -debugObj.transform.position;
+                debugObj.transform.localPosition = obj.transform.localPosition;//(obj.transform.localRotation) * -debugObj.transform.position;
                 debugObj.GetComponent<MeshRenderer>().material.color = m_areaColor;
             }
         }
