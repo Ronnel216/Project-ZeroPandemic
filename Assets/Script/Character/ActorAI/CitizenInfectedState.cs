@@ -4,22 +4,40 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class CitizenInfectedState : CitizenAI.State {
+ 
+    //void CitizenNormalState(StateData data)
+    //{
+        
 
+    //}
+    [SerializeField]
+    static private float angle;
+    private bool wasInitialize = false;
     public override void Excute(StateData data)
     {
-        NavMeshAgent agent = data.ai.GetComponent<NavMeshAgent>();
+        // 
+        if (wasInitialize)
+        {
+            NavMeshAgent agent = data.ai.GetComponent<NavMeshAgent>();
+            ExpansionControl expansion = data.virus.GetOriginal().GetComponent<ExpansionControl>();
+            GameObject[] infectedPerson = GameObject.FindGameObjectsWithTag("InfectionArea");
+            Vector3 vec;
+            Vector3 avevec;
+            // 感染原(プレイヤ)
+            Virus target = data.virus.GetOriginal();
+            // 感染者のウィルス
+            Virus selfVirus = data.virus;
+            if (target.gameObject == null) return;
 
-        data.viewer.Target("Player");
+            vec = selfVirus.gameObject.transform.position - target.gameObject.transform.position;
+            vec.Normalize();
+
+            angle += 360.0f / infectedPerson.Length;
+
+            avevec = Quaternion.Euler(0.0f, angle, 0.0f) * vec;
+
+            agent.destination = avevec * expansion.ExpansionArea;
+        }  
         
-        //GameObject target = data.viewer.GetClose();
-        Virus target = data.virus.GetOriginal(); 
-        if (target.gameObject == null) return;
-
-        Vector3 moveVec = (target.gameObject.transform.position - data.ai.gameObject.transform.position).normalized;
-        moveVec *= 0.1f;
-        moveVec = new Vector3(moveVec.x, 0.0f, moveVec.z);
-        data.movement.Move(moveVec);
-
-        agent.destination = target.gameObject.transform.position;
     }
 }

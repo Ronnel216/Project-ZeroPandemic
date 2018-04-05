@@ -15,6 +15,7 @@ public class ExpansionControl : MonoBehaviour
 {
     [SerializeField]
     private float m_defaultArea = 3.0f;       // 初期拡張範囲
+    [SerializeField]
     private float m_expansionArea;            // 拡張範囲
     [SerializeField]
     private float m_increase = 0.1f;          // 増加量
