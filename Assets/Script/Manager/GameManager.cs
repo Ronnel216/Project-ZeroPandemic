@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour {
     bool speedUp;
     public static int infectedNum = 0;
     // Use this for initialization
+
+    [SerializeField]
+    int targetInfectedNum = 15;
+
     void Start () {
         time = 0.0f;
         isStartPandemic = false;
@@ -52,8 +56,8 @@ public class GameManager : MonoBehaviour {
         //Debug.Log("TimeLimit : " + time.ToString("F") + "s / " + timeLimit.ToString("F") + "s");
         if (timeLimit < time) FinishGame(false);
 
-       // エリア内の市民を全員感染させた時の処理 //
-       // if(全員感染) 
+        // エリア内の市民を全員感染させた時の処理 //
+        if (IsClear()) FinishGame(true);  
 
 	}
 
@@ -83,6 +87,11 @@ public class GameManager : MonoBehaviour {
 
 
     // privateメソッド //
+
+    bool IsClear()
+    {
+        return GameManager.infectedNum == targetInfectedNum;
+    }
 
     // ゲームが終了した時
     void FinishGame(bool isClear)
