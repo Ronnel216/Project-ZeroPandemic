@@ -198,6 +198,7 @@ public class Virus : MonoBehaviour
 
             // 感染エリアの生成
             infectionArea = Instantiate(infectionArea, virus.gameObject.transform);
+            infectionArea.transform.position+= new Vector3(0, 0.1f, 0);
             cratingInfectedArea = true;
 
         }
