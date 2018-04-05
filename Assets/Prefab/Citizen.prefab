@@ -110,7 +110,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1804627676498078}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4734612958428832}
@@ -150,7 +150,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1272948097401402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.2614286, y: 0.5, z: 3.3607306}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4024455272784466}
@@ -378,7 +378,11 @@ MonoBehaviour:
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
+    invasivenessLimit: 0
     virusStayTime: 2
+    virusDistance: 0
+  infectedSE: {fileID: 0}
+  m_maxInfectionColor: {r: 1, g: 0, b: 1, a: 1}
 --- !u!135 &135033853190605184
 SphereCollider:
   m_ObjectHideFlags: 1
