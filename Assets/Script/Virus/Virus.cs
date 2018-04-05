@@ -130,6 +130,8 @@ public class Virus : MonoBehaviour
 
     void Recovery()
     {
+        if (IsInfected() == false) return;
+        GameManager.infectedNum -= 1;
         ChangeState(new UnVirusState(this));
     }
 

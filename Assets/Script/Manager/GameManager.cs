@@ -50,10 +50,10 @@ public class GameManager : MonoBehaviour {
         time += Time.deltaTime;
         testText.text = "Time : " + time.ToString("F") + "s 感染" + infectedNum.ToString();
         //Debug.Log("TimeLimit : " + time.ToString("F") + "s / " + timeLimit.ToString("F") + "s");
-        if (timeLimit < time) FinishGame();
+        if (timeLimit < time) FinishGame(false);
 
        // エリア内の市民を全員感染させた時の処理 //
-       // if(全員感染) ステージを拡張する
+       // if(全員感染) 
 
 	}
 
@@ -69,6 +69,12 @@ public class GameManager : MonoBehaviour {
         return time;
     }
 
+    // 制限時間の取得
+    public float GetClearTime()
+    {               
+        return GetTimeLimit();
+    }
+
     // 制限時間の進行度
     public float GetTimeLimitStep()
     {
@@ -77,9 +83,14 @@ public class GameManager : MonoBehaviour {
 
 
     // privateメソッド //
-    void FinishGame()
+
+    // ゲームが終了した時
+    void FinishGame(bool isClear)
     {
-        Debug.Log("FinishedGame");
-        Debug.Break();
+        if (isClear)
+        {
+            Debug.Log("FinishedGame");
+            Debug.Break();
+        }
     }
 }
