@@ -19,6 +19,7 @@ public class ExpansionControl : MonoBehaviour
     [SerializeField]
     private float m_increase = 0.1f;          // 増加量
 
+    private UIControl m_uiController = null;  // UI操作
 
 
     //----------------------------------------------------------------------
@@ -47,7 +48,15 @@ public class ExpansionControl : MonoBehaviour
         // 拡張範囲の更新 (初期拡張範囲 + 感染者１人に対する増加量 * 感染者数)
         m_expansionArea = m_defaultArea + (m_increase * GameManager.infectedNum);
 
-        Debug.Log(m_expansionArea);
+        if (m_uiController == null)
+        {
+            GameObject obj = GameObject.Find("LuxusArea(Clone)");
+            if (obj)
+                m_uiController = obj.GetComponent<UIControl>();
+        }
+        else
+            m_uiController.size = (m_expansionArea);
+
     }
 
 

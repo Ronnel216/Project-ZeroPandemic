@@ -7984,6 +7984,24 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1737254833}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1738536579 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1702397707406824, guid: 2a045f657570f2f40bca0a9bd591ce2f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1119809781}
+--- !u!114 &1738536586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1738536579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e79e45a6f0e68a42b0b9739615259d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_defaultArea: 6
+  m_increase: 0
 --- !u!1 &1747568040
 GameObject:
   m_ObjectHideFlags: 0
@@ -8286,6 +8304,26 @@ Prefab:
     - target: {fileID: 4118464642104344, guid: 77cfe8da00ad9ef4fba4cbcf924903d5, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114932246631914156, guid: 77cfe8da00ad9ef4fba4cbcf924903d5,
+        type: 2}
+      propertyPath: m_areaColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114932246631914156, guid: 77cfe8da00ad9ef4fba4cbcf924903d5,
+        type: 2}
+      propertyPath: m_areaColor.g
+      value: 0.42068934
+      objectReference: {fileID: 0}
+    - target: {fileID: 114932246631914156, guid: 77cfe8da00ad9ef4fba4cbcf924903d5,
+        type: 2}
+      propertyPath: m_areaColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114932246631914156, guid: 77cfe8da00ad9ef4fba4cbcf924903d5,
+        type: 2}
+      propertyPath: m_areaColor.a
+      value: 0.55
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 77cfe8da00ad9ef4fba4cbcf924903d5, type: 2}
