@@ -245,6 +245,10 @@ Prefab:
       propertyPath: m_Name
       value: Citizen (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1340671413390128, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
   m_IsPrefabParent: 0
@@ -374,6 +378,10 @@ Prefab:
     - target: {fileID: 1340671413390128, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
       propertyPath: m_Name
       value: Citizen (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1340671413390128, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
@@ -751,6 +759,10 @@ Prefab:
       propertyPath: m_Name
       value: Citizen (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1340671413390128, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
   m_IsPrefabParent: 0
@@ -797,6 +809,10 @@ Prefab:
       propertyPath: m_Name
       value: Citizen (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1340671413390128, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
   m_IsPrefabParent: 0
@@ -842,6 +858,10 @@ Prefab:
     - target: {fileID: 1340671413390128, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
       propertyPath: m_Name
       value: Citizen (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1340671413390128, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
@@ -1161,6 +1181,10 @@ Prefab:
       propertyPath: m_Name
       value: Citizen (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1340671413390128, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
   m_IsPrefabParent: 0
@@ -1295,6 +1319,10 @@ Prefab:
     - target: {fileID: 1340671413390128, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
       propertyPath: m_Name
       value: Citizen (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1340671413390128, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
@@ -1546,22 +1574,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114504097713018588, guid: 2a045f657570f2f40bca0a9bd591ce2f,
-        type: 2}
-      propertyPath: stateData.invasivenessLimit
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114504097713018588, guid: 2a045f657570f2f40bca0a9bd591ce2f,
-        type: 2}
-      propertyPath: stateData.virusDistance
-      value: 3.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878995285735196, guid: 2a045f657570f2f40bca0a9bd591ce2f, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 135614117321929626, guid: 2a045f657570f2f40bca0a9bd591ce2f, type: 2}
+    - {fileID: 114426033442985080, guid: 2a045f657570f2f40bca0a9bd591ce2f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2a045f657570f2f40bca0a9bd591ce2f, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1129187484
@@ -1819,6 +1833,10 @@ Prefab:
     - target: {fileID: 1340671413390128, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
       propertyPath: m_Name
       value: Citizen (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1340671413390128, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
@@ -2219,6 +2237,10 @@ Prefab:
       propertyPath: m_Name
       value: Citizen (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1340671413390128, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
   m_IsPrefabParent: 0
@@ -2265,41 +2287,13 @@ Prefab:
       propertyPath: m_Name
       value: Citizen (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1340671413390128, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1738536579 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1702397707406824, guid: 2a045f657570f2f40bca0a9bd591ce2f,
-    type: 2}
-  m_PrefabInternal: {fileID: 1119809781}
---- !u!114 &1738536586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1738536579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e79e45a6f0e68a42b0b9739615259d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_defaultArea: 2
-  m_expandMaxArea: 6
-  m_expansionArea: 0
-  m_increase: 0
---- !u!135 &1738536587
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1738536579}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1757277974
 GameObject:
   m_ObjectHideFlags: 0
@@ -2580,6 +2574,10 @@ Prefab:
       propertyPath: m_Name
       value: Citizen (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 1340671413390128, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
   m_IsPrefabParent: 0
@@ -2625,6 +2623,10 @@ Prefab:
     - target: {fileID: 1340671413390128, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
       propertyPath: m_Name
       value: Citizen (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1340671413390128, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
@@ -2677,6 +2679,10 @@ Prefab:
     - target: {fileID: 1340671413390128, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
       propertyPath: m_Name
       value: Citizen (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1340671413390128, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}

@@ -55,7 +55,12 @@ public class Virus : MonoBehaviour
         originalVirus = null;
 
         // モデルからMeshRendererコンポーネントを探す
-        m_modelMesh = gameObject.GetComponentsInChildren<MeshRenderer>();
+        m_modelMesh = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
+        // 色を取得
+        int size = m_modelMesh.materials.Length;
+        m_defaultColor = new Color[size];
+        for (int i = 0; i < size; i++)
+            m_defaultColor[i] = m_modelMesh.materials[i].color;
     }
 
     // Update is called once per frame
@@ -138,6 +143,7 @@ public class Virus : MonoBehaviour
     void KillSelf()
     {
         GameManager.infectedNum -= 1;
+        GameManager.killedNum += 1;
         Destroy(gameObject);
     }
 
@@ -264,8 +270,8 @@ public class Virus : MonoBehaviour
     [SerializeField]
     private Color m_maxInfectionColor = Color.magenta;            // 感染具合最大時のモデル色
     private float m_infectionCondition = 0;                       // ウイルスの感染具合(0.0f～1.0f)
-    private MeshRenderer[] m_modelMesh;                           // モデルのMeshRendererコンポーネント
-
+    private SkinnedMeshRenderer m_modelMesh;                      // モデルのSkinnedMeshRendererrコンポーネント
+    private Color[] m_defaultColor;                             　// 初期マテリアル色
 
 
     //----------------------------------------------------------------------
@@ -278,8 +284,12 @@ public class Virus : MonoBehaviour
     private void UpdateModelCondition()
     {
         // マテリアルの色を変える
-        foreach (var m in m_modelMesh)
-            m.material.color = Color.Lerp(Color.white, m_maxInfectionColor, m_infectionCondition);
+        int size = m_modelMesh.materials.Length;
+        for (int i = 0; i < size; i++)
+        {
+            Color color = Color.Lerp(m_defaultColor[i], m_maxInfectionColor, m_infectionCondition);
+            m_modelMesh.materials[i].color = color;
+        }
     }
 
     public float InfectionCondition
