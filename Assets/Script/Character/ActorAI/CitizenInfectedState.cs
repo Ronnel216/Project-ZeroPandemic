@@ -9,12 +9,10 @@ public class CitizenInfectedState : CitizenAI.State {
     static private float angle;
     private bool wasInitialize = false;
 
-    Vector3 hogePlayer;
+    //Vector3 hogePlayer;
 
     public override void Excute(StateData data)
     {
-        wasInitialize = true;
-        if (Input.GetKey(KeyCode.R)) wasInitialize = false;
         if (wasInitialize == false)
         {
             // ナビゲーション対象のエージェント
@@ -44,12 +42,17 @@ public class CitizenInfectedState : CitizenAI.State {
 
             //agent.destination = avevec * expansion.ExpansionArea;
 
-            Vector3 playerVec = target.transform.position - hogePlayer;
+            Vector3 playerVec/* = target.transform.position - hogePlayer*/;
+            // 感染源の移動量
             float x = Input.GetAxisRaw("Horizontal");
             float z = Input.GetAxisRaw("Vertical");
             Vector3 vec = new Vector3(x, 0, z);
-            playerVec = vec.normalized * 5.0f;
-            hogePlayer = target.transform.position;
+            Movement movement = target.GetComponent<Movement>();
+            if (movement == null) Debug.Break();
+            playerVec = vec.normalized * movement.GetSpeed();
+
+
+            //hogePlayer = target.transform.position;
 
             // 拡張範囲を考慮した差
             Vector3 offset = selfVirus.gameObject.transform.position - target.transform.position;
