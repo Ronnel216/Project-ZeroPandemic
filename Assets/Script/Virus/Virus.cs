@@ -138,6 +138,7 @@ public class Virus : MonoBehaviour
     void KillSelf()
     {
         GameManager.infectedNum -= 1;
+        GameManager.killedNum += 1;
         Destroy(gameObject);
     }
 
