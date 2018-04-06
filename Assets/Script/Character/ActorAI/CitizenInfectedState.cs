@@ -15,6 +15,12 @@ public class CitizenInfectedState : CitizenAI.State {
     {
         if (wasInitialize == false)
         {
+            // 感染が完全に弱まった
+            if (data.virus.IsInfected() == false)
+            {
+                data.ai.ChangeState(new CitizenEsacapeState());
+            }
+
             // ナビゲーション対象のエージェント
             NavMeshAgent agent = data.ai.GetComponent<NavMeshAgent>();
             
