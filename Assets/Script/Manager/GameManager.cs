@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     bool speedUp;
     public static int infectedNum = 0;
+    public static int killedNum = 0;
     // Use this for initialization
 
     [SerializeField]
@@ -82,7 +83,7 @@ public class GameManager : MonoBehaviour {
     // 制限時間の進行度
     public float GetTimeLimitStep()
     {
-        return time / GetTimeLimit();
+        return time / timeLimit;
     }
 
 
