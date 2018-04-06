@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private KeyCode m_actionButton = KeyCode.Z;     // アクションボタン設定
 
+    private ExpansionControl m_expansion;           // 拡張範囲
+
     //----------------------------------------------------------------------
     //! @brief 初期化処理
     //!
@@ -29,6 +31,7 @@ public class PlayerController : MonoBehaviour
     {
         // コンポーネントの取得
         m_move = GetComponent<Movement>();
+        m_expansion = GetComponent<ExpansionControl>();
     }
 
 
@@ -50,6 +53,10 @@ public class PlayerController : MonoBehaviour
         vec.Normalize();
 
         m_move.Move(vec);
+
+        // ボタンを押している間広がる
+        if (IsAction()) m_expansion.Expand();
+        else m_expansion.Shrinking();
     }
 
 
