@@ -12,7 +12,7 @@ public class TestScoreCreater : MonoBehaviour {
     float score;
 
     [SerializeField]
-    
+    HOGE saveScore;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +21,7 @@ public class TestScoreCreater : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        saveScore.SaveStr(score);
         UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
     }
 }
