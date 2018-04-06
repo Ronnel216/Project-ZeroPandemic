@@ -135,6 +135,12 @@ public class Virus : MonoBehaviour
         ChangeState(new UnVirusState(this));
     }
 
+    void KillSelf()
+    {
+        GameManager.infectedNum -= 1;
+        Destroy(gameObject);
+    }
+
     void ChangeState(State state)
     {
         nextState = state;
@@ -233,12 +239,13 @@ public class Virus : MonoBehaviour
             // 病原体はウィルスは弱まらない
             if (virus.originalVirus == null) return;
 
-            // 感染から回復する
+            // 感染から回復する（お亡くなりになられる）
             if (invasiveness <= 0.0f)
             {
-                virus.Recovery();
-                if (infectionArea != null)
-                    Destroy(infectionArea);
+                virus.KillSelf();
+                //virus.Recovery();
+                //if (infectionArea != null)
+                //    Destroy(infectionArea);
             }
 
             // 時間の更新
