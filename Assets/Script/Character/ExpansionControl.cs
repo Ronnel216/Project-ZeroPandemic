@@ -57,8 +57,8 @@ public class ExpansionControl : MonoBehaviour
             if (obj)
                 m_uiController = obj.GetComponent<UIControl>();
         }
-        else
-            m_uiController.size = (m_expansionArea);
+        else                               // 直径に直す 
+            m_uiController.size = (m_expansionArea * 2);
 
     }
 
