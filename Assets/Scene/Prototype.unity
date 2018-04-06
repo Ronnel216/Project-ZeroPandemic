@@ -1560,7 +1560,8 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 135614117321929626, guid: 2a045f657570f2f40bca0a9bd591ce2f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2a045f657570f2f40bca0a9bd591ce2f, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1129187484
@@ -2283,10 +2284,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e79e45a6f0e68a42b0b9739615259d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_defaultArea: 3
+  m_defaultArea: 2
   m_expandMaxArea: 6
   m_expansionArea: 0
   m_increase: 0
+--- !u!135 &1738536587
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1738536579}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1757277974
 GameObject:
   m_ObjectHideFlags: 0
