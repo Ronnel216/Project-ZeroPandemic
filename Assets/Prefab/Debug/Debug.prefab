@@ -54,4 +54,4 @@ MonoBehaviour:
   m_view: 1
   m_areaDebugObj: {fileID: 1221635360011814, guid: 61987f049e5c7884e947fd9d3b27a9f3,
     type: 2}
-  m_areaColor: {r: 1, g: 1, b: 1, a: 1}
+  m_areaColor: {r: 0, g: 0.91724133, b: 1, a: 1}
