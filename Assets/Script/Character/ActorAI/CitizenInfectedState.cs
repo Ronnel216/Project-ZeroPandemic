@@ -13,19 +13,22 @@ public class CitizenInfectedState : CitizenAI.State {
 
     public override void Excute(StateData data)
     {
+
+        // ナビゲーション対象のエージェント
+        NavMeshAgent agent = data.ai.GetComponent<NavMeshAgent>();
+
+        // 拡張範囲の取得
+        ExpansionControl expansion = data.virus.GetOriginal().GetComponent<ExpansionControl>();
+
         if (wasInitialize == false)
         {
             // 感染が完全に弱まった
             if (data.virus.IsInfected() == false)
             {
+                agent.ResetPath();            
                 data.ai.ChangeState(new CitizenEsacapeState());
+                return;
             }
-
-            // ナビゲーション対象のエージェント
-            NavMeshAgent agent = data.ai.GetComponent<NavMeshAgent>();
-            
-            // 拡張範囲の取得
-            ExpansionControl expansion = data.virus.GetOriginal().GetComponent<ExpansionControl>();
 
             //GameObject[] infectedPerson = GameObject.FindGameObjectsWithTag("InfectionArea");
 
