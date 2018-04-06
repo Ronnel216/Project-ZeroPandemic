@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour {
     bool speedUp;
     public static int infectedNum = 0;
     // Use this for initialization
+
+    [SerializeField]
+    int targetInfectedNum = 15;
+
     void Start () {
         time = 0.0f;
         isStartPandemic = false;
@@ -50,10 +54,10 @@ public class GameManager : MonoBehaviour {
         time += Time.deltaTime;
         testText.text = "Time : " + time.ToString("F") + "s 感染" + infectedNum.ToString();
         //Debug.Log("TimeLimit : " + time.ToString("F") + "s / " + timeLimit.ToString("F") + "s");
-        if (timeLimit < time) FinishGame();
+        if (timeLimit < time) FinishGame(false);
 
-       // エリア内の市民を全員感染させた時の処理 //
-       // if(全員感染) ステージを拡張する
+        // エリア内の市民を全員感染させた時の処理 //
+        if (IsClear()) FinishGame(true);  
 
 	}
 
@@ -69,6 +73,12 @@ public class GameManager : MonoBehaviour {
         return time;
     }
 
+    // 制限時間の取得
+    public float GetClearTime()
+    {               
+        return GetTimeLimit();
+    }
+
     // 制限時間の進行度
     public float GetTimeLimitStep()
     {
@@ -77,9 +87,19 @@ public class GameManager : MonoBehaviour {
 
 
     // privateメソッド //
-    void FinishGame()
+
+    bool IsClear()
     {
-        Debug.Log("FinishedGame");
-        Debug.Break();
+        return GameManager.infectedNum == targetInfectedNum;
+    }
+
+    // ゲームが終了した時
+    void FinishGame(bool isClear)
+    {
+        if (isClear)
+        {
+            Debug.Log("FinishedGame");
+            Debug.Break();
+        }
     }
 }

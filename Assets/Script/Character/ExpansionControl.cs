@@ -15,10 +15,14 @@ public class ExpansionControl : MonoBehaviour
 {
     [SerializeField]
     private float m_defaultArea = 3.0f;       // 初期拡張範囲
+    [SerializeField]
+    private float m_expandMaxArea = 6.0f;     // 拡張時拡張範囲
+    [SerializeField]
     private float m_expansionArea;            // 拡張範囲
     [SerializeField]
     private float m_increase = 0.1f;          // 増加量
 
+    private UIControl m_uiController = null;  // UI操作
 
 
     //----------------------------------------------------------------------
@@ -45,9 +49,45 @@ public class ExpansionControl : MonoBehaviour
     void Update()
     {
         // 拡張範囲の更新 (初期拡張範囲 + 感染者１人に対する増加量 * 感染者数)
-        m_expansionArea = m_defaultArea + (m_increase * GameManager.infectedNum);
+        //m_expansionArea = m_defaultArea + (m_increase * GameManager.infectedNum);
 
-        Debug.Log(m_expansionArea);
+        if (m_uiController == null)
+        {
+            GameObject obj = GameObject.Find("LuxusArea(Clone)");
+            if (obj)
+                m_uiController = obj.GetComponent<UIControl>();
+        }
+        else                               // 直径に直す 
+            m_uiController.size = (m_expansionArea * 2);
+
+    }
+
+
+
+    //----------------------------------------------------------------------
+    //! @brief 拡張
+    //!
+    //! @param[in] なし
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    public void Expand()
+    {
+        m_expansionArea = m_expandMaxArea;
+    }
+
+
+
+    //----------------------------------------------------------------------
+    //! @brief 拡張
+    //!
+    //! @param[in] なし
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    public void Shrinking()
+    {
+        m_expansionArea = m_defaultArea;
     }
 
 
