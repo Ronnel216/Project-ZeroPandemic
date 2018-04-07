@@ -62,7 +62,7 @@ public class Movement : MonoBehaviour {
 
         // 進行方向を向かせる
         if (m_lockDirection == false)
-            Direction(vec);
+            Direction(-vec);
     }
 
 

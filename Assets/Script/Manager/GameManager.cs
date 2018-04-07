@@ -49,7 +49,6 @@ public class GameManager : MonoBehaviour {
             }
             StartGame(); // 仮
         }
-
         // 感染開始後の処理 //
         if (isStartPandemic == false) return;      
         time -= Time.deltaTime;
@@ -86,6 +85,11 @@ public class GameManager : MonoBehaviour {
         return time / timeLimit;
     }
 
+    //ゲーム開始状態の取得
+    public bool GetStartPandemic()
+    {
+        return isStartPandemic;
+    }
 
     // privateメソッド //
 
