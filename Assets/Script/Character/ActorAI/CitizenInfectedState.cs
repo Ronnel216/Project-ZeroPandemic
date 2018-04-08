@@ -7,8 +7,10 @@ public class CitizenInfectedState : CitizenAI.State {
   
     [SerializeField]
     static private float angle;
-    private bool wasInitialize = false;
+    bool wasInitialize = false;
     float moveSpeed = 20.0f;
+
+    Vector3 lastTargetPos;
 
     //Vector3 hogePlayer;
 
@@ -73,9 +75,24 @@ public class CitizenInfectedState : CitizenAI.State {
             offset *= expansion.ExpansionArea;
             //offset = new Vector3();
 
-            // 目標地点
-            Vector3 targetPos = target.gameObject.transform.position + offset;
+            Vector3 targetPos;
+
+            // コントロールがなにもない時
+            if (offset.magnitude < Mathf.Epsilon)
+            {
+                //Vector3 targetToLast = (lastTargetPos - target.gameObject.transform.position);
+                //if (targetToLast.magnitude > expansion.ExpansionArea)
+                //    targetToLast = targetToLast.normalized * expansion.ExpansionArea;
+                //offset = targetToLast;
+                agent.stoppingDistance = expansion.ExpansionArea;
+            }
+            else
+                agent.stoppingDistance = 0.0f;
+
+            targetPos = target.gameObject.transform.position + offset;
+
             agent.SetDestination(targetPos);
+            lastTargetPos = targetPos;
         }  
         
     }
