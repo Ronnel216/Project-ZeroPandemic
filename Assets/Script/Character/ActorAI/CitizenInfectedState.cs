@@ -8,6 +8,7 @@ public class CitizenInfectedState : CitizenAI.State {
     [SerializeField]
     static private float angle;
     private bool wasInitialize = false;
+    float moveSpeed = 20.0f;
 
     //Vector3 hogePlayer;
 
@@ -16,7 +17,7 @@ public class CitizenInfectedState : CitizenAI.State {
 
         // ナビゲーション対象のエージェント
         NavMeshAgent agent = data.ai.GetComponent<NavMeshAgent>();
-
+        agent.speed = moveSpeed;
         // 拡張範囲の取得
         ExpansionControl expansion = data.virus.GetOriginal().GetComponent<ExpansionControl>();
 
@@ -65,10 +66,12 @@ public class CitizenInfectedState : CitizenAI.State {
 
             // 拡張範囲を考慮した差
             Vector3 offset = selfVirus.gameObject.transform.position - target.transform.position;
-            //offset = playerVec;
+            offset = playerVec;
             offset.Normalize();
+            //offset += playerVec;
+            //offset.Normalize();
             offset *= expansion.ExpansionArea;
-            offset += playerVec;
+            //offset = new Vector3();
 
             // 目標地点
             Vector3 targetPos = target.gameObject.transform.position + offset;

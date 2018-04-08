@@ -4,51 +4,57 @@ using UnityEngine;
 
 public class AIManager : MonoBehaviour {
 
- //   // AIの感染者達
- //   struct InfectedActor
- //   {
- //       public GameObject actor;
- //       public Vector3 target;
- //   }
+    // AIの感染者達
+    struct InfectedActor
+    {
+        public GameObject actor;
+        public Vector3 target;
+    }
 
- //   List<InfectedActor> infectedActors;
+    List<InfectedActor> infectedActors;
 
- //   // Use this for initialization
- //   void Start () {
-		
-	//}
-	
-	//// Update is called once per frame
-	//void Update () {
-        
- //   }
+    public int degugnum;
 
- //   // アクターの追加
- //   public void Register(GameObject actor)
- //   {
- //       if (infectedActors.Find(x => x.actor == actor).actor) return;
- //       var temp = new InfectedActor();
- //       temp.actor = actor;
- //       temp.target = new Vector3();
- //       infectedActors.Add(temp);
- //   }
+    // Use this for initialization
+    void Start()
+    {
+        infectedActors = new List<InfectedActor>();
+    }
 
- //   // アクターの登録の解消
- //   public void Remove(GameObject actor)
- //   {
- //       infectedActors.Remove(actor);
- //   }
+    // Update is called once per frame
+    void Update()
+    {
+        degugnum = infectedActors.Count;
+    }
 
- //   // 感染者の目標座標を取得する
- //   public Vector3 GetInfectedActorTarget(GameObject actor)
- //   {
- //       InfectedActor temp = infectedActors.Find(x => x.actor == actor);
- //       if (temp.actor)
- //       {
- //           return temp.target; 
- //       }
+    // アクターの追加
+    public void Register(GameObject actor)
+    {
+        if (infectedActors.Find(x => x.actor == actor).actor) return;
+        var temp = new InfectedActor();
+        temp.actor = actor;
+        temp.target = new Vector3();
+        infectedActors.Add(temp);
+    }
 
- //       Debug.Break();
- //       return new Vector3();
- //   }
+    // アクターの登録の解消
+    public void Remove(GameObject actor)
+    {
+        var removeData = infectedActors.FindIndex(x => x.actor == actor);
+        if (removeData >= 0)
+            infectedActors.RemoveAt(removeData);
+    }
+
+    // 感染者の目標座標を取得する
+    public Vector3 GetInfectedActorTarget(GameObject actor)
+    {
+        InfectedActor temp = infectedActors.Find(x => x.actor == actor);
+        if (temp.actor)
+        {
+            return temp.target;
+        }
+
+        Debug.Break();
+        return new Vector3();
+    }
 }

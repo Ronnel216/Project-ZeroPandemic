@@ -5,12 +5,13 @@ using UnityEngine.AI;
 
 public class CitizenEsacapeState : CitizenAI.State
 {
+    float moveSpeed = 2.0f;
 
     public override void Excute(StateData data)
     {
         // ナビゲーション対象のエージェント
         NavMeshAgent agent = data.ai.GetComponent<NavMeshAgent>();
-
+        agent.speed = moveSpeed;
         data.viewer.Target("InfectedActor");
         if (data.virus.IsInfected())
         {
