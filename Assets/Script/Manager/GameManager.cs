@@ -51,8 +51,11 @@ public class GameManager : MonoBehaviour {
 
     void Start () {
         time = timeLimit;
+
+        score = 0.0f;
         isStartPandemic = false;
         actionState = PlayerControllerScript.IsAction();
+        saveStr = GameObject.FindGameObjectWithTag("Data").GetComponent<SaveStr>();
 
     }
 
@@ -86,8 +89,9 @@ public class GameManager : MonoBehaviour {
         // スコアの代入はここで
         if (stageMnager.AllClear)
         {
-
-            UnityEngine.SceneManagement.SceneManager.LoadScene("");
+            score = GetClearTime();
+            saveStr.SetresultScore(score);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("RankingScene");
         }
 
         // クリア前の処理
