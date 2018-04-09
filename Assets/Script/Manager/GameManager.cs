@@ -46,6 +46,9 @@ public class GameManager : MonoBehaviour {
     // スコア
     float score;
 
+    // クリアしたか
+    bool isClear;
+
     void Start () {
         time = 60.0f;
         isStartPandemic = false;
@@ -72,16 +75,13 @@ public class GameManager : MonoBehaviour {
             }
             StartGame(); // 仮
         }
+
         // 感染開始後の処理 //
-        if (isStartPandemic == false) return;      
-        time -= Time.deltaTime;
+        if (isStartPandemic == false) return;
 
-        //Debug.Log("TimeLimit : " + time.ToString("F") + "s / " + timeLimit.ToString("F") + "s");
-        //if (timeLimit < time) FinishGame(false);
+        // クリアしたかの判定
+        isClear = GameObject.FindGameObjectWithTag("Actor") == null;
 
-        //// エリア内の市民を全員感染させた時の処理 //
-        //if (IsClear()) FinishGame(true);
-        
         // 全ステージクリアした  
         // スコアの代入はここで
         if (stageMnager.AllClear)
@@ -89,6 +89,17 @@ public class GameManager : MonoBehaviour {
 
             UnityEngine.SceneManagement.SceneManager.LoadScene("");
         }
+
+        // クリア前の処理
+        if (IsClear()) return;
+        time -= Time.deltaTime;
+
+        //Debug.Log("TimeLimit : " + time.ToString("F") + "s / " + timeLimit.ToString("F") + "s");
+        //if (timeLimit < time) FinishGame(false);
+
+        //// エリア内の市民を全員感染させた時の処理 //
+        //if (IsClear()) FinishGame(true);
+                
 	}
 
     // publicメソッド //
@@ -134,7 +145,7 @@ public class GameManager : MonoBehaviour {
     public bool IsClear()
     {
         /*return GameManager.infectedNum == targetInfectedNum*/;
-        return GameObject.FindGameObjectWithTag("Actor") == null;
+        return isClear;
     }
     // privateメソッド //
 
