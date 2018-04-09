@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class QuickRanking : MonoBehaviour
 {
     public string rankingClassName = "Ranking";//NCMB側のランキングクラス名//
-    public int count = 10;//いくつまでランキングデータを取得するか//
+    public int count = 5;//いくつまでランキングデータを取得するか//
     private List<RankingData> rankingDataList = new List<RankingData>();//取得したランキングデータ//
     public bool IsRankingDataValid { get; private set; }//ランキングデータの取得に成功しているか//
 
@@ -65,7 +65,7 @@ public class QuickRanking : MonoBehaviour
                     rankingDataList.Add(new RankingData(
                          num++,
                          name: obj["Name"] as string,
-                         score: Convert.ToInt32(obj["Score"]),
+                         score: (float)Convert.ToDouble(obj["Score"]),
                          objectid: obj.ObjectId
 
                         ));
@@ -80,7 +80,7 @@ public class QuickRanking : MonoBehaviour
     public void SaveRanking(string name, float score, UnityAction callback = null)
     {
         //スコアがゼロなら登録しない//
-        if (CheckNCMBValid() == false || score <= 0)
+        if (CheckNCMBValid() == false || score <= 0.0f)
         {
             if (callback != null) callback();
             return;
@@ -138,12 +138,13 @@ public class QuickRanking : MonoBehaviour
             {
                 string rankNum = string.Format("{0, 2}", rankingData.rankNum);
                 string name = string.Format("{0, -10}", rankingData.name);
-                string score = string.Format("{0, -10}", rankingData.score.ToString());
+                string score = string.Format("{0:f}", rankingData.score.ToString());
 
+                Debug.Log(score);
                 //さっき保存したスコアがあった場合は赤に着色する//
                 if (rankingData.objectid == currentObjectid)
                 {
-                    text += "<color=red>" + rankNum + ": \t" + name + ": \t" + score + "</color> \n";
+                    text += "<color=white>" + rankNum + ": \t" + name + ": \t" + score + "</color> \n";
                 }
                 else
                 {
@@ -205,10 +206,10 @@ public class RankingData
 {
     public readonly int rankNum;//順位（本クラス内でつける）//
     public readonly string name;//プレイヤー名//
-    public readonly int score;//点数//
+    public readonly float score;//点数//
     public readonly string objectid;//NCMBのオブジェクトID//
 
-    public RankingData(int rankNum, string name, int score, string objectid)
+    public RankingData(int rankNum, string name, float score, string objectid)
     {
         this.rankNum = rankNum;
         this.name = name;
