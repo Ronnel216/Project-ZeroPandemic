@@ -110,12 +110,12 @@ public class GameManager : MonoBehaviour {
     {
         return isStartPandemic;
     }
-    // privateメソッド //
 
-    bool IsClear()
+    public bool IsClear()
     {
         return GameManager.infectedNum == targetInfectedNum;
     }
+    // privateメソッド //
 
     // ゲームが終了した時
     void FinishGame(bool isClear)
