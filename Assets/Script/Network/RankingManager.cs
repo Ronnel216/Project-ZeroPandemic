@@ -9,23 +9,36 @@ public class RankingManager : MonoBehaviour
     private GameObject m_canvas;                // 描画キャンバス 
     [SerializeField]
     private GameObject m_scoreTextPrehub;       // スコアテキストPrefab
+    [SerializeField]
+    private InputField m_input;
+    [SerializeField]
+    private GameObject m_inputField;
+    [SerializeField]
+    private string name;                        // 名前
+    [SerializeField]
+    private float score;                        // スコア
     private QuickRanking m_ranking;             // ランキング
+    private SaveStr sv;
     private List<GameObject> m_nameText;        // 名前テキスト
     private List<GameObject> m_scoreText;       // スコアテキスト
+    private bool m_drawFlag;
+    private bool m_rankingFlag;
 
     // Use this for initialization
     void Start()
     {
         m_nameText = new List<GameObject>();
         m_scoreText = new List<GameObject>();
+        m_ranking = GetComponent<QuickRanking>();
+        m_ranking.FetchRanking();
 
-        DrawRanking();
+        m_inputField.SetActive(false);
+        m_input.enabled = false;
+        sv = GameObject.FindGameObjectWithTag("Data").GetComponent<SaveStr>();
+        m_drawFlag = true;
+        m_rankingFlag = false;
+        score = sv.GetresultScore();
 
-        SaveStr sv = GameObject.FindGameObjectWithTag("Data").GetComponent<SaveStr>();
-        string name = sv.GetuserName();
-        float score = sv.GetresultScore();
-
-        m_ranking.SaveRanking(name, score);
     }
 
     // Update is called once per frame
@@ -33,20 +46,42 @@ public class RankingManager : MonoBehaviour
     {
         List<RankingData> rankingData = new List<RankingData>(m_ranking.GetRanking());
 
-        if (rankingData.Count >= m_ranking.count)
+        if (m_rankingFlag)
         {
-            for (int i = 0; i < m_ranking.count; i++)
+            if(m_drawFlag)
             {
-                string text = (i + 1).ToString() + "." + rankingData[i].name;
-                m_nameText[i].GetComponent<Text>().text = text;
+                name = sv.GetuserName();
+                score = sv.GetresultScore();
+                m_ranking.SaveRanking(name, score);
+                DrawRanking();
+                m_drawFlag = false;
+            }
+            if (rankingData.Count >= m_ranking.count)
+            {
+                for (int i = 0; i < m_ranking.count; i++)
+                {
+                    string text = (i + 1).ToString() + "        " + rankingData[i].name;
+                    m_nameText[i].GetComponent<Text>().text = text;
 
-                text = rankingData[i].score.ToString();
-                m_scoreText[i].GetComponent<Text>().text = text;
+                    text = rankingData[i].score.ToString("F");
+                    m_scoreText[i].GetComponent<Text>().text = text;
+                }
             }
         }
+        else
+        {
+            if (rankingData.Count >= m_ranking.count)
+            {
+                for (int i = 0; i < m_ranking.count; i++)
+                {
+                    CheckRanking(rankingData[4].score);
+                }
+            }
+        }
+        
     }
 
-    private void DrawRanking()
+    public void DrawRanking()
     {
         // 今までのランキング情報の取得
         m_ranking = GetComponent<QuickRanking>();
@@ -58,16 +93,34 @@ public class RankingManager : MonoBehaviour
             GameObject tmpObj = Instantiate(m_scoreTextPrehub);
             tmpObj.transform.parent = m_canvas.transform;
             tmpObj.transform.localScale = new Vector3(2, 2, 2);
-            tmpObj.transform.localPosition = new Vector3(175, i * -150 + 600, 0);
+            tmpObj.transform.localPosition = new Vector3(250, i * -150 + 200, 0);
 
             m_nameText.Add(tmpObj);
 
             tmpObj = Instantiate(m_scoreTextPrehub);
             tmpObj.transform.parent = m_canvas.transform;
             tmpObj.transform.localScale = new Vector3(2, 2, 2);
-            tmpObj.transform.localPosition = new Vector3(900, i * -150 + 600, 0);
+            tmpObj.transform.localPosition = new Vector3(1000, i * -150 + 200, 0);
 
             m_scoreText.Add(tmpObj);
         }
+    }
+
+    private void CheckRanking(float rankingscore)
+    {   
+            if (rankingscore < score)
+            {
+                m_inputField.SetActive(true);
+                m_input.enabled = true;
+            }
+            else 
+            {
+                m_rankingFlag = true;
+            }
+    }
+
+    public void SetRankingFlag(bool flag)
+    {
+        m_rankingFlag = flag;
     }
 }
