@@ -46,6 +46,11 @@ public class Virus : MonoBehaviour
     [SerializeField]
     AudioClip infectedSE;
 
+    [SerializeField]
+    GameObject birthEffect;
+
+
+
     // Use this for initialization
     void Start()
     {
@@ -53,7 +58,7 @@ public class Virus : MonoBehaviour
         state = new UnVirusState(this);
         nextState = null;
         originalVirus = null;
-
+        
         // モデルからMeshRendererコンポーネントを探す
         m_modelMesh = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
         // 色を取得
@@ -122,6 +127,7 @@ public class Virus : MonoBehaviour
 
         GameManager.infectedNum += 1;
         audio.PlayOneShot(infectedSE);
+        birthEffect = Instantiate(birthEffect, gameObject.transform);
 
         //Debug.Log(gameObject.name + " : Infected");
 
@@ -198,11 +204,11 @@ public class Virus : MonoBehaviour
         // 感染度 (s)
         float invasivenessLimit;
         float invasiveness;
+        GameObject birthEffect;
 
         public InfectedState(Virus virus, StateData data) : base(virus)
         {
             infectionArea = data.infectionArea;
-            cratingInfectedArea = false;
             virusDistance = data.virusDistance;
             invasivenessLimit = data.invasivenessLimit;
             invasiveness = invasivenessLimit;
@@ -214,6 +220,7 @@ public class Virus : MonoBehaviour
             infectionArea = Instantiate(infectionArea, virus.gameObject.transform);
             infectionArea.transform.position+= new Vector3(0, 0.1f, 0);
             cratingInfectedArea = true;
+
 
         }
 
