@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEditor.SceneManagement;
+
 public class GameManager : MonoBehaviour {
 
     // 制限時間
@@ -20,8 +23,8 @@ public class GameManager : MonoBehaviour {
     public static int killedNum = 0;
     // Use this for initialization
 
-    [SerializeField]
-    int targetInfectedNum = 47;
+    //[SerializeField]
+    //int targetInfectedNum = 47;
 
     [SerializeField]
     PlayerController PlayerControllerScript;
@@ -43,14 +46,12 @@ public class GameManager : MonoBehaviour {
     // スコア
     float score;
 
-    private SaveStr sv;
-
-
     void Start () {
         time = 60.0f;
+        score = 0.0f;
         isStartPandemic = false;
         actionState = PlayerControllerScript.IsAction();
-        sv = GameObject.FindGameObjectWithTag("Data").GetComponent<SaveStr>();
+        saveStr = GameObject.FindGameObjectWithTag("Data").GetComponent<SaveStr>();
 
     }
 
@@ -87,9 +88,9 @@ public class GameManager : MonoBehaviour {
         // スコアの代入はここで
         if (stageMnager.AllClear)
         {
-            sv.SetresultScore(score);
-            Debug.Log("hogehoghehgeho");
-            Debug.Break();
+            score = GetClearTime();
+            saveStr.SetresultScore(score);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("RankingScene");
         }
 	}
 
