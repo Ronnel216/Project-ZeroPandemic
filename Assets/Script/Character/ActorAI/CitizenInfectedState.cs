@@ -25,21 +25,21 @@ public class CitizenInfectedState : CitizenAI.State {
 
         if (wasInitialize == false)
         {
-            // 感染が完全に弱まった
-            if (data.virus.IsInfected() == false)
-            {
-                agent.ResetPath();            
-                data.ai.ChangeState(new CitizenEsacapeState());
-                return;
-            }
+            //// 感染が完全に弱まった
+            //if (data.virus.IsInfected() == false)
+            //{
+            //    agent.ResetPath();            
+            //    data.ai.ChangeState(new CitizenEsacapeState());
+            //    return;
+            //}
 
             //GameObject[] infectedPerson = GameObject.FindGameObjectsWithTag("InfectionArea");
 
             //Vector3 vec;
             //Vector3 avevec;
-            
+
             // 感染原(プレイヤ)
-            Virus target = data.virus.GetOriginal();            
+            Virus target = data.virus.GetOriginal();
             Virus selfVirus = data.virus;
 
             //!　ゲームの仕様上　ターゲットが見つからないことはない
@@ -93,7 +93,9 @@ public class CitizenInfectedState : CitizenAI.State {
 
             agent.SetDestination(targetPos);
             lastTargetPos = targetPos;
-        }  
+            wasInitialize = true;
+        }
+        else wasInitialize = false;
         
     }
 }

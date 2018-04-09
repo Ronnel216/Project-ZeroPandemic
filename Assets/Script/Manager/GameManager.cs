@@ -55,8 +55,12 @@ public class GameManager : MonoBehaviour {
         score = 0.0f;
         isStartPandemic = false;
         actionState = PlayerControllerScript.IsAction();
-        saveStr = GameObject.FindGameObjectWithTag("Data").GetComponent<SaveStr>();
-
+        //saveStr = GameObject.FindGameObjectWithTag("Data").GetComponent<SaveStr>();
+        if (saveStr == null)
+        {
+            Debug.Log("saveStr is null");
+            Debug.Break();
+        } 
     }
 
     // Update is called once per frame
