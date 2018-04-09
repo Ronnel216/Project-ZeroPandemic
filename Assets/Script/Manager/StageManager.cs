@@ -38,6 +38,8 @@ public class StageManager : MonoBehaviour {
     GameObject anchar0;
     [SerializeField]
     GameObject anchar1;
+    [SerializeField]
+    GameObject anchar00;
 
     private int m_stageNum = 0;                                     // 現在のステージ番号
     public int StageNum
@@ -120,8 +122,17 @@ public class StageManager : MonoBehaviour {
         //m_nextStage = Instantiate(m_stage[m_stageNum], pos, Quaternion.identity);
         m_nextStage = m_stage[m_stageNum]; // 仮
         m_nextStage.transform.position = pos;
-        if (m_stageNum == 1) anchar0.SetActive(true);
-        if (m_stageNum == 2) anchar1.SetActive(true);
+        if (m_stageNum == 1)
+        {
+            GameManager.infectedNum = 1;
+            Destroy(anchar00);
+            anchar0.SetActive(true);
+        }
+        if (m_stageNum == 2) {
+            GameManager.infectedNum = 1;
+            Destroy(anchar0);
+            anchar1.SetActive(true);
+        }
 
         //m_nextBackGround = Instantiate(m_backGround, pos, Quaternion.identity);
 

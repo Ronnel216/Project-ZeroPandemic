@@ -239,7 +239,7 @@ public class Virus : MonoBehaviour
             {
                 invasiveness = invasivenessLimit;
             }
-            else virus.KillSelf();   // 仮
+            //else virus.KillSelf();   // 仮
             
 
             // 現在の割合を代入
