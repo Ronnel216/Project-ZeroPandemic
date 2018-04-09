@@ -24,6 +24,8 @@ public class RankingManager : MonoBehaviour
     private bool m_drawFlag;
     private bool m_rankingFlag;
 
+    private int drawRanking = 0;
+
     // Use this for initialization
     void Start()
     {
@@ -46,6 +48,17 @@ public class RankingManager : MonoBehaviour
     {
         List<RankingData> rankingData = new List<RankingData>(m_ranking.GetRanking());
 
+        if (drawRanking > 0)
+        {
+            drawRanking++;
+            if (drawRanking >= 30)
+            {
+                if (Input.anyKeyDown)
+                    Application.LoadLevel("TitleScene");
+            }
+        }
+
+
         if (m_rankingFlag)
         {
             if(m_drawFlag)
@@ -65,6 +78,9 @@ public class RankingManager : MonoBehaviour
 
                     text = rankingData[i].score.ToString("F");
                     m_scoreText[i].GetComponent<Text>().text = text;
+
+                    if (drawRanking == 0)
+                        drawRanking = 1;
                 }
             }
         }
@@ -78,7 +94,6 @@ public class RankingManager : MonoBehaviour
                 }
             }
         }
-        
     }
 
     public void DrawRanking()
