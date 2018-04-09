@@ -17,34 +17,35 @@ public class PlayScreenControl : MonoBehaviour {
     int targetPerson = 16;
     int remainsPerson = 15;
     float time;
-    float gaugeNum;
+    //float gaugeNum;
     float accelNum;
     bool isSetGame;
 
     // Use this for initialization
     void Start () {
-        time = 60.0f;
+        time = GameManagerScript.GetTimeLimit();
         isSetGame = GameManagerScript.GetStartPandemic();
-        gaugeNum = 1 / (60.0f * 60.0f);
+        //gaugeNum = 1 / (60.0f * 60.0f);
 
     }
 
     // Update is called once per frame
     void Update () {
+        time = GameManagerScript.GetTime();
         timeLimitText.text = "Time : " + time.ToString("F");
 
         if (isSetGame)
         {
             accelNum = GameManagerScript.GetAccelRate();
 
-            gaugeNum = 1 / (60.0f * 60.0f) * accelNum;
+            //gaugeNum = 1 / (60.0f * 60.0f) * accelNum;
 
             survivorText.text = remainsPerson.ToString();
             infectedText.text = GameManager.infectedNum.ToString();
             remainsPerson = Check("Actor");
-            time -= Time.deltaTime * accelNum;
+            //time -= Time.deltaTime * accelNum;
             infectedImage.color = Color.magenta;
-            infectedImage.fillAmount -= gaugeNum;
+            infectedImage.fillAmount = GameManagerScript.GetTimeLimitStep();
             if (accelNum > 1)
             {
                 infectedImage.color = Color.red;
@@ -52,7 +53,7 @@ public class PlayScreenControl : MonoBehaviour {
             if (infectedImage.fillAmount <= 0 || time <= 0)
             {
                 infectedImage.fillAmount = 0;
-                time = 0;
+                //time = 0;
             }
         }
         else

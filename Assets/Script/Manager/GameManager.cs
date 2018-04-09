@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour {
     bool isClear;
 
     void Start () {
-        time = 60.0f;
+        time = timeLimit;
         isStartPandemic = false;
         actionState = PlayerControllerScript.IsAction();
 
@@ -92,7 +92,8 @@ public class GameManager : MonoBehaviour {
 
         // クリア前の処理
         if (IsClear()) return;
-        time -= Time.deltaTime;
+        time -= Time.deltaTime * accelRate;
+        if (time < 0.0f) time = 0.0f;
 
         //Debug.Log("TimeLimit : " + time.ToString("F") + "s / " + timeLimit.ToString("F") + "s");
         //if (timeLimit < time) FinishGame(false);
@@ -111,13 +112,19 @@ public class GameManager : MonoBehaviour {
     // 制限時間の取得
     public float GetTimeLimit()
     {
+        return timeLimit;
+    }
+
+    // 経過時間の取得
+    public float GetTime()
+    {
         return time;
     }
 
     // 制限時間の取得
     public float GetClearTime()
     {               
-        return GetTimeLimit();
+        return time;
     }
 
     // 制限時間の進行度
