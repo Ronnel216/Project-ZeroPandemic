@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEditor.SceneManagement;
+
 public class GameManager : MonoBehaviour {
 
     // 制限時間
@@ -20,8 +23,8 @@ public class GameManager : MonoBehaviour {
     public static int killedNum = 0;
     // Use this for initialization
 
-    [SerializeField]
-    int targetInfectedNum = 47;
+    //[SerializeField]
+    //int targetInfectedNum = 47;
 
     [SerializeField]
     PlayerController PlayerControllerScript;
@@ -83,8 +86,8 @@ public class GameManager : MonoBehaviour {
         // スコアの代入はここで
         if (stageMnager.AllClear)
         {
-            Debug.Log("hogehoghehgeho");
-            Debug.Break();
+
+            UnityEngine.SceneManagement.SceneManager.LoadScene("");
         }
 	}
 

@@ -14,8 +14,8 @@ public class SceneManager : MonoBehaviour {
 	void Update () {
         if (Application.loadedLevelName == "TitleScene")
         {
-            if(Input.GetKeyDown(KeyCode.LeftShift))
-            Application.LoadLevel("Prototype");
+            if (Input.anyKeyDown)
+                Application.LoadLevel("Prototype");
         }
     }
     public void LoadPlayScene()
