@@ -1058,6 +1058,42 @@ Prefab:
       propertyPath: GameManagerScript
       value: 
       objectReference: {fileID: 2083182606}
+    - target: {fileID: 114359958188357340, guid: b300f8c7b3d38ff4c881e87bb951391e,
+        type: 2}
+      propertyPath: PlayerControllerScript
+      value: 
+      objectReference: {fileID: 1178122461}
+    - target: {fileID: 114736815684582168, guid: b300f8c7b3d38ff4c881e87bb951391e,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.15877283
+      objectReference: {fileID: 0}
+    - target: {fileID: 114736815684582168, guid: b300f8c7b3d38ff4c881e87bb951391e,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114736815684582168, guid: b300f8c7b3d38ff4c881e87bb951391e,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.23529412
+      objectReference: {fileID: 0}
+    - target: {fileID: 114736815684582168, guid: b300f8c7b3d38ff4c881e87bb951391e,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f0fcc4b989f163b49b9fd4eeae350c56,
+        type: 3}
+    - target: {fileID: 114736815684582168, guid: b300f8c7b3d38ff4c881e87bb951391e,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114359958188357340, guid: b300f8c7b3d38ff4c881e87bb951391e,
+        type: 2}
+      propertyPath: accelRate
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b300f8c7b3d38ff4c881e87bb951391e, type: 2}
   m_IsPrefabParent: 0
@@ -1680,6 +1716,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114504097713018588, guid: 2a045f657570f2f40bca0a9bd591ce2f,
+        type: 2}
+      propertyPath: stateData.birthEffect
+      value: 
+      objectReference: {fileID: 1582333271360344, guid: 3753a3965ba6e3a479aedba1cef56d98,
+        type: 2}
+    - target: {fileID: 114504097713018588, guid: 2a045f657570f2f40bca0a9bd591ce2f,
+        type: 2}
+      propertyPath: birthEffect
+      value: 
+      objectReference: {fileID: 1582333271360344, guid: 3753a3965ba6e3a479aedba1cef56d98,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 114426033442985080, guid: 2a045f657570f2f40bca0a9bd591ce2f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2a045f657570f2f40bca0a9bd591ce2f, type: 2}
@@ -1808,6 +1856,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1178122461 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114120703122933240, guid: 2a045f657570f2f40bca0a9bd591ce2f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1119809781}
+  m_Script: {fileID: 11500000, guid: 08252340eac344f4e85f3e7230e10eda, type: 3}
 --- !u!1 &1201753297
 GameObject:
   m_ObjectHideFlags: 0
@@ -2392,10 +2446,6 @@ Prefab:
     - target: {fileID: 1340671413390128, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
       propertyPath: m_Name
       value: Citizen (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1340671413390128, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96e5bdb0e75abd34083f9f9eba9dce87, type: 2}

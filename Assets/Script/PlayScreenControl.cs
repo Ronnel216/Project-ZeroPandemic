@@ -17,12 +17,13 @@ public class PlayScreenControl : MonoBehaviour {
     int remainsPerson = 15;
     float time;
     float gaugeNum;
+    float accelNum;
     bool isSetGame;
+
     // Use this for initialization
     void Start () {
         time = 60.0f;
         isSetGame = GameManagerScript.GetStartPandemic();
-        
         gaugeNum = 1 / (60.0f * 60.0f);
 
     }
@@ -30,23 +31,33 @@ public class PlayScreenControl : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         timeLimitText.text = "Time : " + time.ToString("F");
-        if (!isSetGame)
-        {
-            isSetGame = GameManagerScript.GetStartPandemic();
-        }
 
         if (isSetGame)
         {
+            accelNum = GameManagerScript.GetAccelRate();
+
+            gaugeNum = 1 / (60.0f * 60.0f) * accelNum;
+
             survivorText.text = remainsPerson.ToString();
             infectedText.text = GameManager.infectedNum.ToString();
             remainsPerson = targetPerson - GameManager.infectedNum - GameManager.killedNum;
-            time -= Time.deltaTime;
+            time -= Time.deltaTime * accelNum;
+            infectedImage.color = Color.magenta;
             infectedImage.fillAmount -= gaugeNum;
-            if(infectedImage.fillAmount<=0)
+            Debug.Log(accelNum);
+            if (accelNum > 1)
+            {
+                infectedImage.color = Color.red;
+            }
+            if (infectedImage.fillAmount <= 0 || time <= 0)
             {
                 infectedImage.fillAmount = 0;
                 time = 0;
             }
+        }
+        else
+        {
+            isSetGame = GameManagerScript.GetStartPandemic();
         }
 
     }

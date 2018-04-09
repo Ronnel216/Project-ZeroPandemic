@@ -25,17 +25,30 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     int targetInfectedNum = 15;
 
+    [SerializeField]
+    PlayerController PlayerControllerScript;
+
+    //拡張範囲を広げた時のデメリット
+    [SerializeField]
+    float maxAccelRate;
+    [SerializeField]
+    float minAccelRate;
+    private float accelRate = 1.0f;
+    bool actionState;
+
     void Start () {
         time = 60.0f;
         isStartPandemic = false;
+        actionState = PlayerControllerScript.IsAction();
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update () {
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
+
             playervirus.Infected(null);     // 仮  
             if (crazy)
                 playervirus.gameObject.GetComponent<VirusAbility>().AddSkill(new CrazySkill());
@@ -85,12 +98,21 @@ public class GameManager : MonoBehaviour {
         return time / timeLimit;
     }
 
+    public float GetAccelRate()
+    {
+        actionState = PlayerControllerScript.IsAction();
+
+        if (actionState) accelRate = maxAccelRate;
+        else accelRate = minAccelRate;
+
+        return accelRate;
+    }
+
     //ゲーム開始状態の取得
     public bool GetStartPandemic()
     {
         return isStartPandemic;
     }
-
     // privateメソッド //
 
     bool IsClear()
@@ -107,4 +129,5 @@ public class GameManager : MonoBehaviour {
             Debug.Break();
         }
     }
+
 }
