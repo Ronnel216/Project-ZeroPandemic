@@ -8,6 +8,9 @@ public class StartManager : MonoBehaviour
     [SerializeField]
     private Text countdownText;
 
+    [SerializeField]
+    GameManager gameManager;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -34,6 +37,7 @@ public class StartManager : MonoBehaviour
         countdownText.text = "START";
         yield return new WaitForSeconds(1.25f);
         countdownText.text = "";
+        gameManager.StartGame();
         yield return new WaitForSeconds(1.25f);
 
     }

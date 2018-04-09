@@ -25,9 +25,19 @@ public class StageManager : MonoBehaviour {
     private float m_migrationTime = 1.0f;                           // ステージ移動時間
     [SerializeField]
     private GameObject[] m_stage;                                   // ステージオブジェクト
+    [SerializeField]
+    private GameObject m_backGround;                                // 背景オブジェクト
 
     private GameObject m_nowStage;                                  // 現在のステージ
     private GameObject m_nextStage;                                 // 次のステージ
+
+    private GameObject m_nowBackGround;                             // 現在の背景
+    private GameObject m_nextBackGround;                            // 次の背景
+
+    [SerializeField]        // 仮　市民出現anchor
+    GameObject anchar0;
+    [SerializeField]
+    GameObject anchar1;
 
     private int m_stageNum = 0;                                     // 現在のステージ番号
     public int StageNum
@@ -61,6 +71,7 @@ public class StageManager : MonoBehaviour {
     void Start ()
     {
         m_nowStage = m_stage[m_stageNum];
+        //m_nowBackGround = Instantiate(m_backGround);
 	}
 
 
@@ -106,7 +117,13 @@ public class StageManager : MonoBehaviour {
         m_stageNum++;
 
         // 次ステージの生成
-        m_nextStage = Instantiate(m_stage[m_stageNum], pos, Quaternion.identity);
+        //m_nextStage = Instantiate(m_stage[m_stageNum], pos, Quaternion.identity);
+        m_nextStage = m_stage[m_stageNum]; // 仮
+        m_nextStage.transform.position = pos;
+        if (m_stageNum == 1) anchar0.SetActive(true);
+        if (m_stageNum == 2) anchar1.SetActive(true);
+
+        //m_nextBackGround = Instantiate(m_backGround, pos, Quaternion.identity);
 
         // 移動開始
         m_startPos = m_mainCamera.transform.position;
@@ -156,9 +173,13 @@ public class StageManager : MonoBehaviour {
     //----------------------------------------------------------------------
     public void MigrationCompletion()
     {
-        // ステージの入れ替え
-        Destroy(m_nowStage);
+        //// ステージの入れ替え
+        //Destroy(m_nowStage);
         m_nowStage = m_nextStage;
+
+        //// 背景の入れ替え
+        //Destroy(m_nowBackGround);
+        //m_nowBackGround = m_nextBackGround;
 
         // プレイヤー移動
         m_player.transform.position = m_nowStage.transform.position;
