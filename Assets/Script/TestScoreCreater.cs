@@ -16,12 +16,12 @@ public class TestScoreCreater : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
         saveScore.SetresultScore(score);
+
+    }
+
+    // Update is called once per frame
+    void Update () {
         UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
     }
 }

@@ -8,6 +8,8 @@ TagManager:
   - Actor
   - InfectedActor
   - UI
+  - Data
+  - RankingManager
   layers:
   - Default
   - TransparentFX
