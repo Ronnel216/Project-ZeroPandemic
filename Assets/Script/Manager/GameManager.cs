@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEditor.SceneManagement;
+
 public class GameManager : MonoBehaviour {
 
     // 制限時間
@@ -20,8 +23,8 @@ public class GameManager : MonoBehaviour {
     public static int killedNum = 0;
     // Use this for initialization
 
-    [SerializeField]
-    int targetInfectedNum = 47;
+    //[SerializeField]
+    //int targetInfectedNum = 47;
 
     [SerializeField]
     PlayerController PlayerControllerScript;
@@ -33,6 +36,15 @@ public class GameManager : MonoBehaviour {
     float minAccelRate;
     private float accelRate = 1.0f;
     bool actionState;
+
+    [SerializeField]
+    StageManager stageMnager;
+
+    [SerializeField]
+    SaveStr saveStr;
+
+    // スコア
+    float score;
 
     void Start () {
         time = 60.0f;
@@ -63,12 +75,20 @@ public class GameManager : MonoBehaviour {
         // 感染開始後の処理 //
         if (isStartPandemic == false) return;      
         time -= Time.deltaTime;
+
         //Debug.Log("TimeLimit : " + time.ToString("F") + "s / " + timeLimit.ToString("F") + "s");
         //if (timeLimit < time) FinishGame(false);
 
         //// エリア内の市民を全員感染させた時の処理 //
-        //if (IsClear()) FinishGame(true);  
+        //if (IsClear()) FinishGame(true);
+        
+        // 全ステージクリアした  
+        // スコアの代入はここで
+        if (stageMnager.AllClear)
+        {
 
+            UnityEngine.SceneManagement.SceneManager.LoadScene("");
+        }
 	}
 
     // publicメソッド //
@@ -113,7 +133,8 @@ public class GameManager : MonoBehaviour {
 
     public bool IsClear()
     {
-        return GameManager.infectedNum == targetInfectedNum;
+        /*return GameManager.infectedNum == targetInfectedNum*/;
+        return GameObject.FindGameObjectWithTag("Actor") == null;
     }
     // privateメソッド //
 
