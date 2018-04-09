@@ -12,6 +12,7 @@ public class PlayScreenControl : MonoBehaviour {
     public Image infectedImage;
 
     public GameManager GameManagerScript;
+    GameObject[] tagObjects;
 
     int targetPerson = 16;
     int remainsPerson = 15;
@@ -40,11 +41,10 @@ public class PlayScreenControl : MonoBehaviour {
 
             survivorText.text = remainsPerson.ToString();
             infectedText.text = GameManager.infectedNum.ToString();
-            remainsPerson = targetPerson - GameManager.infectedNum - GameManager.killedNum;
+            remainsPerson = Check("Actor");
             time -= Time.deltaTime * accelNum;
             infectedImage.color = Color.magenta;
             infectedImage.fillAmount -= gaugeNum;
-            Debug.Log(accelNum);
             if (accelNum > 1)
             {
                 infectedImage.color = Color.red;
@@ -61,4 +61,11 @@ public class PlayScreenControl : MonoBehaviour {
         }
 
     }
+    //シーン上の指定したタグが付いたオブジェクトを数える
+    public int Check(string tagname)
+    {
+        tagObjects = GameObject.FindGameObjectsWithTag(tagname);
+        return tagObjects.Length;
+    }
+
 }
