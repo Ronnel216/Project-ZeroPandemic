@@ -13,8 +13,6 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     Virus playervirus; // 仮
     [SerializeField]
-    Text testText;
-    [SerializeField]
     bool crazy;
     [SerializeField]
     bool speedUp;
@@ -23,7 +21,7 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
 
     [SerializeField]
-    int targetInfectedNum = 15;
+    int targetInfectedNum = 47;
 
     [SerializeField]
     PlayerController PlayerControllerScript;
@@ -65,12 +63,11 @@ public class GameManager : MonoBehaviour {
         // 感染開始後の処理 //
         if (isStartPandemic == false) return;      
         time -= Time.deltaTime;
-        testText.text = "Time : " + time.ToString("F") + "s 感染" + infectedNum.ToString();
         //Debug.Log("TimeLimit : " + time.ToString("F") + "s / " + timeLimit.ToString("F") + "s");
-        if (timeLimit < time) FinishGame(false);
+        //if (timeLimit < time) FinishGame(false);
 
-        // エリア内の市民を全員感染させた時の処理 //
-        if (IsClear()) FinishGame(true);  
+        //// エリア内の市民を全員感染させた時の処理 //
+        //if (IsClear()) FinishGame(true);  
 
 	}
 
