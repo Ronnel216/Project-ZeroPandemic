@@ -43,10 +43,14 @@ public class GameManager : MonoBehaviour {
     // スコア
     float score;
 
+    private SaveStr sv;
+
+
     void Start () {
         time = 60.0f;
         isStartPandemic = false;
         actionState = PlayerControllerScript.IsAction();
+        sv = GameObject.FindGameObjectWithTag("Data").GetComponent<SaveStr>();
 
     }
 
@@ -83,6 +87,7 @@ public class GameManager : MonoBehaviour {
         // スコアの代入はここで
         if (stageMnager.AllClear)
         {
+            sv.SetresultScore(score);
             Debug.Log("hogehoghehgeho");
             Debug.Break();
         }
