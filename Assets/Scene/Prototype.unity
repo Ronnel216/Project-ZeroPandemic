@@ -2173,6 +2173,21 @@ Prefab:
       propertyPath: timeLimit
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 114253263942025688, guid: 51e4fb4595857564daee6492936dadf7,
+        type: 2}
+      propertyPath: PlayerControllerScript
+      value: 
+      objectReference: {fileID: 1178122461}
+    - target: {fileID: 114253263942025688, guid: 51e4fb4595857564daee6492936dadf7,
+        type: 2}
+      propertyPath: maxAccelRate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114253263942025688, guid: 51e4fb4595857564daee6492936dadf7,
+        type: 2}
+      propertyPath: minAccelRate
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51e4fb4595857564daee6492936dadf7, type: 2}
   m_IsPrefabParent: 0
