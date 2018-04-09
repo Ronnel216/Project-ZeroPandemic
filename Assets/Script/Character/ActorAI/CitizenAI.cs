@@ -23,7 +23,7 @@ public class CitizenAI : MonoBehaviour {
     State nextState;
     [SerializeField]
     State.StateData stateData;
-    
+
     // Use this for initialization
     void Start () {
         nextState = null;
@@ -37,6 +37,8 @@ public class CitizenAI : MonoBehaviour {
         if (nextState != null)
             state = nextState;
         state.Excute(stateData);
+
+        
 	}
 
     public void ChangeState(State state)

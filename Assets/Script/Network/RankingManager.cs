@@ -63,7 +63,7 @@ public class RankingManager : MonoBehaviour
                     string text = (i + 1).ToString() + "        " + rankingData[i].name;
                     m_nameText[i].GetComponent<Text>().text = text;
 
-                    text = rankingData[i].score.ToString();
+                    text = rankingData[i].score.ToString("F");
                     m_scoreText[i].GetComponent<Text>().text = text;
                 }
             }

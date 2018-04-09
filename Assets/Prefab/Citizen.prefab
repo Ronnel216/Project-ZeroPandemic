@@ -792,7 +792,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1340671413390128}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.8, y: 0, z: 2.3}
+  m_LocalPosition: {x: -8.4, y: 0, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4400176491710562}
@@ -1445,6 +1445,8 @@ MonoBehaviour:
     virusStayTime: 0.1
     virusDistance: 3.64
   infectedSE: {fileID: 8300000, guid: 53154182b14016248ac89554617b1c9d, type: 3}
+  birthEffect: {fileID: 1582333271360344, guid: 3753a3965ba6e3a479aedba1cef56d98,
+    type: 2}
   m_maxInfectionColor: {r: 1, g: 0, b: 1, a: 1}
 --- !u!114 &114223294018533368
 MonoBehaviour:
