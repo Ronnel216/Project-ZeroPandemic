@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class CitizenEsacapeState : CitizenAI.State
 {
-    float moveSpeed = 2.0f;
+    float moveSpeed = 10.0f;
 
     //// 仮
     //Vector3[,] field;

@@ -54,10 +54,10 @@ public class GameManager : MonoBehaviour {
         time -= Time.deltaTime;
         testText.text = "Time : " + time.ToString("F") + "s 感染" + infectedNum.ToString();
         //Debug.Log("TimeLimit : " + time.ToString("F") + "s / " + timeLimit.ToString("F") + "s");
-        if (timeLimit < time) FinishGame(false);
+        //if (timeLimit < time) FinishGame(false);
 
-        // エリア内の市民を全員感染させた時の処理 //
-        if (IsClear()) FinishGame(true);  
+        //// エリア内の市民を全員感染させた時の処理 //
+        //if (IsClear()) FinishGame(true);  
 
 	}
 
