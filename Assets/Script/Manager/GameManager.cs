@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
 
     [SerializeField]
-    int targetInfectedNum = 15;
+    int targetInfectedNum = 47;
 
     void Start () {
         time = 60.0f;
