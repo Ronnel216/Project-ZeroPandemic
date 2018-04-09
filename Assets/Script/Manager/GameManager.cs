@@ -34,6 +34,15 @@ public class GameManager : MonoBehaviour {
     private float accelRate = 1.0f;
     bool actionState;
 
+    [SerializeField]
+    StageManager stageMnager;
+
+    [SerializeField]
+    SaveStr saveStr;
+
+    // スコア
+    float score;
+
     void Start () {
         time = 60.0f;
         isStartPandemic = false;
@@ -63,12 +72,20 @@ public class GameManager : MonoBehaviour {
         // 感染開始後の処理 //
         if (isStartPandemic == false) return;      
         time -= Time.deltaTime;
+
         //Debug.Log("TimeLimit : " + time.ToString("F") + "s / " + timeLimit.ToString("F") + "s");
         //if (timeLimit < time) FinishGame(false);
 
         //// エリア内の市民を全員感染させた時の処理 //
-        //if (IsClear()) FinishGame(true);  
-
+        //if (IsClear()) FinishGame(true);
+        
+        // 全ステージクリアした  
+        // スコアの代入はここで
+        if (stageMnager.AllClear)
+        {
+            Debug.Log("hogehoghehgeho");
+            Debug.Break();
+        }
 	}
 
     // publicメソッド //
@@ -113,7 +130,8 @@ public class GameManager : MonoBehaviour {
 
     public bool IsClear()
     {
-        return GameManager.infectedNum == targetInfectedNum;
+        /*return GameManager.infectedNum == targetInfectedNum*/;
+        return GameObject.FindGameObjectWithTag("Actor") == null;
     }
     // privateメソッド //
 

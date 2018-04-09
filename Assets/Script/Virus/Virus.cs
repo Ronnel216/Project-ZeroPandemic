@@ -249,6 +249,9 @@ public class Virus : MonoBehaviour
 
         void RecoveryVirus()
         {
+            // コードを無効化
+            if (true) return;
+
             // 病原体はウィルスは弱まらない
             if (virus.originalVirus == null) return;
 
