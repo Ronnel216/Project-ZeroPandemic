@@ -13,28 +13,27 @@ public class GameManager : MonoBehaviour {
     float time;
     bool isStartPandemic;
 
+    // プレイヤのウィルス
     [SerializeField]
-    Virus playervirus; // 仮
-    [SerializeField]
-    bool crazy;
-    [SerializeField]
-    bool speedUp;
+    Virus playerVirus;
+
+    // 感染者数
     public static int infectedNum = 0;
+
+    // 死者数
     public static int killedNum = 0;
-    // Use this for initialization
 
-    //[SerializeField]
-    //int targetInfectedNum = 47;
 
+    // プレイヤのコントローラ
     [SerializeField]
-    PlayerController PlayerControllerScript;
+    PlayerController playerControllerScript;
 
-    //拡張範囲を広げた時のデメリット
+    // 拡張範囲を広げた時の　時間の加速率
     [SerializeField]
     float maxAccelRate;
     [SerializeField]
     float minAccelRate;
-    private float accelRate = 1.0f;
+    float acceleratorRate;
     bool actionState;
 
     [SerializeField]
@@ -52,17 +51,20 @@ public class GameManager : MonoBehaviour {
     bool isClear;
 
     void Start () {
+        // 制限時間を設定
         time = timeLimit;
+
+        // staticメンバの初期化
         infectedNum = 0;
         killedNum = 0;
-        //for (var i = 0; i < citizen.Length; i++)
-        //{
-        //    if (citizen)
-        //}
+        
+        // 加速率の初期値設定        
+        acceleratorRate = minAccelRate;
         score = 0.0f;
         isStartPandemic = false;
-        actionState = PlayerControllerScript.IsAction();
-        //saveStr = GameObject.FindGameObjectWithTag("Data").GetComponent<SaveStr>();
+        actionState = playerControllerScript.IsAction();
+
+        // デバッグ処理
         if (saveStr == null)
         {
             Debug.Log("saveStr is null");
@@ -72,23 +74,6 @@ public class GameManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-
-        //if (Input.GetKeyDown(KeyCode.LeftShift))
-        //{
-
-        //    playervirus.Infected(null);     // 仮  
-        //    if (crazy)
-        //        playervirus.gameObject.GetComponent<VirusAbility>().AddSkill(new CrazySkill());
-        //    if (speedUp)
-        //    {
-        //        Skill buffer = new StatusBaffler();
-        //        var bonus = new Skill.VirusStatus();
-        //        bonus.bouns.moveSpeedRate = 0.5f;
-        //        buffer.SetBouns(bonus);
-        //        playervirus.gameObject.GetComponent<VirusAbility>().AddSkill(buffer);
-        //    }
-        //    StartGame(); // 仮
-        //}
 
         // 感染開始後の処理 //
         if (isStartPandemic == false) return;
@@ -107,7 +92,7 @@ public class GameManager : MonoBehaviour {
 
         // クリア前の処理
         if (IsClear()) return;
-        time -= Time.deltaTime * accelRate;
+        time -= Time.deltaTime * acceleratorRate;
         if (time < 0.0f) time = 0.0f;
 
         if (time == 0.0f)
@@ -127,7 +112,7 @@ public class GameManager : MonoBehaviour {
     // publicメソッド //
     public void StartGame()
     {
-        playervirus.Infected(null);     // 仮  
+        playerVirus.Infected(null);
         isStartPandemic = true;
     }
 
@@ -155,25 +140,26 @@ public class GameManager : MonoBehaviour {
         return time / timeLimit;
     }
 
+    // 加速率の取得
     public float GetAccelRate()
     {
-        actionState = PlayerControllerScript.IsAction();
+        actionState = playerControllerScript.IsAction();
 
-        if (actionState) accelRate = maxAccelRate;
-        else accelRate = minAccelRate;
+        if (actionState) acceleratorRate = maxAccelRate;
+        else acceleratorRate = minAccelRate;
 
-        return accelRate;
+        return acceleratorRate;
     }
 
-    //ゲーム開始状態の取得
+    // ゲーム開始状態の取得
     public bool GetStartPandemic()
     {
         return isStartPandemic;
     }
 
+    // クリア確認
     public bool IsClear()
     {
-        /*return GameManager.infectedNum == targetInfectedNum*/;
         return isClear;
     }
     // privateメソッド //
