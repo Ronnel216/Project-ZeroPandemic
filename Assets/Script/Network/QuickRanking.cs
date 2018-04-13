@@ -1,7 +1,20 @@
-﻿using NCMB;
+﻿//__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/
+//! @file   QuickRanking
+//!
+//! @brief  QuickRankingの管理スクリプト
+//!
+//! @date   2018/04/07 
+//!
+//! @author Y.okada
+//__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/
+
+
+using NCMB;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class QuickRanking : MonoBehaviour
@@ -17,6 +30,8 @@ public class QuickRanking : MonoBehaviour
 
     public static QuickRanking Instance;//シングルトン//
 
+    public Text text;
+
     public void Awake()
     {
         if (Instance != null)
@@ -31,10 +46,19 @@ public class QuickRanking : MonoBehaviour
         }
     }
 
+    //----------------------------------------------------------------------
+    //! @brief ランキングのソート処理
+    //!
+    //! @param[in] callback
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
     public void FetchRanking(UnityAction callback = null)
     {
         if (CheckNCMBValid() == false)
         {
+            text.enabled = true;
+            StartCoroutine(RankingCoroutine());
             if (callback != null) callback();
             return;
         }
@@ -77,6 +101,13 @@ public class QuickRanking : MonoBehaviour
         });
     }
 
+    //----------------------------------------------------------------------
+    //! @brief ランキングの保存処理
+    //!
+    //! @param[in] name, score, callback
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
     public void SaveRanking(string name, float score, UnityAction callback = null)
     {
         //スコアがゼロなら登録しない//
@@ -102,6 +133,7 @@ public class QuickRanking : MonoBehaviour
             if (e != null)
             {
                 //接続失敗//
+                GetRanking();
             }
             else
             {
@@ -122,12 +154,26 @@ public class QuickRanking : MonoBehaviour
         });
     }
 
+    //----------------------------------------------------------------------
+    //! @brief ランキングの取得処理
+    //!
+    //! @param[in] name, score, callback
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
     public List<RankingData> GetRanking()
     {
         //すでにStart()でフェッチ済みのデータを渡すだけ//
         return rankingDataList;
     }
 
+    //----------------------------------------------------------------------
+    //! @brief ランキングのText設定処理
+    //!
+    //! @param[in] name, score, callback
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
     public string GetRankingByText()
     {
         if (IsRankingDataValid)
@@ -160,6 +206,13 @@ public class QuickRanking : MonoBehaviour
         }
     }
 
+    //----------------------------------------------------------------------
+    //! @brief ランキングのプレイヤカウント処理
+    //!
+    //! @param[in] name, score, callback
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
     public void FetchPlayerCount(UnityAction callback = null)
     {
         if (CheckNCMBValid() == false)
@@ -183,6 +236,30 @@ public class QuickRanking : MonoBehaviour
         });
     }
 
+
+    //----------------------------------------------------------------------
+    //! @brief Rankingコルーチン
+    //!
+    //! @param[in]なし
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    IEnumerator RankingCoroutine()
+    {
+        text.text = "ネットワーク接続されていないためランキング表示ができません";
+        yield return new WaitForSeconds(4.0f);
+        text.enabled = false;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("TitleScene");
+    }
+
+
+    //----------------------------------------------------------------------
+    //! @brief ランキングの有効か判断する処理
+    //!
+    //! @param[in] name, score, callback
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
     private bool CheckNCMBValid()
     {
 #if UNITY_WEBGL
@@ -202,6 +279,16 @@ public class QuickRanking : MonoBehaviour
     }
 }
 
+
+//__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/
+//! @file   RankingData
+//!
+//! @brief  RankingDataのクラス
+//!
+//! @date   2018/04/07 
+//!
+//! @author Y.okada
+//__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/
 public class RankingData
 {
     public readonly int rankNum;//順位（本クラス内でつける）//
@@ -209,6 +296,13 @@ public class RankingData
     public readonly float score;//点数//
     public readonly string objectid;//NCMBのオブジェクトID//
 
+    //----------------------------------------------------------------------
+    //! @brief ランキングデータの登録処理
+    //!
+    //! @param[in] rankNum, name, score, objectid
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
     public RankingData(int rankNum, string name, float score, string objectid)
     {
         this.rankNum = rankNum;

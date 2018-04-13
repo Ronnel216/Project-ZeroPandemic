@@ -1,4 +1,14 @@
-﻿using System.Collections;
+﻿//__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/
+//! @file   RankingManager
+//!
+//! @brief  RankingManagerの管理スクリプト
+//!
+//! @date   2018/04/07 
+//!
+//! @author Y.okada
+//__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,6 +37,13 @@ public class RankingManager : MonoBehaviour
     private int drawRanking = 0;
 
     // Use this for initialization
+    //----------------------------------------------------------------------
+    //! @brief Startメソッド
+    //!
+    //! @param[in]なし
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
     void Start()
     {
         m_nameText = new List<GameObject>();
@@ -44,9 +61,15 @@ public class RankingManager : MonoBehaviour
     }
 
     // Update is called once per frame
+    //----------------------------------------------------------------------
+    //! @brief Updateメソッド
+    //!
+    //! @param[in]なし
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
     void Update()
     {
-        List<RankingData> rankingData = new List<RankingData>(m_ranking.GetRanking());
 
         if (drawRanking > 0)
         {
@@ -58,10 +81,25 @@ public class RankingManager : MonoBehaviour
             }
         }
 
+        UpdateRanking();
+        
+    }
+
+    //----------------------------------------------------------------------
+    //! @brief ランキングの更新処理
+    //!
+    //! @param[in] なし
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    private void UpdateRanking()
+    {
+        List<RankingData> rankingData = new List<RankingData>(m_ranking.GetRanking());
+
 
         if (m_rankingFlag)
         {
-            if(m_drawFlag)
+            if (m_drawFlag)
             {
                 name = sv.GetuserName();
                 score = sv.GetresultScore();
@@ -96,6 +134,13 @@ public class RankingManager : MonoBehaviour
         }
     }
 
+　　//----------------------------------------------------------------------
+　　//! @brief ランキングの描画処理
+　　//!
+　　//! @param[in] なし
+　　//!
+　　//! @return なし
+　　//----------------------------------------------------------------------
     public void DrawRanking()
     {
         // 今までのランキング情報の取得
@@ -121,6 +166,13 @@ public class RankingManager : MonoBehaviour
         }
     }
 
+    //----------------------------------------------------------------------
+    //! @brief ランキングのチェック処理
+    //!
+    //! @param[in] なし
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
     private void CheckRanking(float rankingscore)
     {   
             if (rankingscore < score)
@@ -134,6 +186,13 @@ public class RankingManager : MonoBehaviour
             }
     }
 
+    //----------------------------------------------------------------------
+    //! @brief ランキングのフラグをセットする処理
+    //!
+    //! @param[in] flag
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
     public void SetRankingFlag(bool flag)
     {
         m_rankingFlag = flag;
