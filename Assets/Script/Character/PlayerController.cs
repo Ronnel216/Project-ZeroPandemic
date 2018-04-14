@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
         // ボタンを押したら感染スタート
         if (IsInfection())
         {
+            m_move.Move(Vector3.zero);
             m_gameManager.StartGame();
         }
 
