@@ -10,6 +10,7 @@ public class CitizenAI : MonoBehaviour {
         public class StateData
         {
             public CitizenAI ai;
+            public AIRouteNode.Node[] nodes;
             public Virus virus;
             public Viewer viewer;
             public Movement movement;
@@ -24,12 +25,17 @@ public class CitizenAI : MonoBehaviour {
     [SerializeField]
     State.StateData stateData;
 
+    [SerializeField]
+    GameObject[] routeNode;
+
     // Use this for initialization
     void Start () {
         nextState = null;
         state = new CitizenNormalState();
         stateData.ai = this;
         stateData.viewer.Target("InfectedActor");
+
+        AIRouteNode.GetNodeData(routeNode, out stateData.nodes);
     }
 
     // Update is called once per frame
