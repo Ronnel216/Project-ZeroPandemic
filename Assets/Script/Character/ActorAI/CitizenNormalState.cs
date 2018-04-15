@@ -20,6 +20,15 @@ public class CitizenNormalState : CitizenAI.State {
 
     public override void Excute(StateData data)
     {
+        NavMeshAgent agent = data.ai.GetComponent<NavMeshAgent>();
+
+        // 感染後は動かない
+        if (data.virus.IsInfected())
+        {
+            agent.isStopped = true;
+            return;
+        }
+
         // 参照
         AIRouteNode.Node[] nodes = data.nodes;
         
@@ -33,7 +42,6 @@ public class CitizenNormalState : CitizenAI.State {
         }
 
         // 目的地にノードを設定する       
-        NavMeshAgent agent = data.ai.GetComponent<NavMeshAgent>();
         agent.SetDestination(nodes[nodeIndex].postion);
 
         // 目標のノードにたどり着いたか
