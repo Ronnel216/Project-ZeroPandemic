@@ -35,7 +35,7 @@ public class CitizenAI : MonoBehaviour {
         stateData.ai = this;
         stateData.viewer.Target("InfectedActor");
 
-        AIRouteNode.GetNodeData(routeNode, out stateData.nodes);
+        //AIRouteNode.GetNodeData(routeNode, out stateData.nodes);
     }
 
     // Update is called once per frame

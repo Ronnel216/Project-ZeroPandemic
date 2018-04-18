@@ -18,8 +18,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameManager m_gameManager;                              // ゲームマネージャーコンポーネント
     [SerializeField]
-    private KeyCode m_infectionButton = KeyCode.KeypadEnter;        // 感染スタートボタン
-    [SerializeField]
     private KeyCode m_actionButton = KeyCode.Z;                     // アクションボタン設定
 
     private ExpansionControl m_expansion;                           // 拡張範囲
@@ -49,9 +47,6 @@ public class PlayerController : MonoBehaviour
     //----------------------------------------------------------------------
     void Update()
     {
-        // 感染がスタートしたら操作不能
-        if (m_gameManager.GetStartPandemic()) return;
-
         // キー操作 ========================================================
         // 移動
         float x = Input.GetAxisRaw("Horizontal");
@@ -61,16 +56,9 @@ public class PlayerController : MonoBehaviour
 
         m_move.Move(vec);
 
-        // ボタンを押したら感染スタート
-        if (IsInfection())
-        {
-            m_move.Move(Vector3.zero);
-            m_gameManager.StartGame();
-        }
-
         // ボタンを押している間広がる
-        //if (IsAction()) m_expansion.Expand();
-        //else m_expansion.Shrinking();
+        if (IsAction()) m_expansion.Expand();
+        else m_expansion.Shrinking();
     }
 
 
@@ -85,20 +73,6 @@ public class PlayerController : MonoBehaviour
     public void SetMoveSpeed(float speed)
     {
         m_move.SetSpeed(speed);
-    }
-
-
-
-    //----------------------------------------------------------------------
-    //! @brief アクションボタンが押されているか
-    //!
-    //! @param[in] なし
-    //!
-    //! @return true:押されている false:押されていない
-    //----------------------------------------------------------------------
-    public bool IsInfection()
-    {
-        return Input.GetKey(m_infectionButton);
     }
 
 
