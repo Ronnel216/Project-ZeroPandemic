@@ -49,7 +49,10 @@ public class Virus : MonoBehaviour
     [SerializeField]
     GameObject birthEffect;
 
+    private static int comboNum;
 
+    [SerializeField]
+    private float comboTime = 3.0f;
 
     // Use this for initialization
     void Start()
@@ -66,6 +69,8 @@ public class Virus : MonoBehaviour
         m_defaultColor = new Color[size];
         for (int i = 0; i < size; i++)
             m_defaultColor[i] = m_modelMesh.materials[i].color;
+
+        comboNum = 0;
     }
 
     // Update is called once per frame
@@ -79,6 +84,7 @@ public class Virus : MonoBehaviour
 
         // 見た目への変更
         UpdateModelCondition();
+
     }
 
     // 感染エリアに侵入した
@@ -106,6 +112,7 @@ public class Virus : MonoBehaviour
     //　感染
     public void Infected(GameObject infectedActor)
     {
+        comboNum++;
         if (infectedActor != null)
         {
             // 病原体の能力をコピーする
@@ -121,6 +128,8 @@ public class Virus : MonoBehaviour
         // 感染者であることを示す
         gameObject.tag = "InfectedActor";
 
+      
+
         // 感染源なら潜伏時間をスキップする
         if (infectedActor == null) ChangeState(new InfectedState(this, stateData));
         else ChangeState(new StayState(this, stateData));
@@ -131,6 +140,7 @@ public class Virus : MonoBehaviour
 
         //Debug.Log(gameObject.name + " : Infected");
 
+        StartCoroutine(ComboCoroutine());
     }
 
     // ウィルスを感染可能な状態にする
@@ -309,5 +319,15 @@ public class Virus : MonoBehaviour
         get { return m_infectionCondition; }
         set { m_infectionCondition = value; }
     }
+    public int GetCombo()
+    {
+        return comboNum;
+    }
+
+    IEnumerator ComboCoroutine()
+    {
+        yield return new WaitForSeconds(comboTime);
+        comboNum = 0;
+    }
 }
-        
+
