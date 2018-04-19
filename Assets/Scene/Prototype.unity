@@ -114,6 +114,47 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: a0dc1153f8653784597263180fcb316f, type: 2}
+--- !u!1 &50404821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 50404823}
+  - component: {fileID: 50404822}
+  m_Layer: 0
+  m_Name: ComboManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &50404822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 50404821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ef4b218bdcdcee4b9ce69a98d1fa5ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comboTime: 3
+--- !u!4 &50404823
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 50404821}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -104.23457, y: 145.34715, z: -225.73584}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &182606130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,6 +1092,16 @@ Prefab:
       propertyPath: m_infectionButton
       value: 32
       objectReference: {fileID: 0}
+    - target: {fileID: 114504097713018588, guid: 2a045f657570f2f40bca0a9bd591ce2f,
+        type: 2}
+      propertyPath: comboManager
+      value: 
+      objectReference: {fileID: 50404821}
+    - target: {fileID: 114504097713018588, guid: 2a045f657570f2f40bca0a9bd591ce2f,
+        type: 2}
+      propertyPath: combo
+      value: 
+      objectReference: {fileID: 50404822}
     m_RemovedComponents:
     - {fileID: 114426033442985080, guid: 2a045f657570f2f40bca0a9bd591ce2f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2a045f657570f2f40bca0a9bd591ce2f, type: 2}
