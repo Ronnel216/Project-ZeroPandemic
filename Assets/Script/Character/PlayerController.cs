@@ -54,11 +54,17 @@ public class PlayerController : MonoBehaviour
         Vector3 vec = new Vector3(x, 0, z);
         vec.Normalize();
 
-        m_move.Move(vec);
-
         // ボタンを押している間広がる
-        if (IsAction()) m_expansion.Expand();
-        else m_expansion.Shrinking();
+        if (IsAction())
+        {
+            m_expansion.Expand();
+            m_move.Move(Vector3.zero);
+        }
+        else
+        {
+            m_expansion.Shrinking();
+            m_move.Move(vec);
+        }
     }
 
 
@@ -86,7 +92,9 @@ public class PlayerController : MonoBehaviour
     //----------------------------------------------------------------------
     public bool IsAction()
     {
-        return Input.GetKey(m_actionButton);
+        bool key = Input.GetKey(m_actionButton);
+        bool con = Input.GetButton("Button A");
+        return key | con;
     }
 
 
