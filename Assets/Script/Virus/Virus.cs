@@ -112,7 +112,8 @@ public class Virus : MonoBehaviour
     //　感染
     public void Infected(GameObject infectedActor)
     {
-        combo.PlusCombo();
+        if(gameObject.tag!="Player")
+            combo.PlusCombo();
 
         if (infectedActor != null)
         {
