@@ -8,19 +8,20 @@ public class PlayScreenControl : MonoBehaviour {
     public Text timeLimitText;
     public Text survivorText;
     public Text infectedText;
+    public Text CombText;
 
     public Image infectedImage;
 
     public GameManager GameManagerScript;
+    public ComboScript combCount;
     GameObject[] tagObjects;
 
     int targetPerson = 16;
     int remainsPerson = 15;
+    int combNum;
     float time;
-    //float gaugeNum;
     float accelNum;
     bool isSetGame;
-
     // Use this for initialization
     void Start () {
         time = GameManagerScript.GetTimeLimit();
@@ -37,24 +38,21 @@ public class PlayScreenControl : MonoBehaviour {
         if (isSetGame)
         {
             accelNum = GameManagerScript.GetAccelRate();
-
+            combNum = combCount.GetCombo();
             //gaugeNum = 1 / (60.0f * 60.0f) * accelNum;
-
             survivorText.text = remainsPerson.ToString();
             infectedText.text = GameManager.infectedNum.ToString();
+            CombText.text = combNum.ToString() + "コンボ";
             remainsPerson = Check("Actor");
             //time -= Time.deltaTime * accelNum;
             infectedImage.color = Color.magenta;
             infectedImage.fillAmount = GameManagerScript.GetTimeLimitStep();
+
             if (accelNum > 1)
-            {
                 infectedImage.color = Color.red;
-            }
+
             if (infectedImage.fillAmount <= 0 || time <= 0)
-            {
                 infectedImage.fillAmount = 0;
-                //time = 0;
-            }
         }
         else
         {

@@ -114,7 +114,6 @@ public class Virus : MonoBehaviour
     {
         combo.PlusCombo();
 
-        Debug.Log(combo.GetCombo());
         if (infectedActor != null)
         {
             // 病原体の能力をコピーする
