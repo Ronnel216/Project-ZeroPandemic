@@ -71,7 +71,7 @@ public class Virus : MonoBehaviour
 
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         audio = GetComponent<AudioSource>();
         state = new UnVirusState(this);
