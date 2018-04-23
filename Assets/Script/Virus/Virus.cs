@@ -19,6 +19,12 @@ public class Virus : MonoBehaviour
         public abstract void Execute();
     }
 
+    enum CitizenType
+    {
+        NORMAL,
+        STRONG,
+    };
+
     // -------------------------------------------------------------------
     // ステイトデータ設定用 ----------------------------------------------
     [System.Serializable]
@@ -38,6 +44,9 @@ public class Virus : MonoBehaviour
     [SerializeField]
     StateData stateData;
 
+    [SerializeField]
+    private float virusTime;
+
     State state;
     State nextState;
 
@@ -52,7 +61,14 @@ public class Virus : MonoBehaviour
     [SerializeField]
     private GameObject comboManager;
 
+    [SerializeField]
+    private CitizenType citizenType;
+
     private ComboScript combo;
+
+    private bool virusFlag;
+
+
 
     // Use this for initialization
     void Start()
@@ -61,6 +77,7 @@ public class Virus : MonoBehaviour
         state = new UnVirusState(this);
         nextState = null;
         originalVirus = null;
+        virusFlag = false;
         // モデルからMeshRendererコンポーネントを探す
         m_modelMesh = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
         // 色を取得
@@ -126,16 +143,24 @@ public class Virus : MonoBehaviour
         }
         else
             originalVirus = this;
+   
 
         // 感染者であることを示す
         gameObject.tag = "InfectedActor";
-
-
         // 感染源なら潜伏時間をスキップする
-        if (infectedActor == null) ChangeState(new InfectedState(this, stateData));
-        else ChangeState(new StayState(this, stateData));
+        
+        if (citizenType == CitizenType.NORMAL)
+        {
+            if (infectedActor == null) ChangeState(new InfectedState(this, stateData));
+            else ChangeState(new StayState(this, stateData)); 
+            GameManager.infectedNum += 1;
+        }
 
-        GameManager.infectedNum += 1;
+        if(citizenType == CitizenType.STRONG)
+        {
+            ChangeState(new WaitState(this, stateData));
+        }
+
         audio.PlayOneShot(infectedSE);
         birthEffect = Instantiate(birthEffect, gameObject.transform);
 
@@ -148,6 +173,17 @@ public class Virus : MonoBehaviour
     void ActivateInfection()
     {
         ChangeState(new InfectedState(this, stateData));
+    }
+
+    void ActivateStay()
+    {
+        ChangeState(new StayState(this, stateData));
+    }
+
+    void UnVirus()
+    {
+        GameManager.infectedNum -= 1;
+        ChangeState(new UnVirusState(this));
     }
 
     void Recovery()
@@ -199,6 +235,40 @@ public class Virus : MonoBehaviour
             // ウィルスを活性化させる
             if (virusStayTime <= time) virus.ActivateInfection();
 
+        }
+    }
+
+    // 待機状態 ----------------------------------------------------------
+    class WaitState : State
+    {
+        float time;
+        float waitTime;
+        float virusTime;
+
+        public WaitState(Virus virus, StateData data) : base(virus)
+        {
+            time = 0.0f;
+            waitTime = 0;
+            virusTime = virus.virusTime;
+        }
+
+        public override void Execute()
+        {
+            if (virus.GetvirusFlag())
+            {
+                waitTime += Time.deltaTime;
+            }
+            else
+            {
+                waitTime -= Time.deltaTime;
+                virus.UnVirus();
+            }
+
+            if (waitTime > virusTime)
+            {
+                GameManager.infectedNum += 1;
+                virus.ActivateStay();
+            }
         }
     }
 
@@ -320,6 +390,16 @@ public class Virus : MonoBehaviour
         get { return m_infectionCondition; }
         set { m_infectionCondition = value; }
     }
-    
+
+    public void SetVirusFlag(bool flag)
+    {
+        virusFlag = flag;
+    }
+
+    public bool GetvirusFlag()
+    {
+        return virusFlag;
+    }
+
 }
 

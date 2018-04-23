@@ -29,6 +29,11 @@ public class InfectedArea : MonoBehaviour {
         if (virus == null) return;
         if (virus.IsInfected() == true) return;
 
+        if (!virus.GetvirusFlag())
+        {
+            virus.SetVirusFlag(true);
+        }
+
         // 感染候補者を登録
         if (m_candidate)
         {
@@ -41,6 +46,32 @@ public class InfectedArea : MonoBehaviour {
         else
         {
             m_candidate = virus;
+        }
+    }
+
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    // 感染対象のウィルスを確認
+    //    Virus virus = other.gameObject.GetComponent<Virus>();
+    //    if (virus == null) return;
+    //    if (virus.IsInfected() == true) return;
+
+    //    if (!virus.GetvirusFlag())
+    //    {
+    //        virus.SetVirusFlag(true);
+    //    }
+    //}
+
+    private void OnTriggerExit(Collider other)
+    {
+        // 感染対象のウィルスを確認
+        Virus virus = other.gameObject.GetComponent<Virus>();
+        if (virus == null) return;
+        //if (virus.IsInfected() == true) return;
+
+        if (virus.GetvirusFlag())
+        {
+            virus.SetVirusFlag(false);
         }
     }
 

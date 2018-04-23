@@ -686,6 +686,11 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: f0fcc4b989f163b49b9fd4eeae350c56,
         type: 3}
+    - target: {fileID: 114359958188357340, guid: b300f8c7b3d38ff4c881e87bb951391e,
+        type: 2}
+      propertyPath: combCount
+      value: 
+      objectReference: {fileID: 50404822}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b300f8c7b3d38ff4c881e87bb951391e, type: 2}
   m_IsPrefabParent: 0
@@ -1607,6 +1612,25 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1727503306701316, guid: 249cab23de33df24f964dcea17363791, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521170710339346, guid: 249cab23de33df24f964dcea17363791, type: 2}
+      propertyPath: m_TagString
+      value: Actor
+      objectReference: {fileID: 0}
+    - target: {fileID: 114342749986303142, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: stateData.virusWaitTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114342749986303142, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114342749986303142, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: citizenType
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
