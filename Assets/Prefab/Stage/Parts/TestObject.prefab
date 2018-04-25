@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 54182357016347284}
   - component: {fileID: 65645892370679260}
   - component: {fileID: 114009317360800662}
-  - component: {fileID: 114073792328231058}
   - component: {fileID: 208081355377880626}
+  - component: {fileID: 135260982580224514}
   m_Layer: 0
   m_Name: TestObject
   m_TagString: CarryObj
@@ -155,19 +155,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_requiredNum: 5
---- !u!114 &114073792328231058
-MonoBehaviour:
+--- !u!135 &135260982580224514
+SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1103900349000388}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9219cf3d8d87209459af2e407d019d47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_speed: 0.1
-  m_lockDirection: 0
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!208 &208081355377880626
 NavMeshObstacle:
   m_ObjectHideFlags: 1

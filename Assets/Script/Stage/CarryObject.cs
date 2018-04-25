@@ -20,9 +20,11 @@ public class CarryObject : MonoBehaviour {
         get { return m_requiredNum; }
     }
 
-
-    private GameManager m_gameManager;                              // ゲームマネージャーコンポーネント
-
+    private int m_carryZombieNum;                                    // 持ち上げようとしているゾンビ
+    public int CarryZombieNum
+    {
+        get { return m_carryZombieNum; }
+    }
 
     //----------------------------------------------------------------------
     //! @brief 初期化処理
@@ -47,6 +49,26 @@ public class CarryObject : MonoBehaviour {
     //----------------------------------------------------------------------
     void Update ()
     {
-		
-	}
+        m_carryZombieNum = 0;
+
+    }
+
+
+
+    //----------------------------------------------------------------------
+    //! @brief ヒット時処理
+    //!
+    //! @param[in] なし
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+
+    public void OnTriggerStay(Collider other)
+    {
+        GameObject hitObj = other.gameObject;
+
+        // 触れたのがゾンビだったらカウント
+        if (hitObj.name != "Player" && hitObj.tag == "InfectedActor")
+            m_carryZombieNum++;
+    }
 }

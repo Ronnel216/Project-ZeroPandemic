@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
     //!
     //! @return なし
     //----------------------------------------------------------------------
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         Carry(collision.gameObject);
        
@@ -139,8 +139,9 @@ public class PlayerController : MonoBehaviour
         if (obj.tag != "CarryObj") return;
 
         CarryObject carryObject = obj.GetComponent<CarryObject>();
+        Debug.Log(carryObject.CarryZombieNum);
         // 持ち運ぶために必要なゾンビ数を超えている
-        if (GameManager.infectedNum >= carryObject.RequiredNum)
+        if (carryObject.CarryZombieNum + 1 >= carryObject.RequiredNum)
         {
             m_carryObject = obj;
             m_carryUpPos = 3.0f + m_carryObject.transform.localScale.y / 2.0f;
