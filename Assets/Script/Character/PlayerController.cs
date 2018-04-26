@@ -22,6 +22,11 @@ public class PlayerController : MonoBehaviour
 
     private ExpansionControl m_expansion;                           // 拡張範囲
 
+    private GameObject m_carryObject;                               // 運ぶオブジェクト
+    [SerializeField]
+    private float m_throwPower = 300.0f;                            // 投げる力
+    private float m_carryUpPos = 0.0f;                              // 持ち上げ量
+
     //----------------------------------------------------------------------
     //! @brief 初期化処理
     //!
@@ -59,11 +64,16 @@ public class PlayerController : MonoBehaviour
         {
             m_expansion.Expand();
             m_move.Move(Vector3.zero);
+
+            // 持っているオブジェクトを投げる
+            if (m_carryObject)
+                Throw();
         }
         else
         {
             m_expansion.Shrinking();
             m_move.Move(vec);
+            Carrying();
         }
     }
 
@@ -98,6 +108,76 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    // Get ========================================================================
-    // Set ========================================================================
+
+    //----------------------------------------------------------------------
+    //! @brief ヒット時処理
+    //!
+    //! @param[in] なし
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    private void OnCollisionEnter(Collision collision)
+    {
+        Carry(collision.gameObject);
+       
+    }
+
+
+
+    //----------------------------------------------------------------------
+    //! @brief 持ち上げる
+    //!
+    //! @param[in] なし
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    private void Carry(GameObject obj)
+    {
+        // 現在持ち運んでいるオブジェクトがないか
+        if (m_carryObject) return;
+        // 持ち運べるオブジェクトか
+        if (obj.tag != "CarryObj") return;
+
+        CarryObject carryObject = obj.GetComponent<CarryObject>();
+        // 持ち運ぶために必要なゾンビ数を超えている
+        if (GameManager.infectedNum >= carryObject.RequiredNum)
+        {
+            m_carryObject = obj;
+            m_carryUpPos = 3.0f + m_carryObject.transform.localScale.y / 2.0f;
+            m_carryObject.transform.position = transform.position + new Vector3(0, m_carryUpPos, 0);
+        }
+    }
+
+
+
+    //----------------------------------------------------------------------
+    //! @brief 運ぶ
+    //!
+    //! @param[in] なし
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    private void Carrying()
+    {
+        if (m_carryObject == null) return;
+
+        m_carryObject.transform.position = transform.position + new Vector3(0, m_carryUpPos, 0);
+    }
+
+
+
+    //----------------------------------------------------------------------
+    //! @brief 投げる
+    //!
+    //! @param[in] なし
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    private void Throw()
+    {
+        Rigidbody rigid = m_carryObject.GetComponent<Rigidbody>();
+        Vector3 vec = transform.forward * m_throwPower;
+        rigid.AddForce(vec, ForceMode.Impulse);
+        m_carryObject = null;
+    }
 };

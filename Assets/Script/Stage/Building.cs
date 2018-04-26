@@ -14,8 +14,6 @@ using UnityEngine;
 public class Building : MonoBehaviour {
 
     [SerializeField]
-    private GameObject m_citizenObj;                                // 市民オブジェクト
-    [SerializeField]
     private int m_requiredNum = 5;                                  // 乗り込みに必要な人数
     [SerializeField]                                            　   
     private int m_acquisitionNum = 5;                           　  // 建物感染時に獲得できる人数
@@ -36,6 +34,9 @@ public class Building : MonoBehaviour {
     private float m_time = 0.0f;                                    // 経過時間
     private MeshRenderer m_modelMesh;                               // モデルのSkinnedMeshRendererrコンポーネント
     private Color[] m_defaultColor;                             　  // 初期マテリアル色
+
+
+
     //----------------------------------------------------------------------
     //! @brief 初期化処理
     //!
