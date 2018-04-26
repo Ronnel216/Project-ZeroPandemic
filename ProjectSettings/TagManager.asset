@@ -11,6 +11,7 @@ TagManager:
   - Data
   - RankingManager
   - Flow
+  - CarryObj
   layers:
   - Default
   - TransparentFX
