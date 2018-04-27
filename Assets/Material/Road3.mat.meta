@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Material/Road3.mat.meta
+guid: fb66dd309cb1e4044ac69484bae1f71b
+timeCreated: 1524187378
+=======
+guid: a0dc1153f8653784597263180fcb316f
+timeCreated: 1524706637
+>>>>>>> 5ea5eca81f2279fa88cbbe1b6e5b54f324b15117:Assets/Scene/Prototype/NavMesh.asset.meta
+licenseType: Free
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

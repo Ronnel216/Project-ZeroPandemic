@@ -37,14 +37,9 @@ public class PlayScreenControl : MonoBehaviour {
 
         if (isSetGame)
         {
-            accelNum = GameManagerScript.GetAccelRate();
-            combNum = combCount.GetCombo();
-            //gaugeNum = 1 / (60.0f * 60.0f) * accelNum;
-            survivorText.text = remainsPerson.ToString();
-            infectedText.text = GameManager.infectedNum.ToString();
-            CombText.text = combNum.ToString() + "コンボ";
+            ReceiveValue();
+            ScreenText();
             remainsPerson = Check("Actor");
-            //time -= Time.deltaTime * accelNum;
             infectedImage.color = Color.magenta;
             infectedImage.fillAmount = GameManagerScript.GetTimeLimitStep();
 
@@ -66,5 +61,17 @@ public class PlayScreenControl : MonoBehaviour {
         tagObjects = GameObject.FindGameObjectsWithTag(tagname);
         return tagObjects.Length;
     }
-
+    //ScrenUIのテキストに代入
+    public void ScreenText()
+    {
+        survivorText.text = remainsPerson.ToString();
+        infectedText.text = GameManager.infectedNum.ToString();
+        CombText.text = combNum.ToString() + "コンボ";
+    }
+    //他スクリプトから値を受け取る
+    public void ReceiveValue()
+    {
+        accelNum = GameManagerScript.GetAccelRate();
+        combNum = combCount.GetCombo();
+    }
 }
