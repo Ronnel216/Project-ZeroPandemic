@@ -28,10 +28,10 @@ public class HunterCaptureState : HunterController.HunterState {
     {
         // 仮 ================================================
         a--;
-        m_playerMove.SetSpeed(0);
+        m_playerMove.LockMove = true;
         if (a <= 0)
         {
-            m_playerMove.SetSpeed(m_playerSpeed);
+            m_playerMove.LockMove = false;
             hunter.ChangeState(new HunterCooldownState());
         }   
         // ====================================================

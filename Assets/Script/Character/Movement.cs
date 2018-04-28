@@ -15,7 +15,14 @@ public class Movement : MonoBehaviour {
 
     [SerializeField]
     private float m_speed = 0.1f;               // 移動速度          
-    
+
+    private bool m_lockMove = false;            // 移動できるか
+    public bool LockMove
+    {
+        get { return m_lockMove; }
+        set { m_lockMove = LockMove; }
+    }
+
     [SerializeField]
     private bool m_lockDirection = false;       // 進行方向を向くか
 
@@ -58,7 +65,8 @@ public class Movement : MonoBehaviour {
     //----------------------------------------------------------------------
     public void Move(Vector3 vec)
     {
-        m_rigidBody.velocity = vec * m_speed;
+        if (m_lockMove == false)
+            m_rigidBody.velocity = vec * m_speed;
 
         // 進行方向を向かせる
         if (m_lockDirection == false)
