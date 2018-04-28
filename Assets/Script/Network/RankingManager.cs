@@ -24,17 +24,32 @@ public class RankingManager : MonoBehaviour
     [SerializeField]
     private GameObject m_inputField;
     [SerializeField]
+    private GameObject m_rankImagePrehub;
+    [SerializeField]
     private string name;                        // 名前
     [SerializeField]
     private float score;                        // スコア
+    [SerializeField]
+    private Sprite rank_SS;
+    [SerializeField]
+    private Sprite rank_S;
+    [SerializeField]
+    private Sprite rank_A;
+    [SerializeField]
+    private Sprite rank_B;
+    [SerializeField]
+    private Sprite rank_C;
     private QuickRanking m_ranking;             // ランキング
     private SaveStr sv;
     private List<GameObject> m_nameText;        // 名前テキスト
     private List<GameObject> m_scoreText;       // スコアテキスト
+    private List<GameObject> m_rankImage;
     private bool m_drawFlag;
     private bool m_rankingFlag;
 
     private int drawRanking = 0;
+
+    
 
     // Use this for initialization
     //----------------------------------------------------------------------
@@ -48,6 +63,7 @@ public class RankingManager : MonoBehaviour
     {
         m_nameText = new List<GameObject>();
         m_scoreText = new List<GameObject>();
+        m_rankImage = new List<GameObject>();
         m_ranking = GetComponent<QuickRanking>();
         m_ranking.FetchRanking();
 
@@ -111,12 +127,32 @@ public class RankingManager : MonoBehaviour
             {
                 for (int i = 0; i < m_ranking.count; i++)
                 {
-                    string text = (i + 1).ToString() + "        " + rankingData[i].name;
+                    string text = (i + 1).ToString() + "           " + rankingData[i].name;
                     m_nameText[i].GetComponent<Text>().text = text;
 
                     text = rankingData[i].score.ToString("F");
                     m_scoreText[i].GetComponent<Text>().text = text;
 
+                    if (rankingData[i].score >= 40)
+                    {
+                        m_rankImage[i].GetComponent<Image>().sprite = rank_SS;
+                    }
+                    else if (rankingData[i].score >= 30)
+                    {
+                        m_rankImage[i].GetComponent<Image>().sprite = rank_S;
+                    }
+                    else if (rankingData[i].score >= 20)
+                    {
+                        m_rankImage[i].GetComponent<Image>().sprite = rank_A;
+                    }
+                    else if (rankingData[i].score >= 10)
+                    {
+                        m_rankImage[i].GetComponent<Image>().sprite = rank_B;
+                    }
+                    else if (rankingData[i].score >= 0)
+                    {
+                        m_rankImage[i].GetComponent<Image>().sprite = rank_C;
+                    }
                     if (drawRanking == 0)
                         drawRanking = 1;
                 }
@@ -163,6 +199,13 @@ public class RankingManager : MonoBehaviour
             tmpObj.transform.localPosition = new Vector3(1000, i * -150 + 200, 0);
 
             m_scoreText.Add(tmpObj);
+
+            tmpObj = Instantiate(m_rankImagePrehub);
+            tmpObj.transform.parent = m_canvas.transform;
+            tmpObj.transform.localScale = new Vector3(2, 2, 2);
+            tmpObj.transform.localPosition = new Vector3(-230, i * -150 + 250, 0);
+
+            m_rankImage.Add(tmpObj);
         }
     }
 
@@ -196,5 +239,10 @@ public class RankingManager : MonoBehaviour
     public void SetRankingFlag(bool flag)
     {
         m_rankingFlag = flag;
+    }
+
+    void CheckRank(int score)
+    {
+       
     }
 }
