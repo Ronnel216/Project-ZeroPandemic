@@ -69,7 +69,7 @@ public class HunterController : MonoBehaviour {
     void Start ()
     {
         m_state = new HunterChaseState();
-        m_nextState = null;
+        m_nextState = m_state;
 
         m_navMeshAgent = GetComponent<NavMeshAgent>();
         m_defaultSpeed = m_navMeshAgent.speed;
@@ -87,7 +87,7 @@ public class HunterController : MonoBehaviour {
     void Update ()
     {
         // 状態変更
-        if (m_nextState != null)
+        if (m_nextState != m_state)
         {
             m_state = m_nextState;
             m_state.Enter(this);
@@ -128,7 +128,7 @@ public class HunterController : MonoBehaviour {
     //!
     //! @return なし
     //----------------------------------------------------------------------
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerStay(Collider other)
     {
         GameObject hitObj = other.gameObject;
 
@@ -138,20 +138,6 @@ public class HunterController : MonoBehaviour {
             if (m_state.GetType() == typeof(HunterChaseState))
                 ChangeState(new HunterCaptureState());
         }
-    }
-
-
-
-    //----------------------------------------------------------------------
-    //! @brief ヒット時処理
-    //!
-    //! @param[in] 当たったオブジェクト
-    //!
-    //! @return なし
-    //----------------------------------------------------------------------
-    private void OnTriggerStay(Collider other)
-    {
-        GameObject hitObj = other.gameObject;
 
         // 触れたのがゾンビだったらカウント
         if (hitObj.name != "Player" && hitObj.tag == "InfectedActor")

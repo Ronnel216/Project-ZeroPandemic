@@ -15,18 +15,23 @@ using UnityEngine;
 public class HunterCaptureState : HunterController.HunterState {
 
     int a = 60;             // 仮
+    private Movement m_playerMove;            // プレイヤーの移動コンポーネント
+    private float m_playerSpeed;              // プレイヤーの移動速度
     public override void Enter(HunterController hunter)
     {
-
+        hunter.NavMeshAgent.SetDestination(hunter.transform.position);
+        m_playerMove = hunter.Player.GetComponent<Movement>();
+        m_playerSpeed = m_playerMove.GetSpeed();
     }
 
     public override void Update(HunterController hunter)
     {
         // 仮 ================================================
         a--;
-        Debug.Log("捕獲中：あと "+a.ToString());
+        m_playerMove.SetSpeed(0);
         if (a <= 0)
         {
+            m_playerMove.SetSpeed(m_playerSpeed);
             hunter.ChangeState(new HunterCooldownState());
         }   
         // ====================================================
