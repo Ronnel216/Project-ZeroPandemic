@@ -62,7 +62,6 @@ public class CarryObject : MonoBehaviour {
     //!
     //! @return なし
     //----------------------------------------------------------------------
-
     public void OnTriggerStay(Collider other)
     {
         GameObject hitObj = other.gameObject;
