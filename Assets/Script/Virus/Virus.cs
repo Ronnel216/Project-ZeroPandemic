@@ -70,7 +70,12 @@ public class Virus : MonoBehaviour
     private float virusstealTime;
 
     private bool virusFlag;
-
+    private bool noneAbilityActor = false;
+    public bool NoneAbilityActor
+    {
+        get { return noneAbilityActor; }
+        set { noneAbilityActor = value; }
+    }
     // Use this for initialization
     void Awake()
     {
@@ -147,11 +152,11 @@ public class Virus : MonoBehaviour
 
         if (gameObject.tag != "Player")
             StartCoroutine(StealVirus(gameObject));
-        else
+
         // 感染者であることを示す
         gameObject.tag = "InfectedActor";
 
-        
+       
 
 
         // 感染源なら潜伏時間をスキップする
@@ -283,7 +288,12 @@ public class Virus : MonoBehaviour
     IEnumerator StealVirus(GameObject infectedActor)
     {
         yield return new WaitForSeconds(virusstealTime);
-        infectedActor.tag = "NoneAbilityActor";
+        Virus virus = infectedActor.GetComponent<Virus>();
+
+        virus.NoneAbilityActor = true;
+        // これやめて
+        // infectedActor.tag = "NoneAbilityActor";
+
     }
 
     // -------------------------------------------------------------------

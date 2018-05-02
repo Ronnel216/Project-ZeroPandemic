@@ -12,6 +12,7 @@ TagManager:
   - RankingManager
   - Flow
   - CarryObj
+  - HunterManufactory
   layers:
   - Default
   - TransparentFX

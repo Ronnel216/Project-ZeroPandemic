@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class CitizenEsacapeState : CitizenAI.State
 {
     float moveSpeed = 10.0f;
-
+    float viewRange = 10.0f;
     //// 仮
     //Vector3[,] field;
     //const int cellNum = 4;
@@ -19,18 +19,33 @@ public class CitizenEsacapeState : CitizenAI.State
     }
 
     public override void Excute(StateData data)
-    {        
-
-        // ナビゲーション対象のエージェント
-        NavMeshAgent agent = data.ai.GetComponent<NavMeshAgent>();
-        agent.speed = moveSpeed;
-        data.viewer.Target("InfectedActor");
+    {
+        // 感染
         if (data.virus.IsInfected())
         {
-            agent.ResetPath();
             data.ai.ChangeState(new CitizenInfectedState());
             return;
         }
+
+        // 近くにいるゾンビを探す
+        GameObject actor = AIManager.GetCloseZombie(data.ai.transform.position, viewRange);
+
+        // 逆襲
+        if (actor == null)
+        {
+            data.ai.ChangeState(new CitizenCounterattackState());
+            return;
+        }
+
+        // 逃げる
+        Escape(data);
+    }
+
+    private void Escape(StateData data)
+    {
+        // ナビゲーション対象のエージェント
+        NavMeshAgent agent = data.ai.GetComponent<NavMeshAgent>();
+        agent.speed = moveSpeed;
 
         GameObject target = data.viewer.GetClose();
         if (target == null) return;
