@@ -81,6 +81,8 @@ public class InfectedArea : MonoBehaviour {
         // 感染候補者がいない
         if (m_candidate == null) return;
 
+        if (this.virus.tag == "NoneAbilityActor") return;
+
         // 感染者のウィルスのベースを確認
         Virus orginalVirus = this.virus.GetOriginal();
 
