@@ -66,9 +66,10 @@ public class Virus : MonoBehaviour
 
     private ComboScript combo;
 
+    [SerializeField]
+    private float virusstealTime;
+
     private bool virusFlag;
-
-
 
     // Use this for initialization
     void Awake()
@@ -143,12 +144,18 @@ public class Virus : MonoBehaviour
         }
         else
             originalVirus = this;
-   
 
+        if (gameObject.tag != "Player")
+            StartCoroutine(StealVirus(gameObject));
+        else
         // 感染者であることを示す
         gameObject.tag = "InfectedActor";
-        // 感染源なら潜伏時間をスキップする
+
         
+
+
+        // 感染源なら潜伏時間をスキップする
+
         if (citizenType == CitizenType.NORMAL)
         {
             if (infectedActor == null) ChangeState(new InfectedState(this, stateData));
@@ -167,6 +174,7 @@ public class Virus : MonoBehaviour
         //Debug.Log(gameObject.name + " : Infected");
 
         StartCoroutine(combo.ComboCoroutine());
+
     }
 
     // ウィルスを感染可能な状態にする
@@ -270,6 +278,12 @@ public class Virus : MonoBehaviour
                 virus.ActivateStay();
             }
         }
+    }
+
+    IEnumerator StealVirus(GameObject infectedActor)
+    {
+        yield return new WaitForSeconds(virusstealTime);
+        infectedActor.tag = "NoneAbilityActor";
     }
 
     // -------------------------------------------------------------------
