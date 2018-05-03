@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour {
     public bool LockMove
     {
         get { return m_lockMove; }
-        set { m_lockMove = LockMove; }
+        set { m_lockMove = value; }
     }
 
     [SerializeField]

@@ -54,6 +54,11 @@ public class Viewer : MonoBehaviour {
         return target;
     }
 
+    public void Reset()
+    {
+        target = null;
+    }
+
     //public GameObject GetClose(ViewType type)
     //{
     //    Vector3 position = transform.position; 

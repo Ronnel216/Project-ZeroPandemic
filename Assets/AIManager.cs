@@ -14,17 +14,21 @@ public class AIManager : MonoBehaviour {
     List<InfectedActor> infectedActors;
 
     public int degugnum;
+    public static GameObject[] m_zombies;
+    public static GameObject[] m_hunterManufactorys;
 
     // Use this for initialization
     void Start()
     {
         infectedActors = new List<InfectedActor>();
+        m_hunterManufactorys = GameObject.FindGameObjectsWithTag("HunterManufactory");
     }
 
     // Update is called once per frame
     void Update()
     {
         degugnum = infectedActors.Count;
+        m_zombies = GameObject.FindGameObjectsWithTag("InfectedActor");
     }
 
     // アクターの追加
@@ -57,4 +61,46 @@ public class AIManager : MonoBehaviour {
         Debug.Break();
         return new Vector3();
     }
+
+    public static GameObject GetCloseManufactory(Vector3 pos, float radius = -0.1f)
+    {
+        GameObject result = null;
+        float distance = radius;
+
+        // 指定範囲内かつ人手が足りていない製作所を探す
+        foreach (var manufactory in m_hunterManufactorys)
+        {
+            HunterManufactory factory = manufactory.GetComponent<HunterManufactory>();
+            // 製作に向かう必要がない
+            if (factory.IsSupport() == false) continue;
+
+            // 近い製作所を優先
+            Vector3 factoryPos = manufactory.transform.position;
+            float dis = (factoryPos - pos).magnitude;
+            if (dis < distance || distance < 0.0f)
+            {
+                distance = dis;
+                result = manufactory;
+            }
+        }
+        return result;
+    }
+
+    public static GameObject GetCloseZombie(Vector3 pos, float radius = -0.1f)
+    {
+        GameObject result = null;
+        float distance = radius;
+        foreach (var zombie in m_zombies)
+        {
+            Vector3 factoryPos = zombie.transform.position;
+            float dis = (factoryPos - pos).magnitude;
+            if (dis < distance || distance < 0.0f)
+            {
+                distance = dis;
+                result = zombie;
+            }
+        }
+        return result;
+    }
+
 }
