@@ -5,37 +5,41 @@ using UnityEngine.UI;
 
 public class VirusUIControll : MonoBehaviour
 {
-    public Image VirusHPImage;
+    public Image VirusLeftImage;
 
-    public Image VirusSPImage;
+    public Image VirusRightImage;
 
-    public Image MaxVirusHPImage;
+    public Image MaxVirusLeftImage;
 
-    public Image MaxVirusSPImage;
+    public Image MaxVirusRightImage;
 
     public GameManager GameManagerScript;
 
     public ComboScript combCount;
 
-    float MaxVirusHP;
-    float MaxVirusSP;
-    float VirusHP;
-    float VirusSP;
-    float time;
-    int ComboNum;
+    [SerializeField]
+    float VirusAmount;
+    [SerializeField]
+    float MaxVirusAmount;
+    [SerializeField]
+    float RecoveryAmount;
     bool isSetGame;
+    bool isVirusControll;
+    bool comboSeparation;
 
+    int comboNum;
 
+    float time;
 
     // Use this for initialization
     void Start()
     {
-        float MaxVirusHP = 100.0f;
-        float MaxVirusSP = 100.0f;
-        float VirusHP = MaxVirusHP;
-        float VirusSP = MaxVirusSP;
-        float time = GameManagerScript.GetTimeLimit();
-        int ComboNum = 0;
+        MaxVirusAmount = 100.0f;
+        comboNum = 5;
+        RecoveryAmount = 10.0f;
+        time = 0;
+        isVirusControll = false;
+        VirusAmount = MaxVirusAmount;
         isSetGame = GameManagerScript.GetStartPandemic();
     }
 
@@ -44,16 +48,60 @@ public class VirusUIControll : MonoBehaviour
     {
         if (isSetGame)
         {
-            MaxVirusHP -= GameManagerScript.GetTimeLimitStep();
-            MaxVirusSP += GameManagerScript.GetTimeLimitStep();
-            MaxVirusHPImage.fillAmount = MaxVirusHP;
-            MaxVirusSPImage.fillAmount = MaxVirusSP;
-            VirusHPImage.fillAmount = MaxVirusHP;
-            VirusSPImage.fillAmount = MaxVirusSP;
+            time = Time.deltaTime;
+            MaxVirusAmount -= time;
+            if (VirusAmount <= MaxVirusAmount && !isVirusControll)
+                VirusAmount += time;
+            MaxVirusLeftImage.fillAmount = MaxVirusAmount * 0.01f;
+            MaxVirusRightImage.fillAmount = MaxVirusAmount * 0.01f;
+            VirusLeftImage.fillAmount = VirusAmount * 0.01f;
+            VirusRightImage.fillAmount = VirusAmount * 0.01f;
+
+            if (VirusAmount >= MaxVirusAmount)
+                VirusAmount = MaxVirusAmount;
+
+            if (combCount.GetCombo() > 0)
+            {
+                comboSeparation = combCount.GetCombo() % comboNum == 0;
+            }
+            if (comboSeparation)
+            {
+                MaxVirusAmount += RecoveryAmount;
+                VirusAmount += RecoveryAmount;
+                if (MaxVirusAmount >= 100.0f)
+                    MaxVirusAmount = 100.0f;
+                if (VirusAmount >= MaxVirusAmount)
+                    VirusAmount = MaxVirusAmount;
+            }
+
+            if (MaxVirusAmount <= 0.0f || VirusAmount <= 0.0f)
+            {
+                Debug.Log("げーむおーばー");
+                Debug.Break();
+            }
         }
         else
         {
             isSetGame = GameManagerScript.GetStartPandemic();
         }
+    }
+
+    public void SetVirusAmout(float virusamout)
+    {
+        VirusAmount -= virusamout;
+    }
+
+    public void VirusControll(bool viruscontroll)
+    {
+        isVirusControll = viruscontroll;
+    }
+
+    public float GetVirusAmount()
+    {
+        return VirusAmount;
+    }
+    public float GetMaxVirusAmount()
+    {
+        return MaxVirusAmount;
     }
 }

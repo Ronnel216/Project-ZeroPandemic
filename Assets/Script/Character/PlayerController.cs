@@ -27,6 +27,12 @@ public class PlayerController : MonoBehaviour
     private float m_throwPower = 300.0f;                            // 投げる力
     private float m_carryUpPos = 0.0f;                              // 持ち上げ量
 
+    [SerializeField]
+    private GameObject m_screenUI;
+
+    [SerializeField]
+    private VirusUIControll m_virusUI;
+
     //----------------------------------------------------------------------
     //! @brief 初期化処理
     //!
@@ -39,6 +45,7 @@ public class PlayerController : MonoBehaviour
         // コンポーネントの取得
         m_move = GetComponent<Movement>();
         m_expansion = GetComponent<ExpansionControl>();
+        m_virusUI = m_screenUI.GetComponent<VirusUIControll>();
     }
 
 
@@ -65,6 +72,14 @@ public class PlayerController : MonoBehaviour
             m_expansion.Expand();
             m_move.Move(Vector3.zero);
 
+            float virusamout = 0;
+
+            virusamout += 0.1f;
+
+            m_virusUI.VirusControll(true);
+
+            m_virusUI.SetVirusAmout(virusamout);
+
             // 持っているオブジェクトを投げる
             if (m_carryObject)
                 Throw();
@@ -74,6 +89,7 @@ public class PlayerController : MonoBehaviour
             m_expansion.Shrinking();
             m_move.Move(vec);
             Carrying();
+            m_virusUI.VirusControll(false);
         }
     }
 
