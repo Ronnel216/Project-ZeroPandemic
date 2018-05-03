@@ -72,13 +72,16 @@ public class PlayerController : MonoBehaviour
             m_expansion.Expand();
             m_move.Move(Vector3.zero);
 
+            //ウイルス使用量
             float virusamout = 0;
 
             virusamout += 0.1f;
 
+            //ウイルスコントロールを使用しているかの判断
             m_virusUI.VirusControll(true);
 
-            m_virusUI.SetVirusAmout(virusamout);
+            //ウイルス量を減らす
+            m_virusUI.DecreaseVirusAmout(virusamout);
 
             // 持っているオブジェクトを投げる
             if (m_carryObject)
