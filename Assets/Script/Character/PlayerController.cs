@@ -20,18 +20,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private KeyCode m_actionButton = KeyCode.Z;                     // アクションボタン設定
 
+    private VirusAmount m_virusAmount;                              // ウィルス量
     private ExpansionControl m_expansion;                           // 拡張範囲
 
     private GameObject m_carryObject;                               // 運ぶオブジェクト
     [SerializeField]
     private float m_throwPower = 300.0f;                            // 投げる力
     private float m_carryUpPos = 0.0f;                              // 持ち上げ量
-
-    [SerializeField]
-    private GameObject m_screenUI;
-
-    [SerializeField]
-    private VirusUIControll m_virusUI;
 
     //----------------------------------------------------------------------
     //! @brief 初期化処理
@@ -45,7 +40,7 @@ public class PlayerController : MonoBehaviour
         // コンポーネントの取得
         m_move = GetComponent<Movement>();
         m_expansion = GetComponent<ExpansionControl>();
-        m_virusUI = m_screenUI.GetComponent<VirusUIControll>();
+        m_virusAmount = GetComponent<VirusAmount>();
     }
 
 
@@ -72,17 +67,6 @@ public class PlayerController : MonoBehaviour
             m_expansion.Expand();
             m_move.Move(Vector3.zero);
 
-            //ウイルス使用量
-            float virusamout = 0;
-
-            virusamout += 0.1f;
-
-            //ウイルスコントロールを使用しているかの判断
-            m_virusUI.VirusControll(true);
-
-            //ウイルス量を減らす
-            m_virusUI.DecreaseVirusAmout(virusamout);
-
             // 持っているオブジェクトを投げる
             if (m_carryObject)
                 Throw();
@@ -92,7 +76,6 @@ public class PlayerController : MonoBehaviour
             m_expansion.Shrinking();
             m_move.Move(vec);
             Carrying();
-            m_virusUI.VirusControll(false);
         }
     }
 
@@ -113,17 +96,23 @@ public class PlayerController : MonoBehaviour
 
 
     //----------------------------------------------------------------------
-    //! @brief アクションボタンが押されているか
+    //! @brief ウィルスコントロール状態か
     //!
     //! @param[in] なし
     //!
-    //! @return true:押されている false:押されていない
+    //! @return true:Yes false:No
     //----------------------------------------------------------------------
     public bool IsAction()
     {
+        bool result = false;
+
         bool key = Input.GetKey(m_actionButton);
         bool con = Input.GetButton("Button A");
-        return key | con;
+        bool virus = m_virusAmount.GetVirusAmount() > 0;
+
+        // アクションキーが押されていてウィルスがある場合true
+        result = (key | con) & virus;
+        return result;
     }
 
 

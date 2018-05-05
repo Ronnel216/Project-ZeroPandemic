@@ -34,7 +34,7 @@ public class HunterController : MonoBehaviour {
     }
 
     [SerializeField]
-    private float m_routeChangeSpan;                // クールタイム
+    private float m_routeChangeSpan;                // ルート変更時間
     public float RouteChangeSpan
     {
         get { return m_routeChangeSpan; }
@@ -50,6 +50,19 @@ public class HunterController : MonoBehaviour {
     [SerializeField]
     private int m_restraintNum;                     // 拘束に必要なゾンビ数
     private int m_zombieNum;                        // 近くにいるゾンビ数
+
+    [SerializeField]
+    private float m_captureTime = 3.0f;             // 捕獲時間
+    public float CaptureTime
+    {
+        get { return m_captureTime; }
+    }
+    [SerializeField]
+    private float m_decreaseMaxAmount = 10;         // 捕獲時のウィルス最大値減少量          
+    public float DecreaseMaxAmount
+    {
+        get { return m_decreaseMaxAmount; }
+    }
 
     [SerializeField]
     private float m_coolTime;                       // クールタイム
