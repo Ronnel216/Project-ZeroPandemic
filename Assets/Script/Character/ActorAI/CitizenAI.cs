@@ -10,14 +10,16 @@ public class CitizenAI : MonoBehaviour {
         public class StateData
         {
             public CitizenAI ai;
+            public GameObject catchObj;
             public AIRouteNode.Node[] nodes;
             public Virus virus;
             public Viewer viewer;
             public Movement movement;
         }
 
-
         public abstract void Excute(StateData data);
+
+        public virtual void OnTriggerEnter(Collider other, StateData data) { }
     }
 
     State state;
@@ -43,12 +45,24 @@ public class CitizenAI : MonoBehaviour {
         if (nextState != null)
             state = nextState;
         state.Excute(stateData);
-
         
 	}
 
+    private void OnTriggerEnter(Collider other)
+    {
+        state.OnTriggerEnter(other, stateData);
+    }
+
+    // 状態の変更
     public void ChangeState(State state)
     {
         this.nextState = state;
+
+    }
+
+    // ステイト確認
+    public bool CheckState<Type>()
+    {
+        return state.GetType() == typeof(Type);
     }
 }
