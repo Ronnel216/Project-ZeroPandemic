@@ -79,8 +79,7 @@ public class VirusAmount : MonoBehaviour
             //ゲームオーバーの判断
             if (maxVirusAmount <= 0.0f)
             {
-                Debug.Log("げーむおーばー");
-                Debug.Break();
+                GameObject.Find("GameManager").GetComponent<GameManager>().GameOver();
             }
         }
         else

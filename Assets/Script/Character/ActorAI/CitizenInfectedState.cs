@@ -77,7 +77,7 @@ public class CitizenInfectedState : CitizenAI.State {
         if (other.tag == citizenTag)
         {
             // 仮 他のコライダー判定を考慮する
-            if ((other.gameObject.transform.position - data.ai.gameObject.transform.position).magnitude > 1.5f) return;
+            if ((other.gameObject.transform.position - data.ai.gameObject.transform.position).magnitude > 2.0f) return;
 
 
             var targetAi = other.GetComponent<CitizenAI>();

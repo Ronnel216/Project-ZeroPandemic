@@ -150,8 +150,8 @@ public class Virus : MonoBehaviour
         else
             originalVirus = this;
 
-        if (gameObject.tag != "Player")
-            StartCoroutine(StealVirus(gameObject));
+        //if (gameObject.tag != "Player")
+        //    StartCoroutine(StealVirus(gameObject));
 
         // 感染者であることを示す
         gameObject.tag = "InfectedActor";

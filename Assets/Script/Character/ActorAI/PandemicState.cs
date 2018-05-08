@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class PandemicState : CitizenAI.State
 {
-    bool Init = true;
     float moveSpeed = 20.0f;
     GameObject targetObj;
     public override void Excute(StateData data)
@@ -16,12 +15,11 @@ public class PandemicState : CitizenAI.State
 
         agent.speed = moveSpeed * 2.0f;
         GameObject ai;
-        if (Init)
+        if (targetObj == null || targetObj.tag == "InfectedActor")
         {
             ai = GameObject.Find("AIManger");
             Debug.Log(ai);
             targetObj = ai.GetComponent<AIManager>().GetTarget();
-            Init = false;
         }
             agent.SetDestination(targetObj.transform.position);
     }

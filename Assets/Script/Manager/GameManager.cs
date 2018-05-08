@@ -51,6 +51,9 @@ public class GameManager : MonoBehaviour {
     // クリアしたか
     bool isClear;
 
+    //感染率
+    [SerializeField]
+    float perdemic;
     AIManager pandemic;
     bool pandemicFlag = false;
     void Start () {
@@ -95,16 +98,21 @@ public class GameManager : MonoBehaviour {
             saveStr.SetresultScore(score);
             UnityEngine.SceneManagement.SceneManager.LoadScene("RankingScene");
         }
+        if (isClear)
+        {
+            infectedNum = 0;
+            pandemicFlag = false;
+        }
 
         // クリア前の処理
         if (IsClear()) return;
-        time -= Time.deltaTime * acceleratorRate;
+        time -= Time.deltaTime;// * acceleratorRate;
         if (time < 0.0f) time = 0.0f;
 
         //Debug.Log((float)infectedNum / actorNum * 100.0f);
         if(!pandemicFlag)
         {
-            if ((float)infectedNum / actorNum * 100.0f >= 10.0f)
+            if ((float)infectedNum / actorNum * 100.0f >= perdemic)
             {
                 pandemic.StartPandemic();
                 pandemicFlag = true;
@@ -116,6 +124,12 @@ public class GameManager : MonoBehaviour {
             saveStr.SetresultScore(score);
             UnityEngine.SceneManagement.SceneManager.LoadScene("RankingScene");
         }
+        //if (time == 0.0f)
+        //{
+        //    score = 0;
+        //    saveStr.SetresultScore(score);
+        //    UnityEngine.SceneManagement.SceneManager.LoadScene("RankingScene");
+        //}
         //Debug.Log("TimeLimit : " + time.ToString("F") + "s / " + timeLimit.ToString("F") + "s");
         //if (timeLimit < time) FinishGame(false);
 
@@ -129,6 +143,14 @@ public class GameManager : MonoBehaviour {
     {
         playerVirus.Infected(null);
         isStartPandemic = true;
+    }
+
+    public void GameOver()
+    {
+        score = 0;
+        saveStr.SetresultScore(score);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("RankingScene");
+
     }
 
     // 制限時間の取得

@@ -67,6 +67,8 @@ public class AIManager : MonoBehaviour {
 
     public static GameObject GetCloseManufactory(Vector3 pos, float radius = -0.1f)
     {
+        m_hunterManufactorys = GameObject.FindGameObjectsWithTag("HunterManufactory");
+
         GameObject result = null;
         float distance = radius;
 
