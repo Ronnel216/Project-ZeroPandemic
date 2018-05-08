@@ -1016,13 +1016,13 @@ Prefab:
         type: 2}
       propertyPath: m_stage.Array.data[1]
       value: 
-      objectReference: {fileID: 1982770822370804, guid: bdd2fe5772e93d14693e2540324724a3,
+      objectReference: {fileID: 1673037350072344, guid: 58e48e34aa12f4a4aa54f96bff126d42,
         type: 2}
     - target: {fileID: 114182992310838410, guid: f00c6a89ea261cd4f8c5e5e44d3e0354,
         type: 2}
       propertyPath: m_stage.Array.data[2]
       value: 
-      objectReference: {fileID: 1727503306701316, guid: 249cab23de33df24f964dcea17363791,
+      objectReference: {fileID: 1278455019532396, guid: 6363a5af6204a0f43918c865a78c625f,
         type: 2}
     - target: {fileID: 114182992310838410, guid: f00c6a89ea261cd4f8c5e5e44d3e0354,
         type: 2}
