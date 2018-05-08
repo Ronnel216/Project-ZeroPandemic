@@ -11,9 +11,9 @@ public class VirusAmount : MonoBehaviour
     [SerializeField]
     float virusAmount;                      //現在のウイルス量
     [SerializeField]
-    float maxVirusAmount;                   //最大のウイルス量
+    float maxVirusAmount = 100.0f;          //最大のウイルス量
     [SerializeField]
-    float recoveryAmount;                   //回復するウイルス量
+    float recoveryAmount = 10.0f;           //回復するウイルス量
     float time;                             //経過時間
 
     bool isSetGame;
@@ -27,9 +27,7 @@ public class VirusAmount : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        maxVirusAmount = 100.0f;
         comboNum = 5;
-        recoveryAmount = 10.0f;
         time = 0;
         isVirusControll = false;
         virusAmount = maxVirusAmount;
@@ -47,7 +45,7 @@ public class VirusAmount : MonoBehaviour
             if (isVirusControll)
             {
                 //ウイルス使用量
-                float virusamout = 0.1f;
+                float virusamout = 0.2f;
                 //ウイルス量を減らす
                 DecreaseVirusAmout(virusamout);
             }
