@@ -10,6 +10,8 @@ public class CitizenInfectedState : CitizenAI.State {
     bool wasInitialize = false;
     float moveSpeed = 20.0f;
 
+    const string citizenTag = "Actor";
+
     Vector3 lastTargetPos;
 
     //Vector3 hogePlayer;
@@ -25,18 +27,6 @@ public class CitizenInfectedState : CitizenAI.State {
 
         if (wasInitialize == false)
         {
-            //// 感染が完全に弱まった
-            //if (data.virus.IsInfected() == false)
-            //{
-            //    agent.ResetPath();            
-            //    data.ai.ChangeState(new CitizenEsacapeState());
-            //    return;
-            //}
-
-            //GameObject[] infectedPerson = GameObject.FindGameObjectsWithTag("InfectionArea");
-
-            //Vector3 vec;
-            //Vector3 avevec;
 
             // 感染原(プレイヤ)
             Virus target = data.virus.GetOriginal();
@@ -44,15 +34,6 @@ public class CitizenInfectedState : CitizenAI.State {
 
             //!　ゲームの仕様上　ターゲットが見つからないことはない
             if (target.gameObject == null) Debug.Break();
-
-            //vec = selfVirus.gameObject.transform.position - target.gameObject.transform.position;
-            //vec.Normalize();
-
-            //angle += 360.0f / infectedPerson.Length;
-
-            //avevec = Quaternion.Euler(0.0f, angle, 0.0f) * vec;
-
-            //agent.destination = avevec * expansion.ExpansionArea;
 
             Vector3 playerVec/* = target.transform.position - hogePlayer*/;
             // 感染源の移動量
@@ -63,29 +44,17 @@ public class CitizenInfectedState : CitizenAI.State {
             if (movement == null) Debug.Break();
             playerVec = vec.normalized * movement.GetSpeed();
 
-
-            //hogePlayer = target.transform.position;
-
             // 拡張範囲を考慮した差
             Vector3 offset = selfVirus.gameObject.transform.position - target.transform.position;
             offset = playerVec;
             offset.Normalize();
-            //offset += playerVec;
-            //offset.Normalize();
             offset *= expansion.ExpansionArea;
-            //offset = new Vector3();
 
             Vector3 targetPos;
 
             // コントロールがなにもない時
             if (offset.magnitude < Mathf.Epsilon)
-            {
-                //Vector3 targetToLast = (lastTargetPos - target.gameObject.transform.position);
-                //if (targetToLast.magnitude > expansion.ExpansionArea)
-                //    targetToLast = targetToLast.normalized * expansion.ExpansionArea;
-                //offset = targetToLast;
                 agent.stoppingDistance = expansion.ExpansionArea;
-            }
             else
                 agent.stoppingDistance = 0.0f;
 
@@ -97,5 +66,33 @@ public class CitizenInfectedState : CitizenAI.State {
         }
         else wasInitialize = false;
         
+    }
+
+    public override void OnTriggerEnter(Collider other, StateData data)
+    {
+        base.OnTriggerEnter(other, data);
+
+        // 感染者
+        if (other.tag == citizenTag)
+        {
+            // 仮 他のコライダー判定を考慮する
+            if ((other.gameObject.transform.position - data.ai.gameObject.transform.position).magnitude > 1.5f) return;
+
+
+            var targetAi = other.GetComponent<CitizenAI>();
+            if (targetAi == null) return;
+                    
+            // 拘束されていないなら拘束する
+            if (targetAi.CheckState<CitizenFriezeState>() == false)
+            {
+                data.ai.GetComponent<NavMeshAgent>().ResetPath();
+                data.catchObj = other.gameObject;
+                CitizenAI.State state = new CitizenCatchState();
+                data.ai.ChangeState(state);
+
+                state = new CitizenFriezeState();
+                targetAi.ChangeState(state);
+            }          
+        }
     }
 }

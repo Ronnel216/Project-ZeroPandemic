@@ -14,22 +14,34 @@ using UnityEngine;
 
 public class HunterCaptureState : HunterController.HunterState {
 
-    int a = 60;             // 仮
-    private Movement m_playerMove;            // プレイヤーの移動コンポーネント
-    private float m_playerSpeed;              // プレイヤーの移動速度
+    private Movement m_playerMove;              // プレイヤーの移動コンポーネント
+    private VirusAmount m_virusAmount;          // ウィルス
+    private float m_decreaseAmount = 0.0f;      // 1秒のウィルス減少量
+    private float m_decreaseMaxAmount = 0.0f;   // 1秒のウィルス最大値減少量
+
     public override void Enter(HunterController hunter)
     {
         hunter.NavMeshAgent.SetDestination(hunter.transform.position);
         m_playerMove = hunter.Player.GetComponent<Movement>();
-        m_playerSpeed = m_playerMove.GetSpeed();
+        m_virusAmount = hunter.Player.GetComponent<VirusAmount>();
+
+        // 1秒の減少量を計算
+        m_decreaseAmount = m_virusAmount.GetVirusAmount() / hunter.CaptureTime;
+        m_decreaseMaxAmount = hunter.DecreaseMaxAmount / hunter.CaptureTime;
+
     }
 
     public override void Update(HunterController hunter)
     {
-        // 仮 ================================================
-        a--;
+        // プレイヤーを拘束
         m_playerMove.LockMove = true;
-        if (a <= 0)
+
+        // 1フレーム分の減少
+        m_virusAmount.DecreaseVirusAmout(m_decreaseAmount * Time.deltaTime);
+        m_virusAmount.DecreaseMaxVirusAmout(m_decreaseMaxAmount * Time.deltaTime);
+
+        // ウィルスを減少しきったら解放
+        if (m_virusAmount.GetVirusAmount() <= 0)
         {
             m_playerMove.LockMove = false;
             hunter.ChangeState(new HunterCooldownState());

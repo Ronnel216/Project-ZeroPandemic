@@ -78,7 +78,7 @@ public class ExpansionControl : MonoBehaviour
 
 
     //----------------------------------------------------------------------
-    //! @brief 拡張
+    //! @brief 縮小
     //!
     //! @param[in] なし
     //!
