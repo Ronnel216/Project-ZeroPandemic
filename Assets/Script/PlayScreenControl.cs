@@ -37,12 +37,11 @@ public class PlayScreenControl : MonoBehaviour {
         time = GameManagerScript.GetTime();
         timeLimitText.text = "Time : " + time.ToString("F");
         rateinfected = (float)GameManager.infectedNum / (float)(remainsPerson + GameManager.infectedNum)* 100.0f;
-
         if (isSetGame)
         {
+            remainsPerson = Check("Actor");
             ReceiveValue();
             ScreenText();
-            remainsPerson = Check("Actor");
             //infectedImage.color = Color.magenta;
             //infectedImage.fillAmount = GameManagerScript.GetTimeLimitStep();
 

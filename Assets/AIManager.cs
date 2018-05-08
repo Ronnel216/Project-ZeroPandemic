@@ -16,6 +16,9 @@ public class AIManager : MonoBehaviour {
     public int degugnum;
     public static GameObject[] m_zombies;
     public static GameObject[] m_hunterManufactorys;
+    GameObject[] actors;
+    GameObject[] infecteds;
+    int cnt;
 
     // Use this for initialization
     void Start()
@@ -103,4 +106,30 @@ public class AIManager : MonoBehaviour {
         return result;
     }
 
+    public void StartPandemic()
+    {
+        //残っている市民を配列に
+        actors = GameObject.FindGameObjectsWithTag("Actor");
+        //今感染している市民の数
+        infecteds = GameObject.FindGameObjectsWithTag("InfectedActor");
+
+        for (int i = 0; i < infecteds.Length; i++)
+        {
+
+            CitizenAI ai =infecteds[i].GetComponent<CitizenAI>();
+            if (ai)
+                ai.ChangeState(new PandemicState());
+        }
+    }
+    public GameObject GetTarget()
+    {
+        GameObject obj = null;
+
+        obj = actors[cnt];
+        cnt++;
+        if (cnt >= actors.Length - 1)
+            cnt = 0;
+
+        return obj; 
+    }
 }

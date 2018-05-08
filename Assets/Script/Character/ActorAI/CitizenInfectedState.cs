@@ -63,6 +63,7 @@ public class CitizenInfectedState : CitizenAI.State {
             agent.SetDestination(targetPos);
             lastTargetPos = targetPos;
             wasInitialize = true;
+
         }
         else wasInitialize = false;
         

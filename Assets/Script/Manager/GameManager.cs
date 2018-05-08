@@ -22,7 +22,8 @@ public class GameManager : MonoBehaviour {
 
     // 死者数
     public static int killedNum = 0;
-
+    //市民の数
+    int actorNum;
 
     // プレイヤのコントローラ
     [SerializeField]
@@ -50,6 +51,8 @@ public class GameManager : MonoBehaviour {
     // クリアしたか
     bool isClear;
 
+    AIManager pandemic;
+    bool pandemicFlag = false;
     void Start () {
         // 制限時間を設定
         time = timeLimit;
@@ -63,6 +66,9 @@ public class GameManager : MonoBehaviour {
         score = 0.0f;
         isStartPandemic = false;
         actionState = playerControllerScript.IsAction();
+
+        actorNum = GameObject.FindGameObjectsWithTag("Actor").Length;
+        pandemic = GameObject.Find("AIManger").GetComponent<AIManager>();
 
         // デバッグ処理
         if (saveStr == null)
@@ -95,6 +101,15 @@ public class GameManager : MonoBehaviour {
         time -= Time.deltaTime * acceleratorRate;
         if (time < 0.0f) time = 0.0f;
 
+        //Debug.Log((float)infectedNum / actorNum * 100.0f);
+        if(!pandemicFlag)
+        {
+            if ((float)infectedNum / actorNum * 100.0f >= 10.0f)
+            {
+                pandemic.StartPandemic();
+                pandemicFlag = true;
+            }
+        }
         if (time == 0.0f)
         {
             score = 0;
