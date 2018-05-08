@@ -9,8 +9,9 @@ public class PlayScreenControl : MonoBehaviour {
     public Text survivorText;
     public Text infectedText;
     public Text CombText;
+    public Text RateText;
 
-    public Image infectedImage;
+    //public Image infectedImage;
 
     public GameManager GameManagerScript;
     public ComboScript combCount;
@@ -19,6 +20,7 @@ public class PlayScreenControl : MonoBehaviour {
     int targetPerson = 16;
     int remainsPerson = 15;
     int combNum;
+    float rateinfected = 0.0f;
     float time;
     float accelNum;
     bool isSetGame;
@@ -34,20 +36,21 @@ public class PlayScreenControl : MonoBehaviour {
     void Update () {
         time = GameManagerScript.GetTime();
         timeLimitText.text = "Time : " + time.ToString("F");
+        rateinfected = (float)GameManager.infectedNum / (float)(remainsPerson + GameManager.infectedNum)* 100.0f;
 
         if (isSetGame)
         {
             ReceiveValue();
             ScreenText();
             remainsPerson = Check("Actor");
-            infectedImage.color = Color.magenta;
-            infectedImage.fillAmount = GameManagerScript.GetTimeLimitStep();
+            //infectedImage.color = Color.magenta;
+            //infectedImage.fillAmount = GameManagerScript.GetTimeLimitStep();
 
-            if (accelNum > 1)
-                infectedImage.color = Color.red;
+            //if (accelNum > 1)
+            //    infectedImage.color = Color.red;
 
-            if (infectedImage.fillAmount <= 0 || time <= 0)
-                infectedImage.fillAmount = 0;
+            //if (infectedImage.fillAmount <= 0 || time <= 0)
+            //    infectedImage.fillAmount = 0;
         }
         else
         {
@@ -67,6 +70,7 @@ public class PlayScreenControl : MonoBehaviour {
         survivorText.text = remainsPerson.ToString();
         infectedText.text = GameManager.infectedNum.ToString();
         CombText.text = combNum.ToString() + "コンボ";
+        RateText.text = rateinfected.ToString("N0") + "%";
     }
     //他スクリプトから値を受け取る
     public void ReceiveValue()
