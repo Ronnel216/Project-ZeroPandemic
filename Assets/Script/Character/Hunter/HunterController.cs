@@ -26,7 +26,6 @@ public class HunterController : MonoBehaviour {
     HunterState m_state;                            // 現在の行動状態
     HunterState m_nextState;                        // 次の行動状態
 
-    [SerializeField]
     private GameObject m_player;                    // プレイヤー
     public GameObject Player
     {
@@ -83,6 +82,8 @@ public class HunterController : MonoBehaviour {
     {
         m_state = new HunterChaseState();
         m_nextState = m_state;
+
+        m_player = GameObject.Find("Player");
 
         m_navMeshAgent = GetComponent<NavMeshAgent>();
         m_defaultSpeed = m_navMeshAgent.speed;

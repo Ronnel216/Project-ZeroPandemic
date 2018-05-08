@@ -33,6 +33,8 @@ public class HunterManufactory : MonoBehaviour {
         get { return m_factoryRange; }
     }
 
+    private bool m_completion = false;          // 完成済みか
+
     //----------------------------------------------------------------------
     //! @brief 初期化処理
     //!
@@ -62,6 +64,8 @@ public class HunterManufactory : MonoBehaviour {
     //----------------------------------------------------------------------
     void Update ()
     {
+        if (m_completion) return;
+
         // ハンターの製作進行度が100%
         if (m_manufactureRate >= 100.0f)
         {
@@ -83,7 +87,10 @@ public class HunterManufactory : MonoBehaviour {
     private void Completion()
     {
         // ハンター放出
-        Instantiate(m_hunter, this.transform);
+        Vector3 thisPos = this.transform.position;
+        Vector3 pos = new Vector3(thisPos.x, thisPos.y, thisPos.z + m_factoryRange / 2);
+        Instantiate(m_hunter, pos,Quaternion.identity);
+        m_completion = true;
     }
 
 
@@ -99,6 +106,7 @@ public class HunterManufactory : MonoBehaviour {
     {
         // 製作人数が上限
         if (m_manufactureNum >= m_manufactureNumMax) return false;
+        if (m_completion) return false;
 
         return true;
     }
