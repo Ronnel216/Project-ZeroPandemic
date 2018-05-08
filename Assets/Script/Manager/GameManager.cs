@@ -95,12 +95,12 @@ public class GameManager : MonoBehaviour {
         time -= Time.deltaTime * acceleratorRate;
         if (time < 0.0f) time = 0.0f;
 
-        if (time == 0.0f)
-        {
-            score = 0;
-            saveStr.SetresultScore(score);
-            UnityEngine.SceneManagement.SceneManager.LoadScene("RankingScene");
-        }
+        //if (time == 0.0f)
+        //{
+        //    score = 0;
+        //    saveStr.SetresultScore(score);
+        //    UnityEngine.SceneManagement.SceneManager.LoadScene("RankingScene");
+        //}
         //Debug.Log("TimeLimit : " + time.ToString("F") + "s / " + timeLimit.ToString("F") + "s");
         //if (timeLimit < time) FinishGame(false);
 
@@ -114,6 +114,14 @@ public class GameManager : MonoBehaviour {
     {
         playerVirus.Infected(null);
         isStartPandemic = true;
+    }
+
+    public void GameOver()
+    {
+        score = 0;
+        saveStr.SetresultScore(score);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("RankingScene");
+
     }
 
     // 制限時間の取得

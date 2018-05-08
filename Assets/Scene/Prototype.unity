@@ -344,16 +344,47 @@ Prefab:
     - target: {fileID: 114240698175492050, guid: f4d1631cefb1b07438aa5e07a098df0b,
         type: 2}
       propertyPath: m_FillOrigin
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114240698175492050, guid: f4d1631cefb1b07438aa5e07a098df0b,
         type: 2}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114240698175492050, guid: f4d1631cefb1b07438aa5e07a098df0b,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 14428618e866aad45b1898e031556496,
+        type: 3}
+    - target: {fileID: 114240698175492050, guid: f4d1631cefb1b07438aa5e07a098df0b,
+        type: 2}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4d1631cefb1b07438aa5e07a098df0b, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &455044672 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1031050355463498, guid: 249cab23de33df24f964dcea17363791,
+    type: 2}
+  m_PrefabInternal: {fileID: 1821837513}
+--- !u!114 &455044677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 455044672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf8e6a6e2de1a8c46bd65aa723d1f55f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_hunter: {fileID: 1238312161998490, guid: 941bc0d6f0f09d743a0c750bb53810d8, type: 2}
+  m_addRate: 0.01
+  m_manufactureNumMax: 5
+  m_factoryRange: -1
 --- !u!1001 &489602857
 Prefab:
   m_ObjectHideFlags: 0
@@ -1058,7 +1089,7 @@ Prefab:
     - target: {fileID: 114783033341557968, guid: ef3943971ffec3246a43dfeb49bc9c4c,
         type: 2}
       propertyPath: m_FillOrigin
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ef3943971ffec3246a43dfeb49bc9c4c, type: 2}
@@ -1747,6 +1778,17 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114563401124244134, guid: 15b5c492cfdea7746987d162c95bf0ab,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 14428618e866aad45b1898e031556496,
+        type: 3}
+    - target: {fileID: 114563401124244134, guid: 15b5c492cfdea7746987d162c95bf0ab,
+        type: 2}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 15b5c492cfdea7746987d162c95bf0ab, type: 2}
   m_IsPrefabParent: 0
@@ -1964,6 +2006,260 @@ Prefab:
       propertyPath: citizenType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1031050355463498, guid: 249cab23de33df24f964dcea17363791, type: 2}
+      propertyPath: m_TagString
+      value: HunterManufactory
+      objectReference: {fileID: 0}
+    - target: {fileID: 114438616219617048, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114331045331315508, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114144235315874766, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114151174891164762, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114042900920882546, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114046367132595964, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114771336163108132, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114974452334480248, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114042512219163932, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114420891694479972, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114460409595358376, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114342749986303142, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114244669339212138, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114016624972897464, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114339537108375182, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091099016888158, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114052977961722370, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114694832111264654, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114349335799852976, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114734760628134746, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114733142143270364, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114651240646693912, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114978674769791012, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114563501808635630, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892754207222216, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114801045188189036, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114977109781397550, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114465474028838648, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114258939561626770, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114860138544643324, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114470473359857658, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084443896994062, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114204994990425340, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114912121768742352, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114788638685141964, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114064808501173810, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114921572728510426, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114507035448648714, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114296865401544762, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114344813471166520, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114222756309177890, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114849546388996566, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114229735528163070, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114211789554148080, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114267052252592340, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114208953517578636, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114861246763388430, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114097824081375546, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114273432167285478, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114371004795636454, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: virusstealTime
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 249cab23de33df24f964dcea17363791, type: 2}
   m_IsPrefabParent: 0
@@ -2005,10 +2301,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bad0652b578b7e4e8a04d45ad4670b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VirusLeftImage: {fileID: 2146553289}
-  VirusRightImage: {fileID: 1975021813}
-  MaxVirusLeftImage: {fileID: 701325467}
-  MaxVirusRightImage: {fileID: 1634703520}
+  VirusLeftImage: {fileID: 701325467}
+  VirusRightImage: {fileID: 1634703520}
+  MaxVirusLeftImage: {fileID: 2146553289}
+  MaxVirusRightImage: {fileID: 1975021813}
   virusAmount: {fileID: 622934240}
 --- !u!1 &2083182605 stripped
 GameObject:
