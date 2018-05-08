@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
         if (IsAction())
         {
             m_expansion.Expand();
-            m_move.Move(Vector3.zero);
+            m_move.Move(vec);
 
             // 持っているオブジェクトを投げる
             if (m_carryObject)

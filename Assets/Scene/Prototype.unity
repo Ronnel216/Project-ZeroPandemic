@@ -2536,7 +2536,7 @@ Prefab:
     - target: {fileID: 224782011523073974, guid: 31adf8634199dc743a8373b0e0d4e8d6,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 198
+      value: 206
       objectReference: {fileID: 0}
     - target: {fileID: 224782011523073974, guid: 31adf8634199dc743a8373b0e0d4e8d6,
         type: 2}
@@ -2546,7 +2546,7 @@ Prefab:
     - target: {fileID: 224782011523073974, guid: 31adf8634199dc743a8373b0e0d4e8d6,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 60
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 224782011523073974, guid: 31adf8634199dc743a8373b0e0d4e8d6,
         type: 2}
@@ -2581,6 +2581,11 @@ Prefab:
     - target: {fileID: 1141450984128164, guid: 31adf8634199dc743a8373b0e0d4e8d6, type: 2}
       propertyPath: m_Name
       value: TimeDisplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 114377997955497882, guid: 31adf8634199dc743a8373b0e0d4e8d6,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 31adf8634199dc743a8373b0e0d4e8d6, type: 2}

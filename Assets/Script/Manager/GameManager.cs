@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour {
 
         // クリア前の処理
         if (IsClear()) return;
-        time -= Time.deltaTime * acceleratorRate;
+        time -= Time.deltaTime;// * acceleratorRate;
         if (time < 0.0f) time = 0.0f;
 
         //if (time == 0.0f)
