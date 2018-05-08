@@ -75,12 +75,17 @@ public class CitizenInfectedState : CitizenAI.State {
         // 感染者
         if (other.tag == citizenTag)
         {
+            // 仮 他のコライダー判定を考慮する
+            if ((other.gameObject.transform.position - data.ai.gameObject.transform.position).magnitude > 1.5f) return;
+
+
             var targetAi = other.GetComponent<CitizenAI>();
             if (targetAi == null) return;
                     
             // 拘束されていないなら拘束する
             if (targetAi.CheckState<CitizenFriezeState>() == false)
             {
+                data.ai.GetComponent<NavMeshAgent>().ResetPath();
                 data.catchObj = other.gameObject;
                 CitizenAI.State state = new CitizenCatchState();
                 data.ai.ChangeState(state);

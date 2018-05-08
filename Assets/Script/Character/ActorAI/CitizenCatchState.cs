@@ -28,7 +28,7 @@ public class CitizenCatchState : CitizenAI.State {
         var agent = data.ai.GetComponent<NavMeshAgent>();
 
         // いどうそくど
-        const float speed = 0.3f;
+        const float speed = 0.4f;
         
         // 速度変更
         agent.speed = speed;
