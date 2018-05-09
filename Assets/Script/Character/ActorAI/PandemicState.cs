@@ -10,7 +10,6 @@ public class PandemicState : CitizenAI.State
     public override void Excute(StateData data)
     {
 
-        Debug.Log("dd");
         NavMeshAgent agent = data.ai.GetComponent<NavMeshAgent>();
 
         agent.speed = moveSpeed * 2.0f;
@@ -18,7 +17,6 @@ public class PandemicState : CitizenAI.State
         if (targetObj == null || targetObj.tag == "InfectedActor")
         {
             ai = GameObject.Find("AIManger");
-            Debug.Log(ai);
             targetObj = ai.GetComponent<AIManager>().GetTarget();
         }
             agent.SetDestination(targetObj.transform.position);
