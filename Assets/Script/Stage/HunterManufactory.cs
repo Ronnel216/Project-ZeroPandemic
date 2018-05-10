@@ -125,7 +125,6 @@ public class HunterManufactory : MonoBehaviour {
         if (m_manufactureRate >= 100.0f) return true;
 
         m_manufactureRate += m_addRate;
-        Debug.Log("【ハンター製作中】残り：" + m_manufactureRate.ToString());
         return false;
     }
 }

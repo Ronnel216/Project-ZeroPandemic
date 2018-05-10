@@ -7,7 +7,6 @@
 //!
 //! @author 制作者名 澤田
 //__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,6 +33,7 @@ public class MoveAnimationController : MonoBehaviour {
     //----------------------------------------------------------------------
     void Start ()
     {
+        // コンポーネントの取得
         m_animator = GetComponent<Animator>();
 	}
 
@@ -49,11 +49,14 @@ public class MoveAnimationController : MonoBehaviour {
     void Update ()
     {
         m_frameCount++;
+
+        // 指定フレーム後
         if (m_frameCount > m_updateFrame)
         {
-
+            // 前回からの移動量を計算
             float move = (m_oldPosition - transform.position).magnitude;
 
+            // 移動量からアニメーションを変更
             int step = 0;
             // 歩く
             if (move > m_walkMovement) step = 1;
@@ -62,6 +65,7 @@ public class MoveAnimationController : MonoBehaviour {
 
             // アニメーション設定
             m_animator.SetInteger("Move", step);
+
             // 座標保存
             m_oldPosition = transform.position;
             m_frameCount = 0;

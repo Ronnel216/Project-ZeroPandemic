@@ -18,6 +18,7 @@ public class HunterChaseState : HunterController.HunterState
      
     public override void Enter(HunterController hunter)
     {
+        // プレイヤーを追跡
         hunter.NavMeshAgent.SetDestination(hunter.Player.transform.position);
     }
 
@@ -25,7 +26,7 @@ public class HunterChaseState : HunterController.HunterState
     {
         m_time += Time.deltaTime;
 
-        // ルート更新
+        // 指定時間毎にルート更新
         if (m_time >= hunter.RouteChangeSpan)
         {
             m_time = 0.0f;

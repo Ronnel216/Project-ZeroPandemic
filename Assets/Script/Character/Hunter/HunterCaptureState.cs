@@ -21,14 +21,16 @@ public class HunterCaptureState : HunterController.HunterState {
 
     public override void Enter(HunterController hunter)
     {
-        hunter.NavMeshAgent.SetDestination(hunter.transform.position);
+        // コンポーネントの取得
         m_playerMove = hunter.Player.GetComponent<Movement>();
         m_virusAmount = hunter.Player.GetComponent<VirusAmount>();
+
+        // 追跡を止める
+        hunter.NavMeshAgent.SetDestination(hunter.transform.position);
 
         // 1秒の減少量を計算
         m_decreaseAmount = m_virusAmount.GetVirusAmount() / hunter.CaptureTime;
         m_decreaseMaxAmount = hunter.DecreaseMaxAmount / hunter.CaptureTime;
-
     }
 
     public override void Update(HunterController hunter)
@@ -46,6 +48,5 @@ public class HunterCaptureState : HunterController.HunterState {
             m_playerMove.LockMove = false;
             hunter.ChangeState(new HunterCooldownState());
         }   
-        // ====================================================
     }
 }

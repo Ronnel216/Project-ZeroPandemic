@@ -24,6 +24,7 @@ public class HunterCooldownState : HunterController.HunterState
     public override void Update(HunterController hunter)
     {
         m_time += Time.deltaTime;
+
         // クールダウン終了
         if (m_time >= hunter.CoolTime)
             hunter.ChangeState(new HunterChaseState());

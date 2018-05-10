@@ -6,10 +6,11 @@ using UnityEngine.AI;
 
 public class CitizenCounterattackState : CitizenAI.State
 {
-    float moveSpeed = 10.0f;
-    float viewRange = 10.0f;
+    float moveSpeed = 10.0f;            // 移動速度
+    float viewRange = 10.0f;            // 警戒範囲
     GameObject targetObj = null;
     HunterManufactory targetFactory = null;
+
     public override void Excute(StateData data)
     {
         // 感染
@@ -74,6 +75,7 @@ public class CitizenCounterattackState : CitizenAI.State
 
     ~CitizenCounterattackState()
     {
+        // 製作所から人数を減らす
         if (targetFactory)
             targetFactory.ManufactureNum--;
     }

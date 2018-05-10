@@ -66,16 +66,11 @@ public class PlayerController : MonoBehaviour
         {
             m_expansion.Expand();
             m_move.Move(vec);
-
-            // 持っているオブジェクトを投げる
-            if (m_carryObject)
-                Throw();
         }
         else
         {
             m_expansion.Shrinking();
             m_move.Move(vec);
-            Carrying();
         }
     }
 
@@ -126,7 +121,6 @@ public class PlayerController : MonoBehaviour
     //----------------------------------------------------------------------
     private void OnCollisionStay(Collision collision)
     {
-        Carry(collision.gameObject);
        
     }
 
@@ -147,7 +141,7 @@ public class PlayerController : MonoBehaviour
         if (obj.tag != "CarryObj") return;
 
         CarryObject carryObject = obj.GetComponent<CarryObject>();
-        Debug.Log(carryObject.CarryZombieNum);
+
         // 持ち運ぶために必要なゾンビ数を超えている
         if (carryObject.CarryZombieNum + 1 >= carryObject.RequiredNum)
         {
@@ -170,6 +164,7 @@ public class PlayerController : MonoBehaviour
     {
         if (m_carryObject == null) return;
 
+        // プレイヤーに追従
         m_carryObject.transform.position = transform.position + new Vector3(0, m_carryUpPos, 0);
     }
 
@@ -185,6 +180,8 @@ public class PlayerController : MonoBehaviour
     private void Throw()
     {
         Rigidbody rigid = m_carryObject.GetComponent<Rigidbody>();
+
+        // オブジェクトを投げる
         Vector3 vec = transform.forward * m_throwPower;
         rigid.AddForce(vec, ForceMode.Impulse);
         m_carryObject = null;

@@ -167,8 +167,5 @@ public class StageManager : MonoBehaviour {
 
         // プレイヤー移動
         m_player.transform.position = m_nowStage.transform.position;
-
-        // スコア関係
-
     }
 }
