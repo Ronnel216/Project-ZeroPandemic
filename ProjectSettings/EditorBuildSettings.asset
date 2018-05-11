@@ -10,7 +10,7 @@ EditorBuildSettings:
     guid: 91b8853971ef9984698f217ab080514a
   - enabled: 1
     path: Assets/Scene/Prototype.unity
-    guid: f2cf768510ef54343997c9acb1662872
+    guid: d0fd725ed6f2675469e36ca5d0912dbd
   - enabled: 1
     path: Assets/Scene/RankingScene.unity
     guid: cbdd65af3bea6f148a013dcec0907dd7

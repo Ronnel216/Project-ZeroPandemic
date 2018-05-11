@@ -1853,6 +1853,11 @@ Prefab:
       propertyPath: playerControllerScript
       value: 
       objectReference: {fileID: 622934242}
+    - target: {fileID: 114253263942025688, guid: 51e4fb4595857564daee6492936dadf7,
+        type: 2}
+      propertyPath: perdemic
+      value: 80
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51e4fb4595857564daee6492936dadf7, type: 2}
   m_IsPrefabParent: 0

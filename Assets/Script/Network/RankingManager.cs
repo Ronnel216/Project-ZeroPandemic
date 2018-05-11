@@ -188,22 +188,22 @@ public class RankingManager : MonoBehaviour
         {
             GameObject tmpObj = Instantiate(m_scoreTextPrehub);
             tmpObj.transform.parent = m_canvas.transform;
-            tmpObj.transform.localScale = new Vector3(2, 2, 2);
+            tmpObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
             tmpObj.transform.localPosition = new Vector3(250, i * -150 + 200, 0);
 
             m_nameText.Add(tmpObj);
 
             tmpObj = Instantiate(m_scoreTextPrehub);
             tmpObj.transform.parent = m_canvas.transform;
-            tmpObj.transform.localScale = new Vector3(2, 2, 2);
+            tmpObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
             tmpObj.transform.localPosition = new Vector3(1000, i * -150 + 200, 0);
 
             m_scoreText.Add(tmpObj);
 
             tmpObj = Instantiate(m_rankImagePrehub);
             tmpObj.transform.parent = m_canvas.transform;
-            tmpObj.transform.localScale = new Vector3(2, 2, 2);
-            tmpObj.transform.localPosition = new Vector3(-230, i * -150 + 250, 0);
+            tmpObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            tmpObj.transform.localPosition = new Vector3(-100, i * -150 + 250, 0);
 
             m_rankImage.Add(tmpObj);
         }
