@@ -19,8 +19,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4727568818279672}
-  - component: {fileID: 65014046672025516}
   - component: {fileID: 65601969984296782}
+  - component: {fileID: 65014046672025516}
   - component: {fileID: 114786049328158452}
   - component: {fileID: 195569654312705308}
   m_Layer: 0
@@ -150,9 +150,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da15d8b75895d548b45445b63e50662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_player: {fileID: 0}
   m_routeChangeSpan: 3
   m_restraintNum: 5
+  m_captureTime: 3
+  m_decreaseMaxAmount: 10
   m_coolTime: 5
 --- !u!195 &195569654312705308
 NavMeshAgent:

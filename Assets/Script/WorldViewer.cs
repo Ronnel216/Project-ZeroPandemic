@@ -10,6 +10,7 @@ public class WorldViewer : MonoBehaviour {
     // 値の初期化
     void Awake()
     {
+        objList = new Dictionary<string, HashSet<GameObject>>();
         objList.Clear();
     }
 
