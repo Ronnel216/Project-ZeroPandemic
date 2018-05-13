@@ -24,11 +24,14 @@ public class RankingManager : MonoBehaviour
     [SerializeField]
     private GameObject m_inputField;
     [SerializeField]
-    private GameObject m_rankImagePrehub;
+    private GameObject m_rankImagePrehub;       // ランキングイメージPrefab
+
     [SerializeField]
     private string name;                        // 名前
     [SerializeField]
     private float score;                        // スコア
+
+    //各ランキング用スプライト
     [SerializeField]
     private Sprite rank_SS;
     [SerializeField]
@@ -39,6 +42,7 @@ public class RankingManager : MonoBehaviour
     private Sprite rank_B;
     [SerializeField]
     private Sprite rank_C;
+
     private QuickRanking m_ranking;             // ランキング
     private SaveStr sv;
     private List<GameObject> m_nameText;        // 名前テキスト
@@ -54,6 +58,7 @@ public class RankingManager : MonoBehaviour
     // Use this for initialization
     //----------------------------------------------------------------------
     //! @brief Startメソッド
+    //!      　各値の初期化
     //!
     //! @param[in]なし
     //!
@@ -239,10 +244,5 @@ public class RankingManager : MonoBehaviour
     public void SetRankingFlag(bool flag)
     {
         m_rankingFlag = flag;
-    }
-
-    void CheckRank(int score)
-    {
-       
     }
 }

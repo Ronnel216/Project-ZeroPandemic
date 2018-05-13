@@ -1,4 +1,13 @@
-﻿using System.Collections;
+﻿//__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/
+//! @file   VirusAmount
+//!
+//! @brief  ウイルス量管理スクリプト
+//!
+//! @date   2018/05/05 
+//!
+//! @author Y.okada
+//__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,6 +33,13 @@ public class VirusAmount : MonoBehaviour
 
     PlayerController playerController;
 
+    //----------------------------------------------------------------------
+    //! @brief Startメソッド
+    //! 
+    //! @param[in] なし
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
     // Use this for initialization
     void Start()
     {
@@ -35,6 +51,13 @@ public class VirusAmount : MonoBehaviour
         playerController = GetComponent<PlayerController>();
     }
 
+    //----------------------------------------------------------------------
+    //! @brief Updateメソッド
+    //!
+    //! @param[in]なし
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
     // Update is called once per frame
     void Update()
     {
@@ -124,6 +147,7 @@ public class VirusAmount : MonoBehaviour
     {
         isVirusControll = viruscontroll;
     }
+
 
     public float GetVirusAmount()
     {
