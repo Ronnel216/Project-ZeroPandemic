@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +11,8 @@ public class WorldViewer : MonoBehaviour {
     // 値の初期化
     void Awake()
     {
-        objList = new Dictionary<string, HashSet<GameObject>>();
+        if (objList == null)
+            objList = new Dictionary<string, HashSet<GameObject>>();
         objList.Clear();
     }
 
@@ -19,15 +21,24 @@ public class WorldViewer : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
+	void Update () {        
+        // 更新が必要なオブジェクト探す
+        // 更新リスト
+        var updateObjs = new List<GameObject>();
+
+        // キーの異なるオブジェクトを探す
+        string key = "Actor";
+        DebugKey(key);      // デバッグ用コード
+        // 正しいキーに格納する
+        UpdateKey(key, updateObjs);
+
+    }
 
     // オブジェクトの登録
     static public void Register(GameObject obj)
     {
         // キーを決定する
-        string key = CheckArea(obj);
+        string key = CheckKey(obj);
 
         // キーが存在しない時に生成する
         if (objList.ContainsKey(key) == false)
@@ -41,17 +52,18 @@ public class WorldViewer : MonoBehaviour {
     static public void RemoveObject(GameObject obj)
     {
         // キーを探す
-        string key = CheckArea(obj);
+        string key = CheckKey(obj);
 
-        // 登録されていないオブジェクト
-        if (objList.ContainsKey(key) == false)
-        {
-            Debug.Log("登録されていないオブジェクト");
-            Debug.Break();
-        }
+        //// 登録されていないオブジェクト
+        //if (objList.ContainsKey(key) == false)
+        //{
+        //    Debug.Log("登録されていないオブジェクト");
+        //    Debug.Break();
+        //}
 
-        // まだ書いてないよ
-        //objList[key].find
+        // 指定オブジェクトの登録解除
+        objList[key].Remove(obj);
+
     }
 
     // オブジェクトを取得する
@@ -73,10 +85,38 @@ public class WorldViewer : MonoBehaviour {
     // 一番近いオブジェクトを取得する
     static public GameObject GetCloseObjects(string key, Vector3 position)
     {
-        // まだ書いてないよ
-        return null;
+        // 存在しないキーが指定された
+        if (objList.ContainsKey(key) == false)
+        {
+            Debug.Log("存在しないキーが指定された");
+            Debug.Break();
+            return null;
+        }
+
+        // 一番近い距離
+        float temp = float.MaxValue;
+
+        // 一番近いオブジェクト
+        GameObject result = null;
+
+        // 一番近いオブジェクトの検索
+        foreach (var obj in objList[key])
+        {
+            // オブジェクトまでの距離
+            float distance = (obj.transform.position - position).sqrMagnitude;
+
+            // 一番近いオブジェクトを更新する        
+            if (temp > distance)
+            {
+                temp = distance;
+                result = obj;
+            }
+        }
+
+        return result;
     }
 
+    // オブジェクトをカウントする
     static public int CountObjects(string key)
     {
         // 存在しないキーが指定された (returnを 0にするか微妙なライン)
@@ -84,7 +124,7 @@ public class WorldViewer : MonoBehaviour {
         {
             Debug.Log("存在しないキーが指定された");
             Debug.Break();
-            return -1;
+            return 0;
         }
 
         // 数を返す
@@ -92,9 +132,43 @@ public class WorldViewer : MonoBehaviour {
     }
 
     // エリアを決定する
-    static string CheckArea(GameObject obj)
+    static public string CheckKey(GameObject obj)
     {
-        // まだ仮だよ
         return obj.tag;
+    }
+
+    // キーの異なるオブジェクトを探す
+    void SearchDifferentKey(string key, ref List<GameObject> updateObjs)
+    {
+        string oldKey;
+        oldKey = key;
+        foreach (var obj in objList[oldKey])
+        {
+            if (CheckKey(obj) != oldKey)
+            {
+                // 更新リストに追加
+                updateObjs.Add(obj);
+            }
+        }
+    }
+
+    // キーの更新
+    void UpdateKey(string key, List<GameObject> updateObjs)
+    {
+        // 最適化のため2文に分けている
+        foreach (var obj in updateObjs)
+            objList[key].Remove(obj);
+        foreach (var obj in updateObjs)
+            objList[CheckKey(obj)].Add(obj);
+    }
+
+    // デバッグ用　存在しないキーか調べる
+    void DebugKey(string key)
+    {
+        if (objList.ContainsKey(key) == false)
+        {
+            Debug.Log("存在しないキー");
+            Debug.Break();
+        }
     }
 }
