@@ -1,10 +1,20 @@
-﻿using System.Collections;
+﻿//__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/
+//! @file   VirusUIControll
+//!
+//! @brief  ウイルスUIの管理スクリプト
+//!
+//! @date   2018/05/03 
+//!
+//! @author Y.okada
+//__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class VirusUIControll : MonoBehaviour
 {
+    //各ウイルスゲージの画像
     public Image VirusLeftImage;
 
     public Image VirusRightImage;
@@ -28,6 +38,7 @@ public class VirusUIControll : MonoBehaviour
 
     //----------------------------------------------------------------------
     //! @brief 更新処理
+    //!        画像を徐々に消していく
     //!
     //! @param[in] なし
     //!

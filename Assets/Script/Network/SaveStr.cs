@@ -14,8 +14,10 @@ using UnityEngine;
 
 public class SaveStr : MonoBehaviour
 {
+    // 名前
     [SerializeField]
     private string userName;
+    // スコア
     [SerializeField]
     private float resultScore;
 

@@ -50,6 +50,7 @@ public class StartManager : MonoBehaviour
 
     //----------------------------------------------------------------------
     //! @brief Countdownコルーチン
+    //!        指定秒数後に処理を開始
     //!
     //! @param[in]なし
     //!
