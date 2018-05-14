@@ -6,14 +6,34 @@ using UnityEngine;
 public class WorldViewer : MonoBehaviour {
 
     // 登録オブジェクト
-    static Dictionary<string, HashSet<GameObject>> objList;
+    static Dictionary<string, HashSet<GameObject>> objList = null;
+
+        // 登録キー
+    static List<string> keys = new List<string>
+    {
+        "Player",
+        "Actor",
+        "InfectedActor"
+    };
 
     // 値の初期化
     void Awake()
     {
+        // 存在しないなら生成する
         if (objList == null)
+        {
+            // 登録オブジェクトの格納先の作成
             objList = new Dictionary<string, HashSet<GameObject>>();
-        objList.Clear();
+            CreateAllKey();
+            return;
+        }
+
+        // 登録オブジェクトの初期化
+        foreach (var objs in objList)
+        {
+            objs.Value.Clear();
+        }
+        
     }
 
     // Use this for initialization
@@ -28,6 +48,7 @@ public class WorldViewer : MonoBehaviour {
 
         // キーの異なるオブジェクトを探す
         string key = "Actor";
+        SearchDifferentKey(key, ref updateObjs);
         DebugKey(key);      // デバッグ用コード
         // 正しいキーに格納する
         UpdateKey(key, updateObjs);
@@ -41,8 +62,7 @@ public class WorldViewer : MonoBehaviour {
         string key = CheckKey(obj);
 
         // キーが存在しない時に生成する
-        if (objList.ContainsKey(key) == false)
-            objList.Add(key, new HashSet<GameObject>());
+        DebugKey(key);
 
         // 登録
         objList[key].Add(obj);
@@ -131,6 +151,15 @@ public class WorldViewer : MonoBehaviour {
         return objList[key].Count;
     }
 
+    // 新しいキーを作成する
+    static void CreateAllKey()
+    {
+        foreach(var key in keys)
+        {
+            objList.Add(key, new HashSet<GameObject>());
+        }
+    }
+
     // エリアを決定する
     static public string CheckKey(GameObject obj)
     {
@@ -163,12 +192,13 @@ public class WorldViewer : MonoBehaviour {
     }
 
     // デバッグ用　存在しないキーか調べる
-    void DebugKey(string key)
+    static void DebugKey(string key)
     {
         if (objList.ContainsKey(key) == false)
         {
-            Debug.Log("存在しないキー");
+            Debug.Log("存在しないキー : " + key);
             Debug.Break();
         }
     }
+
 }

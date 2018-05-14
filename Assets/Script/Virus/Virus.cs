@@ -96,6 +96,12 @@ public class Virus : MonoBehaviour
         combo = comboManager.GetComponent<ComboScript>();
     }
 
+    void Start()
+    {
+        // オブジェクトの登録
+        WorldViewer.Register(gameObject);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -110,13 +116,10 @@ public class Virus : MonoBehaviour
 
     }
 
-    // 感染エリアに侵入した
-    void OnTriggerEnter(Collider other)
+    // 破棄時
+    void OnDestroy()
     {
-        //if (other.gameObject.tag != infectionTag) return;
-        //if (IsInfected()) return;
-        //VirusAbility virus = other.gameObject.GetComponentInParent<VirusAbility>(); // 仮
-        //Infected(virus);
+        WorldViewer.RemoveObject(gameObject);
     }
 
     public Virus GetOriginal()
