@@ -53,8 +53,9 @@ public class GameManager : MonoBehaviour {
 
     //感染率
     [SerializeField]
-    float perdemic;
+    float perdemic = 80.0f;
     AIManager pandemic;
+    //パンデミックしているかどうか
     bool pandemicFlag = false;
     void Start () {
         // 制限時間を設定
@@ -110,6 +111,8 @@ public class GameManager : MonoBehaviour {
         if (time < 0.0f) time = 0.0f;
 
         //Debug.Log((float)infectedNum / actorNum * 100.0f);
+
+        //感染率が80%以上ならパンデミック開始
         if(!pandemicFlag)
         {
             if ((float)infectedNum / actorNum * 100.0f >= perdemic)
@@ -210,5 +213,10 @@ public class GameManager : MonoBehaviour {
             Debug.Break();
         }
     }
-
+    //パンデミック状態かどうか
+    bool GetPandemic()
+    {
+        //tureならパンデミック中
+        return pandemicFlag;
+    }
 }

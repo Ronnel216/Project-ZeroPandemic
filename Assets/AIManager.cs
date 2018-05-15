@@ -108,6 +108,7 @@ public class AIManager : MonoBehaviour {
         return result;
     }
 
+    //感染者をパンデミック状態へ
     public void StartPandemic()
     {
         //残っている市民を配列に
@@ -123,6 +124,7 @@ public class AIManager : MonoBehaviour {
                 ai.ChangeState(new PandemicState());
         }
     }
+    //感染者の目標にするオブジェクトを取得
     public GameObject GetTarget()
     {
         GameObject obj = null;
