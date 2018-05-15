@@ -37,6 +37,7 @@ public class Movement : MonoBehaviour {
     //----------------------------------------------------------------------
     void Start ()
     {
+        // コンポーネントの取得
         m_rigidBody = GetComponent<Rigidbody>();
 	}
 
@@ -51,7 +52,9 @@ public class Movement : MonoBehaviour {
     //----------------------------------------------------------------------
     void Update ()
     {
-		
+        // ロック時移動できない
+        if (m_lockMove)
+            m_rigidBody.velocity = Vector3.zero;
 	}
 
 

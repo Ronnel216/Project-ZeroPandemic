@@ -24,11 +24,14 @@ public class RankingManager : MonoBehaviour
     [SerializeField]
     private GameObject m_inputField;
     [SerializeField]
-    private GameObject m_rankImagePrehub;
+    private GameObject m_rankImagePrehub;       // ランキングイメージPrefab
+
     [SerializeField]
     private string name;                        // 名前
     [SerializeField]
     private float score;                        // スコア
+
+    //各ランキング用スプライト
     [SerializeField]
     private Sprite rank_SS;
     [SerializeField]
@@ -39,6 +42,7 @@ public class RankingManager : MonoBehaviour
     private Sprite rank_B;
     [SerializeField]
     private Sprite rank_C;
+
     private QuickRanking m_ranking;             // ランキング
     private SaveStr sv;
     private List<GameObject> m_nameText;        // 名前テキスト
@@ -54,6 +58,7 @@ public class RankingManager : MonoBehaviour
     // Use this for initialization
     //----------------------------------------------------------------------
     //! @brief Startメソッド
+    //!      　各値の初期化
     //!
     //! @param[in]なし
     //!
@@ -188,22 +193,22 @@ public class RankingManager : MonoBehaviour
         {
             GameObject tmpObj = Instantiate(m_scoreTextPrehub);
             tmpObj.transform.parent = m_canvas.transform;
-            tmpObj.transform.localScale = new Vector3(2, 2, 2);
+            tmpObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
             tmpObj.transform.localPosition = new Vector3(250, i * -150 + 200, 0);
 
             m_nameText.Add(tmpObj);
 
             tmpObj = Instantiate(m_scoreTextPrehub);
             tmpObj.transform.parent = m_canvas.transform;
-            tmpObj.transform.localScale = new Vector3(2, 2, 2);
+            tmpObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
             tmpObj.transform.localPosition = new Vector3(1000, i * -150 + 200, 0);
 
             m_scoreText.Add(tmpObj);
 
             tmpObj = Instantiate(m_rankImagePrehub);
             tmpObj.transform.parent = m_canvas.transform;
-            tmpObj.transform.localScale = new Vector3(2, 2, 2);
-            tmpObj.transform.localPosition = new Vector3(-230, i * -150 + 250, 0);
+            tmpObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            tmpObj.transform.localPosition = new Vector3(-100, i * -150 + 250, 0);
 
             m_rankImage.Add(tmpObj);
         }
@@ -239,10 +244,5 @@ public class RankingManager : MonoBehaviour
     public void SetRankingFlag(bool flag)
     {
         m_rankingFlag = flag;
-    }
-
-    void CheckRank(int score)
-    {
-       
     }
 }

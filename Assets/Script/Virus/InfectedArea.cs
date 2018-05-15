@@ -92,9 +92,10 @@ public class InfectedArea : MonoBehaviour {
 
         // 感染させる
         m_candidate.Infected(orginalVirus.gameObject);
-        // ビルに入れるようにする
-        NavMeshAgent navAgent = m_candidate.GetComponent<NavMeshAgent>();
-        navAgent.areaMask |= 1 << NavMesh.GetAreaFromName("Building");
         m_candidate = null;
+
+        // ビルに入れるようにする
+        //NavMeshAgent navAgent = m_candidate.GetComponent<NavMeshAgent>();
+        //navAgent.areaMask |= 1 << NavMesh.GetAreaFromName("Building");
     }
 }

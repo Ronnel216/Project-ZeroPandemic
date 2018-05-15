@@ -294,7 +294,7 @@ Prefab:
     - target: {fileID: 224843587162904066, guid: f4d1631cefb1b07438aa5e07a098df0b,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -182
+      value: -184
       objectReference: {fileID: 0}
     - target: {fileID: 224843587162904066, guid: f4d1631cefb1b07438aa5e07a098df0b,
         type: 2}
@@ -1109,7 +1109,7 @@ Prefab:
     - target: {fileID: 224318213325770568, guid: d1eca819e4acd6e44b3486187fbd60d8,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 182
+      value: 184
       objectReference: {fileID: 0}
     - target: {fileID: 224318213325770568, guid: d1eca819e4acd6e44b3486187fbd60d8,
         type: 2}
@@ -1119,7 +1119,7 @@ Prefab:
     - target: {fileID: 224318213325770568, guid: d1eca819e4acd6e44b3486187fbd60d8,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 360
+      value: 370
       objectReference: {fileID: 0}
     - target: {fileID: 224318213325770568, guid: d1eca819e4acd6e44b3486187fbd60d8,
         type: 2}
@@ -1214,7 +1214,7 @@ Prefab:
     - target: {fileID: 224166021138134010, guid: ef3943971ffec3246a43dfeb49bc9c4c,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -182
+      value: -184
       objectReference: {fileID: 0}
     - target: {fileID: 224166021138134010, guid: ef3943971ffec3246a43dfeb49bc9c4c,
         type: 2}
@@ -1224,7 +1224,7 @@ Prefab:
     - target: {fileID: 224166021138134010, guid: ef3943971ffec3246a43dfeb49bc9c4c,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 360
+      value: 370
       objectReference: {fileID: 0}
     - target: {fileID: 224166021138134010, guid: ef3943971ffec3246a43dfeb49bc9c4c,
         type: 2}
@@ -1280,6 +1280,46 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1823346594}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!1 &887490276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 887490278}
+  - component: {fileID: 887490277}
+  m_Layer: 0
+  m_Name: WorldViewer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &887490277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 887490276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7011393b58508344e98c44c06567fbf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &887490278
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 887490276}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &892503944 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114160541796020382, guid: c35ba045a4762fe4d844399567db25b3,
@@ -1853,6 +1893,11 @@ Prefab:
       propertyPath: playerControllerScript
       value: 
       objectReference: {fileID: 622934242}
+    - target: {fileID: 114253263942025688, guid: 51e4fb4595857564daee6492936dadf7,
+        type: 2}
+      propertyPath: perdemic
+      value: 80
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51e4fb4595857564daee6492936dadf7, type: 2}
   m_IsPrefabParent: 0
@@ -1934,7 +1979,7 @@ Prefab:
     - target: {fileID: 224584755462072304, guid: 15b5c492cfdea7746987d162c95bf0ab,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 182
+      value: 184
       objectReference: {fileID: 0}
     - target: {fileID: 224584755462072304, guid: 15b5c492cfdea7746987d162c95bf0ab,
         type: 2}
@@ -1944,7 +1989,7 @@ Prefab:
     - target: {fileID: 224584755462072304, guid: 15b5c492cfdea7746987d162c95bf0ab,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 360
+      value: 370
       objectReference: {fileID: 0}
     - target: {fileID: 224584755462072304, guid: 15b5c492cfdea7746987d162c95bf0ab,
         type: 2}

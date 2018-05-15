@@ -96,6 +96,12 @@ public class Virus : MonoBehaviour
         combo = comboManager.GetComponent<ComboScript>();
     }
 
+    void Start()
+    {
+        // オブジェクトの登録
+        WorldViewer.Register(gameObject);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -110,13 +116,10 @@ public class Virus : MonoBehaviour
 
     }
 
-    // 感染エリアに侵入した
-    void OnTriggerEnter(Collider other)
+    // 破棄時
+    void OnDestroy()
     {
-        //if (other.gameObject.tag != infectionTag) return;
-        //if (IsInfected()) return;
-        //VirusAbility virus = other.gameObject.GetComponentInParent<VirusAbility>(); // 仮
-        //Infected(virus);
+        WorldViewer.RemoveObject(gameObject);
     }
 
     public Virus GetOriginal()
@@ -387,6 +390,11 @@ public class Virus : MonoBehaviour
     [SerializeField]
     private Color m_maxInfectionColor = Color.magenta;            // 感染具合最大時のモデル色
     private float m_infectionCondition = 0;                       // ウイルスの感染具合(0.0f～1.0f)
+    public float InfectionCondition
+    {
+        get { return m_infectionCondition; }
+        set { m_infectionCondition = value; }
+    }
     private SkinnedMeshRenderer m_modelMesh;                      // モデルのSkinnedMeshRendererrコンポーネント
     private Color[] m_defaultColor;                             　// 初期マテリアル色
 
@@ -407,12 +415,6 @@ public class Virus : MonoBehaviour
             Color color = Color.Lerp(m_defaultColor[i], m_maxInfectionColor, m_infectionCondition);
             m_modelMesh.materials[i].color = color;
         }
-    }
-
-    public float InfectionCondition
-    {
-        get { return m_infectionCondition; }
-        set { m_infectionCondition = value; }
     }
 
     public void SetVirusFlag(bool flag)

@@ -20,6 +20,7 @@ public class InputFieldManager : MonoBehaviour
 
     InputField m_inputField;
 
+    //値保存用
     GameObject m_saveString;
     [SerializeField]
     private RankingManager m_rankingManager;

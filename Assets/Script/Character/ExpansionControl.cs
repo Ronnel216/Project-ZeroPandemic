@@ -18,6 +18,12 @@ public class ExpansionControl : MonoBehaviour
     [SerializeField]
     private float m_expandMaxArea = 6.0f;     // 拡張時拡張範囲
     private float m_expansionArea;            // 拡張範囲
+    public float ExpansionArea
+    {
+        get { return m_expansionArea; }
+        set { m_expansionArea = value; }
+    }
+
     [SerializeField]
     private float m_increase = 0.1f;          // 増加量
 
@@ -58,7 +64,6 @@ public class ExpansionControl : MonoBehaviour
         }
         else                               // 直径に直す 
             m_uiController.size = (m_expansionArea * 2);
-
     }
 
 
@@ -87,13 +92,5 @@ public class ExpansionControl : MonoBehaviour
     public void Shrinking()
     {
         m_expansionArea = m_defaultArea;
-    }
-
-
-
-    public float ExpansionArea
-    {
-        get { return m_expansionArea; }
-        set { m_expansionArea = value; }
     }
 }
