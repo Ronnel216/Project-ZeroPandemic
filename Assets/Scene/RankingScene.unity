@@ -382,13 +382,15 @@ MonoBehaviour:
   m_inputField: {fileID: 126970911}
   m_rankImagePrehub: {fileID: 1707334311973544, guid: 6895678381020ab429f21a746c7371cf,
     type: 2}
-  name: 
-  score: 0
-  rank_SS: {fileID: 21300000, guid: 8eb8e7ce8aff86946ac0df02598056a2, type: 3}
-  rank_S: {fileID: 21300000, guid: e3e1d4ea3a07eed4989f3d3c9c2f366b, type: 3}
-  rank_A: {fileID: 21300000, guid: 8308fded9f6a7a845891e910e0b05da5, type: 3}
-  rank_B: {fileID: 21300000, guid: 1aae473de61a90c4eadd0575326e7d40, type: 3}
-  rank_C: {fileID: 21300000, guid: 8e08c05dead157c4188743812acdf14c, type: 3}
+  m_name: 
+  m_score: 0
+  m_saveFlag: 0
+  rank:
+  - {fileID: 21300000, guid: 8eb8e7ce8aff86946ac0df02598056a2, type: 3}
+  - {fileID: 21300000, guid: e3e1d4ea3a07eed4989f3d3c9c2f366b, type: 3}
+  - {fileID: 21300000, guid: 8308fded9f6a7a845891e910e0b05da5, type: 3}
+  - {fileID: 21300000, guid: 1aae473de61a90c4eadd0575326e7d40, type: 3}
+  - {fileID: 21300000, guid: 8e08c05dead157c4188743812acdf14c, type: 3}
 --- !u!114 &127663421
 MonoBehaviour:
   m_ObjectHideFlags: 0
