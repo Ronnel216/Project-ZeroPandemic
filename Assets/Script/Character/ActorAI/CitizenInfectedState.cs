@@ -25,47 +25,54 @@ public class CitizenInfectedState : CitizenAI.State {
         // 拡張範囲の取得
         ExpansionControl expansion = data.virus.GetOriginal().GetComponent<ExpansionControl>();
 
-        if (wasInitialize == false)
+        if (wasInitialize == true)
         {
+            wasInitialize = false;
+            return;
+        }
 
-            // 感染原(プレイヤ)
-            Virus target = data.virus.GetOriginal();
-            Virus selfVirus = data.virus;
+        // 感染原(プレイヤ)
+        Virus target = data.virus.GetOriginal();
+        Virus selfVirus = data.virus;
 
-            //!　ゲームの仕様上　ターゲットが見つからないことはない
-            if (target.gameObject == null) Debug.Break();
+        //!　ゲームの仕様上　ターゲットが見つからないことはない
+        if (target.gameObject == null) Debug.Break();
 
-            Vector3 playerVec/* = target.transform.position - hogePlayer*/;
-            // 感染源の移動量
-            float x = Input.GetAxisRaw("Horizontal");
-            float z = Input.GetAxisRaw("Vertical");
-            Vector3 vec = new Vector3(x, 0, z);
-            Movement movement = target.GetComponent<Movement>();
-            if (movement == null) Debug.Break();
-            playerVec = vec.normalized * movement.GetSpeed();
+        Vector3 playerVec/* = target.transform.position - hogePlayer*/;
+        // 感染源の移動量
+        float x = Input.GetAxisRaw("Horizontal");
+        float z = Input.GetAxisRaw("Vertical");
+        Vector3 vec = new Vector3(x, 0, z);
+        Movement movement = target.GetComponent<Movement>();
+        if (movement == null) Debug.Break();
+        playerVec = vec.normalized * movement.GetSpeed();
 
-            // 拡張範囲を考慮した差
-            Vector3 offset = selfVirus.gameObject.transform.position - target.transform.position;
-            offset = playerVec;
-            offset.Normalize();
-            offset *= expansion.ExpansionArea;
+        // 拡張範囲を考慮した差
+        Vector3 offset = selfVirus.gameObject.transform.position - target.transform.position;
+        offset = playerVec;
+        offset.Normalize();
+        offset *= expansion.ExpansionArea;
 
-            Vector3 targetPos;
+        Vector3 targetPos;
 
-            // コントロールがなにもない時
-            if (offset.magnitude < Mathf.Epsilon)
-                agent.stoppingDistance = expansion.ExpansionArea;
-            else
-                agent.stoppingDistance = 0.0f;
+        // コントロールがなにもない時
+        if (offset.magnitude < Mathf.Epsilon)
+            agent.stoppingDistance = expansion.ExpansionArea;
+        else
+            agent.stoppingDistance = 0.0f;
 
+        // ウィルスコントロールをしているなら...
+        if (target.GetComponent<PlayerController>().IsAction())
+        {
+            targetPos = selfVirus.gameObject.transform.position + offset;
+        }
+        else
             targetPos = target.gameObject.transform.position + offset;
 
-            agent.SetDestination(targetPos);
-            lastTargetPos = targetPos;
-            wasInitialize = true;
 
-        }
-        else wasInitialize = false;
+        agent.SetDestination(targetPos);
+        lastTargetPos = targetPos;
+        wasInitialize = true;
         
     }
 
