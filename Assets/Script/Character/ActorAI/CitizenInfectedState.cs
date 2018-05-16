@@ -73,27 +73,27 @@ public class CitizenInfectedState : CitizenAI.State {
     {
         base.OnTriggerEnter(other, data);
 
-        // 感染者
-        if (other.tag == citizenTag)
-        {
-            // 仮 他のコライダー判定を考慮する
-            if ((other.gameObject.transform.position - data.ai.gameObject.transform.position).magnitude > 2.0f) return;
+        //// 感染者
+        //if (other.tag == citizenTag)
+        //{
+        //    // 仮 他のコライダー判定を考慮する
+        //    if ((other.gameObject.transform.position - data.ai.gameObject.transform.position).magnitude > 2.0f) return;
 
 
-            var targetAi = other.GetComponent<CitizenAI>();
-            if (targetAi == null) return;
+        //    var targetAi = other.GetComponent<CitizenAI>();
+        //    if (targetAi == null) return;
                     
-            // 拘束されていないなら拘束する
-            if (targetAi.CheckState<CitizenFriezeState>() == false)
-            {
-                data.ai.GetComponent<NavMeshAgent>().ResetPath();
-                data.catchObj = other.gameObject;
-                CitizenAI.State state = new CitizenCatchState();
-                data.ai.ChangeState(state);
+        //    // 拘束されていないなら拘束する
+        //    if (targetAi.CheckState<CitizenFriezeState>() == false)
+        //    {
+        //        data.ai.GetComponent<NavMeshAgent>().ResetPath();
+        //        data.catchObj = other.gameObject;
+        //        CitizenAI.State state = new CitizenCatchState();
+        //        data.ai.ChangeState(state);
 
-                state = new CitizenFriezeState();
-                targetAi.ChangeState(state);
-            }          
-        }
+        //        state = new CitizenFriezeState();
+        //        targetAi.ChangeState(state);
+        //    }          
+        //}
     }
 }
