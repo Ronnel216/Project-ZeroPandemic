@@ -118,7 +118,7 @@ public class RankingManager : MonoBehaviour
         List<RankingData> rankingData = new List<RankingData>(m_ranking.GetRanking());
 
 
-        if (m_rankingFlag == false)
+        if (m_rankingFlag)
         {
             if (m_drawFlag)
             {
