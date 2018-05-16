@@ -57,7 +57,7 @@ public class SaveStr : MonoBehaviour
     //!
     //! @return なし
     //----------------------------------------------------------------------
-    public void SetuserName(string name)
+    public void SetUserName(string name)
     {
         userName = name;
     }
@@ -69,7 +69,7 @@ public class SaveStr : MonoBehaviour
     //!
     //! @return なし
     //----------------------------------------------------------------------
-    public void SetresultScore(float score)
+    public void SetResultScore(float score)
     {
         resultScore = score;
     }
@@ -81,7 +81,7 @@ public class SaveStr : MonoBehaviour
     //!
     //! @return なし
     //----------------------------------------------------------------------
-    public string GetuserName()
+    public string GetUserName()
     {
         return userName;
     }
@@ -93,7 +93,7 @@ public class SaveStr : MonoBehaviour
     //!
     //! @return なし
     //----------------------------------------------------------------------
-    public float GetresultScore()
+    public float GetResultScore()
     {
         return resultScore;
     }

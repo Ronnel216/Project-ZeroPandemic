@@ -17,7 +17,9 @@ public class ComboScript : MonoBehaviour
     private static int comboNum;
 
     [SerializeField]
-    private float comboTime = 3.0f;
+    private float comboTime = 180.0f;
+
+    private float time;
 
     //----------------------------------------------------------------------
     //! @brief Startメソッド
@@ -29,7 +31,12 @@ public class ComboScript : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        comboNum = 0;
+        Initialize();
+    }
+
+    void Update()
+    {
+        ResetCombo();
     }
 
     //----------------------------------------------------------------------
@@ -40,9 +47,25 @@ public class ComboScript : MonoBehaviour
     //! @return なし
     //----------------------------------------------------------------------
     // Update is called once per frame
-    void Update ()
+    void FixedUpdate ()
     {
+        time++;
 	}
+
+    //----------------------------------------------------------------------
+    //! @brief PlusCombo
+    //!        コンボをプラスする
+    //!
+    //! @param[in] なし
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    public void Initialize()
+    {
+        comboNum = 0;
+        time = 0;
+    }
+
 
     //----------------------------------------------------------------------
     //! @brief PlusCombo
@@ -54,7 +77,26 @@ public class ComboScript : MonoBehaviour
     //----------------------------------------------------------------------
     public int PlusCombo()
     {
+        time = 0;
         return comboNum++;
+    }
+
+    //----------------------------------------------------------------------
+    //! @brief PlusCombo
+    //!        コンボをプラスする
+    //!
+    //! @param[in] なし
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    public int ResetCombo()
+    {
+        if (time >= comboTime)
+        {
+            comboNum = 0;
+            time = 0;
+        }
+        return comboNum;
     }
 
     public int GetCombo()

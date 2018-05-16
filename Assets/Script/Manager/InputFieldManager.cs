@@ -124,7 +124,7 @@ public class InputFieldManager : MonoBehaviour
         // 値をセット
         m_inputField.text = name;
 
-        m_saveString.GetComponent<SaveStr>().SetuserName(name);
+        m_saveString.GetComponent<SaveStr>().SetUserName(name);
 
         m_rankingManager.SetRankingFlag(true);
 
