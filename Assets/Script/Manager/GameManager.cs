@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     SaveStr saveStr;
 
+    public ComboScript comboScript;                                   // コンボスクリプト
+
     static public Virus[] citizen; // 仮
 
     // スコア
@@ -95,13 +97,14 @@ public class GameManager : MonoBehaviour {
         if (stageMnager.AllClear)
         {
             score = GetClearTime();
-            saveStr.SetresultScore(score);
+            saveStr.SetResultScore(score);
             UnityEngine.SceneManagement.SceneManager.LoadScene("RankingScene");
         }
         if (isClear)
         {
             infectedNum = 0;
             pandemicFlag = false;
+            comboScript.Initialize();
         }
 
         // クリア前の処理
@@ -121,7 +124,7 @@ public class GameManager : MonoBehaviour {
         if (time == 0.0f)
         {
             score = 0;
-            saveStr.SetresultScore(score);
+            saveStr.SetResultScore(score);
             UnityEngine.SceneManagement.SceneManager.LoadScene("RankingScene");
         }
         //if (time == 0.0f)
@@ -143,12 +146,13 @@ public class GameManager : MonoBehaviour {
     {
         playerVirus.Infected(null);
         isStartPandemic = true;
+        comboScript.Initialize();
     }
 
     public void GameOver()
     {
         score = 0;
-        saveStr.SetresultScore(score);
+        saveStr.SetResultScore(score);
         UnityEngine.SceneManagement.SceneManager.LoadScene("RankingScene");
 
     }

@@ -181,7 +181,9 @@ public class Virus : MonoBehaviour
 
         //Debug.Log(gameObject.name + " : Infected");
 
-        StartCoroutine(combo.ComboCoroutine());
+        //combo.ResetCombo();
+
+        //StartCoroutine(combo.ComboCoroutine());
 
     }
 

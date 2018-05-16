@@ -30,6 +30,7 @@ public class StageManager : MonoBehaviour {
     private GameObject m_nowStage;                                  // 現在のステージ
     private GameObject m_nextStage;                                 // 次のステージ
 
+
     private int m_stageNum = 0;                                     // 現在のステージ番号
     public int StageNum
     {

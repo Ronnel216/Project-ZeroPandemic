@@ -39,8 +39,8 @@ public class HunterCaptureState : HunterController.HunterState {
         m_playerMove.LockMove = true;
 
         // 1フレーム分の減少
-        m_virusAmount.DecreaseVirusAmout(m_decreaseAmount * Time.deltaTime);
-        m_virusAmount.DecreaseMaxVirusAmout(m_decreaseMaxAmount * Time.deltaTime);
+        m_virusAmount.DecreaseVirusAmount(m_decreaseAmount * Time.deltaTime);
+        m_virusAmount.DecreaseMaxVirusAmount(m_decreaseMaxAmount * Time.deltaTime);
 
         // ウィルスを減少しきったら解放
         if (m_virusAmount.GetVirusAmount() <= 0)
