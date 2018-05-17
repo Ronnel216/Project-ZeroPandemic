@@ -5,33 +5,42 @@ using UnityEngine.UI;
 
 public class PlayScreenControl : MonoBehaviour {
 
+    //========画面内のUIテキスト========
+    // 制限時間
     public Text timeLimitText;
+    // ステージ名
     public Text stageText;
-    public Text survivorText;
+    // 市民の数
+    public Text actorText;
+    // 感染者の数
     public Text infectedText;
-    public Text ComboText;
+    // コンボ数
+    public Text CombText;
+    // 感染率
     public Text RateText;
+    //==================================
 
-    //public Image infectedImage;
 
     public GameManager GameManagerScript;
     public ComboScript combCount;
-    GameObject[] tagObjects;
 
-    int targetPerson = 16;
-    int remainsPerson = 15;
-    int stageNum = 1;
+    //現在のステージ番号
+    int nowStageNum = 1;
+    //市民の数
+    int remainsPerson;
+    //コンボ数
     int combNum;
+    //感染率
     float rateinfected = 0.0f;
+    //制限時間
     float time;
-    float accelNum;
+    //ゲームが終了しているか？
     bool isSetGame;
     // Use this for initialization
     void Start () {
         time = GameManagerScript.GetTimeLimit();
         isSetGame = GameManagerScript.GetStartPandemic();
-        //gaugeNum = 1 / (60.0f * 60.0f);
-
+        remainsPerson = GameManagerScript.GetActorNum();
     }
 
     // Update is called once per frame
@@ -41,17 +50,9 @@ public class PlayScreenControl : MonoBehaviour {
         rateinfected = (float)GameManager.infectedNum / (float)(remainsPerson + GameManager.infectedNum)* 100.0f;
         if (isSetGame)
         {
-            remainsPerson = Check("Actor");
+            remainsPerson = CheckObject("Actor");
             ReceiveValue();
             ScreenText();
-            //infectedImage.color = Color.magenta;
-            //infectedImage.fillAmount = GameManagerScript.GetTimeLimitStep();
-
-            //if (accelNum > 1)
-            //    infectedImage.color = Color.red;
-
-            //if (infectedImage.fillAmount <= 0 || time <= 0)
-            //    infectedImage.fillAmount = 0;
         }
         else
         {
@@ -60,29 +61,30 @@ public class PlayScreenControl : MonoBehaviour {
 
     }
     //シーン上の指定したタグが付いたオブジェクトを数える
-    public int Check(string tagname)
+    public int CheckObject(string tagname)
     {
+        GameObject[] tagObjects;
+
         tagObjects = GameObject.FindGameObjectsWithTag(tagname);
         return tagObjects.Length;
     }
     //ScrenUIのテキストに代入
     public void ScreenText()
     {
-        stageText.text = "ステージ" + stageNum;
-        survivorText.text = remainsPerson.ToString();
+        stageText.text = "ステージ" + nowStageNum.ToString();
+        actorText.text = remainsPerson.ToString();
         infectedText.text = GameManager.infectedNum.ToString();
-        ComboText.text = combNum.ToString() + "コンボ";
+        CombText.text = combNum.ToString() + "コンボ";
         RateText.text = rateinfected.ToString("N0") + "%";
     }
     //他スクリプトから値を受け取る
     public void ReceiveValue()
     {
-        accelNum = GameManagerScript.GetAccelRate();
         combNum = combCount.GetCombo();
     }
 
     public void SetStageNum(int stagenum)
     {
-        stageNum = stagenum;
+        nowStageNum = stagenum;
     }
 }

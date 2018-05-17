@@ -55,6 +55,7 @@ public class Virus : MonoBehaviour
     [SerializeField]
     AudioClip infectedSE;
 
+    //感染時のエフェクト
     [SerializeField]
     GameObject birthEffect;
 
@@ -177,6 +178,7 @@ public class Virus : MonoBehaviour
         }
 
         audio.PlayOneShot(infectedSE);
+        //感染時にエフェクトを発生させる
         birthEffect = Instantiate(birthEffect, gameObject.transform);
 
         //Debug.Log(gameObject.name + " : Infected");

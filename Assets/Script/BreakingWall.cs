@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BreakingWall : MonoBehaviour {
-
+    //タグ名
     public string tagName;
+    //衝突しているか
     bool hit;
+    //壁のY座標
     float wallPosY;
+    //終点
     float endPos;
 	// Use this for initialization
 	void Start () {
@@ -39,7 +42,7 @@ public class BreakingWall : MonoBehaviour {
     {
         GameObject.Destroy(this.gameObject);
     }
-    //とりあえず地面に潜る
+    //地面に潜る(仮)
     public void WallAction()
     {
         if (hit)
