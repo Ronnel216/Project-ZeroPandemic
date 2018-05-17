@@ -15,7 +15,6 @@ public class ReturnCharacter : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         parentObj = transform.root.gameObject;
-        Debug.Log(parentObj);
     }
 	
 	// Update is called once per frame

@@ -11,9 +11,10 @@ public class PandemicState : CitizenAI.State
     {
 
         NavMeshAgent agent = data.ai.GetComponent<NavMeshAgent>();
-
+        //移動速度＊5
         agent.speed = moveSpeed * 5.0f;
         GameObject ai;
+        //感染者が市民をターゲットする
         if (targetObj == null || targetObj.tag == "InfectedActor")
         {
             ai = GameObject.Find("AIManger");

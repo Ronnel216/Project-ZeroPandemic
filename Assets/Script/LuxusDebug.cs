@@ -34,12 +34,4 @@ public class LuxusDebug : MonoBehaviour
         m_view = false;
     }
 
-    //private void DeleteDebug(GameObject[] infectedPerson)
-    //{
-    //    foreach (GameObject obj in infectedPerson)
-    //    {
-    //        Transform thisObj = obj.transform.Find(m_areaDebugObj.name + "(Clone)");
-    //        if (thisObj) Destroy(thisObj.gameObject);
-    //    }
-    //}
 }

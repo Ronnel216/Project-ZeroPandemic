@@ -113,7 +113,6 @@ public class GameManager : MonoBehaviour {
         time -= Time.deltaTime;// * acceleratorRate;
         if (time < 0.0f) time = 0.0f;
 
-        //Debug.Log((float)infectedNum / actorNum * 100.0f);
 
         //感染率が80%以上ならパンデミック開始
         if(!pandemicFlag)
@@ -206,6 +205,12 @@ public class GameManager : MonoBehaviour {
     {
         return isClear;
     }
+    //市民の数を取得
+    public int GetActorNum()
+    {
+        return actorNum;
+    }
+
     // privateメソッド //
 
     // ゲームが終了した時
