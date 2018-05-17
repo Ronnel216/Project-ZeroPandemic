@@ -542,6 +542,21 @@ Prefab:
       propertyPath: recoveryAmount
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114618540351524782, guid: 2a045f657570f2f40bca0a9bd591ce2f,
+        type: 2}
+      propertyPath: comboScript
+      value: 
+      objectReference: {fileID: 50404822}
+    - target: {fileID: 114618540351524782, guid: 2a045f657570f2f40bca0a9bd591ce2f,
+        type: 2}
+      propertyPath: maximumValue
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114618540351524782, guid: 2a045f657570f2f40bca0a9bd591ce2f,
+        type: 2}
+      propertyPath: comboCount
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2a045f657570f2f40bca0a9bd591ce2f, type: 2}
   m_IsPrefabParent: 0
@@ -1898,6 +1913,11 @@ Prefab:
       propertyPath: perdemic
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 114253263942025688, guid: 51e4fb4595857564daee6492936dadf7,
+        type: 2}
+      propertyPath: comboScript
+      value: 
+      objectReference: {fileID: 50404822}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51e4fb4595857564daee6492936dadf7, type: 2}
   m_IsPrefabParent: 0
