@@ -147,7 +147,7 @@ public class InputFieldManager : MonoBehaviour
         {
             for (int j = 0; j < 2; j++)
             {
-                if (text == csvDatas[i][j])
+                if (text.Contains(csvDatas[i][j]))
                 {
                     return true;
                 }

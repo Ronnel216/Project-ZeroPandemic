@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class PlayScreenControl : MonoBehaviour {
 
     public Text timeLimitText;
+    public Text stageText;
     public Text survivorText;
     public Text infectedText;
-    public Text CombText;
+    public Text ComboText;
     public Text RateText;
 
     //public Image infectedImage;
@@ -19,6 +20,7 @@ public class PlayScreenControl : MonoBehaviour {
 
     int targetPerson = 16;
     int remainsPerson = 15;
+    int stageNum = 1;
     int combNum;
     float rateinfected = 0.0f;
     float time;
@@ -66,9 +68,10 @@ public class PlayScreenControl : MonoBehaviour {
     //ScrenUIのテキストに代入
     public void ScreenText()
     {
+        stageText.text = "ステージ" + stageNum;
         survivorText.text = remainsPerson.ToString();
         infectedText.text = GameManager.infectedNum.ToString();
-        CombText.text = combNum.ToString() + "コンボ";
+        ComboText.text = combNum.ToString() + "コンボ";
         RateText.text = rateinfected.ToString("N0") + "%";
     }
     //他スクリプトから値を受け取る
@@ -76,5 +79,10 @@ public class PlayScreenControl : MonoBehaviour {
     {
         accelNum = GameManagerScript.GetAccelRate();
         combNum = combCount.GetCombo();
+    }
+
+    public void SetStageNum(int stagenum)
+    {
+        stageNum = stagenum;
     }
 }
