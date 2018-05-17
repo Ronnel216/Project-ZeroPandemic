@@ -22,7 +22,7 @@ public class RankingManager : MonoBehaviour
     [SerializeField]
     private InputField m_input;                 // インプットフィールド
     [SerializeField]
-    private GameObject m_inputField;            // 
+    private GameObject m_inputField;            // インプットフィールドオブジェクト
     [SerializeField]
     private GameObject m_rankImagePrehub;       // ランキングイメージPrefab
 
@@ -34,11 +34,20 @@ public class RankingManager : MonoBehaviour
     [SerializeField]
     private bool m_saveFlag;                    // デバック用セーブフラグ
 
-    //各ランキング用スプライト
-    
-
+    //各ランキング用スプライト   
     [SerializeField]
     private Sprite[] rank;
+
+    // スコア基準表
+    [SerializeField]
+    List<float> ScoreLevels = new List<float>
+        {
+            40,
+            30,
+            20,
+            10,
+        };
+
 
     private QuickRanking m_ranking;             // ランキング
     private SaveStr m_sv;                       // テキスト保存スクリプト
@@ -117,31 +126,39 @@ public class RankingManager : MonoBehaviour
         //動的にランキングデータの取得
         List<RankingData> rankingData = new List<RankingData>(m_ranking.GetRanking());
 
-
-        if (m_rankingFlag)
-        {
-            if (m_drawFlag)
-            {
-                m_name = m_sv.GetUserName();
-                m_score = m_sv.GetResultScore();
-                CheckSaveRank(m_name, m_score);
-                DrawRanking();
-                m_drawFlag = false; 
-            }
-
-
-            if (rankingData.Count >= m_ranking.count)
-            {
-                RankObjSetting(rankingData);
-            }
-
-        }
-        else
+        // ランキングにデータが載るか確認する
+        if (m_rankingFlag == false)
         {
             CheckTopRank(rankingData);
+            return;
         }
+
+        // ランキングにデータを登録する
+        if (m_drawFlag)
+        {
+            m_name = m_sv.GetUserName();
+            m_score = m_sv.GetResultScore();
+            CheckSaveRank(m_name, m_score);
+            DrawRanking();
+            m_drawFlag = false; 
+        }
+
+
+        if (rankingData.Count >= m_ranking.count)
+        {
+            RankObjSetting(rankingData);
+        }
+
+
     }
 
+    //----------------------------------------------------------------------
+　　//! @brief でばっく用　ランキングを保存するかの判断
+　　//!
+　　//! @param[in] なし
+　　//!
+　　//! @return なし
+　　//----------------------------------------------------------------------
     void CheckSaveRank(string name, float score)
     {
         if(m_saveFlag)
@@ -150,6 +167,13 @@ public class RankingManager : MonoBehaviour
         }
     }
 
+    //----------------------------------------------------------------------
+　　//! @brief ランキングオブジェクトを設定する処理
+　　//!
+　　//! @param[in] ランキングデータ配列
+　　//!
+　　//! @return なし
+　　//----------------------------------------------------------------------
     void RankObjSetting(List<RankingData> rankingdata)
     {
         for (int i = 0; i < m_ranking.count; i++)
@@ -163,31 +187,42 @@ public class RankingManager : MonoBehaviour
             text = rankingdata[i].score.ToString("F");
             m_scoreText[i].GetComponent<Text>().text = text;
 
-            if (rankingdata[i].score >= 40)
-            {
-                m_rankImage[i].GetComponent<Image>().sprite = rank[0];
-            }
-            else if (rankingdata[i].score >= 30)
-            {
-                m_rankImage[i].GetComponent<Image>().sprite = rank[1];
-            }
-            else if (rankingdata[i].score >= 20)
-            {
-                m_rankImage[i].GetComponent<Image>().sprite = rank[2];
-            }
-            else if (rankingdata[i].score >= 10)
-            {
-                m_rankImage[i].GetComponent<Image>().sprite = rank[3];
-            }
-            else if (rankingdata[i].score >= 0)
-            {
-                m_rankImage[i].GetComponent<Image>().sprite = rank[4];
-            }
+            m_rankImage[i].GetComponent<Image>().sprite =
+                GetRankingSprite(rankingdata[i].score);
+
             if (drawRanking == 0)
                 drawRanking = 1;
         }
     }
 
+    //----------------------------------------------------------------------
+　　//! @brief ランキングの画像取得処理
+　　//!
+　　//! @param[in] スコア
+　　//!
+　　//! @return なし
+　　//----------------------------------------------------------------------
+    Sprite GetRankingSprite(float score)
+    {
+        // スコアの評価を判定する
+        int i = 0;
+        while (i < ScoreLevels.Count)
+        {
+            if (score >= ScoreLevels[i])
+                return rank[i];
+            i++;
+        }                
+        return rank[i];
+
+    }
+
+    //----------------------------------------------------------------------
+　　//! @brief ランキング上位に入っているかの判断
+　　//!
+　　//! @param[in] ランキングデータ配列
+　　//!
+　　//! @return なし
+　　//----------------------------------------------------------------------
     void CheckTopRank(List<RankingData> rankingdata)
     {
         if (rankingdata.Count >= m_ranking.count)
@@ -215,34 +250,47 @@ public class RankingManager : MonoBehaviour
         // スコアテキストの生成 =========================================================-
         for (int i = 0; i < m_ranking.count; i++)
         {
-            GameObject tmpObj = Instantiate(m_scoreTextPrehub);
-            tmpObj.transform.parent = m_canvas.transform;
-            tmpObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-            tmpObj.transform.localPosition = new Vector3(100, i * -150 + 200, 0);
-
-            m_rankText.Add(tmpObj);
-
-            tmpObj = Instantiate(m_scoreTextPrehub);
-            tmpObj.transform.parent = m_canvas.transform;
-            tmpObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-            tmpObj.transform.localPosition = new Vector3(500, i * -150 + 200, 0);
-
-            m_nameText.Add(tmpObj);
-
-            tmpObj = Instantiate(m_scoreTextPrehub);
-            tmpObj.transform.parent = m_canvas.transform;
-            tmpObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-            tmpObj.transform.localPosition = new Vector3(1000, i * -150 + 200, 0);
-
-            m_scoreText.Add(tmpObj);
-
-            tmpObj = Instantiate(m_rankImagePrehub);
-            tmpObj.transform.parent = m_canvas.transform;
-            tmpObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-            tmpObj.transform.localPosition = new Vector3(-200, i * -155 + 250, 0);
-
-            m_rankImage.Add(tmpObj);
+            AddScoreText(i);
         }
+    }
+
+    //----------------------------------------------------------------------
+    //! @brief テキスト、イメ―ジ生成
+    //!
+    //! @param[in] ランキングの添え字
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    void AddScoreText(int index)
+    {
+        GameObject tmpObj = Instantiate(m_scoreTextPrehub);
+        tmpObj.transform.parent = m_canvas.transform;
+        tmpObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        tmpObj.transform.localPosition = new Vector3(100, index * -150 + 200, 0);
+
+        m_rankText.Add(tmpObj);
+
+        tmpObj = Instantiate(m_scoreTextPrehub);
+        tmpObj.transform.parent = m_canvas.transform;
+        tmpObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        tmpObj.transform.localPosition = new Vector3(500, index * -150 + 200, 0);
+
+        m_nameText.Add(tmpObj);
+
+        tmpObj = Instantiate(m_scoreTextPrehub);
+        tmpObj.transform.parent = m_canvas.transform;
+        tmpObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        tmpObj.transform.localPosition = new Vector3(1000, index * -150 + 200, 0);
+
+        m_scoreText.Add(tmpObj);
+
+        tmpObj = Instantiate(m_rankImagePrehub);
+        tmpObj.transform.parent = m_canvas.transform;
+        tmpObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        tmpObj.transform.localPosition = new Vector3(-200, index * -155 + 250, 0);
+
+        m_rankImage.Add(tmpObj);
+
     }
 
     //----------------------------------------------------------------------
@@ -260,9 +308,7 @@ public class RankingManager : MonoBehaviour
                 m_input.enabled = true;
             }
             else 
-            {
                 m_rankingFlag = true;
-            }
     }
 
     //----------------------------------------------------------------------
