@@ -21,6 +21,8 @@ public class HunterController : MonoBehaviour {
         public abstract void Enter(HunterController hunter);
         // 更新処理
         public abstract void Update(HunterController hunter);
+        // ヒット判定
+        public virtual void OnTriggerStay(Collider other, HunterController hunter) { }
     }
 
     HunterState m_state;                            // 現在の行動状態
@@ -70,6 +72,9 @@ public class HunterController : MonoBehaviour {
         get { return m_coolTime; }
     }
 
+    [SerializeField]
+    private float m_downSpeed = 5.0f;               // 速度減少
+
 
     //----------------------------------------------------------------------
     //! @brief 初期化処理
@@ -107,11 +112,13 @@ public class HunterController : MonoBehaviour {
             m_state.Enter(this);
         }
 
-        // ゾンビによる拘束
+        float speed = m_defaultSpeed;
+
+        // 拘束されていたら速度を落とす
         if (m_zombieNum >= m_restraintNum)
-            m_navMeshAgent.speed = m_defaultSpeed / 5.0f;
-        else
-            m_navMeshAgent.speed = m_defaultSpeed;
+            speed /= m_downSpeed;
+        // 速度代入
+        m_navMeshAgent.speed = speed;
 
         m_zombieNum = 0;
 
@@ -146,12 +153,7 @@ public class HunterController : MonoBehaviour {
     {
         GameObject hitObj = other.gameObject;
 
-        if (hitObj.name == "Player")
-        {
-            // 追いかけ状態だったら捕獲
-            if (m_state.GetType() == typeof(HunterChaseState))
-                ChangeState(new HunterCaptureState());
-        }
+        m_state.OnTriggerStay(other, this);
 
         // 触れたのがゾンビだったらカウント
         if (hitObj.name != "Player" && hitObj.tag == "InfectedActor")
