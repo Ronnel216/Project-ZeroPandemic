@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// このスクリプトはレビュー外
+
 public class CrazySkill : Skill {
 
     float radian;

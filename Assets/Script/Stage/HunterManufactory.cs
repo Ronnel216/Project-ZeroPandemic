@@ -27,7 +27,7 @@ public class HunterManufactory : MonoBehaviour {
         set { m_manufactureNum = value; }
     }
     [SerializeField]
-    private float m_factoryRange = -1.0f;       // 製作所の範囲
+    private float m_factoryRange = 0;           // 製作所の範囲
     public float FactoryRange
     {
         get { return m_factoryRange; }
@@ -44,13 +44,7 @@ public class HunterManufactory : MonoBehaviour {
     //----------------------------------------------------------------------
     void Start ()
     {
-        // 初期値がデフォルトの場合オブジェクトスケールから計算する(Navmeshの幅分プラス)
-        if (m_factoryRange <= -1.0f)
-        {
-            float size = Mathf.Max(transform.localScale.x, transform.localScale.z);
-            size = size * Mathf.Sqrt(2);
-            m_factoryRange = size + 0.5f;
-        }
+
 	}
 
 
@@ -88,7 +82,11 @@ public class HunterManufactory : MonoBehaviour {
     {
         // ハンター放出
         Vector3 thisPos = this.transform.position;
-        Vector3 pos = new Vector3(thisPos.x, thisPos.y, thisPos.z + m_factoryRange / 2);
+
+        // 出現位置
+        float spawnOffset = thisPos.z + m_factoryRange / 2;
+        
+        Vector3 pos = new Vector3(thisPos.x, thisPos.y, spawnOffset);
         Instantiate(m_hunter, pos,Quaternion.identity);
         m_completion = true;
     }

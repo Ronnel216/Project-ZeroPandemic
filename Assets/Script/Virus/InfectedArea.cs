@@ -14,6 +14,8 @@ public class InfectedArea : MonoBehaviour {
 	void Start () {
         virus = GetComponentInParent<Virus>();
         virusAbility = GetComponentInParent<VirusAbility>();
+
+        // アタッチしていない場合に落とす
         if (virusAbility == null) Debug.Break();
 	}
 	
@@ -50,30 +52,19 @@ public class InfectedArea : MonoBehaviour {
         }
     }
 
-    //private void OnTriggerStay(Collider other)
-    //{
-    //    // 感染対象のウィルスを確認
-    //    Virus virus = other.gameObject.GetComponent<Virus>();
-    //    if (virus == null) return;
-    //    if (virus.IsInfected() == true) return;
-
-    //    if (!virus.GetvirusFlag())
-    //    {
-    //        virus.SetVirusFlag(true);
-    //    }
-    //}
-
     private void OnTriggerExit(Collider other)
     {
         // 感染対象のウィルスを確認
         Virus virus = other.gameObject.GetComponent<Virus>();
-        if (virus == null) return;
-        //if (virus.IsInfected() == true) return;
 
-        if (virus.GetvirusFlag())
-        {
-            virus.SetVirusFlag(false);
-        }
+        // ウィルス感染可能な対象を感染させる
+        if (virus == null) return;
+
+        //// 
+        //if (virus.GetvirusFlag())
+        //{
+        //    virus.SetVirusFlag(false);
+        //}
     }
 
     private void Infected()
