@@ -4,9 +4,6 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class CitizenNormalState : CitizenAI.State {
-
-    //bool upNodeIndex = true;
-    //int nodeIndex = 0;
     float stayTime = 0.0f;
     float moveTime = 0.0f;
     Vector3 moveDirection;
@@ -20,64 +17,6 @@ public class CitizenNormalState : CitizenAI.State {
 
     public override void Excute(StateData data)
     {
-        //NavMeshAgent agent = data.ai.GetComponent<NavMeshAgent>();
-
-        //// 感染後は動かない
-        //if (data.virus.IsInfected())
-        //{
-        //    agent.isStopped = true;
-        //    return;
-        //}
-
-        //// 参照
-        //AIRouteNode.Node[] nodes = data.nodes;
-
-        //// ルートが設定されていない
-        //if (nodes.Length == 0) return;        
-
-        //if (nodes.Length < 2)
-        //{
-        //    Debug.Log("ノード一つでどう動けと？");
-        //    Debug.Break();
-        //}
-
-        //// 目的地にノードを設定する       
-        //agent.SetDestination(nodes[nodeIndex].postion);
-
-        //// 目標のノードにたどり着いたか
-        //float sameLavel = Mathf.Epsilon + 0.1f;
-        //if ((nodes[nodeIndex].postion - data.ai.gameObject.transform.position).sqrMagnitude > sameLavel)
-        //{
-        //    // 次のノードへの移動準備が出来ていない
-        //    if (stayTime > 0.0f)
-        //    {
-        //        stayTime -= Time.deltaTime;
-        //        stayTime = Mathf.Max(0.0f, stayTime);
-        //        return;
-        //    }
-        //    return;
-        //}
-
-        //// 次のノードを設定する       
-
-        //// ノードインデックスの進行方向を決める
-        //if (upNodeIndex)
-        //{
-        //    if (nodes.Length <= nodeIndex + 1)
-        //        upNodeIndex = false;
-        //}
-        //else
-        //{
-        //    if (0 > nodeIndex - 1)
-        //        upNodeIndex = true;
-        //}
-
-        //// ノードを進める
-        //if (upNodeIndex) nodeIndex++;
-        //else nodeIndex--;
-
-        //// 待機時間を設定する
-        //stayTime = nodes[nodeIndex].stayTime;
 
         data.viewer.Target("InfectedActor");
         if (data.virus.IsInfected())

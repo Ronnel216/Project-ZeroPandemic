@@ -45,12 +45,14 @@ public class VirusAbility : MonoBehaviour {
         }
     }
 
+    // 能力をコピーする
     public void Copy(VirusAbility virus)
     {
         virus.bounsStatus = bounsStatus;
         virus.skills = skills;
     }
     
+    // スキルを加える
     public void AddSkill(Skill skill)
     {
         bounsStatus.Plus(skill.status.bouns);

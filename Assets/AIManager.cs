@@ -36,37 +36,6 @@ public class AIManager : MonoBehaviour {
         m_zombies = GameObject.FindGameObjectsWithTag("InfectedActor");
     }
 
-    // アクターの追加
-    public void Register(GameObject actor)
-    {
-        if (infectedActors.Find(x => x.actor == actor).actor) return;
-        var temp = new InfectedActor();
-        temp.actor = actor;
-        temp.target = new Vector3();
-        infectedActors.Add(temp);
-    }
-
-    // アクターの登録の解消
-    public void Remove(GameObject actor)
-    {
-        var removeData = infectedActors.FindIndex(x => x.actor == actor);
-        if (removeData >= 0)
-            infectedActors.RemoveAt(removeData);
-    }
-
-    // 感染者の目標座標を取得する
-    public Vector3 GetInfectedActorTarget(GameObject actor)
-    {
-        InfectedActor temp = infectedActors.Find(x => x.actor == actor);
-        if (temp.actor)
-        {
-            return temp.target;
-        }
-
-        Debug.Break();
-        return new Vector3();
-    }
-
     public static GameObject GetCloseManufactory(Vector3 pos, float radius = -0.1f)
     {
         m_hunterManufactorys = GameObject.FindGameObjectsWithTag("HunterManufactory");
