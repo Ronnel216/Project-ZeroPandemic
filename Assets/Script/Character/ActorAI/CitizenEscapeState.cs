@@ -38,9 +38,9 @@ public class CitizenEsacapeState : CitizenAI.State
 
     private void Escape(StateData data)
     {
-        // ナビゲーション対象のエージェント
-        NavMeshAgent agent = data.ai.GetComponent<NavMeshAgent>();
-        agent.speed = moveSpeed;
+        // 移動コンポーネント
+        Movement movement = data.movement;
+        movement.SetSpeed(moveSpeed);
 
         // ターゲットの取得
         GameObject target = data.viewer.GetClose();
@@ -58,7 +58,7 @@ public class CitizenEsacapeState : CitizenAI.State
         }
 
         // 目的地の設定
-        agent.SetDestination(destination);
+        movement.SetDestination(destination);
 
     }
 }

@@ -30,7 +30,10 @@ public class Movement : MonoBehaviour {
     private Rigidbody m_rigidBody;              // 物理
 
     private NavMeshAgent m_navMeshAgent = null; // ナビメッシュ
-
+    public NavMeshAgent NavMeshAgent
+    {
+        get { return m_navMeshAgent; }
+    }
     //----------------------------------------------------------------------
     //! @brief 初期化処理
     //!
