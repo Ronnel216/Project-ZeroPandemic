@@ -33,4 +33,13 @@ public class HunterChaseState : HunterController.HunterState
             hunter.NavMeshAgent.SetDestination(hunter.Player.transform.position);
         }
     }
+
+    public override void OnTriggerStay(Collider other, HunterController hunter)
+    {
+        GameObject hitObj = other.gameObject;
+
+        // 追いかけ状態だったら捕獲
+        if (hitObj.name == "Player")
+            hunter.ChangeState(new HunterCaptureState());
+    }
 }
