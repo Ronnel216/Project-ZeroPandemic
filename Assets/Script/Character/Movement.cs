@@ -10,6 +10,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Movement : MonoBehaviour {
 
@@ -28,6 +29,8 @@ public class Movement : MonoBehaviour {
 
     private Rigidbody m_rigidBody;              // 物理
 
+    private NavMeshAgent m_navMeshAgent = null; // ナビメッシュ
+
     //----------------------------------------------------------------------
     //! @brief 初期化処理
     //!
@@ -39,7 +42,10 @@ public class Movement : MonoBehaviour {
     {
         // コンポーネントの取得
         m_rigidBody = GetComponent<Rigidbody>();
-	}
+
+        // ナビメッシュ取得(持ってない場合あり)
+        m_navMeshAgent = GetComponent<NavMeshAgent>();
+    }
 
 
 
@@ -54,7 +60,20 @@ public class Movement : MonoBehaviour {
     {
         // ロック時移動できない
         if (m_lockMove)
+        {
+            // 移動速度を消去
             m_rigidBody.velocity = Vector3.zero;
+            // NavMeshを止める
+            SetIsStopped(true);
+        }
+        else
+        {
+            // NavMeshを動かす
+            SetIsStopped(false);
+        }
+        // 速度の反映
+        if (m_navMeshAgent)
+            m_navMeshAgent.speed = m_speed;
 	}
 
 
@@ -106,6 +125,64 @@ public class Movement : MonoBehaviour {
     }
 
 
+
+    //----------------------------------------------------------------------
+    //! @brief 目的地の設定
+    //!
+    //! @param[in] 目的地座標 
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    public void SetDestination(Vector3 pos)
+    {
+        if (m_navMeshAgent)
+            m_navMeshAgent.SetDestination(pos);
+    }
+
+
+
+    //----------------------------------------------------------------------
+    //! @brief ナビメッシュ移動を止めるか
+    //!
+    //! @param[in] true:動かす false:止める 
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    public void SetIsStopped(bool isStop)
+    {
+        if (m_navMeshAgent)
+            m_navMeshAgent.isStopped = isStop;
+    }
+
+
+
+    //----------------------------------------------------------------------
+    //! @brief 目的地の削除
+    //!
+    //! @param[in] なし 
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    public void ResetPath()
+    {
+        if (m_navMeshAgent)
+            m_navMeshAgent.ResetPath();
+    }
+
+
+
+    //----------------------------------------------------------------------
+    //! @brief ナビメッシュの使用切り替え
+    //!
+    //! @param[in] true:使用 false:不使用 
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    public void SetUseNavMesh(bool useNavMesh)
+    {
+        if (m_navMeshAgent)
+            m_navMeshAgent.enabled = useNavMesh;
+    }
 
     // Get ========================================================================
     public float GetSpeed() { return m_speed; }
