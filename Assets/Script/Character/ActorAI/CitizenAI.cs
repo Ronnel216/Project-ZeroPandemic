@@ -4,29 +4,42 @@ using UnityEngine;
 
 public class CitizenAI : MonoBehaviour {
 
+    // ステイトベース
     public abstract class State
     {
+        // ステイトへ渡すデータ
         [System.Serializable]
         public class StateData
         {
+            // AI
             public CitizenAI ai;
-            public GameObject catchObj;
-            public AIRouteNode.Node[] nodes;
+            // ウィルス
             public Virus virus;
+            // 視野
             public Viewer viewer;
+            // 移動
             public Movement movement;
+            // 捕獲しているオブジェクト
+            public GameObject catchObj;
+            //// 移動ノード
+            //public AIRouteNode.Node[] nodes;
         }
 
+        // 状態のUpdate
         public abstract void Excute(StateData data);
 
+        // 状態のあたり判定
         public virtual void OnTriggerEnter(Collider other, StateData data) { }
     }
 
-    State state;
-    State nextState;
+    // ステイトデータ
     [SerializeField]
     State.StateData stateData;
-
+    // ステイト
+    State state;
+    State nextState;
+    
+    // 移動ノード
     [SerializeField]
     GameObject[] routeNode;
 

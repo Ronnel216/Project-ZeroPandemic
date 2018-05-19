@@ -7,14 +7,9 @@ public class CitizenEsacapeState : CitizenAI.State
 {
     float moveSpeed = 10.0f;
     float viewRange = 10.0f;
-    //// 仮
-    //Vector3[,] field;
-    //const int cellNum = 4;
-    //const float cellSize = 30 / cellNum;
+
     public CitizenEsacapeState()
     {
-        //// 仮のフィールド生成
-        //field = new Vector3[cellNum, cellNum];
 
     }
 
@@ -47,9 +42,11 @@ public class CitizenEsacapeState : CitizenAI.State
         NavMeshAgent agent = data.ai.GetComponent<NavMeshAgent>();
         agent.speed = moveSpeed;
 
+        // ターゲットの取得
         GameObject target = data.viewer.GetClose();
         if (target == null) return;
 
+        // 逃げる位置を求める（仮）
         Vector3 moveVec = (data.ai.gameObject.transform.position - target.transform.position).normalized;
         Vector3 destination = data.ai.gameObject.transform.position + moveVec;
         Vector3 localDestination = destination - data.ai.gameObject.transform.parent.position;
@@ -59,10 +56,9 @@ public class CitizenEsacapeState : CitizenAI.State
         {
             destination = localDestination.normalized + data.ai.gameObject.transform.parent.position * stageSizeHoge;
         }
+
+        // 目的地の設定
         agent.SetDestination(destination);
-        //moveVec *= 0.05f;
-        //moveVec = new Vector3(moveVec.x, 0.0f, moveVec.z);
-        //data.movement.Move(moveVec);
 
     }
 }

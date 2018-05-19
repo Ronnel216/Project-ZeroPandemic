@@ -4,17 +4,12 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class CitizenInfectedState : CitizenAI.State {
-  
-    [SerializeField]
-    static private float angle;
-    bool wasInitialize = false;
+
     float moveSpeed = 20.0f;
 
     const string citizenTag = "Actor";
 
     Vector3 lastTargetPos;
-
-    //Vector3 hogePlayer;
 
     public override void Excute(StateData data)
     {
@@ -24,13 +19,7 @@ public class CitizenInfectedState : CitizenAI.State {
         agent.speed = moveSpeed;
         // 拡張範囲の取得
         ExpansionControl expansion = data.virus.GetOriginal().GetComponent<ExpansionControl>();
-
-        if (wasInitialize == true)
-        {
-            wasInitialize = false;
-            return;
-        }
-
+        
         // 感染原(プレイヤ)
         Virus target = data.virus.GetOriginal();
         Virus selfVirus = data.virus;
@@ -71,9 +60,7 @@ public class CitizenInfectedState : CitizenAI.State {
 
 
         agent.SetDestination(targetPos);
-        lastTargetPos = targetPos;
-        wasInitialize = true;
-        
+        lastTargetPos = targetPos;        
     }
 
     public override void OnTriggerEnter(Collider other, StateData data)
