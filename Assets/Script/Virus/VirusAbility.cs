@@ -38,7 +38,7 @@ public class VirusAbility : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         // 仮 速度にウィルスの影響を反映する
-        movement.SetSpeed(baseSpeed + baseSpeed * bounsStatus.moveSpeedRate);
+        //movement.SetSpeed(baseSpeed + baseSpeed * bounsStatus.moveSpeedRate);
         foreach (Skill skill in skills)
         {
             skill.Update(gameObject);
