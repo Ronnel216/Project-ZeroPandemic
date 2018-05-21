@@ -11,8 +11,14 @@ public class CitizenInfectedState : CitizenAI.State {
 
     Vector3 lastTargetPos;
 
+    float waitTime = 1.0f;          // 感染後の待機時間
+    float time = 0.0f;
     public override void Excute(StateData data)
     {
+        time += Time.deltaTime;
+        // 感染後の待機時間
+        if (time <= waitTime) return;
+
         // 移動コンポーネント
         Movement movement = data.movement;
         movement.SetSpeed(moveSpeed);
