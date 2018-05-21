@@ -24,35 +24,46 @@ public class PlayScreenControl : MonoBehaviour {
 
     //市民の数
     int remainsPerson;
+    //感染者の数
+    float infectedPerson;
+    //全体の人数
+    float allPerson;
     //コンボ数
     int combNum;
     //感染率
     float rateinfected = 0.0f;
     //制限時間
     float time;
-    //ゲームが終了しているか？
+    //ゲームが始まったかどうか
     bool isSetGame;
     // Use this for initialization
     void Start () {
         time = GameManagerScript.GetTimeLimit();
-        isSetGame = GameManagerScript.GetStartPandemic();
         remainsPerson = GameManagerScript.GetActorNum();
     }
 
     // Update is called once per frame
     void Update () {
+
+        //時間の取得
         time = GameManagerScript.GetTime();
         timeLimitText.text = "Time : " + time.ToString("F");
-        rateinfected = (float)GameManager.infectedNum / (float)(remainsPerson + GameManager.infectedNum)* 100.0f;
+  
+        infectedPerson = (float)GameManager.infectedNum;
+        allPerson = (float)(remainsPerson + GameManager.infectedNum);
+        //感染率を割りだす
+        rateinfected = infectedPerson / allPerson * 100.0f;
+
+        //ゲームが始まった時だけ処理
         if (isSetGame)
         {
+            //ゲームの状態を取得
+            isSetGame = GameManagerScript.GetStartPandemic();
+            //市民の数を取得
             remainsPerson = CheckObject("Actor");
+
             ReceiveValue();
             ScreenText();
-        }
-        else
-        {
-            isSetGame = GameManagerScript.GetStartPandemic();
         }
 
     }

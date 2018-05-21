@@ -47,10 +47,9 @@ public class BreakingWall : MonoBehaviour {
     {
         if (hit)
         {
-            this.gameObject.transform.position = 
-                new Vector3(
+            this.gameObject.transform.Translate(
                     this.gameObject.transform.position.x,
-                    this.gameObject.transform.position.y + wallPosY, 
+                    this.gameObject.transform.position.y + wallPosY,
                     this.gameObject.transform.position.z);
         }
     }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class UIControl : MonoBehaviour {
 
-    public float size;
+    //座標が0だと地面に埋まるのでそれを防ぐためY座標のみ指定
+    float UIPosY = 0.1f;
 
 	// Use this for initialization
 	void Start () {
@@ -13,12 +14,10 @@ public class UIControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        ChangeSize(size);
-
     }
 
     public void ChangeSize(float num)
     {
-        transform.localScale = new Vector3(num, 0.1f, num);
+        transform.localScale = new Vector3(num, UIPosY, num);
     }
 }
