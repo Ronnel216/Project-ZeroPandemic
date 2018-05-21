@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 17285a2e0b6ce4c4ea19082c6a957864
-timeCreated: 1526871578
+guid: cd35dc33fb09edd4a98697f85223938f
+timeCreated: 1526870438
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -12,45 +12,12 @@ ModelImporter:
     100008: Foot01
     100010: Foot02
     100012: Head
-    100014: mixamorig:Head
-    100016: mixamorig:HeadTop_End
-    100018: mixamorig:Hips
-    100020: mixamorig:LeftArm
-    100022: mixamorig:LeftFoot
-    100024: mixamorig:LeftForeArm
-    100026: mixamorig:LeftHand
-    100028: mixamorig:LeftHandIndex1
-    100030: mixamorig:LeftHandIndex2
-    100032: mixamorig:LeftHandIndex3
-    100034: mixamorig:LeftHandIndex4
-    100036: mixamorig:LeftLeg
-    100038: mixamorig:LeftShoulder
-    100040: mixamorig:LeftToe_End
-    100042: mixamorig:LeftToeBase
-    100044: mixamorig:LeftUpLeg
-    100046: mixamorig:Neck
-    100048: mixamorig:RightArm
-    100050: mixamorig:RightFoot
-    100052: mixamorig:RightForeArm
-    100054: mixamorig:RightHand
-    100056: mixamorig:RightHandIndex1
-    100058: mixamorig:RightHandIndex2
-    100060: mixamorig:RightHandIndex3
-    100062: mixamorig:RightHandIndex4
-    100064: mixamorig:RightLeg
-    100066: mixamorig:RightShoulder
-    100068: mixamorig:RightToe_End
-    100070: mixamorig:RightToeBase
-    100072: mixamorig:RightUpLeg
-    100074: mixamorig:Spine
-    100076: mixamorig:Spine1
-    100078: mixamorig:Spine2
-    100080: PhysCamera001.Target
-    100082: Sphere002
-    100084: Sphere004
-    100086: Sphere005
-    100088: Sphere007
-    100090: //RootNode
+    100014: PhysCamera001.Target
+    100016: //RootNode
+    100018: Sphere002
+    100020: Sphere004
+    100022: Sphere005
+    100024: Sphere007
     400000: Arm01
     400002: Arm02
     400004: Body
@@ -58,45 +25,12 @@ ModelImporter:
     400008: Foot01
     400010: Foot02
     400012: Head
-    400014: mixamorig:Head
-    400016: mixamorig:HeadTop_End
-    400018: mixamorig:Hips
-    400020: mixamorig:LeftArm
-    400022: mixamorig:LeftFoot
-    400024: mixamorig:LeftForeArm
-    400026: mixamorig:LeftHand
-    400028: mixamorig:LeftHandIndex1
-    400030: mixamorig:LeftHandIndex2
-    400032: mixamorig:LeftHandIndex3
-    400034: mixamorig:LeftHandIndex4
-    400036: mixamorig:LeftLeg
-    400038: mixamorig:LeftShoulder
-    400040: mixamorig:LeftToe_End
-    400042: mixamorig:LeftToeBase
-    400044: mixamorig:LeftUpLeg
-    400046: mixamorig:Neck
-    400048: mixamorig:RightArm
-    400050: mixamorig:RightFoot
-    400052: mixamorig:RightForeArm
-    400054: mixamorig:RightHand
-    400056: mixamorig:RightHandIndex1
-    400058: mixamorig:RightHandIndex2
-    400060: mixamorig:RightHandIndex3
-    400062: mixamorig:RightHandIndex4
-    400064: mixamorig:RightLeg
-    400066: mixamorig:RightShoulder
-    400068: mixamorig:RightToe_End
-    400070: mixamorig:RightToeBase
-    400072: mixamorig:RightUpLeg
-    400074: mixamorig:Spine
-    400076: mixamorig:Spine1
-    400078: mixamorig:Spine2
-    400080: PhysCamera001.Target
-    400082: Sphere002
-    400084: Sphere004
-    400086: Sphere005
-    400088: Sphere007
-    400090: //RootNode
+    400014: PhysCamera001.Target
+    400016: //RootNode
+    400018: Sphere002
+    400020: Sphere004
+    400022: Sphere005
+    400024: Sphere007
     2100000: 'Material #112'
     2100002: 'Material #115'
     2100004: 'Material #122'
@@ -108,6 +42,28 @@ ModelImporter:
     2100016: 'Material #117'
     2100018: 'Material #120'
     2100020: 'Material #118'
+    2300000: Arm01
+    2300002: Arm02
+    2300004: Body
+    2300006: Body2
+    2300008: Foot01
+    2300010: Foot02
+    2300012: Head
+    2300014: Sphere002
+    2300016: Sphere004
+    2300018: Sphere005
+    2300020: Sphere007
+    3300000: Arm01
+    3300002: Arm02
+    3300004: Body
+    3300006: Body2
+    3300008: Foot01
+    3300010: Foot02
+    3300012: Head
+    3300014: Sphere002
+    3300016: Sphere004
+    3300018: Sphere005
+    3300020: Sphere007
     4300000: Head
     4300002: Body
     4300004: Body2
@@ -119,19 +75,8 @@ ModelImporter:
     4300016: Sphere004
     4300018: Foot02
     4300020: Sphere005
-    7400000: mixamo.com
+    7400000: Take 001
     9500000: //RootNode
-    13700000: Arm01
-    13700002: Arm02
-    13700004: Body
-    13700006: Body2
-    13700008: Foot01
-    13700010: Foot02
-    13700012: Head
-    13700014: Sphere002
-    13700016: Sphere004
-    13700018: Sphere005
-    13700020: Sphere007
   externalObjects: {}
   materials:
     importMaterials: 1
