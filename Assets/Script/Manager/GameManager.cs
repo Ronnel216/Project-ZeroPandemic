@@ -129,17 +129,6 @@ public class GameManager : MonoBehaviour {
             saveStr.SetResultScore(score);
             UnityEngine.SceneManagement.SceneManager.LoadScene("RankingScene");
         }
-        //if (time == 0.0f)
-        //{
-        //    score = 0;
-        //    saveStr.SetresultScore(score);
-        //    UnityEngine.SceneManagement.SceneManager.LoadScene("RankingScene");
-        //}
-        //Debug.Log("TimeLimit : " + time.ToString("F") + "s / " + timeLimit.ToString("F") + "s");
-        //if (timeLimit < time) FinishGame(false);
-
-        //// エリア内の市民を全員感染させた時の処理 //
-        //if (IsClear()) FinishGame(true);
 
     }
 

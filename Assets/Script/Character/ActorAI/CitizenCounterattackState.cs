@@ -6,7 +6,6 @@ using UnityEngine.AI;
 
 public class CitizenCounterattackState : CitizenAI.State
 {
-    float moveSpeed = 10.0f;            // 移動速度
     float viewRange = 10.0f;            // 警戒範囲
     GameObject targetObj = null;
     HunterManufactory targetFactory = null;
@@ -38,9 +37,8 @@ public class CitizenCounterattackState : CitizenAI.State
 
     private void GoToManufactory(StateData data)
     {
-        // ナビゲーション対象のエージェント
-        NavMeshAgent agent = data.ai.GetComponent<NavMeshAgent>();
-        agent.speed = moveSpeed;
+        // 移動コンポーネント
+        Movement movement = data.movement;
 
         // 近くの製作所を探す
         GameObject target = AIManager.GetCloseManufactory(data.ai.transform.position);
@@ -51,7 +49,7 @@ public class CitizenCounterattackState : CitizenAI.State
             targetFactory = target.GetComponent<HunterManufactory>();
             targetObj = target;
             // 製作所に向かう
-            agent.SetDestination(targetObj.transform.position);
+            movement.SetDestination(targetObj.transform.position);
             targetFactory.ManufactureNum++;
         }
         else

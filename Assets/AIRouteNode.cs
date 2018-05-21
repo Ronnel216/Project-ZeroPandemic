@@ -11,6 +11,7 @@ public class AIRouteNode : MonoBehaviour {
         public float stayTime;
     }
 
+    // 待機時間
     [SerializeField]
     float stayTime;
 

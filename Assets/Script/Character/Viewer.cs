@@ -32,7 +32,8 @@ public class Viewer : MonoBehaviour {
             target = null;
     }
 
-    private void OnTriggerStay(Collider other)
+    // お腹すいた
+    void OnTriggerStay(Collider other)
     {
         if (other.tag != targetTag) return;
         float length = (transform.position - other.gameObject.transform.position).magnitude;
@@ -44,11 +45,13 @@ public class Viewer : MonoBehaviour {
 
     }
 
+    // ターゲットを決める
     public void Target(string tag)
     {
         targetTag = tag;
     }
 
+    // 一番近いオブジェクト
     public GameObject GetClose()
     {
         return target;
@@ -59,27 +62,4 @@ public class Viewer : MonoBehaviour {
         target = null;
     }
 
-    //public GameObject GetClose(ViewType type)
-    //{
-    //    Vector3 position = transform.position; 
-
-    //    // オブジェクトが存在しない
-    //    if (actors.Count == 0) return null;
-
-    //    // 最短のオブジェクトを求める
-    //    GameObject closeActor = actors[0];
-    //    float closeLength = (closeActor.transform.position - position).magnitude;
-    //    int count = actors.Count;
-    //    for (int i = 0; i < count; i++)
-    //    {
-    //        float length = (actors[i].transform.position - position).magnitude;
-    //        if (closeLength > length)
-    //        {
-    //            closeActor = actors[i];
-    //            closeLength = length;
-    //        }                    
-    //    }
-        
-    //    return closeActor;
-    //}
 }

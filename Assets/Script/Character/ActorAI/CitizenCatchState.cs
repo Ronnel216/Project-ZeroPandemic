@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+// 使ってない
+
 public class CitizenCatchState : CitizenAI.State {
 
     public CitizenCatchState()

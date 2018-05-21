@@ -36,21 +36,9 @@ public class ComboScript : MonoBehaviour
 
     void Update()
     {
+        time += Time.deltaTime;
         ResetCombo();
     }
-
-    //----------------------------------------------------------------------
-    //! @brief Updateメソッド
-    //!
-    //! @param[in]なし
-    //!
-    //! @return なし
-    //----------------------------------------------------------------------
-    // Update is called once per frame
-    void FixedUpdate ()
-    {
-        time++;
-	}
 
     //----------------------------------------------------------------------
     //! @brief PlusCombo

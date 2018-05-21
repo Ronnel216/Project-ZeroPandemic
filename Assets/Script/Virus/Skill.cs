@@ -6,6 +6,7 @@ using UnityEngine;
 // スキル
 public abstract class Skill
 {
+    // ウィルス所有者に影響を与えるステータス
     public class VirusStatus
     {
         public VirusAbility.BounsStatus bouns;
@@ -17,11 +18,13 @@ public abstract class Skill
     
     public VirusStatus status;
 
-    public Skill()
-    {
-        status = new VirusStatus();
-    }
+    //// スキル
+    //public Skill()
+    //{
+    //    status = new VirusStatus();
+    //}
 
+    // ボーナス値の設定
     public void SetBouns(VirusStatus status)
     {
         this.status = status;
@@ -35,6 +38,7 @@ public abstract class Skill
 //memo それ以外のユニークスキルは他のスクリプト 
 public class StatusBaffler : Skill
 {
+    // 処理を行わない
     public override void Update(GameObject obj)
     {
         

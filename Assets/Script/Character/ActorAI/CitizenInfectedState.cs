@@ -4,33 +4,27 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class CitizenInfectedState : CitizenAI.State {
-  
-    [SerializeField]
-    static private float angle;
-    bool wasInitialize = false;
+
     float moveSpeed = 20.0f;
 
     const string citizenTag = "Actor";
 
     Vector3 lastTargetPos;
 
-    //Vector3 hogePlayer;
-
+    float waitTime = 1.0f;          // 感染後の待機時間
+    float time = 0.0f;
     public override void Excute(StateData data)
     {
+        time += Time.deltaTime;
+        // 感染後の待機時間
+        if (time <= waitTime) return;
 
-        // ナビゲーション対象のエージェント
-        NavMeshAgent agent = data.ai.GetComponent<NavMeshAgent>();
-        agent.speed = moveSpeed;
+        // 移動コンポーネント
+        Movement movement = data.movement;
+        movement.SetSpeed(moveSpeed);
         // 拡張範囲の取得
         ExpansionControl expansion = data.virus.GetOriginal().GetComponent<ExpansionControl>();
-
-        if (wasInitialize == true)
-        {
-            wasInitialize = false;
-            return;
-        }
-
+        
         // 感染原(プレイヤ)
         Virus target = data.virus.GetOriginal();
         Virus selfVirus = data.virus;
@@ -43,9 +37,9 @@ public class CitizenInfectedState : CitizenAI.State {
         float x = Input.GetAxisRaw("Horizontal");
         float z = Input.GetAxisRaw("Vertical");
         Vector3 vec = new Vector3(x, 0, z);
-        Movement movement = target.GetComponent<Movement>();
-        if (movement == null) Debug.Break();
-        playerVec = vec.normalized * movement.GetSpeed();
+        Movement move = target.GetComponent<Movement>();
+        if (move == null) Debug.Break();
+        playerVec = vec.normalized * move.GetSpeed();
 
         // 拡張範囲を考慮した差
         Vector3 offset = selfVirus.gameObject.transform.position - target.transform.position;
@@ -57,9 +51,9 @@ public class CitizenInfectedState : CitizenAI.State {
 
         // コントロールがなにもない時
         if (offset.magnitude < Mathf.Epsilon)
-            agent.stoppingDistance = expansion.ExpansionArea;
+            movement.NavMeshAgent.stoppingDistance = expansion.ExpansionArea;
         else
-            agent.stoppingDistance = 0.0f;
+            movement.NavMeshAgent.stoppingDistance = 0.0f;
 
         // ウィルスコントロールをしているなら...
         if (target.GetComponent<PlayerController>().IsAction())
@@ -70,10 +64,8 @@ public class CitizenInfectedState : CitizenAI.State {
             targetPos = target.gameObject.transform.position + offset;
 
 
-        agent.SetDestination(targetPos);
-        lastTargetPos = targetPos;
-        wasInitialize = true;
-        
+        movement.SetDestination(targetPos);
+        lastTargetPos = targetPos;        
     }
 
     public override void OnTriggerEnter(Collider other, StateData data)

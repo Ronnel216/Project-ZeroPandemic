@@ -6,15 +6,17 @@ using UnityEngine.UI;
 public class PlayScreenControl : MonoBehaviour {
 
     //========画面内のUIテキスト========
-    //制限時間
+    // 制限時間
     public Text timeLimitText;
-    //市民の数
+    // ステージ名
+    public Text stageText;
+    // 市民の数
     public Text actorText;
-    //感染者の数
+    // 感染者の数
     public Text infectedText;
-    //コンボ数
+    // コンボ数
     public Text CombText;
-    //感染率
+    // 感染率
     public Text RateText;
     //==================================
 
@@ -22,6 +24,8 @@ public class PlayScreenControl : MonoBehaviour {
     public GameManager GameManagerScript;
     public ComboScript combCount;
 
+    //現在のステージ番号
+    int nowStageNum = 1;
     //市民の数
     int remainsPerson;
     //感染者の数
@@ -78,6 +82,7 @@ public class PlayScreenControl : MonoBehaviour {
     //ScrenUIのテキストに代入
     public void ScreenText()
     {
+        stageText.text = "ステージ" + nowStageNum.ToString();
         actorText.text = remainsPerson.ToString();
         infectedText.text = GameManager.infectedNum.ToString();
         CombText.text = combNum.ToString() + "コンボ";
@@ -87,5 +92,10 @@ public class PlayScreenControl : MonoBehaviour {
     public void ReceiveValue()
     {
         combNum = combCount.GetCombo();
+    }
+
+    public void SetStageNum(int stagenum)
+    {
+        nowStageNum = stagenum;
     }
 }
