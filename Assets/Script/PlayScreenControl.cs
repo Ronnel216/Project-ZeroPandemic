@@ -48,6 +48,8 @@ public class PlayScreenControl : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        //ゲームの状態を取得
+        isSetGame = GameManagerScript.GetStartPandemic();
 
         //時間の取得
         time = GameManagerScript.GetTime();
@@ -61,8 +63,6 @@ public class PlayScreenControl : MonoBehaviour {
         //ゲームが始まった時だけ処理
         if (isSetGame)
         {
-            //ゲームの状態を取得
-            isSetGame = GameManagerScript.GetStartPandemic();
             //市民の数を取得
             remainsPerson = CheckObject("Actor");
 
