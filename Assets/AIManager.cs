@@ -33,7 +33,6 @@ public class AIManager : MonoBehaviour {
     void Update()
     {
         degugnum = infectedActors.Count;
-        m_zombies = GameObject.FindGameObjectsWithTag("InfectedActor");
     }
 
     public static GameObject GetCloseManufactory(Vector3 pos, float radius = -0.1f)
@@ -64,6 +63,8 @@ public class AIManager : MonoBehaviour {
 
     public static GameObject GetCloseZombie(Vector3 pos, float radius = -0.1f)
     {
+        m_zombies = GameObject.FindGameObjectsWithTag("InfectedActor");
+
         GameObject result = null;
         float distance = radius;
         foreach (var zombie in m_zombies)
