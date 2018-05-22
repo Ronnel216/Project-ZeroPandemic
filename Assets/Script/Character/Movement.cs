@@ -75,7 +75,7 @@ public class Movement : MonoBehaviour {
             SetIsStopped(false);
         }
         // 速度の反映
-        if (m_navMeshAgent)
+        if (GetUseNavMesh())
             m_navMeshAgent.speed = m_speed;
 	}
 
@@ -138,7 +138,7 @@ public class Movement : MonoBehaviour {
     //----------------------------------------------------------------------
     public void SetDestination(Vector3 pos)
     {
-        if (m_navMeshAgent)
+        if (GetUseNavMesh())
             m_navMeshAgent.SetDestination(pos);
     }
 
@@ -153,7 +153,7 @@ public class Movement : MonoBehaviour {
     //----------------------------------------------------------------------
     public void SetIsStopped(bool isStop)
     {
-        if (m_navMeshAgent)
+        if (GetUseNavMesh())
             m_navMeshAgent.isStopped = isStop;
     }
 
@@ -168,7 +168,7 @@ public class Movement : MonoBehaviour {
     //----------------------------------------------------------------------
     public void ResetPath()
     {
-        if (m_navMeshAgent)
+        if (GetUseNavMesh())
             m_navMeshAgent.ResetPath();
     }
 
@@ -186,6 +186,25 @@ public class Movement : MonoBehaviour {
         if (m_navMeshAgent)
             m_navMeshAgent.enabled = useNavMesh;
     }
+
+
+    //----------------------------------------------------------------------
+    //! @brief ナビメッシュが使用可能か
+    //!
+    //! @param[in] true:可能 false:不可能 
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    public bool GetUseNavMesh()
+    {
+        bool result = false;
+
+        if (m_navMeshAgent)
+            result = m_navMeshAgent.enabled;
+
+        return result;
+    }
+
 
     // Get ========================================================================
     public float GetSpeed() { return m_speed; }
