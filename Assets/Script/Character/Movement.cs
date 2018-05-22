@@ -66,14 +66,11 @@ public class Movement : MonoBehaviour {
         {
             // 移動速度を消去
             m_rigidBody.velocity = Vector3.zero;
-            // NavMeshを止める
-            SetIsStopped(true);
         }
-        else
-        {
-            // NavMeshを動かす
-            SetIsStopped(false);
-        }
+
+        // NavMeshを動かす
+        SetIsStopped(m_lockMove);
+        
         // 速度の反映
         if (m_navMeshAgent)
             m_navMeshAgent.speed = m_speed;
@@ -189,6 +186,7 @@ public class Movement : MonoBehaviour {
 
     // Get ========================================================================
     public float GetSpeed() { return m_speed; }
+    public Vector3 GetMoveDirection() { return m_rigidBody.velocity; }
     public bool GetLockDirection() { return m_lockDirection; }
     // Set ========================================================================
     public void SetSpeed(float speed) { m_speed = speed; }
