@@ -15,7 +15,12 @@ using UnityEngine.AI;
 public class Movement : MonoBehaviour {
 
     [SerializeField]
-    private float m_speed = 0.1f;               // 移動速度          
+    private float m_maxSpeed = 5.0f;
+
+    [SerializeField]
+    private float m_speed = 0.1f;               // 移動速度    
+    private Vector3 m_velocity;                 // 現在の移動成分 
+    private bool m_isFlip;                      // 滑っているか     
 
     private bool m_lockMove = false;            // 移動できるか
     public bool LockMove
@@ -64,9 +69,17 @@ public class Movement : MonoBehaviour {
         // ロック時移動できない
         if (m_lockMove)
         {
-            // 移動速度を消去
-            m_rigidBody.velocity = Vector3.zero;
+            //// 移動速度を消去
+            //veloctiy = Vector3.zero;
         }
+        else
+        {
+            if (m_velocity.magnitude > m_maxSpeed)
+                m_velocity = m_velocity.normalized * m_maxSpeed; 
+            m_rigidBody.velocity = m_velocity;            
+        }
+        if (m_isFlip == false) m_velocity = Vector3.zero;
+        else m_velocity *= 0.99f;
 
         // NavMeshを動かす
         SetIsStopped(m_lockMove);
@@ -76,6 +89,31 @@ public class Movement : MonoBehaviour {
             m_navMeshAgent.speed = m_speed;
 	}
 
+    public void Flip(bool isFlip)
+    {
+
+        m_isFlip = isFlip;
+
+        // ナビメッシュエージェントを滑らせる
+        if (m_navMeshAgent)
+        {
+            if (isFlip)
+                m_navMeshAgent.autoBraking = false;
+            else
+                m_navMeshAgent.autoBraking = true;
+        }
+
+    }
+
+    private void LateUpdate()
+    {
+
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+
+    }
 
 
     //----------------------------------------------------------------------
@@ -87,8 +125,12 @@ public class Movement : MonoBehaviour {
     //----------------------------------------------------------------------
     public void Move(Vector3 vec)
     {
+        float speed = m_speed;
+
+        if (m_isFlip) speed *= 0.1f;
+
         if (m_lockMove == false)
-            m_rigidBody.velocity = vec * m_speed;
+            m_velocity += vec * speed;
 
         // 進行方向を向かせる
         if (m_lockDirection == false)
@@ -151,7 +193,7 @@ public class Movement : MonoBehaviour {
     public void SetIsStopped(bool isStop)
     {
         if (GetUseNavMesh())
-            m_navMeshAgent.isStopped = isStop;
+            m_navMeshAgent.updatePosition = !isStop;
     }
 
 
@@ -181,7 +223,7 @@ public class Movement : MonoBehaviour {
     public void SetUseNavMesh(bool useNavMesh)
     {
         if (m_navMeshAgent)
-            m_navMeshAgent.enabled = useNavMesh;
+            m_navMeshAgent.isStopped = !useNavMesh;
     }
 
 
@@ -197,7 +239,7 @@ public class Movement : MonoBehaviour {
         bool result = false;
 
         if (m_navMeshAgent)
-            result = m_navMeshAgent.enabled;
+            result = !m_navMeshAgent.isStopped;
 
         return result;
     }
@@ -205,7 +247,7 @@ public class Movement : MonoBehaviour {
 
     // Get ========================================================================
     public float GetSpeed() { return m_speed; }
-    public Vector3 GetMoveDirection() { return m_rigidBody.velocity; }
+    public Vector3 GetMoveDirection() { return m_velocity.normalized; }
     public bool GetLockDirection() { return m_lockDirection; }
     // Set ========================================================================
     public void SetSpeed(float speed) { m_speed = speed; }

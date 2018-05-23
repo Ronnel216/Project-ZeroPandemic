@@ -19,8 +19,18 @@ public class HogeHoge : MonoBehaviour {
         {
             var movement = other.GetComponent<Movement>();
             var spd = movement.GetSpeed();
-            //movement.Move(movement.GetMoveDirection());
-            Debug.Log("滑ってるよ");
+            movement.Flip(true);
+
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (CanSlip(other.gameObject))
+        {
+            var movement = other.GetComponent<Movement>();
+            var spd = movement.GetSpeed();
+            movement.Flip(false);
+
         }
     }
 
