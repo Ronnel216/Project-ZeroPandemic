@@ -223,7 +223,7 @@ public class Movement : MonoBehaviour {
     public void SetUseNavMesh(bool useNavMesh)
     {
         if (m_navMeshAgent)
-            m_navMeshAgent.isStopped = !useNavMesh;
+            m_navMeshAgent.enabled = useNavMesh;
     }
 
 
@@ -239,7 +239,7 @@ public class Movement : MonoBehaviour {
         bool result = false;
 
         if (m_navMeshAgent)
-            result = !m_navMeshAgent.isStopped;
+            result = m_navMeshAgent.enabled;
 
         return result;
     }
