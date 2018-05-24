@@ -56,6 +56,9 @@ public class FlowScript : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (this.enabled == false) return;
-        other.transform.position += m_flowVec;
+        if (other.tag == "InfectedActor" || other.tag == "Actor")
+        {
+            other.transform.position += m_flowVec;
+        }
     }
 }
