@@ -20,7 +20,7 @@ public class PandemicState : CitizenAI.State
             ai = GameObject.Find("AIManger");
             targetObj = ai.GetComponent<AIManager>().GetTarget();
         }
-            agent.SetDestination(targetObj.transform.position);
+        agent.GetComponent<Movement>().SetDestination(targetObj.transform.position);
     }
 
 }
