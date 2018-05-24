@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HogeHoge : MonoBehaviour {
+public class SwampFloor : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -11,34 +11,35 @@ public class HogeHoge : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
 	}
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (CanSlip(other.gameObject))
+        if (this.enabled == false) return;
+        if (CanTripped(other.gameObject))
         {
             var movement = other.GetComponent<Movement>();
-            var spd = movement.GetSpeed();
-            movement.Flip(true);
+            movement.Tripped(true);
 
         }
     }
+
     private void OnTriggerExit(Collider other)
     {
-        if (CanSlip(other.gameObject))
+        if (this.enabled == false) return;
+        if (CanTripped(other.gameObject))
         {
             var movement = other.GetComponent<Movement>();
-            var spd = movement.GetSpeed();
-            movement.Flip(false);
+            movement.Tripped(false);
 
         }
     }
 
-    bool CanSlip(GameObject obj)
+    bool CanTripped(GameObject obj)
     {
         return obj.tag == "InfectedActor" ||
             obj.tag == "Actor";
     }
-
 
 }

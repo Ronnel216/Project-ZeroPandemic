@@ -1,11 +1,11 @@
 ﻿//__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/
 //! @file   FlowScript
 //!
-//! @brief  流され管理スクリプト
+//! @brief  流れるスクリプト
 //!
-//! @date   2018/04/26 
+//! @date   2018/05/24 
 //!
-//! @author Y.okada
+//! @author 澤田
 //__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/
 
 using System.Collections;
@@ -14,36 +14,51 @@ using UnityEngine;
 
 public class FlowScript : MonoBehaviour
 {
-    private Rigidbody rb;
     [SerializeField]
-    private Vector3 vec;
+    private Vector3 m_flowVec;              // 流される方向
 
-    // Use this for initialization
+
+
+    //----------------------------------------------------------------------
+    //! @brief 初期化処理
+    //!
+    //! @param[in] なし
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
     void Start ()
     {
-        rb = this.GetComponent<Rigidbody>();
+
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+
+
+    //----------------------------------------------------------------------
+    //! @brief 更新処理
+    //!
+    //! @param[in] なし
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    void Update ()
     {
 		
 	}
 
 
     //----------------------------------------------------------------------
-    //! @brief OnTriggerStay
-    //!        触れている間Rigidbodyを持ったキャラクターはして方向に流される
+    //! @brief ヒット時処理
     //!
-    //! @param[in] Collider other(キャラクター)
+    //! @param[in] オブジェクト
     //!
     //! @return なし
     //----------------------------------------------------------------------
-    void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag == "Flow")
+        if (this.enabled == false) return;
+        if (other.tag == "InfectedActor" || other.tag == "Actor")
         {
-            rb.velocity = vec;
+            other.transform.position += m_flowVec;
         }
     }
 }

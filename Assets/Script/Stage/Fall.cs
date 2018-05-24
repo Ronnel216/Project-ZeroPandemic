@@ -53,9 +53,15 @@ public class Fall : MonoBehaviour {
     //----------------------------------------------------------------------
     private void OnTriggerEnter(Collider other)
     {
+        if (this.enabled == false) return;
+
         // ナビメッシュを無効化
         Movement move = other.GetComponent<Movement>();
-        if (move) move.SetUseNavMesh(false);
+        if (move)
+        {
+            move.SetUseNavMesh(false);
+            move.enabled = false;
+        }
 
         // 重力を有効化
         Rigidbody rigid = other.GetComponent<Rigidbody>();
