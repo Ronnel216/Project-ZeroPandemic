@@ -20,7 +20,8 @@ public class Movement : MonoBehaviour {
     [SerializeField]
     private float m_speed = 0.1f;               // 移動速度    
     private Vector3 m_velocity;                 // 現在の移動成分 
-    private bool m_isFlip;                      // 滑っているか     
+    private bool m_isFlip;                      // 滑っているか  
+    private bool m_isTripped;                   // 足を取られている   
 
     private bool m_lockMove = false;            // 移動できるか
     public bool LockMove
@@ -74,6 +75,11 @@ public class Movement : MonoBehaviour {
         }
         else
         {
+            if (m_isTripped)
+            {
+                m_velocity *= 0.2f;                
+            }
+
             if (m_velocity.magnitude > m_maxSpeed)
                 m_velocity = m_velocity.normalized * m_maxSpeed; 
             m_rigidBody.velocity = m_velocity;            
@@ -89,6 +95,7 @@ public class Movement : MonoBehaviour {
             m_navMeshAgent.speed = m_speed;
 	}
 
+    // 滑る
     public void Flip(bool isFlip)
     {
 
@@ -102,6 +109,14 @@ public class Movement : MonoBehaviour {
             else
                 m_navMeshAgent.autoBraking = true;
         }
+
+    }
+
+    // 足を取られる
+    public void Tripped(bool isTripped)
+    {
+        m_isTripped = isTripped;
+
 
     }
 
