@@ -15,6 +15,8 @@ public class SlipFloor : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
+        if (this.enabled == false) return;
+
         if (CanSlip(other.gameObject))
         {
             var movement = other.GetComponent<Movement>();
@@ -25,6 +27,8 @@ public class SlipFloor : MonoBehaviour {
     }
     private void OnTriggerExit(Collider other)
     {
+        if (this.enabled == false) return;
+
         if (CanSlip(other.gameObject))
         {
             var movement = other.GetComponent<Movement>();
