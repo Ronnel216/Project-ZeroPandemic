@@ -59,6 +59,10 @@ public class GameManager : MonoBehaviour {
     AIManager pandemic;
     //パンデミックしているかどうか
     bool pandemicFlag = false;
+
+    [SerializeField]
+    KeyCode m_pandemicKey = KeyCode.Space;      // パンデミック発動キー
+
     void Start () {
         // 制限時間を設定
         time = timeLimit;
@@ -81,7 +85,8 @@ public class GameManager : MonoBehaviour {
         {
             Debug.Log("saveStr is null");
             Debug.Break();
-        } 
+        }
+        GameObject player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -119,8 +124,12 @@ public class GameManager : MonoBehaviour {
         {
             if ((float)infectedNum / actorNum * 100.0f >= perdemic)
             {
-                pandemic.StartPandemic();
-                pandemicFlag = true;
+                // パンデミック発動キーが押された
+                if (Input.GetKeyDown(m_pandemicKey))
+                {
+                    pandemic.StartPandemic();
+                    pandemicFlag = true;
+                }
             }
         }
         if (time == 0.0f)

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HogeHoge : MonoBehaviour {
+public class SlipFloor : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
