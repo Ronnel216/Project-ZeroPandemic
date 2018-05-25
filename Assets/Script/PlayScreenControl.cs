@@ -27,11 +27,11 @@ public class PlayScreenControl : MonoBehaviour {
     //現在のステージ番号
     int nowStageNum = 1;
     //市民の数
-    int remainsPerson;
+    int remainsPerson = 0;
     //感染者の数
-    float infectedPerson;
+    float infectedPerson = 0.0f;
     //全体の人数
-    float allPerson;
+    float allPerson = 0.0f;
     //コンボ数
     int combNum;
     //感染率
@@ -57,11 +57,16 @@ public class PlayScreenControl : MonoBehaviour {
   
         infectedPerson = (float)GameManager.infectedNum;
         allPerson = (float)(remainsPerson + GameManager.infectedNum);
+
+
         //感染率を割りだす
         rateinfected = infectedPerson / allPerson * 100.0f;
 
-        //ゲームが始まった時だけ処理
-        if (isSetGame)
+        if (float.IsNaN(rateinfected))
+            rateinfected = 100.0f;
+
+            //ゲームが始まった時だけ処理
+            if (isSetGame)
         {
             //市民の数を取得
             remainsPerson = CheckObject("Actor");
