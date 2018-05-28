@@ -15,9 +15,11 @@ public class PlayScreenControl : MonoBehaviour {
     // 感染者の数
     public Text infectedText;
     // コンボ数
-    public Text CombText;
+    public Text combText;
     // 感染率
-    public Text RateText;
+    public Text rateText;
+    // パンデミック可能テキスト
+    public Text pandemicText;
     //==================================
 
 
@@ -38,6 +40,12 @@ public class PlayScreenControl : MonoBehaviour {
     float rateinfected = 0.0f;
     //制限時間
     float time;
+    // カラーのアルファ値
+    float alfaColor = 0.0f;
+    // パンデミック可能数値
+    float pandemicPossible = 80.0f;
+    // 表示フラグ
+    bool isIndicate;
     //ゲームが始まったかどうか
     bool isSetGame;
     // Use this for initialization
@@ -54,19 +62,23 @@ public class PlayScreenControl : MonoBehaviour {
         //時間の取得
         time = GameManagerScript.GetTime();
         timeLimitText.text = "Time : " + time.ToString("F");
-  
-        infectedPerson = (float)GameManager.infectedNum;
-        allPerson = (float)(remainsPerson + GameManager.infectedNum);
 
+        // ゾンビ数を取得
+        int infectedNum = WorldViewer.CountObjects("InfectedActor");
+
+        infectedPerson = (float)infectedNum;
+        allPerson = (float)(remainsPerson + infectedNum);
 
         //感染率を割りだす
         rateinfected = infectedPerson / allPerson * 100.0f;
 
+        PandemicTextReduction(rateinfected);
+
         if (float.IsNaN(rateinfected))
             rateinfected = 100.0f;
 
-            //ゲームが始まった時だけ処理
-            if (isSetGame)
+        //ゲームが始まった時だけ処理
+        if (isSetGame)
         {
             //市民の数を取得
             remainsPerson = CheckObject("Actor");
@@ -74,7 +86,33 @@ public class PlayScreenControl : MonoBehaviour {
             ReceiveValue();
             ScreenText();
         }
+        Debug.Log(infectedNum);
+    }
 
+    // パンデミックテキストを点減させる
+    void PandemicTextReduction(float infectedamount)
+    {
+        if (float.IsNaN(infectedamount))
+            infectedamount = 0.0f;
+        if(infectedamount >= pandemicPossible)
+        {
+            pandemicText.enabled = true;
+            // テキストの透明度を変更する
+            pandemicText.color = new Color(0, 0, 0, alfaColor);
+            if (isIndicate) alfaColor -= Time.deltaTime;
+            else alfaColor += Time.deltaTime;
+            if(alfaColor < 0)
+            {
+                alfaColor = 0.0f;
+                isIndicate = false;
+            }
+            else if(alfaColor > 1)
+            {
+                alfaColor = 1.0f;
+                isIndicate = true;
+            }
+        }
+        else pandemicText.enabled = false;
     }
     //シーン上の指定したタグが付いたオブジェクトを数える
     public int CheckObject(string tagname)
@@ -87,11 +125,14 @@ public class PlayScreenControl : MonoBehaviour {
     //ScrenUIのテキストに代入
     public void ScreenText()
     {
+        // ゾンビ数を取得
+        int infectedNum = WorldViewer.CountObjects("InfectedActor");
+
         stageText.text = "ステージ" + nowStageNum.ToString();
         actorText.text = remainsPerson.ToString();
-        infectedText.text = GameManager.infectedNum.ToString();
-        CombText.text = combNum.ToString() + "コンボ";
-        RateText.text = rateinfected.ToString("N0") + "%";
+        infectedText.text = infectedNum.ToString();
+        combText.text = combNum.ToString() + "コンボ";
+        rateText.text = rateinfected.ToString("N0") + "%";
     }
     //他スクリプトから値を受け取る
     public void ReceiveValue()

@@ -169,7 +169,7 @@ public class Virus : MonoBehaviour
         {
             if (infectedActor == null) ChangeState(new InfectedState(this, stateData));
             else ChangeState(new StayState(this, stateData)); 
-            GameManager.infectedNum += 1;
+            //GameManager.infectedNum += 1;
         }
 
         if(citizenType == CitizenType.STRONG)
@@ -202,20 +202,20 @@ public class Virus : MonoBehaviour
 
     void UnVirus()
     {
-        GameManager.infectedNum -= 1;
+        //GameManager.infectedNum -= 1;
         ChangeState(new UnVirusState(this));
     }
 
     void Recovery()
     {
         if (IsInfected() == false) return;
-        GameManager.infectedNum -= 1;
+        //GameManager.infectedNum -= 1;
         ChangeState(new UnVirusState(this));
     }
 
     void KillSelf()
     {
-        GameManager.infectedNum -= 1;
+        //GameManager.infectedNum -= 1;
         GameManager.killedNum += 1;
         Destroy(gameObject);
     }
@@ -286,7 +286,7 @@ public class Virus : MonoBehaviour
 
             if (waitTime > virusTime)
             {
-                GameManager.infectedNum += 1;
+                //GameManager.infectedNum += 1;
                 virus.ActivateStay();
             }
         }

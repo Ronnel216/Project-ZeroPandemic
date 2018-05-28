@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour {
     Virus playerVirus;
 
     // 感染者数
-    public static int infectedNum = 0;
+    //public static int infectedNum = 0;
 
     // 死者数
     public static int killedNum = 0;
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour {
         time = timeLimit;
 
         // staticメンバの初期化
-        infectedNum = 0;
+        //infectedNum = 0;
         killedNum = 0;
         
         // 加速率の初期値設定        
@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour {
         }
         if (isClear)
         {
-            infectedNum = 0;
+            //infectedNum = 0;
             pandemicFlag = false;
             comboScript.Initialize();
         }
@@ -122,6 +122,8 @@ public class GameManager : MonoBehaviour {
         //感染率が80%以上ならパンデミック開始
         if(!pandemicFlag)
         {
+            // ゾンビ数を取得
+            int infectedNum = WorldViewer.CountObjects("InfectedActor");
             if ((float)infectedNum / actorNum * 100.0f >= perdemic)
             {
                 // パンデミック発動キーが押された
