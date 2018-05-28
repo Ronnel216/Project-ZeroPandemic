@@ -4,7 +4,9 @@ using UnityEngine;
 public class ChangeMaterial : MonoBehaviour {
 
     [SerializeField]
-    Material mat;
+    Material startMat;
+    [SerializeField]
+    Material zombieMat;
 
     bool changeFlag;
     GameObject parent;
@@ -12,6 +14,7 @@ public class ChangeMaterial : MonoBehaviour {
     void Start () {
         parent = gameObject.transform.parent.parent.gameObject;
         changeFlag = false;
+        ChangeMat(zombieMat);
     }
 
     // Update is called once per frame
@@ -20,13 +23,12 @@ public class ChangeMaterial : MonoBehaviour {
         {
             if(changeFlag==false)
             {
-                Debug.Log("111111");
-                ChangeMat();
+                ChangeMat(zombieMat);
                 changeFlag = true;
             }
         }
 	}
-    void ChangeMat()
+    void ChangeMat(Material mat)
     {
         SkinnedMeshRenderer smr = GetComponent<SkinnedMeshRenderer>();
         Material[] mats = smr.materials;

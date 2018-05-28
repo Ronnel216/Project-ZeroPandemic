@@ -1117,7 +1117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68f68be8139b23c429f1868d64c17606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: 029cea7659ea8df46ba551edabbfb80b, type: 2}
+  startMat: {fileID: 2100000, guid: ff05b1773d6224841a8e73e93b11fa36, type: 2}
+  zombieMat: {fileID: 2100000, guid: 029cea7659ea8df46ba551edabbfb80b, type: 2}
 --- !u!114 &114229166494937690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1143,7 +1144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68f68be8139b23c429f1868d64c17606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: 5588bc95711ff224f9207d50cf1bb821, type: 2}
+  startMat: {fileID: 2100000, guid: 624a350f6c532614cba6c594349d3a15, type: 2}
+  zombieMat: {fileID: 2100000, guid: 5588bc95711ff224f9207d50cf1bb821, type: 2}
 --- !u!137 &137072259684495440
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1158,7 +1160,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 0cf656d56142dea4e9dd78bbfbb85f42, type: 3}
+  - {fileID: 2100000, guid: 624a350f6c532614cba6c594349d3a15, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1211,7 +1213,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100002, guid: 0cf656d56142dea4e9dd78bbfbb85f42, type: 3}
+  - {fileID: 2100000, guid: ff05b1773d6224841a8e73e93b11fa36, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
