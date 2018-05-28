@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AIManager : MonoBehaviour {
 
@@ -21,6 +22,29 @@ public class AIManager : MonoBehaviour {
     //感染者
     GameObject[] infecters;
     int cnt;
+
+    //// 経路パスの管理
+    //NavMeshPath[,] infectedPath = new NavMeshPath[30, 30];
+
+    //public void SetPath(NavMeshPath path, Vector3 pos)
+    //{
+    //    float separationWide = 1.0f;
+
+    //    Vector2Int index;
+         
+    //}
+
+    //public void ResetPath()
+    //{
+    //    for (int i = 0; i < infectedPath.Length; i++)
+    //    {
+    //        for (int j = 0; j < infectedPath.Length; j++)
+    //        {
+    //            infectedPath[i, j].ClearCorners();
+    //            infectedPath[i, j] = null;
+    //        }
+    //    }
+    //}
 
     // Use this for initialization
     void Start()

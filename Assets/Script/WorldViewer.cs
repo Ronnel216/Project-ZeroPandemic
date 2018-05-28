@@ -97,7 +97,7 @@ public class WorldViewer : MonoBehaviour {
             return null;
         }
 
-        // エリアの配列を渡す
+        // キーの配列を渡す
         var result = objList[key]; 
         return result;
     }
