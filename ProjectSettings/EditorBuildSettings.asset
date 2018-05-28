@@ -17,6 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/RankingScene.unity
     guid: cbdd65af3bea6f148a013dcec0907dd7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/TestEnterRanking.unity
     guid: 983cac34bb21d064b86ceeb09061fe9e

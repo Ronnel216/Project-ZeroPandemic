@@ -17,9 +17,9 @@ public class AIManager : MonoBehaviour {
     public static GameObject[] m_zombies;
     public static GameObject[] m_hunterManufactorys;
     //市民
-    GameObject[] actors;
+    GameObject[] m_actors;
     //感染者
-    GameObject[] infecters;
+    GameObject[] m_infecters;
     int cnt;
 
     // Use this for initialization
@@ -83,15 +83,20 @@ public class AIManager : MonoBehaviour {
     //感染者をパンデミック状態へ移行
     public void StartPandemic()
     {
-        //残っている市民の数
-        actors = GameObject.FindGameObjectsWithTag("Actor");
-        //今感染している市民の数
-        infecters = GameObject.FindGameObjectsWithTag("InfectedActor");
+        int num = WorldViewer.CountObjects("Actor");
+        m_actors = new GameObject[num];
+        //残っている市民
+        WorldViewer.GetAllObjects("Actor").CopyTo(m_actors, 0);
+
+        num = WorldViewer.CountObjects("InfectedActor");
+        m_infecters = new GameObject[num];
+        //今感染している市民
+        WorldViewer.GetAllObjects("InfectedActor").CopyTo(m_infecters);
 
         //感染者のステートを変更
-        for (int i = 0; i < infecters.Length; i++)
+        foreach (var infecter in m_infecters)
         {
-            CitizenAI ai = infecters[i].GetComponent<CitizenAI>();
+            CitizenAI ai = infecter.GetComponent<CitizenAI>();
             if (ai)
                 ai.ChangeState(new PandemicState());
         }
@@ -100,10 +105,10 @@ public class AIManager : MonoBehaviour {
     public GameObject GetTarget()
     {
         GameObject obj = null;
-
-        obj = actors[cnt];
+       
+        obj = m_actors[cnt];
         cnt++;
-        if (cnt >= actors.Length)
+        if (cnt >= m_actors.Length)
             cnt = 0;
 
         return obj; 

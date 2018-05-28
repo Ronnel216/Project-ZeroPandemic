@@ -62,9 +62,12 @@ public class PlayScreenControl : MonoBehaviour {
         //時間の取得
         time = GameManagerScript.GetTime();
         timeLimitText.text = "Time : " + time.ToString("F");
-  
-        infectedPerson = (float)GameManager.infectedNum;
-        allPerson = (float)(remainsPerson + GameManager.infectedNum);
+
+        // ゾンビ数を取得
+        int infectedNum = WorldViewer.CountObjects("InfectedActor");
+
+        infectedPerson = (float)infectedNum;
+        allPerson = (float)(remainsPerson + infectedNum);
 
         //感染率を割りだす
         rateinfected = infectedPerson / allPerson * 100.0f;
@@ -83,6 +86,7 @@ public class PlayScreenControl : MonoBehaviour {
             ReceiveValue();
             ScreenText();
         }
+        Debug.Log(infectedNum);
     }
 
     // パンデミックテキストを点減させる
@@ -121,9 +125,12 @@ public class PlayScreenControl : MonoBehaviour {
     //ScrenUIのテキストに代入
     public void ScreenText()
     {
+        // ゾンビ数を取得
+        int infectedNum = WorldViewer.CountObjects("InfectedActor");
+
         stageText.text = "ステージ" + nowStageNum.ToString();
         actorText.text = remainsPerson.ToString();
-        infectedText.text = GameManager.infectedNum.ToString();
+        infectedText.text = infectedNum.ToString();
         combText.text = combNum.ToString() + "コンボ";
         rateText.text = rateinfected.ToString("N0") + "%";
     }
