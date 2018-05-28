@@ -113,7 +113,7 @@ public class Virus : MonoBehaviour
         state.Execute();
 
         // 見た目への変更
-        UpdateModelCondition();
+        //UpdateModelCondition();
 
     }
 
