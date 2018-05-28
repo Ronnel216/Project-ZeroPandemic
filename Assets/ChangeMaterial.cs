@@ -4,8 +4,6 @@ using UnityEngine;
 public class ChangeMaterial : MonoBehaviour {
 
     [SerializeField]
-    Material startMat;
-    [SerializeField]
     Material zombieMat;
 
     bool changeFlag;
@@ -14,7 +12,6 @@ public class ChangeMaterial : MonoBehaviour {
     void Start () {
         parent = gameObject.transform.parent.parent.gameObject;
         changeFlag = false;
-        ChangeMat(zombieMat);
     }
 
     // Update is called once per frame
