@@ -58,7 +58,7 @@ public class CitizenInfectedState : CitizenAI.State {
         // ウィルスコントロールをしているなら...
         if (target.GetComponent<PlayerController>().IsAction())
         {
-            targetPos = selfVirus.gameObject.transform.position + offset;
+            targetPos = target.gameObject.transform.position + offset;
         }
         else
             targetPos = target.gameObject.transform.position + offset;

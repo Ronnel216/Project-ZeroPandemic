@@ -102,6 +102,29 @@ public class WorldViewer : MonoBehaviour {
         return result;
     }
 
+    // 全オブジェクトの座標を取得
+    static public Vector3[] GetAllPostion(string key)
+    {
+        // 存在しないキーが指定された
+        if (objList.ContainsKey(key) == false)
+        {
+            Debug.Log("存在しないキーが指定された");
+            Debug.Break();
+            return null;
+        }
+
+        Vector3[] result = new Vector3[objList[key].Count];
+
+        int i = 0;
+        foreach (var obj in objList[key])
+        {
+            result[i] = obj.transform.position;
+            i++;
+        }
+
+        return result;
+    }
+
     // 一番近いオブジェクトを取得する
     static public GameObject GetCloseObjects(string key, Vector3 position)
     {
