@@ -18,6 +18,10 @@ public class HunterManufactory : MonoBehaviour {
     [SerializeField]
     private float m_addRate = 0.01f;            // 一回の製作加算量
     private float m_manufactureRate = 0.0f;     // ハンターの製作進行度(0%~100%)
+    public float ManuFactureRate
+    {
+        get { return m_manufactureRate; }
+    }
     [SerializeField]
     private int m_manufactureNumMax = 5;        // 製作に関われる人数上限
     private int m_manufactureNum = 0;           // 製作に関わっている人数

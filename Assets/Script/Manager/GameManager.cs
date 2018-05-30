@@ -43,6 +43,9 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     SaveStr saveStr;
 
+    [SerializeField]
+    PlayScreenControl screenCntrol;
+
     public ComboScript comboScript;                                   // コンボスクリプト
 
     static public Virus[] citizen; // 仮
@@ -111,6 +114,7 @@ public class GameManager : MonoBehaviour {
             //infectedNum = 0;
             pandemicFlag = false;
             comboScript.Initialize();
+            screenCntrol.ChengePandemicTextColor(0.0f, 0.0f, 0.0f);
         }
 
         // クリア前の処理
@@ -130,6 +134,7 @@ public class GameManager : MonoBehaviour {
                 if (Input.GetKeyDown(m_pandemicKey))
                 {
                     pandemic.StartPandemic();
+                    screenCntrol.ChengePandemicTextColor(255.0f,255.0f,0.0f);
                     pandemicFlag = true;
                 }
             }
