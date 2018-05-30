@@ -86,7 +86,6 @@ public class PlayScreenControl : MonoBehaviour {
             ReceiveValue();
             ScreenText();
         }
-        Debug.Log(infectedNum);
     }
 
     // パンデミックテキストを点減させる
