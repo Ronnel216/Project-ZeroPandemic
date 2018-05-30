@@ -20,11 +20,15 @@ public class PlayScreenControl : MonoBehaviour {
     public Text rateText;
     // パンデミック可能テキスト
     public Text pandemicText;
+    // ハンターの完成度テキスト
+    public Text hunterProgressText;
     //==================================
 
 
-    public GameManager GameManagerScript;
+    public GameManager gameManagerScript;
     public ComboScript combCount;
+    public HunterManufactory hunterManufactory;
+    private GameObject hunterManufactoryObject;
 
     //現在のステージ番号
     int nowStageNum = 1;
@@ -40,27 +44,48 @@ public class PlayScreenControl : MonoBehaviour {
     float rateinfected = 0.0f;
     //制限時間
     float time;
+    // 赤
+    float red = 0.0f;
+    // 緑
+    float green = 0.0f;
+    // 青
+    float blue = 0.0f;
     // カラーのアルファ値
     float alfaColor = 0.0f;
     // パンデミック可能数値
     float pandemicPossible = 80.0f;
+    // ハンター制作度
+    float hunterProgress = 0.0f;
     // 表示フラグ
     bool isIndicate;
     //ゲームが始まったかどうか
     bool isSetGame;
+    //
+    bool[] useDisplayText;
+
+    // ハンター制作通知の移動を行っている
+    bool isMoveHunterProgressText;
+
+    //
+    bool isOnece = true;
+
     // Use this for initialization
     void Start () {
-        time = GameManagerScript.GetTimeLimit();
-        remainsPerson = GameManagerScript.GetActorNum();
+        time = gameManagerScript.GetTimeLimit();
+        remainsPerson = gameManagerScript.GetActorNum();
+        hunterManufactoryObject = GameObject.FindGameObjectWithTag("HunterManufactory");
+        hunterManufactory = hunterManufactoryObject.GetComponent<HunterManufactory>();
+        hunterProgressText.transform.localPosition = new Vector3(600.0f, 0.0f, 0.0f);
+        useDisplayText = new bool[4];
     }
 
     // Update is called once per frame
     void Update () {
         //ゲームの状態を取得
-        isSetGame = GameManagerScript.GetStartPandemic();
+        isSetGame = gameManagerScript.GetStartPandemic();
 
         //時間の取得
-        time = GameManagerScript.GetTime();
+        time = gameManagerScript.GetTime();
         timeLimitText.text = "Time : " + time.ToString("F");
 
         // ゾンビ数を取得
@@ -73,6 +98,12 @@ public class PlayScreenControl : MonoBehaviour {
         rateinfected = infectedPerson / allPerson * 100.0f;
 
         PandemicTextReduction(rateinfected);
+
+        SendNotice();
+
+        HunterProgressInformation();
+
+        ResetHunterText();
 
         if (float.IsNaN(rateinfected))
             rateinfected = 100.0f;
@@ -98,7 +129,7 @@ public class PlayScreenControl : MonoBehaviour {
         {
             pandemicText.enabled = true;
             // テキストの透明度を変更する
-            pandemicText.color = new Color(0, 0, 0, alfaColor);
+            pandemicText.color = new Color(red, green, blue, alfaColor);
             if (isIndicate) alfaColor -= Time.deltaTime;
             else alfaColor += Time.deltaTime;
             if(alfaColor < 0)
@@ -113,6 +144,109 @@ public class PlayScreenControl : MonoBehaviour {
             }
         }
         else pandemicText.enabled = false;
+    }
+
+    void Send(string _message)
+    {
+        if (_message == "30%Text")
+            useDisplayText[0] = true;
+        else if (_message == "50%Text")
+            useDisplayText[1] = true;
+        else if (_message == "90%Text")
+            useDisplayText[2] = true;
+        else if (_message == "100%Text")
+            useDisplayText[3] = true;
+
+        // テキストの移動を開始する
+        isMoveHunterProgressText = true;
+    }
+
+    void SendNotice()
+    {
+        if (isOnece)
+        {
+            if (hunterProgress >= 100.0f)
+            {
+                Send("100%Text");
+                isOnece = false;
+            }
+            else if (hunterProgress >= 90.0f)
+            {
+                Send("90%Text");
+                isOnece = false;
+            }
+            else if (hunterProgress >= 50.0f)
+            {
+                Send("50%Text");
+                isOnece = false;
+            }
+            else if (hunterProgress >= 30.0f)
+            {
+                Send("30%Text");
+                isOnece = false;
+            }
+
+        }
+    }
+
+    //
+    void HunterProgressInformation()
+    {
+        hunterProgress = hunterManufactory.ManuFactureRate;
+        Debug.Log(hunterProgress);
+        string text = "なんでもいい";
+
+        // 通知を確認
+        int result = -1;
+        for (int i = useDisplayText.Length - 1; i >= 0; i--)
+        {
+            if (useDisplayText[i]) {
+                result = i;
+                break;
+            }; 
+        }
+
+        // データの更新
+        switch (result)
+        {
+            case 0:
+                text = "ハンターが30%完成";
+                break;
+            case 1:
+                text = "ハンターが50%完成";
+                break;
+            case 2:
+                text = "ハンターが90%完成";
+                break;
+            case 3:
+                text = "ハンターが完成";
+                break;
+        }
+        hunterProgressText.text = text;
+
+
+        // 移動力
+        Vector3 moveVec = new Vector3(-1.5f, 0, 0);
+        // 座標設定の更新
+        if (isMoveHunterProgressText)
+            hunterProgressText.transform.Translate(moveVec);
+    }
+
+    void ResetHunterText()
+    {
+        if (hunterProgressText.transform.localPosition.x < -600.0f)
+        {
+            hunterProgressText.transform.localPosition = new Vector3(600.0f, 0.0f, 0.0f);
+            isMoveHunterProgressText = false;
+        }
+    }
+
+    public void ChengePandemicTextColor(float r, float g, float b)
+    {
+        red = r;
+        green = g;
+        blue = b;
+        pandemicText.color = new Color(red, green, blue, alfaColor);
     }
     //シーン上の指定したタグが付いたオブジェクトを数える
     public int CheckObject(string tagname)
