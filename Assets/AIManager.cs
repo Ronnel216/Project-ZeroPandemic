@@ -21,7 +21,7 @@ public class AIManager : MonoBehaviour {
     GameObject[] m_actors;
     //感染者
     GameObject[] m_infecters;
-    int cnt;
+    int m_cnt = 0;
 
     //// 経路パスの管理
     //NavMeshPath[,] infectedPath = new NavMeshPath[30, 30];
@@ -129,12 +129,13 @@ public class AIManager : MonoBehaviour {
     public GameObject GetTarget()
     {
         GameObject obj = null;
-       
-        obj = m_actors[cnt];
-        cnt++;
-        if (cnt >= m_actors.Length)
-            cnt = 0;
 
+        if (m_cnt > m_actors.Length - 1)
+            m_cnt = 0;
+
+        obj = m_actors[m_cnt];
+        m_cnt++;
+        
         return obj; 
     }
 }
