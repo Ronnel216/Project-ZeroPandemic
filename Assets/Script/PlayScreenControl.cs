@@ -56,6 +56,9 @@ public class PlayScreenControl : MonoBehaviour {
     float pandemicPossible = 80.0f;
     // ハンター制作度
     float hunterProgress = 0.0f;
+
+    //
+    string confirmationText = "";
     // 表示フラグ
     bool isIndicate;
     //ゲームが始まったかどうか
@@ -66,7 +69,7 @@ public class PlayScreenControl : MonoBehaviour {
     // ハンター制作通知の移動を行っている
     bool isMoveHunterProgressText;
 
-    //
+    //一度しか通らない
     bool isOnece = true;
 
     // Use this for initialization
@@ -147,45 +150,46 @@ public class PlayScreenControl : MonoBehaviour {
 
     void Send(string _message)
     {
-        if (_message == "30%Text")
-            useDisplayText[0] = true;
-        else if (_message == "50%Text")
-            useDisplayText[1] = true;
-        else if (_message == "90%Text")
-            useDisplayText[2] = true;
-        else if (_message == "100%Text")
-            useDisplayText[3] = true;
+        if(hunterProgressText.text != _message)
+        confirmationText = _message;
 
+        if (isOnece)
+        {
+            if (_message == "ハンターが30%完成")
+                useDisplayText[0] = true;
+            else if (_message == "ハンターが50%完成")
+                useDisplayText[1] = true;
+            else if (_message == "ハンターが80%完成")
+                useDisplayText[2] = true;
+            else if (_message == "ハンターが完成")
+                useDisplayText[3] = true;
         // テキストの移動を開始する
         isMoveHunterProgressText = true;
+        }
+
+
     }
 
     void SendNotice()
     {
-        if (isOnece)
-        {
+       
             if (hunterProgress >= 100.0f)
             {
-                Send("100%Text");
-                isOnece = false;
+                Send("ハンターが完成");
             }
-            else if (hunterProgress >= 90.0f)
+            else if (hunterProgress >= 80.0f)
             {
-                Send("90%Text");
-                isOnece = false;
+                Send("ハンターが80%完成");
             }
             else if (hunterProgress >= 50.0f)
             {
-                Send("50%Text");
-                isOnece = false;
+                Send("ハンターが50%完成");
             }
             else if (hunterProgress >= 30.0f)
             {
-                Send("30%Text");
-                isOnece = false;
+                Send("ハンターが30%完成");
             }
-
-        }
+        
     }
 
     //
@@ -193,7 +197,7 @@ public class PlayScreenControl : MonoBehaviour {
     {
         hunterProgress = hunterManufactory.ManuFactureRate;
         Debug.Log(hunterProgress);
-        string text = "なんでもいい";
+        string text = "";
 
         // 通知を確認
         int result = -1;
@@ -215,7 +219,7 @@ public class PlayScreenControl : MonoBehaviour {
                 text = "ハンターが50%完成";
                 break;
             case 2:
-                text = "ハンターが90%完成";
+                text = "ハンターが80%完成";
                 break;
             case 3:
                 text = "ハンターが完成";
@@ -223,9 +227,8 @@ public class PlayScreenControl : MonoBehaviour {
         }
         hunterProgressText.text = text;
 
-
         // 移動力
-        Vector3 moveVec = new Vector3(-1.5f, 0, 0);
+        Vector3 moveVec = new Vector3(-4.5f, 0, 0);
         // 座標設定の更新
         if (isMoveHunterProgressText)
             hunterProgressText.transform.Translate(moveVec);
@@ -238,6 +241,12 @@ public class PlayScreenControl : MonoBehaviour {
             hunterProgressText.transform.localPosition = new Vector3(600.0f, 0.0f, 0.0f);
             isMoveHunterProgressText = false;
         }
+
+        if (hunterProgressText.text == confirmationText)
+            isOnece = false;
+        else
+            isOnece = true;
+        
     }
 
     public void ChengePandemicTextColor(float r, float g, float b)
