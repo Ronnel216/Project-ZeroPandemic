@@ -22,6 +22,10 @@ public class StageManager : MonoBehaviour {
     private GameObject m_mainCamera;                                // カメラオブジェクト
     [SerializeField]
     private Vector3 m_cameraMove = new Vector3(7.0f, 0.0f, 0.0f);   // カメラ移動量
+    public Vector3 CameraMove
+    {
+        get { return m_cameraMove; }
+    }
     [SerializeField]
     private float m_migrationTime = 1.0f;                           // ステージ移動時間
     [SerializeField]
@@ -84,7 +88,7 @@ public class StageManager : MonoBehaviour {
         }
         else
         {
-            CameraMove();
+            MoveCamera();
         }
 	}
 
@@ -130,7 +134,7 @@ public class StageManager : MonoBehaviour {
     //!
     //! @return なし
     //----------------------------------------------------------------------
-    public void CameraMove()
+    public void MoveCamera()
     {
         float step = (Time.time - m_time) / m_migrationTime;
 
