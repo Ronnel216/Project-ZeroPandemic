@@ -196,7 +196,6 @@ public class PlayScreenControl : MonoBehaviour {
     void HunterProgressInformation()
     {
         hunterProgress = hunterManufactory.ManuFactureRate;
-        Debug.Log(hunterProgress);
         string text = "";
 
         // 通知を確認

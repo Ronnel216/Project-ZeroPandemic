@@ -119,8 +119,13 @@ public class GameManager : MonoBehaviour {
 
         // クリア前の処理
         if (IsClear()) return;
-        time -= Time.deltaTime;// * acceleratorRate;
-        if (time < 0.0f) time = 0.0f;
+
+        // パンデミック時とステージ移動中はタイムを止める
+        if (!pandemicFlag && stageMnager.MigrationStage)
+        {
+            time -= Time.deltaTime;// * acceleratorRate;
+            if (time < 0.0f) time = 0.0f;
+        }
 
 
         //感染率が80%以上ならパンデミック開始
