@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4727568818279672}
-  - component: {fileID: 65601969984296782}
   - component: {fileID: 65014046672025516}
   - component: {fileID: 114786049328158452}
   - component: {fileID: 195569654312705308}
@@ -127,18 +126,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 1.5, z: 0}
---- !u!65 &65601969984296782
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1238312161998490}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3, y: 3, z: 3}
-  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!114 &114786049328158452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,6 +142,7 @@ MonoBehaviour:
   m_captureTime: 3
   m_decreaseMaxAmount: 10
   m_coolTime: 5
+  m_downSpeed: 5
 --- !u!195 &195569654312705308
 NavMeshAgent:
   m_ObjectHideFlags: 1
