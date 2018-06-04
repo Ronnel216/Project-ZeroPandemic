@@ -37,6 +37,11 @@ public class VirusAmount : MonoBehaviour
     bool isSetGame;
     bool isVirusControll;                   // ウイルスコントロール用フラグ
     bool comboSeparation;                   // コンボ用フラグ
+    bool stop = false;                      // 拘束されている時用(仮)
+    public bool Stop
+    {
+        set { stop = value; }
+    }
 
 
     PlayerController playerController;
@@ -137,6 +142,9 @@ public class VirusAmount : MonoBehaviour
     //----------------------------------------------------------------------
     void CheckIncreaseVirusAmount()
     {
+        // 拘束中は回復しない
+        if (stop) return;
+
         if (virusAmount < maxVirusAmount && !isVirusControll)
             virusAmount += increaseVirusAmount;
     }
