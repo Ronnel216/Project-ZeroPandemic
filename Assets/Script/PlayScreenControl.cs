@@ -23,7 +23,7 @@ public class PlayScreenControl : MonoBehaviour {
     // ハンターの完成度テキスト
     public Text hunterProgressText;
     // 警告画像
-    public Image warningImage;
+    //public Image warningImage;
     //==================================
 
 
@@ -242,7 +242,7 @@ public class PlayScreenControl : MonoBehaviour {
 
         if(useDisplayText[3] && isMoveWarningImage)
         {
-            warningImage.transform.Translate(moveVec);
+            //warningImage.transform.Translate(moveVec);
         }
     }
 
@@ -254,11 +254,11 @@ public class PlayScreenControl : MonoBehaviour {
             isMoveHunterProgressText = false;
         }
 
-        if (warningImage.transform.localPosition.x < -800.0f)
-        {
-            warningImage.transform.localPosition = new Vector3(800.0f, 0.0f, 0.0f);
-            isMoveWarningImage = false;
-        }
+        //if (warningImage.transform.localPosition.x < -800.0f)
+        //{
+        //    warningImage.transform.localPosition = new Vector3(800.0f, 0.0f, 0.0f);
+        //    isMoveWarningImage = false;
+        //}
 
         if (hunterProgressText.text == confirmationText)
             isOnece = false;
