@@ -127,9 +127,9 @@ public class GameManager : MonoBehaviour {
             if (time < 0.0f) time = 0.0f;
         }
 
-
+        actorNum = WorldViewer.CountObjects("Actor");
         //感染率が80%以上ならパンデミック開始
-        if(!pandemicFlag)
+        if (!pandemicFlag)
         {
             // ゾンビ数を取得
             int infectedNum = WorldViewer.CountObjects("InfectedActor");

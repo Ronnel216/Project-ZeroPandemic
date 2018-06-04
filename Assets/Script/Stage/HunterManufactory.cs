@@ -91,7 +91,8 @@ public class HunterManufactory : MonoBehaviour {
         float spawnOffset = thisPos.z + m_factoryRange / 2;
         
         Vector3 pos = new Vector3(thisPos.x, thisPos.y, spawnOffset);
-        Instantiate(m_hunter, pos,Quaternion.identity);
+        GameObject hunter = Instantiate(m_hunter, pos,Quaternion.identity);
+        hunter.transform.parent = GameObject.Find("Actors").transform;
         m_completion = true;
     }
 
