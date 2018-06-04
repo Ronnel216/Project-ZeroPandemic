@@ -37,6 +37,8 @@ public class HunterCaptureState : HunterController.HunterState {
     {
         // プレイヤーを拘束
         m_playerMove.LockMove = true;
+        // ウィルスの自動回復を止める
+        m_virusAmount.Stop = true;
 
         // 1フレーム分の減少
         m_virusAmount.DecreaseVirusAmount(m_decreaseAmount * Time.deltaTime);
@@ -46,7 +48,18 @@ public class HunterCaptureState : HunterController.HunterState {
         if (m_virusAmount.GetVirusAmount() <= 0)
         {
             m_playerMove.LockMove = false;
+            m_virusAmount.Stop = false;
             hunter.ChangeState(new HunterCooldownState());
         }   
     }
+
+
+
+    public override void OnDestroy()
+    {
+        // ハンターが消滅したら強制解放
+        m_playerMove.LockMove = false;
+        m_virusAmount.Stop = false;
+    }
+
 }

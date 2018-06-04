@@ -108,6 +108,8 @@ public class StageManager : MonoBehaviour {
         if (m_allClear) return;
 
         Vector3 pos = m_nowStage.transform.position;
+        Vector3 cameraPos = m_mainCamera.transform.position;
+        pos = new Vector3(cameraPos.x, pos.y, cameraPos.z);
         pos += m_cameraMove;
         m_stageNum++;
 

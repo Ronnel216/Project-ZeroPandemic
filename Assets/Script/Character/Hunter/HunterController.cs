@@ -23,6 +23,8 @@ public class HunterController : MonoBehaviour {
         public abstract void Update(HunterController hunter);
         // ヒット判定
         public virtual void OnTriggerStay(Collider other, HunterController hunter) { }
+        public virtual void OnDestroy() { }
+
     }
 
     HunterState m_state;                            // 現在の行動状態
@@ -158,5 +160,10 @@ public class HunterController : MonoBehaviour {
         // 触れたのがゾンビだったらカウント
         if (hitObj.name != "Player" && hitObj.tag == "InfectedActor")
             m_zombieNum++;
+    }
+
+    private void OnDestroy()
+    {
+        m_state.OnDestroy();
     }
 }
