@@ -22,6 +22,8 @@ public class PlayScreenControl : MonoBehaviour {
     public Text pandemicText;
     // ハンターの完成度テキスト
     public Text hunterProgressText;
+    // 警告画像
+    public Image warningImage;
     //==================================
 
 
@@ -69,6 +71,9 @@ public class PlayScreenControl : MonoBehaviour {
     // ハンター制作通知の移動を行っている
     bool isMoveHunterProgressText;
 
+    //　ハンター完成通知の移動を行っている
+    bool isMoveWarningImage;
+
     //一度しか通らない
     bool isOnece = true;
 
@@ -78,7 +83,7 @@ public class PlayScreenControl : MonoBehaviour {
         remainsPerson = gameManagerScript.GetActorNum();
         hunterManufactoryObject = GameObject.FindGameObjectWithTag("HunterManufactory");
         hunterManufactory = hunterManufactoryObject.GetComponent<HunterManufactory>();
-        hunterProgressText.transform.localPosition = new Vector3(600.0f, 0.0f, 0.0f);
+        hunterProgressText.transform.localPosition = new Vector3(800.0f, -100.0f, 0.0f);
         useDisplayText = new bool[4];
     }
 
@@ -162,9 +167,12 @@ public class PlayScreenControl : MonoBehaviour {
             else if (_message == "ハンターが80%完成")
                 useDisplayText[2] = true;
             else if (_message == "ハンターが完成")
+            {
                 useDisplayText[3] = true;
-        // テキストの移動を開始する
-        isMoveHunterProgressText = true;
+                isMoveWarningImage = true;
+            }
+            // テキストの移動を開始する
+            isMoveHunterProgressText = true;
         }
 
 
@@ -228,18 +236,29 @@ public class PlayScreenControl : MonoBehaviour {
         hunterProgressText.text = text;
 
         // 移動力
-        Vector3 moveVec = new Vector3(-4.5f, 0, 0);
+        Vector3 moveVec = new Vector3(-5.5f, 0, 0);
         // 座標設定の更新
         if (isMoveHunterProgressText)
             hunterProgressText.transform.Translate(moveVec);
+
+        if(useDisplayText[3] && isMoveWarningImage)
+        {
+            warningImage.transform.Translate(moveVec);
+        }
     }
 
     void ResetHunterText()
     {
         if (hunterProgressText.transform.localPosition.x < -600.0f)
         {
-            hunterProgressText.transform.localPosition = new Vector3(600.0f, 0.0f, 0.0f);
+            hunterProgressText.transform.localPosition = new Vector3(800.0f, -100.0f, 0.0f);
             isMoveHunterProgressText = false;
+        }
+
+        if (warningImage.transform.localPosition.x < -800.0f)
+        {
+            warningImage.transform.localPosition = new Vector3(800.0f, 0.0f, 0.0f);
+            isMoveWarningImage = false;
         }
 
         if (hunterProgressText.text == confirmationText)
