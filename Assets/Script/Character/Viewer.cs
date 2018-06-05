@@ -32,7 +32,6 @@ public class Viewer : MonoBehaviour {
             target = null;
     }
 
-    // お腹すいた
     void OnTriggerStay(Collider other)
     {
         if (other.tag != targetTag) return;
