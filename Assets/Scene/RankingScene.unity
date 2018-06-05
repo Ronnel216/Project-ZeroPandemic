@@ -385,7 +385,7 @@ MonoBehaviour:
   m_saveStr: {fileID: 0}
   m_name: 
   m_score: 0
-  m_saveFlag: 1
+  m_saveFlag: 0
   rank:
   - {fileID: 21300000, guid: 8eb8e7ce8aff86946ac0df02598056a2, type: 3}
   - {fileID: 21300000, guid: e3e1d4ea3a07eed4989f3d3c9c2f366b, type: 3}

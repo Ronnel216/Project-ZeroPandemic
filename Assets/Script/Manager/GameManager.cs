@@ -138,7 +138,7 @@ public class GameManager : MonoBehaviour {
         {
             // ゾンビ数を取得
             int infectedNum = WorldViewer.CountObjects("InfectedActor");
-            if ((float)infectedNum / actorNum * 100.0f >= perdemic)
+            if ((float)infectedNum / (actorNum + infectedNum) * 100.0f >= perdemic)
             {
                 // パンデミック発動キーが押された
                 if (Input.GetKeyDown(m_pandemicKey))

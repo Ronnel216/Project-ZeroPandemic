@@ -15,7 +15,6 @@ public class AIManager : MonoBehaviour {
     List<InfectedActor> infectedActors;
 
     public int degugnum;
-    public static GameObject[] m_zombies;
     public static GameObject[] m_hunterManufactorys;
     //市民
     GameObject[] m_actors;
@@ -87,20 +86,34 @@ public class AIManager : MonoBehaviour {
 
     public static GameObject GetCloseZombie(Vector3 pos, float radius = -0.1f)
     {
-        m_zombies = GameObject.FindGameObjectsWithTag("InfectedActor");
+        //m_zombies = GameObject.FindGameObjectsWithTag("InfectedActor");
+
+        //GameObject result = null;
+        //float distance = radius;
+        //foreach (var zombie in m_zombies)
+        //{
+        //    Vector3 factoryPos = zombie.transform.position;
+        //    float dis = (factoryPos - pos).magnitude;
+        //    if (dis < distance || distance < 0.0f)
+        //    {
+        //        distance = dis;
+        //        result = zombie;
+        //    }
+        //}
+
+        // 探索をしない
+        if (radius < 0.0f) return null;
+
+
+        // 近くのゾンビを取得
+        var zombie = WorldViewer.GetCloseObject("InfectedActor", pos);
 
         GameObject result = null;
-        float distance = radius;
-        foreach (var zombie in m_zombies)
-        {
-            Vector3 factoryPos = zombie.transform.position;
-            float dis = (factoryPos - pos).magnitude;
-            if (dis < distance || distance < 0.0f)
-            {
-                distance = dis;
-                result = zombie;
-            }
-        }
+
+        // 範囲内か
+        if ((zombie.transform.position - pos).sqrMagnitude < radius * radius)
+            result = zombie;
+
         return result;
     }
 
@@ -114,6 +127,7 @@ public class AIManager : MonoBehaviour {
 
         num = WorldViewer.CountObjects("InfectedActor");
         m_infecters = new GameObject[num];
+
         //今感染している市民
         WorldViewer.GetAllObjects("InfectedActor").CopyTo(m_infecters);
 

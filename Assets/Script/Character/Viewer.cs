@@ -16,35 +16,32 @@ public class Viewer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        GetComponent<SphereCollider>().radius = range;	
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (target == null) {
-            minLength = float.MaxValue;
-            targetName = "NotFound";
-            return;
-                }
-        targetName = target.name;
-        minLength = (transform.position - target.transform.position).magnitude;
-        if (target.tag != targetTag)
-            target = null;
-    }
-
-    // お腹すいた
-    void OnTriggerStay(Collider other)
-    {
-        if (other.tag != targetTag) return;
-        float length = (transform.position - other.gameObject.transform.position).magnitude;
-        if (minLength > length)
+        // 視界から外れた時
+        if (target)
         {
-            target = other.gameObject;
-            minLength = length;
+            if ((target.transform.position - transform.position).sqrMagnitude >= range * range){
+                target = null;
+            }
+        }       
+        
+        // ターゲットが存在しない時
+        if (target == null)
+        {
+            var temp = WorldViewer.GetCloseObject(targetTag, transform.position);
+            if (temp)
+            {
+                if ((temp.transform.position - transform.position).sqrMagnitude < range * range){
+                    target = temp;
+                }
+            }
         }
-
     }
-
+    
     // ターゲットを決める
     public void Target(string tag)
     {
