@@ -108,7 +108,7 @@ public class CitizenInfectedState : CitizenAI.State {
             if (leader)
             {
                 if (leader != selfVirus.gameObject)
-                    movement.NavMeshAgent.SetPath(pathToLeader);
+                    movement.SetPath(pathToLeader);
                 else
                     movement.SetDestination(targetPos);
 

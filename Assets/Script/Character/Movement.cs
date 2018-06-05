@@ -250,7 +250,23 @@ public class Movement : MonoBehaviour {
     public void CalculatePath(Vector3 target, out NavMeshPath path)
     {
         path = new NavMeshPath();
-        m_navMeshAgent.CalculatePath(target, path);
+
+        if (GetUseNavMesh())
+           m_navMeshAgent.CalculatePath(target, path);
+    }
+
+
+    //----------------------------------------------------------------------
+    //! @brief パスの設定
+    //!
+    //! @param[in] ナビメッシュパス
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    public void SetPath(NavMeshPath path)
+    {
+        if (GetUseNavMesh())
+            m_navMeshAgent.SetPath(path);
     }
 
     //----------------------------------------------------------------------
