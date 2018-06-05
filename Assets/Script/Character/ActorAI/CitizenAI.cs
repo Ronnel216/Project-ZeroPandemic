@@ -21,9 +21,10 @@ public class CitizenAI : MonoBehaviour {
             public Movement movement;
             // 捕獲しているオブジェクト
             public GameObject catchObj;
-            //// 移動ノード
-            //public AIRouteNode.Node[] nodes;
+
         }
+
+        public virtual void Init(StateData data) { }
 
         // 状態のUpdate
         public abstract void Excute(StateData data);

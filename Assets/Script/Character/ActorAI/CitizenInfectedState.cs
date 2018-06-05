@@ -11,6 +11,14 @@ public class CitizenInfectedState : CitizenAI.State {
 
     bool isUpdateDestination = true;
 
+    static GameObject leader = null;
+    static NavMeshPath pathToLeader = null;
+
+    public override void Init(StateData data)
+    {
+
+    }
+
     float waitTime = 1.0f;          // 感染後の待機時間
     float time = 0.0f;
     public override void Excute(StateData data)
@@ -49,24 +57,64 @@ public class CitizenInfectedState : CitizenAI.State {
 
         Vector3 targetPos = new Vector3();
 
-        //// コントロールがなにもない時
-        //if (offset.magnitude < Mathf.Epsilon)
-        //    movement.NavMeshAgent.stoppingDistance = expansion.ExpansionArea;
-        //else
-        //    movement.NavMeshAgent.stoppingDistance = 0.0f;
-
         // ウィルスコントロールをしているなら...
         if (target.GetComponent<PlayerController>().IsAction())
         {
-            targetPos = target.gameObject.transform.position + offset;
+            if (leader == null)
+                leader = selfVirus.gameObject;
             isUpdateDestination = true;
+
+            pathToLeader = null;
+
+            // リーダが存在する時　
+            if (leader)
+            {
+                if (leader != selfVirus.gameObject)
+                {
+                    targetPos = leader.transform.position;
+                    movement.SetPriority(50);
+                    movement.SetSpeed(moveSpeed);                    
+                    if (pathToLeader == null)
+                        movement.CalculatePath(targetPos, out pathToLeader);
+                    
+                }
+                else
+                {
+                    targetPos = selfVirus.gameObject.transform.position + playerVec;
+                    movement.SetPriority(10);
+                    movement.SetSpeed(moveSpeed / 2);
+
+                }
+            }
+
         }
         else
-            isUpdateDestination = false;
+        {
+            leader = null;
+            if ((target.transform.position - selfVirus.gameObject.transform.position).sqrMagnitude < expansion.ExpansionArea * expansion.ExpansionArea)
+            {
+                isUpdateDestination = false;
+            }
+            else
+            {
+                isUpdateDestination = true;
+            }
+
+            targetPos = target.gameObject.transform.position;
+        }
 
         if (isUpdateDestination)
         {
-            movement.SetDestination(targetPos);
+            if (leader)
+            {
+                if (leader != selfVirus.gameObject)
+                    movement.NavMeshAgent.SetPath(pathToLeader);
+                else
+                    movement.SetDestination(targetPos);
+
+            }
+            else
+                movement.SetDestination(targetPos);
             //movement.SetIsStopped(false);
         }
         else
