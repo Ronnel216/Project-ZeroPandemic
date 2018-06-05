@@ -126,7 +126,7 @@ public class WorldViewer : MonoBehaviour {
     }
 
     // 一番近いオブジェクトを取得する
-    static public GameObject GetCloseObjects(string key, Vector3 position)
+    static public GameObject GetCloseObject(string key, Vector3 position)
     {
         // 存在しないキーが指定された
         if (objList.ContainsKey(key) == false)
