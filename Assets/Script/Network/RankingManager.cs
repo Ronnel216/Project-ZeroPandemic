@@ -25,6 +25,9 @@ public class RankingManager : MonoBehaviour
     private GameObject m_inputField;            // インプットフィールドオブジェクト
     [SerializeField]
     private GameObject m_rankImagePrehub;       // ランキングイメージPrefab
+    [SerializeField]
+    private GameObject m_saveStr;
+
 
     [SerializeField]
     private string m_name;                      // 名前
@@ -60,6 +63,8 @@ public class RankingManager : MonoBehaviour
 
     private int drawRanking = 0;
 
+    private string nextScene = "";
+
     
 
     // Use this for initialization
@@ -78,6 +83,7 @@ public class RankingManager : MonoBehaviour
         m_scoreText = new List<GameObject>();
         m_rankImage = new List<GameObject>();
         m_ranking = GetComponent<QuickRanking>();
+        m_saveStr = GameObject.FindGameObjectWithTag("Data");
         m_ranking.FetchRanking();
 
         m_inputField.SetActive(false);
@@ -107,6 +113,7 @@ public class RankingManager : MonoBehaviour
             {
                 if (Input.anyKeyDown)
                     Application.LoadLevel("TitleScene");
+                Destroy(m_saveStr);
             }
         }
 
@@ -266,28 +273,28 @@ public class RankingManager : MonoBehaviour
         GameObject tmpObj = Instantiate(m_scoreTextPrehub);
         tmpObj.transform.parent = m_canvas.transform;
         tmpObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-        tmpObj.transform.localPosition = new Vector3(100, index * -150 + 200, 0);
+        tmpObj.transform.localPosition = new Vector3(30, index * -130 + 120, 0);
 
         m_rankText.Add(tmpObj);
 
         tmpObj = Instantiate(m_scoreTextPrehub);
         tmpObj.transform.parent = m_canvas.transform;
         tmpObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-        tmpObj.transform.localPosition = new Vector3(500, index * -150 + 200, 0);
+        tmpObj.transform.localPosition = new Vector3(530, index * -130 + 120, 0);
 
         m_nameText.Add(tmpObj);
 
         tmpObj = Instantiate(m_scoreTextPrehub);
         tmpObj.transform.parent = m_canvas.transform;
         tmpObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-        tmpObj.transform.localPosition = new Vector3(1000, index * -150 + 200, 0);
+        tmpObj.transform.localPosition = new Vector3(880, index * -130 + 120, 0);
 
         m_scoreText.Add(tmpObj);
 
         tmpObj = Instantiate(m_rankImagePrehub);
         tmpObj.transform.parent = m_canvas.transform;
         tmpObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-        tmpObj.transform.localPosition = new Vector3(-200, index * -155 + 250, 0);
+        tmpObj.transform.localPosition = new Vector3(-200, index * -135 + 170, 0);
 
         m_rankImage.Add(tmpObj);
 

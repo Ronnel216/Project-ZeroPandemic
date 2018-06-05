@@ -56,6 +56,9 @@ public class GameManager : MonoBehaviour {
     // クリアしたか
     bool isClear;
 
+    // ステージ番号
+    int stageNum = 1;
+
     //感染率
     [SerializeField]
     float perdemic = 80.0f;
@@ -112,6 +115,8 @@ public class GameManager : MonoBehaviour {
         if (isClear)
         {
             //infectedNum = 0;
+            stageNum++;
+            screenCntrol.SetStageNum(stageNum);
             pandemicFlag = false;
             comboScript.Initialize();
             screenCntrol.ChengePandemicTextColor(0.0f, 0.0f, 0.0f);
