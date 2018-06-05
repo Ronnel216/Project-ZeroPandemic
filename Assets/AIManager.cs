@@ -127,6 +127,7 @@ public class AIManager : MonoBehaviour {
 
         num = WorldViewer.CountObjects("InfectedActor");
         m_infecters = new GameObject[num];
+
         //今感染している市民
         WorldViewer.GetAllObjects("InfectedActor").CopyTo(m_infecters);
 

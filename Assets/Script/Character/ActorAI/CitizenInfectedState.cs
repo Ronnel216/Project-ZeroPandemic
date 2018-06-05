@@ -9,7 +9,7 @@ public class CitizenInfectedState : CitizenAI.State {
 
     const string citizenTag = "Actor";
 
-    Vector3 lastTargetPos;
+    bool isUpdateDestination = true;
 
     float waitTime = 1.0f;          // 感染後の待機時間
     float time = 0.0f;
@@ -47,52 +47,38 @@ public class CitizenInfectedState : CitizenAI.State {
         offset.Normalize();
         offset *= expansion.ExpansionArea;
 
-        Vector3 targetPos;
+        Vector3 targetPos = new Vector3();
 
-        // コントロールがなにもない時
-        if (offset.magnitude < Mathf.Epsilon)
-            movement.NavMeshAgent.stoppingDistance = expansion.ExpansionArea;
-        else
-            movement.NavMeshAgent.stoppingDistance = 0.0f;
+        //// コントロールがなにもない時
+        //if (offset.magnitude < Mathf.Epsilon)
+        //    movement.NavMeshAgent.stoppingDistance = expansion.ExpansionArea;
+        //else
+        //    movement.NavMeshAgent.stoppingDistance = 0.0f;
 
         // ウィルスコントロールをしているなら...
         if (target.GetComponent<PlayerController>().IsAction())
         {
             targetPos = target.gameObject.transform.position + offset;
+            isUpdateDestination = true;
         }
         else
-            targetPos = target.gameObject.transform.position + offset;
+            isUpdateDestination = false;
 
-
-        movement.SetDestination(targetPos);
-        lastTargetPos = targetPos;        
+        if (isUpdateDestination)
+        {
+            movement.SetDestination(targetPos);
+            //movement.SetIsStopped(false);
+        }
+        else
+        {
+            //movement.SetIsStopped(true);
+            movement.ResetPath();
+        }
     }
 
     public override void OnTriggerEnter(Collider other, StateData data)
     {
         base.OnTriggerEnter(other, data);
 
-        //// 感染者
-        //if (other.tag == citizenTag)
-        //{
-        //    // 仮 他のコライダー判定を考慮する
-        //    if ((other.gameObject.transform.position - data.ai.gameObject.transform.position).magnitude > 2.0f) return;
-
-
-        //    var targetAi = other.GetComponent<CitizenAI>();
-        //    if (targetAi == null) return;
-                    
-        //    // 拘束されていないなら拘束する
-        //    if (targetAi.CheckState<CitizenFriezeState>() == false)
-        //    {
-        //        data.ai.GetComponent<NavMeshAgent>().ResetPath();
-        //        data.catchObj = other.gameObject;
-        //        CitizenAI.State state = new CitizenCatchState();
-        //        data.ai.ChangeState(state);
-
-        //        state = new CitizenFriezeState();
-        //        targetAi.ChangeState(state);
-        //    }          
-        //}
     }
 }
