@@ -85,28 +85,14 @@ public class AIManager : MonoBehaviour {
     }
 
     public static GameObject GetCloseZombie(Vector3 pos, float radius = -0.1f)
-    {
-        //m_zombies = GameObject.FindGameObjectsWithTag("InfectedActor");
-
-        //GameObject result = null;
-        //float distance = radius;
-        //foreach (var zombie in m_zombies)
-        //{
-        //    Vector3 factoryPos = zombie.transform.position;
-        //    float dis = (factoryPos - pos).magnitude;
-        //    if (dis < distance || distance < 0.0f)
-        //    {
-        //        distance = dis;
-        //        result = zombie;
-        //    }
-        //}
-
+    {        
         // 探索をしない
         if (radius < 0.0f) return null;
 
 
         // 近くのゾンビを取得
         var zombie = WorldViewer.GetCloseObject("InfectedActor", pos);
+        if (zombie == null) return null; 
 
         GameObject result = null;
 

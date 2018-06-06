@@ -128,7 +128,7 @@ public class VirusAmount : MonoBehaviour
             //ウイルス使用量
             float virusamout = 0.2f;
             //ウイルス量を減らす
-            DecreaseVirusAmount(virusamout);
+            //DecreaseVirusAmount(virusamout);
         }
     }
 

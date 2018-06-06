@@ -226,7 +226,48 @@ public class Movement : MonoBehaviour {
             m_navMeshAgent.ResetPath();
     }
 
+    //----------------------------------------------------------------------
+    //! @brief エージェントの優先度を設定する
+    //!
+    //! @param[in] 優先度(0 ～ 99)
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    public void SetPriority(int priority)
+    {
+        if (m_navMeshAgent)
+            m_navMeshAgent.avoidancePriority = priority;
+    }
 
+
+    //----------------------------------------------------------------------
+    //! @brief パスの計算
+    //!
+    //! @param[in] 目的地
+    //!
+    //! @return パス
+    //----------------------------------------------------------------------
+    public void CalculatePath(Vector3 target, out NavMeshPath path)
+    {
+        path = new NavMeshPath();
+
+        if (GetUseNavMesh())
+           m_navMeshAgent.CalculatePath(target, path);
+    }
+
+
+    //----------------------------------------------------------------------
+    //! @brief パスの設定
+    //!
+    //! @param[in] ナビメッシュパス
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    public void SetPath(NavMeshPath path)
+    {
+        if (GetUseNavMesh())
+            m_navMeshAgent.SetPath(path);
+    }
 
     //----------------------------------------------------------------------
     //! @brief ナビメッシュの使用切り替え
