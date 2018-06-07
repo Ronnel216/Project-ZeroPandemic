@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 2a825af413fbdd94fbccafbc34ec7e68
-timeCreated: 1528247512
+guid: 87667a0e78608d04d934841e8971b1ae
+timeCreated: 1528249155
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -79,8 +79,8 @@ ModelImporter:
     400068: mixamorig:Spine2
     400070: PhysCamera001.Target
     400072: //RootNode
-    2100000: 'Material #297'
-    2100002: 'Material #296'
+    2100000: 'Material #293'
+    2100002: 'Material #294'
     4300000: Head
     4300002: Body
     7400000: mixamo.com
