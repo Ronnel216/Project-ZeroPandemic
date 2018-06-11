@@ -82,6 +82,7 @@ public class PlayScreenControl : MonoBehaviour {
         time = gameManagerScript.GetTimeLimit();
         remainsPerson = gameManagerScript.GetActorNum();
         hunterManufactoryObject = GameObject.FindGameObjectWithTag("HunterManufactory");
+        if (hunterManufactoryObject == null) return;
         hunterManufactory = hunterManufactoryObject.GetComponent<HunterManufactory>();
         hunterProgressText.transform.localPosition = new Vector3(800.0f, -100.0f, 0.0f);
         useDisplayText = new bool[4];
@@ -203,6 +204,7 @@ public class PlayScreenControl : MonoBehaviour {
     //
     void HunterProgressInformation()
     {
+        if (hunterManufactory == null) return;
         hunterProgress = hunterManufactory.ManuFactureRate;
         string text = "";
 

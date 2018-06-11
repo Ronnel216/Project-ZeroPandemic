@@ -81,7 +81,6 @@ public class GameManager : MonoBehaviour {
         acceleratorRate = minAccelRate;
         score = 0.0f;
         isStartPandemic = false;
-        actionState = playerControllerScript.IsAction();
 
         actorNum = GameObject.FindGameObjectsWithTag("Actor").Length;
         pandemic = GameObject.Find("AIManger").GetComponent<AIManager>();
