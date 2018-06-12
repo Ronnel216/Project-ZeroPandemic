@@ -18,7 +18,7 @@
 
 	void surf(Input IN, inout SurfaceOutputStandard o) {
 		fixed2 uv = IN.uv_MainTex;
-		uv.x += 0.5 * _Time;
+		uv.x += 2.0 * _Time;
 		uv.y += 0.1 * _Time;
 		o.Albedo = tex2D(_MainTex, uv);
 	}
