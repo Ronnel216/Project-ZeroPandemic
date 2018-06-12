@@ -78,15 +78,16 @@ public class PlayScreenControl : MonoBehaviour {
     bool isOnece = true;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         time = gameManagerScript.GetTimeLimit();
         remainsPerson = gameManagerScript.GetActorNum();
         hunterManufactoryObject = GameObject.FindGameObjectWithTag("HunterManufactory");
-        hunterManufactory = hunterManufactoryObject.GetComponent<HunterManufactory>();
+        if (hunterManufactoryObject)
+            hunterManufactory = hunterManufactoryObject.GetComponent<HunterManufactory>();
         hunterProgressText.transform.localPosition = new Vector3(800.0f, -100.0f, 0.0f);
         useDisplayText = new bool[4];
     }
-
     // Update is called once per frame
     void Update () {
         //ゲームの状態を取得
@@ -203,6 +204,7 @@ public class PlayScreenControl : MonoBehaviour {
     //
     void HunterProgressInformation()
     {
+        if (hunterManufactory == null) return;
         hunterProgress = hunterManufactory.ManuFactureRate;
         string text = "";
 
