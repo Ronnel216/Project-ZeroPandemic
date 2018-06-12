@@ -21,6 +21,20 @@ public class SaveStr : MonoBehaviour
     [SerializeField]
     private float resultScore;
 
+    [SerializeField]
+    private int stageNum;
+
+    [SerializeField]
+    private string[] rankingName 
+        = { "Stage1",
+            "Stage2",
+            "Stage3",
+            "Stage4",
+          };
+
+    [SerializeField]
+    private QuickRanking rankingManager;
+
     // Use this for initialization
     //----------------------------------------------------------------------
     //! @brief Startメソッド
@@ -33,6 +47,7 @@ public class SaveStr : MonoBehaviour
     {
         userName = "";
         resultScore = 0;
+        stageNum = 1;
 
         DontDestroyOnLoad(this);
     }
@@ -75,6 +90,18 @@ public class SaveStr : MonoBehaviour
     }
 
     //----------------------------------------------------------------------
+    //! @brief スコアをセットする処理
+    //!
+    //! @param[in] name
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    public void SetStageNum(int num)
+    {
+        stageNum = num;
+    }
+
+    //----------------------------------------------------------------------
     //! @brief 名前をゲットする処理
     //!
     //! @param[in] name
@@ -98,4 +125,15 @@ public class SaveStr : MonoBehaviour
         return resultScore;
     }
 
+    //----------------------------------------------------------------------
+    //! @brief スコアをゲットする処理
+    //!
+    //! @param[in] name
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    public string GetRankingName()
+    {
+        return rankingName[stageNum];
+    }
 }

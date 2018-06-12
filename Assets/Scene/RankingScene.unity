@@ -343,7 +343,6 @@ GameObject:
   - component: {fileID: 127663419}
   - component: {fileID: 127663420}
   - component: {fileID: 127663421}
-  - component: {fileID: 127663422}
   m_Layer: 0
   m_Name: RankingManager
   m_TagString: RankingManager
@@ -408,20 +407,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2433c7e4c1fbb04ca9bbe2bf28754d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rankingClassName: Ranking
+  rankingClassName: Stage2
   count: 5
   text: {fileID: 2080964663}
---- !u!114 &127663422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 127663418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a847f87df226981428ce348a051ed3e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &136437295
 GameObject:
   m_ObjectHideFlags: 0

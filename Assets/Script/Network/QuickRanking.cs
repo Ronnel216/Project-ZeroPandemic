@@ -19,7 +19,13 @@ using UnityEngine.Events;
 
 public class QuickRanking : MonoBehaviour
 {
-    public string rankingClassName = "Ranking";//NCMB側のランキングクラス名//
+    [SerializeField]
+    private GameObject saveStr;
+
+    private SaveStr sv;                       // テキスト保存スクリプト
+
+    [SerializeField]
+    private string rankingClassName = "Ranking";//NCMB側のランキングクラス名//
     public int count = 5;//いくつまでランキングデータを取得するか//
     private List<RankingData> rankingDataList = new List<RankingData>();//取得したランキングデータ//
     public bool IsRankingDataValid { get; private set; }//ランキングデータの取得に成功しているか//
@@ -34,6 +40,11 @@ public class QuickRanking : MonoBehaviour
 
     public void Awake()
     {
+        saveStr = GameObject.FindGameObjectWithTag("Data");
+        sv = GameObject.FindGameObjectWithTag("Data").GetComponent<SaveStr>();
+
+        SetRankingName(sv.GetRankingName());
+
         if (Instance != null)
         {
             Destroy(this.gameObject);
@@ -165,6 +176,18 @@ public class QuickRanking : MonoBehaviour
     {
         //すでにStart()でフェッチ済みのデータを渡すだけ//
         return rankingDataList;
+    }
+
+    //----------------------------------------------------------------------
+    //! @brief ランキングの名前登録
+    //!
+    //! @param[in] rankNum, name, score, objectid
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    public void SetRankingName(string name)
+    {
+        rankingClassName = name;
     }
 
     //----------------------------------------------------------------------
