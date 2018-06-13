@@ -48,7 +48,7 @@ public class HunterManufactory : MonoBehaviour {
     //----------------------------------------------------------------------
     void Start ()
     {
-
+        PlayScreenControl.hunterManufactory = this;
 	}
 
 

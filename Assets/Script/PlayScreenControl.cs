@@ -29,8 +29,7 @@ public class PlayScreenControl : MonoBehaviour {
 
     public GameManager gameManagerScript;
     public ComboScript combCount;
-    public HunterManufactory hunterManufactory;
-    private GameObject hunterManufactoryObject;
+    static public HunterManufactory hunterManufactory;
 
     //現在のステージ番号
     int nowStageNum = 1;
@@ -77,14 +76,19 @@ public class PlayScreenControl : MonoBehaviour {
     //一度しか通らない
     bool isOnece = true;
 
+    [SerializeField]
+    float hunterUISpeed = 1.0f;
+
+    private void Awake()
+    {
+        hunterManufactory = null;
+    }
+
     // Use this for initialization
     void Start()
     {
         time = gameManagerScript.GetTimeLimit();
         remainsPerson = gameManagerScript.GetActorNum();
-        hunterManufactoryObject = GameObject.FindGameObjectWithTag("HunterManufactory");
-        if (hunterManufactoryObject)
-            hunterManufactory = hunterManufactoryObject.GetComponent<HunterManufactory>();
         hunterProgressText.transform.localPosition = new Vector3(800.0f, -100.0f, 0.0f);
         useDisplayText = new bool[4];
     }
@@ -237,7 +241,7 @@ public class PlayScreenControl : MonoBehaviour {
         hunterProgressText.text = text;
 
         // 移動力
-        Vector3 moveVec = new Vector3(-5.5f, 0, 0);
+        Vector3 moveVec = Vector3.left * hunterUISpeed * Time.deltaTime;
         // 座標設定の更新
         if (isMoveHunterProgressText)
             hunterProgressText.transform.Translate(moveVec);
