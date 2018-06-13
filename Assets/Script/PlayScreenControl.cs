@@ -59,13 +59,13 @@ public class PlayScreenControl : MonoBehaviour {
     // ハンター制作度
     float hunterProgress = 0.0f;
 
-    //
+    // 確認用テキスト
     string confirmationText = "";
     // 表示フラグ
     bool isIndicate;
     //ゲームが始まったかどうか
     bool isSetGame;
-    //
+    // ハンター完成UI用フラグ
     bool[] useDisplayText;
 
     // ハンター制作通知の移動を行っている
