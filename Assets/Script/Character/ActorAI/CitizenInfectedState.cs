@@ -11,8 +11,7 @@ public class CitizenInfectedState : CitizenAI.State {
 
     bool isUpdateDestination = true;
 
-    static GameObject leader = null;
-    static NavMeshPath pathToLeader = null;
+    static Vector3 followPoint = new Vector3();
 
     public override void Init(StateData data)
     {
@@ -54,43 +53,28 @@ public class CitizenInfectedState : CitizenAI.State {
         offset = playerVec;
         offset.Normalize();
         offset *= expansion.ExpansionArea;
+        followPoint = target.transform.position +  offset * 1;
 
         Vector3 targetPos = new Vector3();
 
         // ウィルスコントロールをしているなら...
         if (target.GetComponent<PlayerController>().IsAction())
         {
-            if (leader == null)
-                leader = selfVirus.gameObject;
             isUpdateDestination = true;
 
-            pathToLeader = null;
+            //pathToFollowPoint = null;
 
-            // リーダが存在する時　
-            if (leader)
-            {
-                if (leader != selfVirus.gameObject)
-                {
-                    targetPos = leader.transform.position;
-                    movement.SetPriority(50);
-                    movement.SetSpeed(moveSpeed);                    
-                    if (pathToLeader == null)
-                        movement.CalculatePath(targetPos, out pathToLeader);
-                    
-                }
-                else
-                {
-                    targetPos = selfVirus.gameObject.transform.position + playerVec;
-                    movement.SetPriority(10);
-                    movement.SetSpeed(moveSpeed / 2);
-
-                }
-            }
-
+            // 探索が終わっていない時　        
+            targetPos = followPoint;
+            movement.SetPriority(50);
+            movement.SetSpeed(moveSpeed);                    
+            if (AIManager.infectedPathTemp == null)
+                movement.CalculatePath(targetPos, out AIManager.infectedPathTemp);
         }
         else
         {
-            leader = null;
+            followPoint = new Vector3();
+            // 集合範囲内にいるか
             if ((target.transform.position - selfVirus.gameObject.transform.position).sqrMagnitude < expansion.ExpansionArea * expansion.ExpansionArea)
             {
                 isUpdateDestination = false;
@@ -103,16 +87,11 @@ public class CitizenInfectedState : CitizenAI.State {
             targetPos = target.gameObject.transform.position;
         }
 
+        // 目的地の更新
         if (isUpdateDestination)
         {
-            if (leader)
-            {
-                if (leader != selfVirus.gameObject)
-                    movement.SetPath(pathToLeader);
-                else
-                    movement.SetDestination(targetPos);
-
-            }
+            if (AIManager.infectedPathTemp != null)
+                movement.SetPath(AIManager.infectedPathTemp);                
             else
                 movement.SetDestination(targetPos);
             //movement.SetIsStopped(false);

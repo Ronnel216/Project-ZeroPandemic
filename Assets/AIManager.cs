@@ -22,6 +22,9 @@ public class AIManager : MonoBehaviour {
     GameObject[] m_infecters;
     int m_cnt = 0;
 
+    // 感染ステイト用　パス置き場
+    static public NavMeshPath infectedPathTemp;
+
     //// 経路パスの管理
     //NavMeshPath[,] infectedPath = new NavMeshPath[30, 30];
 
@@ -56,6 +59,12 @@ public class AIManager : MonoBehaviour {
     void Update()
     {
         degugnum = infectedActors.Count;
+    }
+
+    private void LateUpdate()
+    {
+        // パスの破棄
+        infectedPathTemp = null;
     }
 
     public static GameObject GetCloseManufactory(Vector3 pos, float radius = -0.1f)
