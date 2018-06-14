@@ -21,7 +21,7 @@ public class TestChengeRanking : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-        sv.SetStageNum(1);
+        sv.SetStageNum(2);
         if (Input.anyKeyDown)
             SceneManager.LoadScene("RankingScene");
     }

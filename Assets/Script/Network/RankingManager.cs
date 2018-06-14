@@ -27,6 +27,14 @@ public class RankingManager : MonoBehaviour
     private GameObject m_rankImagePrehub;       // ランキングイメージPrefab
     [SerializeField]
     private GameObject m_saveStr;
+    [SerializeField]
+    private GameObject m_rankImg;
+    [SerializeField]
+    private GameObject m_nameImg;
+    [SerializeField]
+    private GameObject m_timeImg;
+    [SerializeField]
+    private Image m_backgroundImg;
 
 
     [SerializeField]
@@ -60,12 +68,13 @@ public class RankingManager : MonoBehaviour
     private List<GameObject> m_rankImage;       // ランキングイメージ
     private bool m_drawFlag;                    // 描画用フラグ
     private bool m_rankingFlag;                 //ランキング用フラグ
+    private bool m_transparencyFlag;
+    private bool m_backgroundFlag;
 
-    private int drawRanking = 0;
-
-    private string nextScene = "";
-
-    
+    private int m_drawRanking = 0;
+    private int m_rankNum = 0;
+    private float m_alfaColor = 1;
+    private float m_fillNum = 0;
 
     // Use this for initialization
     //----------------------------------------------------------------------
@@ -93,6 +102,8 @@ public class RankingManager : MonoBehaviour
         m_rankingFlag = false;
         m_score = m_sv.GetResultScore();
 
+        m_transparencyFlag = true;
+        m_backgroundFlag = false;
     }
 
     // Update is called once per frame
@@ -106,10 +117,10 @@ public class RankingManager : MonoBehaviour
     void Update()
     {
 
-        if (drawRanking > 0)
+        if (m_drawRanking > 0)
         {
-            drawRanking++;
-            if (drawRanking >= 30)
+            m_drawRanking++;
+            if (m_drawRanking >= 30)
             {
                 if (Input.anyKeyDown)
                     Application.LoadLevel("TitleScene");
@@ -118,7 +129,11 @@ public class RankingManager : MonoBehaviour
         }
 
         UpdateRanking();
-        
+
+
+        if(m_backgroundFlag)
+        BackImageFill();
+
     }
 
     //----------------------------------------------------------------------
@@ -147,7 +162,8 @@ public class RankingManager : MonoBehaviour
             m_score = m_sv.GetResultScore();
             CheckSaveRank(m_name, m_score);
             DrawRanking();
-            m_drawFlag = false; 
+            m_drawFlag = false;
+            m_backgroundFlag = true;
         }
 
 
@@ -197,8 +213,8 @@ public class RankingManager : MonoBehaviour
             m_rankImage[i].GetComponent<Image>().sprite =
                 GetRankingSprite(rankingdata[i].score);
 
-            if (drawRanking == 0)
-                drawRanking = 1;
+            if (m_drawRanking == 0)
+                m_drawRanking = 1;
         }
     }
 
@@ -238,21 +254,48 @@ public class RankingManager : MonoBehaviour
             {
                 CheckRanking(rankingdata[4].score);
             }
+            for (int i = 0; i < m_ranking.count; i++)
+            {
+                if (rankingdata[i].score < m_score)
+                {
+                    m_rankNum = i+1;
+                    break;
+                }
+
+            }
         }
     }
 
-　　//----------------------------------------------------------------------
-　　//! @brief ランキングの描画処理
-　　//!
-　　//! @param[in] なし
-　　//!
-　　//! @return なし
-　　//----------------------------------------------------------------------
+    void ChangeTransparency(Image image)
+    {
+        if (m_transparencyFlag)
+        {
+            //テキストの透明度を変更する
+            image.color = new Color(92, 106, 255, m_alfaColor);
+            m_alfaColor -= Time.deltaTime;
+            //透明度が0になったら終了する。
+            if (m_alfaColor < 0)
+            {
+                m_alfaColor = 0;
+                m_transparencyFlag = false;
+            }
+        }
+    }
+  //----------------------------------------------------------------------
+  //! @brief ランキングの描画処理
+  //!
+  //! @param[in] なし
+  //!
+  //! @return なし
+  //----------------------------------------------------------------------
     public void DrawRanking()
     {
         // 今までのランキング情報の取得
         m_ranking = GetComponent<QuickRanking>();
         m_ranking.FetchRanking();
+        m_rankImg.SetActive(true);
+        m_nameImg.SetActive(true);
+        m_timeImg.SetActive(true);
 
         // スコアテキストの生成 =========================================================-
         for (int i = 0; i < m_ranking.count; i++)
@@ -299,6 +342,63 @@ public class RankingManager : MonoBehaviour
         m_rankImage.Add(tmpObj);
 
     }
+
+    void BackImageFill()
+    {
+        if (m_rankNum == 5)
+        {
+            if (m_backgroundImg.fillAmount < 0.18f)
+            {
+                m_fillNum += Time.deltaTime;
+                m_backgroundImg.fillAmount = m_fillNum * 0.1f;
+            }
+            else
+                ChangeTransparency(m_backgroundImg);
+        }
+        else if (m_rankNum == 4)
+        {
+            if (m_backgroundImg.fillAmount < 0.32f)
+            {
+                m_fillNum += Time.deltaTime;
+                m_backgroundImg.fillAmount = m_fillNum * 0.1f;
+            }
+            else
+                ChangeTransparency(m_backgroundImg);
+        }
+        else if (m_rankNum == 3)
+        {
+            if (m_backgroundImg.fillAmount < 0.48f)
+            {
+                m_fillNum += Time.deltaTime;
+                m_backgroundImg.fillAmount = m_fillNum * 0.1f;
+            }
+            else
+                ChangeTransparency(m_backgroundImg);
+        }
+        else if (m_rankNum == 2)
+        {
+            if (m_backgroundImg.fillAmount < 0.60f)
+            {
+                m_fillNum += Time.deltaTime;
+                m_backgroundImg.fillAmount = m_fillNum * 0.1f;
+            }
+            else
+                ChangeTransparency(m_backgroundImg);
+        }
+        else if (m_rankNum == 1)
+        {
+            if (m_backgroundImg.fillAmount < 1)
+            {
+                m_fillNum += Time.deltaTime;
+                m_backgroundImg.fillAmount = m_fillNum * 0.1f;
+            }
+            else
+                ChangeTransparency(m_backgroundImg);
+
+        }
+        else m_backgroundFlag = false;
+    }
+
 
     //----------------------------------------------------------------------
     //! @brief ランキングのチェック処理
