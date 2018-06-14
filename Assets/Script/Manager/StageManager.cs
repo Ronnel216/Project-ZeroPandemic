@@ -19,6 +19,9 @@ public class StageManager : MonoBehaviour {
     [SerializeField]
     private GameObject m_player;                                    // プレイヤーオブジェクト
     [SerializeField]
+    private Vector3 m_playerOffset;                                 // プレイヤースタート地点
+
+    [SerializeField]
     private GameObject m_mainCamera;                                // カメラオブジェクト
     [SerializeField]
     private Vector3 m_cameraMove = new Vector3(7.0f, 0.0f, 0.0f);   // カメラ移動量
@@ -173,6 +176,6 @@ public class StageManager : MonoBehaviour {
         m_nowStage = m_nextStage;
 
         // プレイヤー移動
-        m_player.transform.position = m_nowStage.transform.position;
+        m_player.transform.position = m_nowStage.transform.position + m_playerOffset;
     }
 }

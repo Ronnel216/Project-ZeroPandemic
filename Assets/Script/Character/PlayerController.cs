@@ -23,10 +23,10 @@ public class PlayerController : MonoBehaviour
     private VirusAmount m_virusAmount;                              // ウィルス量
     private ExpansionControl m_expansion;                           // 拡張範囲
 
-    private GameObject m_carryObject;                               // 運ぶオブジェクト
-    [SerializeField]
-    private float m_throwPower = 300.0f;                            // 投げる力
-    private float m_carryUpPos = 0.0f;                              // 持ち上げ量
+    //private GameObject m_carryObject;                               // 運ぶオブジェクト
+    //[SerializeField]
+    //private float m_throwPower = 300.0f;                            // 投げる力
+    //private float m_carryUpPos = 0.0f;                              // 持ち上げ量
 
     //----------------------------------------------------------------------
     //! @brief 初期化処理
@@ -126,64 +126,64 @@ public class PlayerController : MonoBehaviour
 
 
 
-    //----------------------------------------------------------------------
-    //! @brief 持ち上げる
-    //!
-    //! @param[in] なし
-    //!
-    //! @return なし
-    //----------------------------------------------------------------------
-    private void Carry(GameObject obj)
-    {
-        // 現在持ち運んでいるオブジェクトがないか
-        if (m_carryObject) return;
-        // 持ち運べるオブジェクトか
-        if (obj.tag != "CarryObj") return;
+    ////----------------------------------------------------------------------
+    ////! @brief 持ち上げる
+    ////!
+    ////! @param[in] なし
+    ////!
+    ////! @return なし
+    ////----------------------------------------------------------------------
+    //private void Carry(GameObject obj)
+    //{
+    //    // 現在持ち運んでいるオブジェクトがないか
+    //    if (m_carryObject) return;
+    //    // 持ち運べるオブジェクトか
+    //    if (obj.tag != "CarryObj") return;
 
-        CarryObject carryObject = obj.GetComponent<CarryObject>();
+    //    CarryObject carryObject = obj.GetComponent<CarryObject>();
 
-        // 持ち運ぶために必要なゾンビ数を超えている
-        if (carryObject.CarryZombieNum + 1 >= carryObject.RequiredNum)
-        {
-            m_carryObject = obj;
-            m_carryUpPos = 3.0f + m_carryObject.transform.localScale.y / 2.0f;
-            m_carryObject.transform.position = transform.position + new Vector3(0, m_carryUpPos, 0);
-        }
-    }
-
-
-
-    //----------------------------------------------------------------------
-    //! @brief 運ぶ
-    //!
-    //! @param[in] なし
-    //!
-    //! @return なし
-    //----------------------------------------------------------------------
-    private void Carrying()
-    {
-        if (m_carryObject == null) return;
-
-        // プレイヤーに追従
-        m_carryObject.transform.position = transform.position + new Vector3(0, m_carryUpPos, 0);
-    }
+    //    // 持ち運ぶために必要なゾンビ数を超えている
+    //    if (carryObject.CarryZombieNum + 1 >= carryObject.RequiredNum)
+    //    {
+    //        m_carryObject = obj;
+    //        m_carryUpPos = 3.0f + m_carryObject.transform.localScale.y / 2.0f;
+    //        m_carryObject.transform.position = transform.position + new Vector3(0, m_carryUpPos, 0);
+    //    }
+    //}
 
 
 
-    //----------------------------------------------------------------------
-    //! @brief 投げる
-    //!
-    //! @param[in] なし
-    //!
-    //! @return なし
-    //----------------------------------------------------------------------
-    private void Throw()
-    {
-        Rigidbody rigid = m_carryObject.GetComponent<Rigidbody>();
+    ////----------------------------------------------------------------------
+    ////! @brief 運ぶ
+    ////!
+    ////! @param[in] なし
+    ////!
+    ////! @return なし
+    ////----------------------------------------------------------------------
+    //private void Carrying()
+    //{
+    //    if (m_carryObject == null) return;
 
-        // オブジェクトを投げる
-        Vector3 vec = transform.forward * m_throwPower;
-        rigid.AddForce(vec, ForceMode.Impulse);
-        m_carryObject = null;
-    }
+    //    // プレイヤーに追従
+    //    m_carryObject.transform.position = transform.position + new Vector3(0, m_carryUpPos, 0);
+    //}
+
+
+
+    ////----------------------------------------------------------------------
+    ////! @brief 投げる
+    ////!
+    ////! @param[in] なし
+    ////!
+    ////! @return なし
+    ////----------------------------------------------------------------------
+    //private void Throw()
+    //{
+    //    Rigidbody rigid = m_carryObject.GetComponent<Rigidbody>();
+
+    //    // オブジェクトを投げる
+    //    Vector3 vec = transform.forward * m_throwPower;
+    //    rigid.AddForce(vec, ForceMode.Impulse);
+    //    m_carryObject = null;
+    //}
 };
