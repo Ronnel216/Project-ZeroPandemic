@@ -77,7 +77,7 @@ public class PlayScreenControl : MonoBehaviour {
     bool isOnece = true;
 
     [SerializeField]
-    float hunterUISpeed = 1.0f;
+    float hunterUISpeed = 100.0f;
 
     private void Awake()
     {
