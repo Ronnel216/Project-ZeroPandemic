@@ -64,7 +64,7 @@ public class MoveAnimationController : MonoBehaviour {
             if (move > m_runMovement) step = 2;
 
             // アニメーション設定
-            m_animator.SetInteger("Move", step);
+            m_animator.SetInteger("State", step);
 
             // 座標保存
             m_oldPosition = transform.position;

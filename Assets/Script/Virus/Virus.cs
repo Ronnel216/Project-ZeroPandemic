@@ -187,6 +187,10 @@ public class Virus : MonoBehaviour
 
         //StartCoroutine(combo.ComboCoroutine());
 
+        // 感染時アニメーションを実行する
+        GameObject model = transform.Find("ActorModel").gameObject;
+        Animator anim = model.GetComponent<Animator>();
+        anim.SetInteger("State", 3);
     }
 
     // ウィルスを感染可能な状態にする
