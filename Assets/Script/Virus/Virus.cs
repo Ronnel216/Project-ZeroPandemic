@@ -139,8 +139,14 @@ public class Virus : MonoBehaviour
     //　感染
     public void Infected(GameObject infectedActor)
     {
-        if(gameObject.tag!="Player")
+        if (gameObject.tag != "Player")
+        {
             combo.PlusCombo();
+            // 感染時アニメーションを実行する
+            GameObject model = transform.Find("ActorModel").gameObject;
+            Animator anim = model.GetComponent<Animator>();
+            anim.SetInteger("State", 3);
+        }
 
         if (infectedActor != null)
         {
@@ -160,7 +166,7 @@ public class Virus : MonoBehaviour
         // 感染者であることを示す
         gameObject.tag = "InfectedActor";
 
-       
+
 
 
         // 感染源なら潜伏時間をスキップする
@@ -168,11 +174,11 @@ public class Virus : MonoBehaviour
         if (citizenType == CitizenType.NORMAL)
         {
             if (infectedActor == null) ChangeState(new InfectedState(this, stateData));
-            else ChangeState(new StayState(this, stateData)); 
+            else ChangeState(new StayState(this, stateData));
             //GameManager.infectedNum += 1;
         }
 
-        if(citizenType == CitizenType.STRONG)
+        if (citizenType == CitizenType.STRONG)
         {
             ChangeState(new WaitState(this, stateData));
         }
@@ -186,11 +192,6 @@ public class Virus : MonoBehaviour
         //combo.ResetCombo();
 
         //StartCoroutine(combo.ComboCoroutine());
-
-        // 感染時アニメーションを実行する
-        GameObject model = transform.Find("ActorModel").gameObject;
-        Animator anim = model.GetComponent<Animator>();
-        anim.SetInteger("State", 3);
     }
 
     // ウィルスを感染可能な状態にする
