@@ -13,7 +13,7 @@ public class PlayScreenControl : MonoBehaviour {
     // 市民の数
     public Text actorText;
     // 感染者の数
-    public Text infectedText;
+    //public Text infectedText;
     // コンボ数
     public Text combText;
     // 感染率
@@ -296,7 +296,7 @@ public class PlayScreenControl : MonoBehaviour {
 
         stageText.text = "ステージ" + nowStageNum.ToString();
         actorText.text = remainsPerson.ToString();
-        infectedText.text = infectedNum.ToString();
+        //infectedText.text = infectedNum.ToString();
         combText.text = combNum.ToString() + "コンボ";
         rateText.text = rateinfected.ToString("N0") + "%";
     }

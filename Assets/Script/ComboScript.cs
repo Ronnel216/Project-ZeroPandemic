@@ -10,6 +10,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ComboScript : MonoBehaviour
 {
@@ -17,9 +18,19 @@ public class ComboScript : MonoBehaviour
     private static int comboNum;
 
     [SerializeField]
-    private float comboTime = 180.0f;
+    private float comboTime;
 
-    private float time;
+    [SerializeField]
+    private Image comboCounter;
+
+    [SerializeField]
+    private Text comboText;
+
+    private float time = 0.0f;
+
+    private float resetTime = 0.0f;
+
+    private bool timeFlag = false;
 
     //----------------------------------------------------------------------
     //! @brief Startメソッド
@@ -32,12 +43,18 @@ public class ComboScript : MonoBehaviour
     void Start ()
     {
         Initialize();
+        StartCoroutine(ComboCoroutine());
     }
 
     void Update()
     {
-        time += Time.deltaTime;
-        ResetCombo();
+        if(timeFlag)
+            time += Time.deltaTime;
+
+        Debug.Log(resetTime);
+
+        if(time >= comboTime && comboNum > 0)
+            ResetCombo();
     }
 
     //----------------------------------------------------------------------
@@ -50,8 +67,10 @@ public class ComboScript : MonoBehaviour
     //----------------------------------------------------------------------
     public void Initialize()
     {
+        comboCounter.enabled = false;
+        comboText.enabled = false;
         comboNum = 0;
-        time = 0;
+        resetTime = 0;
     }
 
 
@@ -65,7 +84,9 @@ public class ComboScript : MonoBehaviour
     //----------------------------------------------------------------------
     public int PlusCombo()
     {
-        time = 0;
+        resetTime = 0;
+        comboCounter.enabled = false;
+        comboText.enabled = false;
         return comboNum++;
     }
 
@@ -79,11 +100,21 @@ public class ComboScript : MonoBehaviour
     //----------------------------------------------------------------------
     public int ResetCombo()
     {
-        if (time >= comboTime)
+        resetTime += Time.deltaTime;
+        if(resetTime >= 2)
         {
+            comboCounter.enabled = true;
+            comboText.enabled = true;
+        }
+        if (resetTime >= comboTime)
+        {
+            comboCounter.enabled = false;
+            comboText.enabled = false;
             comboNum = 0;
+            resetTime = 0;
             time = 0;
         }
+
         return comboNum;
     }
 
@@ -103,7 +134,7 @@ public class ComboScript : MonoBehaviour
     //----------------------------------------------------------------------
     public IEnumerator ComboCoroutine()
     {
-        yield return new WaitForSeconds(comboTime);
-        comboNum = 0;
+        yield return new WaitForSeconds(3.75f);
+        timeFlag = true;
     }
 }
