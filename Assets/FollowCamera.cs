@@ -5,41 +5,32 @@ using UnityEngine;
 public class FollowCamera : MonoBehaviour {
 
     // ターゲット
-    [SerializeField]
     GameObject target;
 
+    // 追尾の強さ
+    float followLevel = 0.5f;
+
     // ターゲットからのオフセット
-    [SerializeField]
-    Vector3 offset;
+    Vector3 offset = new Vector3(0, 25, 0);
 
-    // 追尾角
-    [SerializeField]
-    float followRadian;
+    // 中心点
+    Vector3 centerBase;      
 
-    //カメラの移動できる範囲(X座標)
-    [SerializeField]
-    float limitPosX;
-    //カメラの移動できる範囲(Y座標)
-    [SerializeField]
-    float limitPosZ;
-    // 現在の回転角
-    Quaternion currentRotate;
+    public void SetCenter(Vector3 pos)
+    {
+        centerBase = pos;
+    }
 
 	// Use this for initialization
 	void Start () {
-		
+        target = GameObject.Find("Player");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        Vector3 targetPos = target.transform.position;
+        Vector3 targetPos = Vector3.Lerp(centerBase, target.transform.position, followLevel);
 
-        // 向きを考慮する
-        currentRotate = Quaternion.Lerp(currentRotate, target.transform.rotation, 0.05f);
-        Vector3 offsetTemp = currentRotate * offset;
-
-        Vector3 cameraPos = targetPos + offsetTemp;
-        transform.position = cameraPos;
+        transform.position = targetPos + offset;
     }
     private void CameraLimit(Vector3 pos)
     {

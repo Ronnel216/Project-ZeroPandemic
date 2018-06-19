@@ -20,10 +20,8 @@ public class ComboScript : MonoBehaviour
     [SerializeField]
     private float comboTime;
 
-    [SerializeField]
     private Image comboCounter;
 
-    [SerializeField]
     private Text comboText;
 
     private float time = 0.0f;
@@ -44,6 +42,7 @@ public class ComboScript : MonoBehaviour
     {
         Initialize();
         StartCoroutine(ComboCoroutine());
+
     }
 
     void Update()
@@ -67,6 +66,8 @@ public class ComboScript : MonoBehaviour
     //----------------------------------------------------------------------
     public void Initialize()
     {
+        comboCounter = GameObject.Find("CombCounter").GetComponent<Image>();
+        comboText = GameObject.Find("CombText").GetComponent<Text>();
         comboCounter.enabled = false;
         comboText.enabled = false;
         comboNum = 0;

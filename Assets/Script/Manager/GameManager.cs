@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour {
     bool isStartPandemic;
 
     // プレイヤのウィルス
-    [SerializeField]
     Virus playerVirus;
 
     // 感染者数
@@ -92,6 +91,7 @@ public class GameManager : MonoBehaviour {
             Debug.Break();
         }
         GameObject player = GameObject.Find("Player");
+        playerVirus = player.GetComponent<Virus>();
     }
 
     // Update is called once per frame

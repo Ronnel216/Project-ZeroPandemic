@@ -23,7 +23,6 @@ public class VirusUIControll : MonoBehaviour
 
     public Image MaxVirusRightImage;
 
-    [SerializeField]
     VirusAmount virusAmount;
     //----------------------------------------------------------------------
     //! @brief 初期化処理
@@ -34,6 +33,7 @@ public class VirusUIControll : MonoBehaviour
     //----------------------------------------------------------------------
     void Start()
     {
+        virusAmount = GameObject.Find("Player").GetComponent<VirusAmount>();
     }
 
     //----------------------------------------------------------------------

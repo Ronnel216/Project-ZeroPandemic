@@ -56,11 +56,13 @@ public class VirusAmount : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        GameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
         time = 0;
         isVirusControll = false;
         virusAmount = maxVirusAmount;
         isSetGame = GameManagerScript.GetStartPandemic();
         playerController = GetComponent<PlayerController>();
+        comboScript = GameObject.Find("ComboManager").GetComponent<ComboScript>();
     }
 
     //----------------------------------------------------------------------

@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
         m_move = GetComponent<Movement>();
         m_expansion = GetComponent<ExpansionControl>();
         m_virusAmount = GetComponent<VirusAmount>();
+        m_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
 

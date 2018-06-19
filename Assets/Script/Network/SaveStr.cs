@@ -22,15 +22,21 @@ public class SaveStr : MonoBehaviour
     private float resultScore;
 
     [SerializeField]
-    private int stageNum;
+    private int stageNum = -1;
 
-    [SerializeField]
     private string[] rankingName 
         = { "Stage1",
             "Stage2",
             "Stage3",
             "Stage4",
           };
+
+    //private string[] rankingName
+    //    = { "Town",
+    //        "Ice",
+    //        "Desert",
+    //        "Darkness",
+    //      };
 
     [SerializeField]
     private QuickRanking rankingManager;
@@ -45,9 +51,9 @@ public class SaveStr : MonoBehaviour
     //----------------------------------------------------------------------
     void Start()
     {
+        if (stageNum < 0) Debug.Log("stageNumが設定されていない");
         userName = "";
         resultScore = 0;
-        stageNum = 1;
 
         DontDestroyOnLoad(this);
     }
