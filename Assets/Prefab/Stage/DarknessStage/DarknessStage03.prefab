@@ -10478,7 +10478,7 @@ GameObject:
   - component: {fileID: 114349267351026442}
   m_Layer: 0
   m_Name: industrial_factory_mobile
-  m_TagString: Untagged
+  m_TagString: HunterManufactory
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -88517,10 +88517,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf8e6a6e2de1a8c46bd65aa723d1f55f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_hunter: {fileID: 0}
-  m_addRate: 0.01
+  m_hunter: {fileID: 1813194187049148, guid: 63b788d8b0dc67341a371f4c0239e994, type: 2}
+  m_addRate: 0.04
   m_manufactureNumMax: 5
-  m_factoryRange: 0
+  m_factoryRange: 4
 --- !u!114 &114351089325333964
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -54,6 +54,9 @@ public class Fall : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         if (this.enabled == false) return;
+        if (other.tag == "Actor") return;
+        string objName = other.gameObject.name;
+        if (objName == "Player") return;
 
         // ナビメッシュを無効化
         Movement move = other.GetComponent<Movement>();
