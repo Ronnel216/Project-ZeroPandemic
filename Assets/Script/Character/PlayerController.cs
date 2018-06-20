@@ -106,7 +106,10 @@ public class PlayerController : MonoBehaviour
         bool result = false;
 
         bool key = Input.GetKey(m_actionButton);
-        bool con = Input.GetButton("Button A");
+        float x = Input.GetAxisRaw("Horizontal2");
+        float z = Input.GetAxisRaw("Vertical2");
+        Debug.Log(x);
+        bool con = Mathf.Abs(x) + Mathf.Abs(z) > 0.4;
         bool virus = m_virusAmount.GetVirusAmount() > 0;
 
         // アクションキーが押されていてウィルスがある場合true
