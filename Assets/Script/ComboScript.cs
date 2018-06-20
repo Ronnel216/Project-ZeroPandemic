@@ -64,6 +64,7 @@ public class ComboScript : MonoBehaviour
     //----------------------------------------------------------------------
     public void Initialize()
     {
+        if (comboText == null) return;
         comboText.enabled = false;
         comboNum = 0;
         resetTime = 0;
@@ -80,6 +81,7 @@ public class ComboScript : MonoBehaviour
     //----------------------------------------------------------------------
     public int PlusCombo()
     {
+        if (comboText == null) return 0;
         resetTime = 0;
         comboText.enabled = true;
         comboText.color = new Color(0.0f, 0.0f, 0.0f, 1f);
