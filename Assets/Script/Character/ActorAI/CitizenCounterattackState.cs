@@ -47,6 +47,7 @@ public class CitizenCounterattackState : CitizenAI.State
         if (target)
         {
             targetFactory = target.GetComponent<HunterManufactory>();
+            targetFactory.CreaterPos = data.ai.transform;
             targetObj = target;
             // 製作所に向かう
             movement.SetDestination(targetObj.transform.position);
