@@ -1712,10 +1712,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 14
       objectReference: {fileID: 0}
-    - target: {fileID: 1344903927020776, guid: dfb0d88a5e9026b4d8cb60209568d5ae, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dfb0d88a5e9026b4d8cb60209568d5ae, type: 2}
   m_IsPrefabParent: 0
@@ -2065,6 +2061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   comboTime: 3
+  comboText: {fileID: 0}
 --- !u!4 &1600619879
 Transform:
   m_ObjectHideFlags: 0

@@ -147,7 +147,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   comboTime: 3
-  comboCounter: {fileID: 1539655104}
   comboText: {fileID: 1829181777}
 --- !u!4 &50404823
 Transform:
@@ -913,12 +912,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1702397707406824, guid: 2a045f657570f2f40bca0a9bd591ce2f,
     type: 2}
   m_PrefabInternal: {fileID: 489602857}
---- !u!114 &622934240 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114618540351524782, guid: 2a045f657570f2f40bca0a9bd591ce2f,
-    type: 2}
-  m_PrefabInternal: {fileID: 489602857}
-  m_Script: {fileID: 11500000, guid: 35c58320c7be7fd4493efbdd078915e7, type: 3}
 --- !u!114 &622934242 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114120703122933240, guid: 2a045f657570f2f40bca0a9bd591ce2f,
@@ -1722,11 +1715,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeafa9094ac2dc54ebea3b8b749fdb01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 622934234}
-  offset: {x: 0, y: 25, z: 1}
-  followRadian: 0
-  limitPosX: 0
-  limitPosZ: 0
 --- !u!1 &1036206426
 GameObject:
   m_ObjectHideFlags: 0
@@ -2411,12 +2399,6 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
---- !u!114 &1539655104 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114408458086209262, guid: 7f0fa01c1afb81449b5853ab7262224a,
-    type: 2}
-  m_PrefabInternal: {fileID: 635577184}
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &1634703520 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114563401124244134, guid: 15b5c492cfdea7746987d162c95bf0ab,
@@ -2428,12 +2410,6 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224584755462072304, guid: 15b5c492cfdea7746987d162c95bf0ab,
     type: 2}
   m_PrefabInternal: {fileID: 1738874900}
---- !u!114 &1645766495 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114973016402611336, guid: c35ba045a4762fe4d844399567db25b3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1966902436}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!224 &1738398787 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224230527199091278, guid: 7f0fa01c1afb81449b5853ab7262224a,
@@ -3261,6 +3237,12 @@ Prefab:
       propertyPath: range
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114095565789407396, guid: 249cab23de33df24f964dcea17363791,
+        type: 2}
+      propertyPath: m_hunter
+      value: 
+      objectReference: {fileID: 1813194187049148, guid: 63b788d8b0dc67341a371f4c0239e994,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 135198709847726470, guid: 249cab23de33df24f964dcea17363791, type: 2}
     - {fileID: 135615206251014728, guid: 249cab23de33df24f964dcea17363791, type: 2}
@@ -3425,12 +3407,6 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 114740427804941510, guid: 7f0fa01c1afb81449b5853ab7262224a,
     type: 2}
   m_PrefabInternal: {fileID: 635577184}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
---- !u!114 &1926766402 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114391208872659718, guid: c35ba045a4762fe4d844399567db25b3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1966902436}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &1934121690 stripped
 MonoBehaviour:
@@ -3631,9 +3607,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeLimitText: {fileID: 837491667}
   stageText: {fileID: 2087020007}
-  actorText: {fileID: 1926766402}
   combText: {fileID: 1829181777}
-  rateText: {fileID: 1645766495}
   pandemicText: {fileID: 747586088}
   hunterProgressText: {fileID: 1036206427}
   gameManagerScript: {fileID: 2083182606}
@@ -3744,7 +3718,6 @@ MonoBehaviour:
   VirusRightImage: {fileID: 1634703520}
   MaxVirusLeftImage: {fileID: 2146553289}
   MaxVirusRightImage: {fileID: 1975021813}
-  virusAmount: {fileID: 622934240}
 --- !u!1 &2083182605 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1513937023624398, guid: 51e4fb4595857564daee6492936dadf7,
