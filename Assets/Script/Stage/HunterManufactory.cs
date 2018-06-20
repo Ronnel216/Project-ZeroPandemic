@@ -38,6 +38,11 @@ public class HunterManufactory : MonoBehaviour {
     }
 
     private bool m_completion = false;          // 完成済みか
+    private Transform m_createrPos =null;       // 作成者座標
+    public Transform CreaterPos
+    {
+        set { m_createrPos = value; }
+    }
 
     //----------------------------------------------------------------------
     //! @brief 初期化処理
@@ -88,9 +93,7 @@ public class HunterManufactory : MonoBehaviour {
         Vector3 thisPos = this.transform.position;
 
         // 出現位置
-        float spawnOffset = thisPos.z + m_factoryRange / 2;
-        
-        Vector3 pos = new Vector3(thisPos.x, thisPos.y, spawnOffset);
+        Vector3 pos = m_createrPos.position;
         GameObject hunter = Instantiate(m_hunter, pos,Quaternion.identity);
         hunter.transform.parent = GameObject.Find("Actors").transform;
         m_completion = true;
