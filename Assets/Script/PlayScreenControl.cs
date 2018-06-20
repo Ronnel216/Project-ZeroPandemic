@@ -83,7 +83,7 @@ public class PlayScreenControl : MonoBehaviour {
     {
         hunterManufactory = null;
         actorText = GameObject.Find("SurvivorText").GetComponent<Text>();
-        rateText = GameObject.Find("RateText").GetComponent<Text>();
+        rateText = GameObject.Find("RateNumText").GetComponent<Text>();
 
     }
 
