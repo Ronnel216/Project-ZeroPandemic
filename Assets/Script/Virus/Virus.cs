@@ -91,10 +91,10 @@ public class Virus : MonoBehaviour
         // モデルからMeshRendererコンポーネントを探す
         m_modelMesh = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
         // 色を取得
-        int size = m_modelMesh.materials.Length;
-        m_defaultColor = new Color[size];
-        for (int i = 0; i < size; i++)
-            m_defaultColor[i] = m_modelMesh.materials[i].color;
+        //int size = m_modelMesh.materials.Length;
+        //m_defaultColor = new Color[size];
+        //for (int i = 0; i < size; i++)
+        //    m_defaultColor[i] = m_modelMesh.materials[i].color;
 
         comboManager = GameObject.Find("ComboManager");
         combo = comboManager.GetComponent<ComboScript>();
