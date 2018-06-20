@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
 {
     private Movement m_move;                                        // 移動コンポーネント
 
-    [SerializeField]
     private GameManager m_gameManager;                              // ゲームマネージャーコンポーネント
     [SerializeField]
     private KeyCode m_actionButton = KeyCode.Z;                     // アクションボタン設定
@@ -41,6 +40,7 @@ public class PlayerController : MonoBehaviour
         m_move = GetComponent<Movement>();
         m_expansion = GetComponent<ExpansionControl>();
         m_virusAmount = GetComponent<VirusAmount>();
+        m_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
 
@@ -54,6 +54,8 @@ public class PlayerController : MonoBehaviour
     //----------------------------------------------------------------------
     void Update()
     {
+        if (m_gameManager.GetStartPandemic() == false) return;
+
         // キー操作 ========================================================
         // 移動
         float x = Input.GetAxisRaw("Horizontal");

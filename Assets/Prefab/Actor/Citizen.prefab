@@ -1281,7 +1281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68f68be8139b23c429f1868d64c17606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombieMat: {fileID: 0}
+  zombieMat: {fileID: 2100000, guid: 5588bc95711ff224f9207d50cf1bb821, type: 2}
 --- !u!114 &114076881064042906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1332,7 +1332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68f68be8139b23c429f1868d64c17606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombieMat: {fileID: 0}
+  zombieMat: {fileID: 2100000, guid: 029cea7659ea8df46ba551edabbfb80b, type: 2}
 --- !u!114 &114469367171514478
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -16,7 +16,6 @@ public class StageManager : MonoBehaviour {
 
     [SerializeField]
     private GameManager m_gameManager;                              // ゲームマネージャーコンポーネント
-    [SerializeField]
     private GameObject m_player;                                    // プレイヤーオブジェクト
     [SerializeField]
     private Vector3 m_playerOffset;                                 // プレイヤースタート地点
@@ -69,6 +68,7 @@ public class StageManager : MonoBehaviour {
     //----------------------------------------------------------------------
     void Start ()
     {
+        m_player = GameObject.Find("Player") as GameObject;
         m_nowStage = m_stage[m_stageNum];
 	}
 
@@ -115,6 +115,8 @@ public class StageManager : MonoBehaviour {
         pos = new Vector3(cameraPos.x, pos.y, cameraPos.z);
         pos += m_cameraMove;
         m_stageNum++;
+
+        m_mainCamera.GetComponent<FollowCamera>().SetCenter(pos);
 
         // 次ステージの生成
         m_nextStage = Instantiate(m_stage[m_stageNum], pos, Quaternion.identity);

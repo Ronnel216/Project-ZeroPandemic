@@ -11,13 +11,13 @@ public class PlayScreenControl : MonoBehaviour {
     // ステージ名
     public Text stageText;
     // 市民の数
-    public Text actorText;
+    Text actorText;
     // 感染者の数
     //public Text infectedText;
     // コンボ数
     public Text combText;
     // 感染率
-    public Text rateText;
+    Text rateText;
     // パンデミック可能テキスト
     public Text pandemicText;
     // ハンターの完成度テキスト
@@ -82,6 +82,9 @@ public class PlayScreenControl : MonoBehaviour {
     private void Awake()
     {
         hunterManufactory = null;
+        actorText = GameObject.Find("SurvivorText").GetComponent<Text>();
+        rateText = GameObject.Find("RateText").GetComponent<Text>();
+
     }
 
     // Use this for initialization
