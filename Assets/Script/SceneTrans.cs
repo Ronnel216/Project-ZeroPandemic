@@ -12,7 +12,7 @@ public class SceneTrans : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(Input.anyKeyDown)
-            SceneManager.LoadScene("Prototype");
+        //if(Input.anyKeyDown)
+        //    SceneManager.LoadScene("Prototype");
 	}
 }

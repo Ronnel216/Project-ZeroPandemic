@@ -38,6 +38,9 @@ public class Virus : MonoBehaviour
 
     static string infectionTag = "InfectionArea";
 
+    [SerializeField]
+    bool isInfected = false;
+
     // 病原体
     Virus originalVirus;
 
@@ -101,6 +104,8 @@ public class Virus : MonoBehaviour
     {
         // オブジェクトの登録
         WorldViewer.Register(gameObject);
+
+        if (isInfected) Infected(null);
     }
 
     // Update is called once per frame

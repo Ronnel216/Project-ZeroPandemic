@@ -41,18 +41,18 @@ public class CitizenInfectedState : CitizenAI.State {
 
         Vector3 playerVec/* = target.transform.position - hogePlayer*/;
         // 感染源の移動量
-        float x = Input.GetAxisRaw("Horizontal");
-        float z = Input.GetAxisRaw("Vertical");
+        float x = Input.GetAxisRaw("Horizontal2");
+        float z = Input.GetAxisRaw("Vertical2");
         Vector3 vec = new Vector3(x, 0, z);
         Movement move = target.GetComponent<Movement>();
         if (move == null) Debug.Break();
-        playerVec = vec.normalized * move.GetSpeed();
+        //playerVec = vec.normalized * move.GetSpeed();
 
         // 拡張範囲を考慮した差
-        Vector3 offset = selfVirus.gameObject.transform.position - target.transform.position;
-        offset = playerVec;
-        offset.Normalize();
-        offset *= expansion.ExpansionArea;
+        Vector3 offset = vec;
+        //offset.Normalize();
+        float factor = 1.2f;
+        offset *= expansion.ExpansionArea * factor;
         followPoint = target.transform.position +  offset * 1;
 
         Vector3 targetPos = new Vector3();

@@ -20,7 +20,6 @@ public class ComboScript : MonoBehaviour
     [SerializeField]
     private float comboTime;
 
-    [SerializeField]
     private Text comboText;
 
     private float time = 0.0f;
@@ -64,6 +63,7 @@ public class ComboScript : MonoBehaviour
     //----------------------------------------------------------------------
     public void Initialize()
     {
+        comboText = GameObject.Find("CombText").GetComponent<Text>();
         if (comboText == null) return;
         comboText.enabled = false;
         comboNum = 0;
@@ -83,6 +83,9 @@ public class ComboScript : MonoBehaviour
     {
         if (comboText == null) return 0;
         resetTime = 0;
+
+        if (!comboText) return 0;
+
         comboText.enabled = true;
         comboText.color = new Color(0.0f, 0.0f, 0.0f, 1f);
         if (comboNum % 3 == 0)

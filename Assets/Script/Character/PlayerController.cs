@@ -40,7 +40,8 @@ public class PlayerController : MonoBehaviour
         m_move = GetComponent<Movement>();
         m_expansion = GetComponent<ExpansionControl>();
         m_virusAmount = GetComponent<VirusAmount>();
-        m_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        var temp = GameObject.Find("GameManager");
+        if (temp) m_gameManager = temp.GetComponent<GameManager>();
     }
 
 
@@ -54,7 +55,8 @@ public class PlayerController : MonoBehaviour
     //----------------------------------------------------------------------
     void Update()
     {
-        if (m_gameManager.GetStartPandemic() == false) return;
+        if (m_gameManager)
+            if (m_gameManager.GetStartPandemic() == false) return;
 
         // キー操作 ========================================================
         // 移動
@@ -104,7 +106,10 @@ public class PlayerController : MonoBehaviour
         bool result = false;
 
         bool key = Input.GetKey(m_actionButton);
-        bool con = Input.GetButton("Button A");
+        float x = Input.GetAxisRaw("Horizontal2");
+        float z = Input.GetAxisRaw("Vertical2");
+        Debug.Log(x);
+        bool con = Mathf.Abs(x) + Mathf.Abs(z) > 0.4;
         bool virus = m_virusAmount.GetVirusAmount() > 0;
 
         // アクションキーが押されていてウィルスがある場合true
