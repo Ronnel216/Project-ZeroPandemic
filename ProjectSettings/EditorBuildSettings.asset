@@ -20,3 +20,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scene/TestEnterRanking.unity
     guid: 983cac34bb21d064b86ceeb09061fe9e
+  - enabled: 1
+    path: Assets/Scene/StageSelectScene.unity
+    guid: c9f034a8add258d4c8ae6b0990617b92
+  - enabled: 1
+    path: Assets/Scene/StageScene/TownStageScene.unity
+    guid: 03dc42bb7ca0fb243b2a76161c3ee3b9
+  - enabled: 1
+    path: Assets/Scene/StageScene/IceStageScene.unity
+    guid: b4977993f589fbf4c9dde2e301d74f1d
+  - enabled: 1
+    path: Assets/Scene/StageScene/DesertStageScene.unity
+    guid: c89340ce5c926d94b8c28ecefea19866
+  - enabled: 1
+    path: Assets/Scene/StageScene/DarknessStageScene.unity
+    guid: 1bc524c1fc0da944eab29ac3d7fccf2e
