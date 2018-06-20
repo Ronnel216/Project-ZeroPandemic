@@ -1306,7 +1306,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08252340eac344f4e85f3e7230e10eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_gameManager: {fileID: 0}
   m_actionButton: 32
 --- !u!114 &114857868418769422
 MonoBehaviour:
@@ -1386,6 +1385,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: c70c4b06eef78164abe48a05bb948ec0, type: 2}
+  - {fileID: 2100000, guid: 6c8ee6ca1831ff143aa57f5cf7844865, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1439,6 +1439,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 2c8b0ca19d9c142488c4e6663144488c, type: 2}
+  - {fileID: 2100000, guid: 6c8ee6ca1831ff143aa57f5cf7844865, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
