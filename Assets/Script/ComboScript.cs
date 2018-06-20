@@ -86,6 +86,9 @@ public class ComboScript : MonoBehaviour
     public int PlusCombo()
     {
         resetTime = 0;
+
+        if (!comboCounter || !comboText) return 0;
+
         comboCounter.enabled = false;
         comboText.enabled = false;
         return comboNum++;

@@ -40,7 +40,8 @@ public class PlayerController : MonoBehaviour
         m_move = GetComponent<Movement>();
         m_expansion = GetComponent<ExpansionControl>();
         m_virusAmount = GetComponent<VirusAmount>();
-        m_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        var temp = GameObject.Find("GameManager");
+        if (temp) m_gameManager = temp.GetComponent<GameManager>();
     }
 
 
@@ -54,7 +55,8 @@ public class PlayerController : MonoBehaviour
     //----------------------------------------------------------------------
     void Update()
     {
-        if (m_gameManager.GetStartPandemic() == false) return;
+        if (m_gameManager)
+            if (m_gameManager.GetStartPandemic() == false) return;
 
         // キー操作 ========================================================
         // 移動
