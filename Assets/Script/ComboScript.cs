@@ -64,6 +64,7 @@ public class ComboScript : MonoBehaviour
     public void Initialize()
     {
         comboText = GameObject.Find("CombText").GetComponent<Text>();
+        if (comboText == null) return;
         comboText.enabled = false;
         comboNum = 0;
         resetTime = 0;
@@ -80,6 +81,7 @@ public class ComboScript : MonoBehaviour
     //----------------------------------------------------------------------
     public int PlusCombo()
     {
+        if (comboText == null) return 0;
         resetTime = 0;
 
         if (!comboText) return 0;
