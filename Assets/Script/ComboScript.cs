@@ -20,8 +20,6 @@ public class ComboScript : MonoBehaviour
     [SerializeField]
     private float comboTime;
 
-    private Image comboCounter;
-
     private Text comboText;
 
     private float time = 0.0f;
@@ -42,7 +40,6 @@ public class ComboScript : MonoBehaviour
     {
         Initialize();
         StartCoroutine(ComboCoroutine());
-
     }
 
     void Update()
@@ -50,7 +47,7 @@ public class ComboScript : MonoBehaviour
         if(timeFlag)
             time += Time.deltaTime;
 
-        //Debug.Log(resetTime);
+        Debug.Log(resetTime);
 
         if(time >= comboTime && comboNum > 0)
             ResetCombo();
@@ -66,9 +63,7 @@ public class ComboScript : MonoBehaviour
     //----------------------------------------------------------------------
     public void Initialize()
     {
-        comboCounter = GameObject.Find("CombCounter").GetComponent<Image>();
         comboText = GameObject.Find("CombText").GetComponent<Text>();
-        comboCounter.enabled = false;
         comboText.enabled = false;
         comboNum = 0;
         resetTime = 0;
@@ -87,15 +82,20 @@ public class ComboScript : MonoBehaviour
     {
         resetTime = 0;
 
-        if (!comboCounter || !comboText) return 0;
+        if (!comboText) return 0;
 
-        comboCounter.enabled = false;
-        comboText.enabled = false;
+        comboText.enabled = true;
+        comboText.color = new Color(0.0f, 0.0f, 0.0f, 1f);
+        if (comboNum % 3 == 0)
+        {
+            if (comboText.transform.localScale.x <= 1.7)
+                comboText.transform.localScale += new Vector3(0.1f, 0.1f, 0.0f);
+        }
         return comboNum++;
     }
 
     //----------------------------------------------------------------------
-    //! @brief PlusCombo
+    //! @brief ResetCombo
     //!        コンボをプラスする
     //!
     //! @param[in] なし
@@ -105,15 +105,18 @@ public class ComboScript : MonoBehaviour
     public int ResetCombo()
     {
         resetTime += Time.deltaTime;
-        if(resetTime >= 2)
+        if (resetTime >= 1.5)
         {
-            comboCounter.enabled = true;
-            comboText.enabled = true;
+            comboText.color += new Color(0.1f, 0.0f, 0.0f, 0.0f);
+        }
+        if (resetTime >= 2.2)
+        {
+            comboText.color += new Color(0.0f,0.0f,0.0f,-0.1f);
         }
         if (resetTime >= comboTime)
         {
-            comboCounter.enabled = false;
             comboText.enabled = false;
+            comboText.transform.localScale = new Vector3(1.0f, 1.0f, 0);
             comboNum = 0;
             resetTime = 0;
             time = 0;
