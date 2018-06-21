@@ -64604,7 +64604,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1760362869471328}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.4, y: 0, z: 3.2}
+  m_LocalPosition: {x: 0.98, y: 0, z: -1.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4199218026453566}
@@ -92596,6 +92596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -92621,7 +92622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5464f6595afddae46b972e1c512fd97a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_flowVec: {x: 0.05, y: 0, z: 0}
+  m_flowVec: {x: -0.05, y: 0, z: 0}
 --- !u!114 &114039036986072272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -92743,6 +92744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -92868,6 +92870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -92984,6 +92987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -93178,6 +93182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -93214,6 +93219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -93380,6 +93386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -93546,6 +93553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -93773,6 +93781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -93957,6 +93966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -94082,6 +94092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -94133,6 +94144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -94190,6 +94202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -94215,6 +94228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -94522,6 +94536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -94558,6 +94573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -94746,6 +94762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -94801,6 +94818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -94826,6 +94844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -95017,6 +95036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -95091,6 +95111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -95250,6 +95271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -95734,6 +95756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -95989,6 +96012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -96040,6 +96064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -96107,6 +96132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -96143,6 +96169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -96220,6 +96247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -96402,6 +96430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -96602,6 +96631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -96693,6 +96723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -96761,6 +96792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -96800,6 +96832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -96948,6 +96981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -96973,6 +97007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -97119,6 +97154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -97240,6 +97276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -97331,6 +97368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -97433,6 +97471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -97472,6 +97511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -97663,6 +97703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -97766,6 +97807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -97958,6 +98000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -97983,6 +98026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -98239,6 +98283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -98264,6 +98309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -98328,6 +98374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -98479,6 +98526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -98504,6 +98552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -98573,6 +98622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -98700,6 +98750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -98842,6 +98893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -99000,6 +99052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -99154,6 +99207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -99190,6 +99244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -99255,6 +99310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -99345,6 +99401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -99400,6 +99457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
