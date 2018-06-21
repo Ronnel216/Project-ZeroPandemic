@@ -52,11 +52,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_gameManager: {fileID: 0}
-  m_player: {fileID: 0}
+  m_playerOffset: {x: 0, y: 0, z: -4}
   m_mainCamera: {fileID: 0}
-  m_cameraMove: {x: 70, y: 0, z: 0}
+  m_cameraMove: {x: 80, y: 0, z: 0}
   m_migrationTime: 3
   m_stage:
   - {fileID: 0}
-  - {fileID: 1733977085669520, guid: bbd5de8ad2cf6174a919ce8ba9ffb00b, type: 2}
-  - {fileID: 1733977085669520, guid: bbd5de8ad2cf6174a919ce8ba9ffb00b, type: 2}
+  - {fileID: 1694750767876866, guid: 6d7386753c9e00847b2f0f80462c5ac2, type: 2}
+  - {fileID: 1597641847765542, guid: 714b463503afffb4cbe31686d338accf, type: 2}
