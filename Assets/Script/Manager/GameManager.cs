@@ -125,6 +125,7 @@ public class GameManager : MonoBehaviour {
         else if (isClear)
         {
             stageNum++;
+            if (stageNum > 3) stageNum = 3; // 拡張不可
             //infectedNum = 0;
         }
 
