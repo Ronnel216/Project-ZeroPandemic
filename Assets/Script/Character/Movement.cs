@@ -70,8 +70,8 @@ public class Movement : MonoBehaviour {
         // ロック時移動できない
         if (m_lockMove)
         {
-            //// 移動速度を消去
-            //veloctiy = Vector3.zero;
+            // 移動速度を消去
+            m_rigidBody.velocity = Vector3.zero;
         }
         else
         {

@@ -47,8 +47,6 @@ public class ComboScript : MonoBehaviour
         if(timeFlag)
             time += Time.deltaTime;
 
-        Debug.Log(resetTime);
-
         if(time >= comboTime && comboNum > 0)
             ResetCombo();
     }
