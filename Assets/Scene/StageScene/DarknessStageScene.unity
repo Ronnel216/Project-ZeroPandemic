@@ -2221,6 +2221,7 @@ GameObject:
   - component: {fileID: 1945059913}
   - component: {fileID: 1945059910}
   - component: {fileID: 1945059912}
+  - component: {fileID: 1945059916}
   m_Layer: 5
   m_Name: ScreenUI
   m_TagString: Untagged
@@ -2348,6 +2349,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1945059916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1945059909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f8c8c0768a4da24588fe0559071c579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 1945059909}
+  clearUI: {fileID: 1764501997273972, guid: b4bc1daf586004844a32f1f292ceb25f, type: 2}
+  overUI: {fileID: 1027409881825270, guid: 14c99f125e48fb54a9b62533b022b378, type: 2}
 --- !u!1 &2039308613
 GameObject:
   m_ObjectHideFlags: 0

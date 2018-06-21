@@ -68,6 +68,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     KeyCode m_pandemicKey = KeyCode.Space;      // パンデミック発動キー
 
+    float stayTime = 0;
+    GameEndUI endUI;
     void Start () {
         // 制限時間を設定
         time = timeLimit;
@@ -83,7 +85,7 @@ public class GameManager : MonoBehaviour {
 
         actorNum = GameObject.FindGameObjectsWithTag("Actor").Length;
         pandemic = GameObject.Find("AIManger").GetComponent<AIManager>();
-
+        endUI = GameObject.Find("ScreenUI").GetComponent<GameEndUI>();
         // デバッグ処理
         if (saveStr == null)
         {
@@ -107,9 +109,18 @@ public class GameManager : MonoBehaviour {
         // スコアの代入はここで
         if (stageMnager.AllClear)
         {
-            score = GetClearTime();
-            saveStr.SetResultScore(score);
-            UnityEngine.SceneManagement.SceneManager.LoadScene("RankingScene");
+            if (stayTime <= 0.0f)
+            {
+                endUI.CreateGameEndUI(isClear);
+            }
+            stayTime += Time.deltaTime;
+            if (stayTime >= 3.0f)
+            {
+                score = GetClearTime();
+                saveStr.SetResultScore(score);
+                UnityEngine.SceneManagement.SceneManager.LoadScene("RankingScene");
+                stayTime = 0;
+            }
         }
         if (isClear)
         {
@@ -150,9 +161,16 @@ public class GameManager : MonoBehaviour {
         }
         if (time == 0.0f)
         {
-            score = 0;
-            saveStr.SetResultScore(score);
-            UnityEngine.SceneManagement.SceneManager.LoadScene("RankingScene");
+            if (stayTime <= 0.0f)
+            {
+                endUI.CreateGameEndUI(isClear);
+            }
+            stayTime += Time.deltaTime;
+            if (stayTime >= 3.0f)
+            {
+                GameOver();
+                stayTime = 0;
+            }
         }
 
     }
