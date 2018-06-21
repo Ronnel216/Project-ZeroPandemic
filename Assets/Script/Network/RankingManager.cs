@@ -19,10 +19,13 @@ public class RankingManager : MonoBehaviour
     private GameObject m_canvas;                // 描画キャンバス 
     [SerializeField]
     private GameObject m_scoreTextPrehub;       // スコアテキストPrefab
+    //[SerializeField]
+    //private InputField m_input;                 // インプットフィールド
+    //[SerializeField]
+    //private GameObject m_inputField;            // インプットフィールドオブジェクト
     [SerializeField]
-    private InputField m_input;                 // インプットフィールド
-    [SerializeField]
-    private GameObject m_inputField;            // インプットフィールドオブジェクト
+    GameObject inputer;
+    ControllerInput controllerInput;
     [SerializeField]
     private GameObject m_rankImagePrehub;       // ランキングイメージPrefab
     [SerializeField]
@@ -95,9 +98,13 @@ public class RankingManager : MonoBehaviour
         m_saveStr = GameObject.FindGameObjectWithTag("Data");
         m_ranking.FetchRanking();
 
-        m_inputField.SetActive(false);
-        m_input.enabled = false;
-        m_sv = GameObject.FindGameObjectWithTag("Data").GetComponent<SaveStr>();
+        controllerInput = inputer.GetComponent<ControllerInput>();
+
+        inputer.SetActive(false);
+        controllerInput.enabled = false;
+        //m_inputField.SetActive(false);
+        //m_input.enabled = false;
+        m_sv = m_saveStr.GetComponent<SaveStr>();
         m_drawFlag = true;
         m_rankingFlag = false;
         m_score = m_sv.GetResultScore();
@@ -409,13 +416,15 @@ public class RankingManager : MonoBehaviour
     //----------------------------------------------------------------------
     private void CheckRanking(float rankingscore)
     {   
-            if (rankingscore < m_score)
-            {
-                m_inputField.SetActive(true);
-                m_input.enabled = true;
-            }
-            else 
-                m_rankingFlag = true;
+        if (rankingscore < m_score)
+        {
+            //m_inputField.SetActive(true);
+            //m_input.enabled = true;
+            inputer.SetActive(true);
+            controllerInput.enabled = true;
+        }
+        else 
+            m_rankingFlag = true;
     }
 
     //----------------------------------------------------------------------
