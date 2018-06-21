@@ -1344,6 +1344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -1572,4 +1573,4 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 7
-  m_ObstacleAvoidanceType: 1
+  m_ObstacleAvoidanceType: 4
