@@ -111,6 +111,14 @@ public class GameManager : MonoBehaviour {
         {
             if (stayTime <= 0.0f)
             {
+                if (stayTime == 0.0f)
+                    if (isClear)
+                    {
+
+                    }else
+                    {
+
+                    }
                 endUI.CreateGameEndUI(isClear);
             }
             stayTime += Time.deltaTime;
