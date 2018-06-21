@@ -14,7 +14,7 @@ public class SwampFloor : MonoBehaviour {
 		
 	}
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (this.enabled == false) return;
         if (CanTripped(other.gameObject))
@@ -25,16 +25,16 @@ public class SwampFloor : MonoBehaviour {
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (this.enabled == false) return;
-        if (CanTripped(other.gameObject))
-        {
-            var movement = other.GetComponent<Movement>();
-            movement.Tripped(false);
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (this.enabled == false) return;
+    //    if (CanTripped(other.gameObject))
+    //    {
+    //        var movement = other.GetComponent<Movement>();
+    //        movement.Tripped(false);
 
-        }
-    }
+    //    }
+    //}
 
     bool CanTripped(GameObject obj)
     {
