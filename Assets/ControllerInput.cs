@@ -65,7 +65,9 @@ public class ControllerInput : MonoBehaviour {
 
     public void PassStr(out string result, string no_str = "NoName")
     {
-        result = no_str;
+        if (str.Length > 0)
+            result = str;
+        else result = no_str;
     }
 
     // Use this for initialization
@@ -174,7 +176,13 @@ public class ControllerInput : MonoBehaviour {
             DeleteStr(ref str);
 
         if (is_send)
-            keyPrefab.GetComponent<KeyAction>().SetChar(all_katakana[focus_index]);
+            GetComponent<InputFieldManager>().InputLogger();
+            //keyPrefab.GetComponent<KeyAction>().SetChar(all_katakana[focus_index]);
+    }
+
+    public void SetStr(string str)
+    {
+        this.str = str;
     }
 
     bool InputText(ref string str, int index)

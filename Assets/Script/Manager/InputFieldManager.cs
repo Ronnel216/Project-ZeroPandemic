@@ -18,7 +18,11 @@ using UnityEngine.UI;
 public class InputFieldManager : MonoBehaviour
 {
 
-    InputField m_inputField;
+    //InputField m_inputField;
+
+    [SerializeField]
+    GameObject inputer;
+    ControllerInput controllerInput;
 
     //値保存用
     GameObject m_saveString;
@@ -60,7 +64,9 @@ public class InputFieldManager : MonoBehaviour
             height++;
         }
 
-        m_inputField = GetComponent<InputField>();
+        //m_inputField = GetComponent<InputField>();
+        //inputer = Instantiate(inputer);
+        controllerInput = inputer.GetComponent<ControllerInput>();
 
         m_saveString = GameObject.FindWithTag("Data");
 
@@ -78,19 +84,20 @@ public class InputFieldManager : MonoBehaviour
     public void InputLogger()
     {
 
-        string inputValue = m_inputField.text;
+        string inputValue;
+        controllerInput.PassStr(out inputValue);
 
-        if (!CheckString(inputValue))
-        {
-            InputEndField(m_inputField.text);
-        }
-        else
-        {
-            // 値をリセット
-            m_inputField.placeholder.GetComponent<Text>().text = "不適切です";
+        //if (!CheckString(inputValue))
+        //{
+            InputEndField(inputValue);
+        //}
+        //else
+        //{
+        //    //// 値をリセット
+        //    //m_inputField.placeholder.GetComponent<Text>().text = "不適切です";
 
-            InitInputField();
-        }
+            //InitInputField();
+        //}
     }
 
     //----------------------------------------------------------------------
@@ -103,11 +110,12 @@ public class InputFieldManager : MonoBehaviour
     //----------------------------------------------------------------------
     private void InitInputField()
     {
-        // 値をリセット
-        m_inputField.text = "";
+        controllerInput.SetStr("");
+        //// 値をリセット
+        //m_inputField.text = "";
 
-        // フォーカス
-        m_inputField.ActivateInputField();
+        //// フォーカス
+        //m_inputField.ActivateInputField();
     }
 
     //----------------------------------------------------------------------
@@ -122,13 +130,14 @@ public class InputFieldManager : MonoBehaviour
     public void InputEndField(string name)
     {
         // 値をセット
-        m_inputField.text = name;
+        //m_inputField.text = name;
+        controllerInput.SetStr(name);
 
         m_saveString.GetComponent<SaveStr>().SetUserName(name);
 
         m_rankingManager.SetRankingFlag(true);
-
-        gameObject.SetActive(false);
+        inputer.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
 
