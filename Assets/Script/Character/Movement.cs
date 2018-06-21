@@ -77,7 +77,8 @@ public class Movement : MonoBehaviour {
         {
             if (m_isTripped)
             {
-                m_velocity *= 0.2f;                
+                m_velocity *= 0.2f;
+                m_isTripped = false;
             }
 
             if (m_velocity.magnitude > m_maxSpeed)
