@@ -108,7 +108,7 @@ public class SelectController : MonoBehaviour {
         if (m_selectNum < 0) m_selectNum = m_stageNum - 1;
         if (m_selectNum >= m_stageNum) m_selectNum = 0;
 
-        m_sceneNameText.text = m_sceneName[m_selectNum];
+        m_sceneNameText.text = m_sceneName[m_selectNum].Remove(m_sceneName[m_selectNum].Length -1 - 5, 5);
 
         // 回転速度の更新
         float lerpLevel = 0.1f;

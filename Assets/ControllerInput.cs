@@ -53,6 +53,12 @@ public class ControllerInput : MonoBehaviour {
     int focus_index = 0;
     int current_separate = 0;
 
+    // キーのオブクト
+    [SerializeField]
+    GameObject keyPrefab;
+
+    // 入力された文字列
+    [SerializeField]
     string str;
 
     public void PassStr(out string result, string no_str = "NoName")
@@ -62,13 +68,14 @@ public class ControllerInput : MonoBehaviour {
 
     // Use this for initialization
     void Start () {      
-        text_obj = gameObject.transform.GetChild(0).Find("TestText").gameObject;
+        text_obj = GameObject.Find("TestText").gameObject;
         Debug.Log(text_obj);
 
         separate_index.Add(all_katakana.Count);
         separate_index.Add(5);
         separate_index.Add(10);    
         separate_index.Add(15);
+        separate_index.Add(20);
         separate_index.Add(25);
         separate_index.Add(30);
         separate_index.Add(35);
@@ -91,6 +98,21 @@ public class ControllerInput : MonoBehaviour {
         separate_index.Add(all_katakana.Count + 6);
         all_katakana.AddRange(katakana_komoji);
 
+        Vector3 baseOffset = new Vector3(-300.0f, 100.0f);
+        Vector3 offset = baseOffset;
+        float distance = 30;
+        for (int i = 0; i < all_katakana.Count; i++)
+        {
+            // ベースを基点に横に平行移動
+            int index = separate_index.IndexOf(i);
+            if (i != 0 && index > 0 )
+                offset = baseOffset + Vector3.right * distance * index;
+             
+            var obj = Instantiate(keyPrefab, transform);
+            obj.transform.localPosition = offset;
+            obj.GetComponent<KeyAction>().SetChar(all_katakana[i]);
+            offset += Vector3.down * distance;
+        }
 
         //for (int i = 0; i < separate_index.Count ; i++)
         //    Debug.Log(all_katakana[separate_index[i]]);
@@ -104,6 +126,8 @@ public class ControllerInput : MonoBehaviour {
         input_direc = Input.GetKeyDown(KeyCode.UpArrow) ? Vector2.up : input_direc;
         input_direc = Input.GetKeyDown(KeyCode.DownArrow) ? Vector2.down : input_direc;
         bool is_push = Input.GetKeyDown(KeyCode.Space);
+        bool is_delete = Input.GetKeyDown(KeyCode.C);
+        bool is_send = Input.GetKeyDown(KeyCode.S);   
         bool was_inputed = Input.anyKeyDown;
 
         // キーを押したら進む
@@ -111,7 +135,7 @@ public class ControllerInput : MonoBehaviour {
 
         // 入力
         int new_focus_index = focus_index;
-
+        
         if (input_direc == Vector2.right)
             new_focus_index = StepSeparateIndex(1);
         else if (input_direc == Vector2.left)
@@ -125,6 +149,30 @@ public class ControllerInput : MonoBehaviour {
 
         // 文字の代入
         InputText(ref text_obj, focus_index);
+
+        // データの格納
+        if (is_push)
+           InputText(ref str, focus_index);
+
+        if (is_delete)
+            DeleteStr(ref str);
+
+        //if (is_send)
+        //    keyPrefab.GetComponent<KeyAction>().SetChar(all_katakana[focus_index]);
+    }
+
+    bool InputText(ref string str, int index)
+    {
+        if (str.Length >= 5) return false;
+        str += all_katakana[focus_index];
+        return true;
+    }
+
+    bool DeleteStr(ref string str)
+    {
+        if (str.Length == 0) return false;
+        str = str.Remove(str.Length - 1);
+        return true;
     }
 
     void InputText(ref GameObject text_obj, int focus_index)
