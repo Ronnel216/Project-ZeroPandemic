@@ -87,17 +87,17 @@ public class InputFieldManager : MonoBehaviour
         string inputValue;
         controllerInput.PassStr(out inputValue);
 
-        if (!CheckString(inputValue))
-        {
+        //if (!CheckString(inputValue))
+        //{
             InputEndField(inputValue);
-        }
-        else
-        {
-            //// 値をリセット
-            //m_inputField.placeholder.GetComponent<Text>().text = "不適切です";
+        //}
+        //else
+        //{
+        //    //// 値をリセット
+        //    //m_inputField.placeholder.GetComponent<Text>().text = "不適切です";
 
-            InitInputField();
-        }
+            //InitInputField();
+        //}
     }
 
     //----------------------------------------------------------------------

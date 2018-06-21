@@ -122,14 +122,19 @@ public class GameManager : MonoBehaviour {
                 stayTime = 0;
             }
         }
+        else if (isClear)
+        {
+            stageNum++;
+            //infectedNum = 0;
+        }
+
         if (isClear)
         {
-            //infectedNum = 0;
-            stageNum++;
             screenCntrol.SetStageNum(stageNum);
             pandemicFlag = false;
             comboScript.Initialize();
             screenCntrol.ChengePandemicTextColor(0.0f, 0.0f, 0.0f);
+
         }
 
         // クリア前の処理
