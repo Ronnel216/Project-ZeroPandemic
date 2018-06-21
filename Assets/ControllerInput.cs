@@ -176,7 +176,8 @@ public class ControllerInput : MonoBehaviour {
             DeleteStr(ref str);
 
         if (is_send)
-            keyPrefab.GetComponent<KeyAction>().SetChar(all_katakana[focus_index]);
+            GetComponent<InputFieldManager>().InputLogger();
+            //keyPrefab.GetComponent<KeyAction>().SetChar(all_katakana[focus_index]);
     }
 
     public void SetStr(string str)

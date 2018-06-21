@@ -379,7 +379,6 @@ MonoBehaviour:
   m_scoreTextPrehub: {fileID: 1049537817585890, guid: e0fdda849579e444ba275a2de695367e,
     type: 2}
   inputer: {fileID: 1966676373}
-  m_controllerInput: {fileID: 1966676373}
   m_rankImagePrehub: {fileID: 1707334311973544, guid: 6895678381020ab429f21a746c7371cf,
     type: 2}
   m_saveStr: {fileID: 0}
@@ -1375,6 +1374,7 @@ GameObject:
   - component: {fileID: 1966676376}
   - component: {fileID: 1966676375}
   - component: {fileID: 1966676374}
+  - component: {fileID: 1966676379}
   m_Layer: 5
   m_Name: ControllerInput
   m_TagString: Untagged
@@ -1471,6 +1471,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1966676379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1966676373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68c7953bdb799ef449d4e19b0d1bf59a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputer: {fileID: 1966676373}
+  m_rankingManager: {fileID: 127663420}
 --- !u!1 &2080964661
 GameObject:
   m_ObjectHideFlags: 0

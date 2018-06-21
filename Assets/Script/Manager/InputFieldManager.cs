@@ -65,7 +65,7 @@ public class InputFieldManager : MonoBehaviour
         }
 
         //m_inputField = GetComponent<InputField>();
-        inputer = Instantiate(inputer);
+        //inputer = Instantiate(inputer);
         controllerInput = inputer.GetComponent<ControllerInput>();
 
         m_saveString = GameObject.FindWithTag("Data");
