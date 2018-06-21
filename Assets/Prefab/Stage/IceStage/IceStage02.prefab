@@ -8452,24 +8452,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1211243651272808
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4660724532000834}
-  - component: {fileID: 33136247802978986}
-  - component: {fileID: 23297419539993718}
-  - component: {fileID: 95812933148427380}
-  m_Layer: 0
-  m_Name: SnowMan
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
-  m_IsActive: 1
 --- !u!1 &1211563272513752
 GameObject:
   m_ObjectHideFlags: 1
@@ -9771,24 +9753,6 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1242854772178576
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4296314860981058}
-  - component: {fileID: 33316126384315572}
-  - component: {fileID: 65397723892773038}
-  - component: {fileID: 23183152324663738}
-  m_Layer: 0
-  m_Name: Wall
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1243409589945002
 GameObject:
@@ -39510,7 +39474,7 @@ Transform:
   - {fileID: 4632726039877216}
   - {fileID: 4899903541614416}
   m_Father: {fileID: 4115372283683378}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4004678808646524
 Transform:
@@ -43082,7 +43046,6 @@ Transform:
   - {fileID: 4885337298860684}
   - {fileID: 4864601560272252}
   - {fileID: 4737212927877178}
-  - {fileID: 4660724532000834}
   - {fileID: 4347119370424890}
   - {fileID: 4443211747952852}
   - {fileID: 4149744133473134}
@@ -44413,7 +44376,7 @@ Transform:
   m_Children:
   - {fileID: 4182515386237338}
   m_Father: {fileID: 4115372283683378}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4149802828123538
 Transform:
@@ -49928,19 +49891,6 @@ Transform:
   m_Father: {fileID: 4491689824287020}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4296314860981058
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1242854772178576}
-  m_LocalRotation: {x: -0, y: 0.9529, z: -0, w: 0.30328482}
-  m_LocalPosition: {x: -0.0063476367, y: 0.32, z: -0.037174284}
-  m_LocalScale: {x: 0.6666669, y: 0.6666667, z: 0.6666669}
-  m_Children: []
-  m_Father: {fileID: 4660724532000834}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4296453911123508
 Transform:
   m_ObjectHideFlags: 1
@@ -51641,7 +51591,7 @@ Transform:
   m_LocalScale: {x: 1.6, y: 1, z: 0.41}
   m_Children: []
   m_Father: {fileID: 4115372283683378}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4347280290052238
 Transform:
@@ -53758,7 +53708,7 @@ Transform:
   m_LocalScale: {x: 5.91, y: 8, z: 5.43}
   m_Children: []
   m_Father: {fileID: 4115372283683378}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4406243162715306
 Transform:
@@ -55387,7 +55337,7 @@ Transform:
   - {fileID: 4453475954261378}
   - {fileID: 4448184592668012}
   m_Father: {fileID: 4115372283683378}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4443632234167108
 Transform:
@@ -61344,7 +61294,7 @@ Transform:
   - {fileID: 4021482947358050}
   - {fileID: 4215446720951090}
   m_Father: {fileID: 4115372283683378}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4622587035151708
 Transform:
@@ -62731,20 +62681,6 @@ Transform:
   m_Father: {fileID: 4217608096699140}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4660724532000834
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1211243651272808}
-  m_LocalRotation: {x: -0, y: -0.9529, z: -0, w: 0.30328482}
-  m_LocalPosition: {x: -6.62, y: 0, z: 12.7}
-  m_LocalScale: {x: 1.500001, y: 1.5, z: 1.500001}
-  m_Children:
-  - {fileID: 4296314860981058}
-  m_Father: {fileID: 4115372283683378}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: -144.69, z: 0}
 --- !u!4 &4660872466390046
 Transform:
   m_ObjectHideFlags: 1
@@ -63825,7 +63761,7 @@ Transform:
   m_Children:
   - {fileID: 4849526013243812}
   m_Father: {fileID: 4115372283683378}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4696217303436244
 Transform:
@@ -65069,7 +65005,7 @@ Transform:
   m_LocalScale: {x: 5.31, y: 8, z: 5.65}
   m_Children: []
   m_Father: {fileID: 4115372283683378}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4732238957674458
 Transform:
@@ -69261,7 +69197,7 @@ Transform:
   - {fileID: 4179771008653930}
   - {fileID: 4414207367750284}
   m_Father: {fileID: 4115372283683378}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4848153079248464
 Transform:
@@ -73426,7 +73362,7 @@ Transform:
   m_LocalScale: {x: 5.41, y: 8, z: 5.43}
   m_Children: []
   m_Father: {fileID: 4115372283683378}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4965140630379898
 Transform:
@@ -75946,40 +75882,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!23 &23183152324663738
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1242854772178576}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: ca1318419ea2b884f9d65f48e741122d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!23 &23186147850767314
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -76465,40 +76367,6 @@ MeshRenderer:
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!23 &23297419539993718
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1211243651272808}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
@@ -81798,13 +81666,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1510984604948102}
   m_Mesh: {fileID: 4300000, guid: 62fa28cbb204e4546a2ad5c1580ee188, type: 3}
---- !u!33 &33136247802978986
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1211243651272808}
-  m_Mesh: {fileID: 4300000, guid: 671c2f4f58de2714f940ac2cc8d60e9a, type: 3}
 --- !u!33 &33146181082876168
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -82064,13 +81925,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1314850108570730}
   m_Mesh: {fileID: 4300010, guid: e6ec39770b6dbe04f9cbd7ea19e0c7ef, type: 3}
---- !u!33 &33316126384315572
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1242854772178576}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &33316419843572250
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -85936,18 +85790,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 30.061783, y: 3.3048053, z: 1.0745335}
   m_Center: {x: 0.04532242, y: 1.6645811, z: 15.319518}
---- !u!65 &65397723892773038
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1242854772178576}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.2635655, y: 1.9456632, z: 1}
-  m_Center: {x: -0.031276464, y: 0.4728316, z: 0}
 --- !u!65 &65408973089428972
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -92007,23 +91849,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &95812933148427380
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1211243651272808}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 671c2f4f58de2714f940ac2cc8d60e9a, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &95813277315135244
 Animator:
   serializedVersion: 3
@@ -92596,6 +92421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -92621,7 +92447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5464f6595afddae46b972e1c512fd97a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_flowVec: {x: 0.05, y: 0, z: 0}
+  m_flowVec: {x: -0.05, y: 0, z: 0}
 --- !u!114 &114039036986072272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -92743,6 +92569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -92868,6 +92695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -92984,6 +92812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -93178,6 +93007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -93214,6 +93044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -93380,6 +93211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -93546,6 +93378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -93773,6 +93606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -93957,6 +93791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -94082,6 +93917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -94133,6 +93969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -94190,6 +94027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -94215,6 +94053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -94522,6 +94361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -94558,6 +94398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -94746,6 +94587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -94801,6 +94643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -94826,6 +94669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -95017,6 +94861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -95091,6 +94936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -95250,6 +95096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -95734,6 +95581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -95989,6 +95837,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -96040,6 +95889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -96107,6 +95957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -96143,6 +95994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -96220,6 +96072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -96402,6 +96255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -96602,6 +96456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -96693,6 +96548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -96761,6 +96617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -96800,6 +96657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -96948,6 +96806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -96973,6 +96832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -97119,6 +96979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -97240,6 +97101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -97331,6 +97193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -97433,6 +97296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -97472,6 +97336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -97663,6 +97528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -97766,6 +97632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -97958,6 +97825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -97983,6 +97851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -98239,6 +98108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -98264,6 +98134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -98328,6 +98199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -98479,6 +98351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -98504,6 +98377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -98573,6 +98447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -98700,6 +98575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -98842,6 +98718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -99000,6 +98877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -99154,6 +99032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -99190,6 +99069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -99255,6 +99135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -99345,6 +99226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
@@ -99400,6 +99282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3935cc438841c40a3e4de038ca8987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
   stateData:
     infectionArea: {fileID: 1062082759457470, guid: 8ac58eefe38122b4b9a666d398a6bb55,
       type: 2}
