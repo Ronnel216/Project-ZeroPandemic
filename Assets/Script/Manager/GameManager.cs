@@ -140,7 +140,7 @@ public class GameManager : MonoBehaviour {
             if ((float)infectedNum / (actorNum + infectedNum) * 100.0f >= perdemic)
             {
                 // パンデミック発動キーが押された
-                if (Input.GetKeyDown(m_pandemicKey))
+                if (Input.GetKeyDown(m_pandemicKey) || Input.GetButtonDown("Button A"))
                 {
                     pandemic.StartPandemic();
                     screenCntrol.ChengePandemicTextColor(255.0f,255.0f,0.0f);
