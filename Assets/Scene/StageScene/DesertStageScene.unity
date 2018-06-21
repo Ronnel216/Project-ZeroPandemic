@@ -1383,7 +1383,7 @@ Prefab:
     - target: {fileID: 114253263942025688, guid: 51e4fb4595857564daee6492936dadf7,
         type: 2}
       propertyPath: perdemic
-      value: 10
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 114253263942025688, guid: 51e4fb4595857564daee6492936dadf7,
         type: 2}
