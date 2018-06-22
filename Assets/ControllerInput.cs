@@ -63,6 +63,8 @@ public class ControllerInput : MonoBehaviour {
 
     KeyAction[] keys;
 
+    bool isStickTrigger;
+
     public void PassStr(out string result, string no_str = "NoName")
     {
         if (str.Length > 0)
@@ -131,28 +133,32 @@ public class ControllerInput : MonoBehaviour {
 
         }
 
+        isStickTrigger = true;
     }
 
     // Update is called once per frame
     void Update () {
         Vector2 input_direc = new Vector2();
-        input_direc = Input.GetKeyDown(KeyCode.RightArrow) ? Vector2.right : input_direc;
-        input_direc = Input.GetKeyDown(KeyCode.LeftArrow) ? Vector2.left : input_direc;
-        input_direc = Input.GetKeyDown(KeyCode.UpArrow) ? Vector2.up : input_direc;
-        input_direc = Input.GetKeyDown(KeyCode.DownArrow) ? Vector2.down : input_direc;
-        bool is_push = Input.GetKeyDown(KeyCode.Space);
-        bool is_delete = Input.GetKeyDown(KeyCode.C);
-        bool is_send = Input.GetKeyDown(KeyCode.S);   
-        bool was_inputed = Input.anyKeyDown;
+        input_direc.x = Input.GetAxis("Horizontal");
+        input_direc.y = Input.GetAxis("Vertical");
+        if (Mathf.Abs(input_direc.x) < 0.8f) input_direc.x = 0.0f;
+        else input_direc.x = input_direc.x > 0 ? 1.0f : -1.0f;
+        if (Mathf.Abs(input_direc.y) < 0.8f) input_direc.y = 0.0f;
+        else input_direc.y = input_direc.y > 0 ? 1.0f : -1.0f;
+        if (Mathf.Abs(input_direc.x) + Mathf.Abs(input_direc.y) < 0.3f) isStickTrigger = true;
+        if (isStickTrigger == false) input_direc = Vector2.zero; 
+        bool is_push = Input.GetButtonDown("Button A");
+        bool is_delete = Input.GetButtonDown("Cancel");
+        bool is_send = Input.GetButtonDown("Button Start");   
 
 
         // 文字の代入
         InputText(ref text_obj, str);
 
         keys[focus_index].Focus();
-
-        // キーを押したら進む
-        if (was_inputed == false) return;
+        
+        if (input_direc.sqrMagnitude > 0)
+            isStickTrigger = false;
 
         // 入力
         int new_focus_index = focus_index;
