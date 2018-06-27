@@ -68,14 +68,17 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     KeyCode m_pandemicKey = KeyCode.Space;      // パンデミック発動キー
 
-    AudioSource clearSE;
-    AudioSource gameOverSE;
+    AudioSource audio;
+
+    AudioClip clearSE;
+    AudioClip gameOverSE;
 
     float stayTime = 0;
     GameEndUI endUI;
     void Start () {
-        clearSE = Resources.Load("se_maoudamashii_onepoint11") as AudioSource;
-        gameOverSE = Resources.Load("se_maoudamashii_se_syber01") as AudioSource;
+        audio = GetComponent<AudioSource>();
+        clearSE = Resources.Load("se_maoudamashii_onepoint11") as AudioClip;
+        gameOverSE = Resources.Load("se_maoudamashii_se_syber01") as AudioClip;
 
         // 制限時間を設定
         time = timeLimit;
@@ -120,11 +123,11 @@ public class GameManager : MonoBehaviour {
                 if (stayTime == 0.0f)
                     if (isClear)
                     {
-                        clearSE.PlayOneShot(clearSE.clip);
+                        audio.PlayOneShot(clearSE);
                     }
                     else
                     {
-                        gameOverSE.PlayOneShot(gameOverSE.clip);
+                        audio.PlayOneShot(gameOverSE);
                     }
                 endUI.CreateGameEndUI(isClear);
             }
