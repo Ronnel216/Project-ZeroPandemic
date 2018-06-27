@@ -130,8 +130,8 @@ public class MiniMap : MonoBehaviour
         {
             Vector3 pos = actor.transform.position;
 
-            float offsetX = m_stageManager.CameraMove.x;
-            m_actorsImage[i].transform.localPosition = new Vector3(pos.x % offsetX, pos.z, 0);
+            float offsetX = m_stageManager.StagePos.x;
+            m_actorsImage[i].transform.localPosition = new Vector3(pos.x - offsetX, pos.z, 0);
             i++;
         }
     }

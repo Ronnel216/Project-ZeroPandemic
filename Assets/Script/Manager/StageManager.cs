@@ -34,6 +34,10 @@ public class StageManager : MonoBehaviour {
     private GameObject[] m_stage;                                   // ステージオブジェクト
 
     private GameObject m_nowStage;                                  // 現在のステージ
+    public Vector3 StagePos
+    {
+        get { return m_nowStage.transform.position; }
+    }
     private GameObject m_nextStage;                                 // 次のステージ
 
 
@@ -112,7 +116,7 @@ public class StageManager : MonoBehaviour {
 
         Vector3 pos = m_nowStage.transform.position;
         Vector3 cameraPos = m_mainCamera.transform.position;
-        pos = new Vector3(cameraPos.x, pos.y, cameraPos.z);
+        //pos = new Vector3(cameraPos.x, pos.y, cameraPos.z);
         pos += m_cameraMove;
         m_stageNum++;
 

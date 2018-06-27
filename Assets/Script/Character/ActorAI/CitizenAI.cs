@@ -71,7 +71,7 @@ public class CitizenAI : MonoBehaviour {
     public void ChangeState(State state)
     {
         this.nextState = state;
-
+        nextState.Init(stateData);
     }
 
     // ステイト確認

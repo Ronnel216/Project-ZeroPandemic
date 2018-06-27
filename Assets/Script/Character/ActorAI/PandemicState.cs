@@ -7,6 +7,13 @@ public class PandemicState : CitizenAI.State
 {
     float moveSpeed = 20.0f;
     GameObject targetObj;
+    public override void Init(StateData data)
+    {
+        // ゾンビ状態でしか入れないエリアの開放
+        NavMeshAgent navAgent = data.movement.NavMeshAgent;
+        navAgent.areaMask ^= 1 << NavMesh.GetAreaFromName("Infected");
+    }
+
     public override void Excute(StateData data)
     {
 
