@@ -38,6 +38,7 @@ public class VirusAmount : MonoBehaviour
     bool isVirusControll;                   // ウイルスコントロール用フラグ
     bool comboSeparation;                   // コンボ用フラグ
     bool stop = false;                      // 拘束されている時用(仮)
+    bool overFlag = true;                   // ゲームオーバーしたかどうか
     public bool Stop
     {
         set { stop = value; }
@@ -112,7 +113,10 @@ public class VirusAmount : MonoBehaviour
         // 決まったコンボ値で様々な値を回復
         ComboRecovery(isComboseparation());
         // ゲームオーバーの判断
-        CheckGameOver();
+        if (maxVirusAmount <= 0.0f)
+        {
+            overFlag = false;
+        }
     }
 
     //----------------------------------------------------------------------
@@ -211,12 +215,9 @@ public class VirusAmount : MonoBehaviour
     //!
     //! @return 
     //----------------------------------------------------------------------
-    void CheckGameOver()
+    public bool GetOverFlag()
     {
-        if (maxVirusAmount <= 0.0f)
-        {
-            GameManagerScript.GameOver();
-        }
+        return overFlag;
     }
 
     //----------------------------------------------------------------------

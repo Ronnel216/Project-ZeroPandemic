@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour {
 
     float stayTime = 0;
     GameEndUI endUI;
+    VirusAmount overFlag;
     void Start () {
         audio = GetComponent<AudioSource>();
         clearSE = Resources.Load("se_maoudamashii_onepoint11") as AudioClip;
@@ -95,6 +96,7 @@ public class GameManager : MonoBehaviour {
         actorNum = GameObject.FindGameObjectsWithTag("Actor").Length;
         pandemic = GameObject.Find("AIManger").GetComponent<AIManager>();
         endUI = GameObject.Find("ScreenUI").GetComponent<GameEndUI>();
+        overFlag = GameObject.Find("Player").GetComponent<VirusAmount>();
         // デバッグ処理
         if (saveStr == null)
         {
@@ -183,18 +185,15 @@ public class GameManager : MonoBehaviour {
                 }
             }
         }
+        // 制限時間を迎えたらゲームオーバー
         if (time == 0.0f)
         {
-            if (stayTime <= 0.0f)
-            {
-                endUI.CreateGameEndUI(isClear);
-            }
-            stayTime += Time.deltaTime;
-            if (stayTime >= 3.0f)
-            {
-                GameOver();
-                stayTime = 0;
-            }
+            GameOver();
+        }
+        // ウイルスゲージが0になったらゲームオーバー
+        if (overFlag.GetOverFlag()==false)
+        {
+            GameOver();
         }
 
     }
@@ -209,10 +208,18 @@ public class GameManager : MonoBehaviour {
 
     public void GameOver()
     {
-        score = 0;
-        saveStr.SetResultScore(score);
-        UnityEngine.SceneManagement.SceneManager.LoadScene("RankingScene");
-
+        if (stayTime <= 0.0f)
+        {
+            endUI.CreateGameEndUI(isClear);
+        }
+        stayTime += Time.deltaTime;
+        if (stayTime >= 3.0f)
+        {
+            score = 0;
+            saveStr.SetResultScore(score);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("RankingScene");
+            stayTime = 0;
+        }
     }
 
     // 制限時間の取得
