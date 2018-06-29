@@ -131,6 +131,7 @@ public class GameManager : MonoBehaviour {
                     {
                         audio.PlayOneShot(gameOverSE);
                     }
+                screenCntrol.SetClearFlag(isClear);
                 endUI.CreateGameEndUI(isClear);
             }
             stayTime += Time.deltaTime;
@@ -154,7 +155,7 @@ public class GameManager : MonoBehaviour {
             screenCntrol.SetStageNum(stageNum);
             pandemicFlag = false;
             comboScript.Initialize();
-            screenCntrol.ChengePandemicTextColor(0.0f, 0.0f, 0.0f);
+            screenCntrol.ChengePandemicTextColor(0.0f, 0.0f, 0.0f, isClear);
 
         }
 
@@ -180,7 +181,7 @@ public class GameManager : MonoBehaviour {
                 if (Input.GetKeyDown(m_pandemicKey) || Input.GetButtonDown("Button A"))
                 {
                     pandemic.StartPandemic();
-                    screenCntrol.ChengePandemicTextColor(255.0f,255.0f,0.0f);
+                    screenCntrol.ChengePandemicTextColor(255.0f,255.0f,0.0f, isClear);
                     pandemicFlag = true;
                 }
             }
