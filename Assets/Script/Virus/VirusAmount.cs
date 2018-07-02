@@ -208,7 +208,7 @@ public class VirusAmount : MonoBehaviour
     }
 
     //----------------------------------------------------------------------
-    //! @brief CheckGameOver
+    //! @brief GetOverFlag
     //!        ゲームオーバーの判断
     //!
     //! @param[in]

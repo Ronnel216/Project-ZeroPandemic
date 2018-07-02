@@ -76,6 +76,8 @@ public class GameManager : MonoBehaviour {
     float stayTime = 0;
     GameEndUI endUI;
     VirusAmount overFlag;
+    PanelSlider clearPanelUI;
+    PanelSlider overPanelUI;
     void Start () {
         audio = GetComponent<AudioSource>();
         clearSE = Resources.Load("se_maoudamashii_onepoint11") as AudioClip;
@@ -97,6 +99,9 @@ public class GameManager : MonoBehaviour {
         pandemic = GameObject.Find("AIManger").GetComponent<AIManager>();
         endUI = GameObject.Find("ScreenUI").GetComponent<GameEndUI>();
         overFlag = GameObject.Find("Player").GetComponent<VirusAmount>();
+        clearPanelUI = GameObject.Find("ClearPanel").GetComponent<PanelSlider>();
+        overPanelUI = GameObject.Find("OverPanel").GetComponent<PanelSlider>();
+
         // デバッグ処理
         if (saveStr == null)
         {
@@ -122,6 +127,8 @@ public class GameManager : MonoBehaviour {
         {
             if (stayTime <= 0.0f)
             {
+                clearPanelUI.SlideIn();
+
                 if (stayTime == 0.0f)
                     if (isClear)
                     {
@@ -131,10 +138,14 @@ public class GameManager : MonoBehaviour {
                     {
                         audio.PlayOneShot(gameOverSE);
                     }
-                endUI.CreateGameEndUI(isClear);
             }
             stayTime += Time.deltaTime;
-            if (stayTime >= 3.0f)
+            if (stayTime >= 6.0f)
+            {
+                clearPanelUI.SlideOut();
+
+            }
+            if (stayTime >= 7.0f)
             {
                 score = GetClearTime();
                 saveStr.SetResultScore(score);
@@ -193,6 +204,8 @@ public class GameManager : MonoBehaviour {
         // ウイルスゲージが0になったらゲームオーバー
         if (overFlag.GetOverFlag()==false)
         {
+            overPanelUI.SlideIn();
+            overPanelUI.SlideOut();
             GameOver();
         }
 
@@ -210,15 +223,20 @@ public class GameManager : MonoBehaviour {
     {
         if (stayTime <= 0.0f)
         {
-            endUI.CreateGameEndUI(isClear);
+            overPanelUI.SlideOut();
         }
         stayTime += Time.deltaTime;
-        if (stayTime >= 3.0f)
+        //if (stayTime >= 2.0f)
+        //{
+        //    overPanelUI.SlideOut();
+        //}
+        if (stayTime >= 5.0f)
         {
             score = 0;
             saveStr.SetResultScore(score);
             UnityEngine.SceneManagement.SceneManager.LoadScene("RankingScene");
             stayTime = 0;
+
         }
     }
 
