@@ -337,7 +337,7 @@ public class RankingManager : MonoBehaviour
         tmpObj = Instantiate(m_scoreTextPrehub);
         tmpObj.transform.parent = m_canvas.transform;
         tmpObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-        tmpObj.transform.localPosition = new Vector3(880, index * -130 + 120, 0);
+        tmpObj.transform.localPosition = new Vector3(950, index * -130 + 120, 0);
 
         m_scoreText.Add(tmpObj);
 

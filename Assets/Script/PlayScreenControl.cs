@@ -76,6 +76,8 @@ public class PlayScreenControl : MonoBehaviour {
     //一度しか通らない
     bool isOnece = true;
 
+    bool isClear = false;
+
     [SerializeField]
     float hunterUISpeed = 100.0f;
 
@@ -113,6 +115,7 @@ public class PlayScreenControl : MonoBehaviour {
         //感染率を割りだす
         rateinfected = infectedPerson / allPerson * 100.0f;
 
+        if(!isClear)
         PandemicTextReduction(rateinfected);
 
         SendNotice();
@@ -276,12 +279,13 @@ public class PlayScreenControl : MonoBehaviour {
         
     }
 
-    public void ChengePandemicTextColor(float r, float g, float b)
+    public void ChengePandemicTextColor(float r, float g, float b , bool isclear)
     {
         red = r;
         green = g;
         blue = b;
         pandemicText.color = new Color(red, green, blue, alfaColor);
+        if (isclear) pandemicText.enabled = false;
     }
     //シーン上の指定したタグが付いたオブジェクトを数える
     public int CheckObject(string tagname)
@@ -312,5 +316,10 @@ public class PlayScreenControl : MonoBehaviour {
     public void SetStageNum(int stagenum)
     {
         nowStageNum = stagenum;
+    }
+
+    public void SetClearFlag(bool flag)
+    {
+        isClear = flag;
     }
 }
