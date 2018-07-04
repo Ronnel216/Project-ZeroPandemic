@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour {
         {
             if (stayTime <= 0.0f)
             {
-                clearPanelUI.SlideIn();
+                clearPanelUI.SlideOut();
 
                 if (stayTime == 0.0f)
                     if (isClear)
@@ -140,12 +140,7 @@ public class GameManager : MonoBehaviour {
                     }
             }
             stayTime += Time.deltaTime;
-            if (stayTime >= 6.0f)
-            {
-                clearPanelUI.SlideOut();
-
-            }
-            if (stayTime >= 7.0f)
+            if (stayTime >= 5.0f)
             {
                 score = GetClearTime();
                 saveStr.SetResultScore(score);
@@ -204,8 +199,6 @@ public class GameManager : MonoBehaviour {
         // ウイルスゲージが0になったらゲームオーバー
         if (overFlag.GetOverFlag()==false)
         {
-            overPanelUI.SlideIn();
-            overPanelUI.SlideOut();
             GameOver();
         }
 
@@ -226,10 +219,6 @@ public class GameManager : MonoBehaviour {
             overPanelUI.SlideOut();
         }
         stayTime += Time.deltaTime;
-        //if (stayTime >= 2.0f)
-        //{
-        //    overPanelUI.SlideOut();
-        //}
         if (stayTime >= 5.0f)
         {
             score = 0;
