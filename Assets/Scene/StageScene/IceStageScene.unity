@@ -14781,6 +14781,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1263d5596fbc94f45a52724967ffca39, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1324842694 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114755776159691746, guid: 1263d5596fbc94f45a52724967ffca39,
+    type: 2}
+  m_PrefabInternal: {fileID: 1324842693}
+  m_Script: {fileID: 11500000, guid: a848242c18b194842bc4d684059e1f89, type: 3}
 --- !u!1 &1328022572
 GameObject:
   m_ObjectHideFlags: 0
@@ -17451,7 +17457,7 @@ Prefab:
         type: 2}
       propertyPath: screenCntrol
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1324842694}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51e4fb4595857564daee6492936dadf7, type: 2}
   m_IsPrefabParent: 0
